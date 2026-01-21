@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharat Startup Reality</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>"
+    type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container" id="bubblesContainer"></div>
+
+  <div class="page">
+    <header class="hero">
+      <div class="header-top">
+        <div class="badge">🇮🇳 BHARAT STARTUP REALITY</div>
+        <div class="header-links">
+          <a href="https://rahulkumarsingh-portfolio.vercel.app/" target="_blank" class="header-link">👤 About
+            Creator</a>
+          <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+          </button>
+        </div>
+      </div>
+      <h1>Bharat Startup Reality</h1>
+      <p class="subtitle">The unfiltered truth about Indian startups — failures, struggles, pivots & comebacks. Learn
+        from ₹50,000+ Cr in lessons.</p>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="stat-failed">0</div>
+          <div class="stat-label">💀 Shut Down</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-struggling">0</div>
+          <div class="stat-label">⚠️ Struggling</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-pivoted">0</div>
+          <div class="stat-label">🔄 Pivoted/Exited</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-burned">$0</div>
+          <div class="stat-label">🔥 Total Funding at Risk</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search startups, founders, investors, categories…" />
+      </div>
+      <div class="status-filters" id="statusFilters"></div>
+      <div class="hint">� <strong>Click any card below</strong> to explore the full story — AI rebuild ideas, execution
+        plans & monetization strategies inside!</div>
+    </section>
+
+    <section class="grid" id="cardsGrid"></section>
+  </div>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-header">
+        <h2 id="modalTitle">Startup</h2>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+
+      <!-- Value Proposition -->
+      <div class="section value-prop-section">
+        <h3>🎯 THE PITCH (What They Promised)</h3>
+        <p id="modalValueProp"></p>
+      </div>
+
+      <!-- Opportunity Score -->
+      <div class="section opportunity-section">
+        <h3>📊 OPPORTUNITY SCORE</h3>
+        <div class="opportunity-grid" id="modalOpportunity"></div>
+      </div>
+
+      <!-- Cause of Death / Struggle Reason -->
+      <div class="section death-section">
+        <h3>⚰️ CAUSE OF DEATH</h3>
+        <p id="modalCauseOfDeath"></p>
+        <div class="timeline" id="modalTimeline"></div>
+      </div>
+
+      <!-- The Loot - Lessons -->
+      <div class="section loot-section">
+        <h3>📈 THE DIVIDENDS (Key Learnings)</h3>
+        <ul id="modalLessons" class="loot-list"></ul>
+      </div>
+
+      <!-- Key People & Investors -->
+      <div class="section">
+        <h3>👥 KEY PEOPLE & INVESTORS</h3>
+        <div class="people" id="modalPeople"></div>
+      </div>
+
+      <!-- Market Today -->
+      <div class="section market-section">
+        <h3>📈 MARKET TODAY</h3>
+        <p id="modalMarketToday"></p>
+      </div>
+
+      <!-- AI Rebuild Idea -->
+      <div class="section rebuild-section">
+        <h3>🔄 THE NEW BUSINESS IDEA</h3>
+        <div class="rebuild-card">
+          <h4 id="modalRebuildName" class="rebuild-name"></h4>
+          <p id="modalRebuildDesc"></p>
+          <div class="tech-stack" id="modalTechStack"></div>
+        </div>
+      </div>
+
+      <!-- What Makes This Innovative -->
+      <div class="section innovative-section">
+        <h3>💡 WHAT MAKES THIS INNOVATIVE</h3>
+        <ul id="modalInnovative" class="innovative-list"></ul>
+      </div>
+
+      <!-- Execution Plan -->
+      <div class="section execution-section">
+        <h3>🗺️ THE ROADMAP (Launch Playbook)</h3>
+        <ol id="modalExecutionPlan" class="execution-list"></ol>
+      </div>
+
+      <!-- Monetization Strategy -->
+      <div class="section monetization-section">
+        <h3>💰 MONETIZATION STRATEGY</h3>
+        <p id="modalMonetization"></p>
+      </div>
+
+      <div class="note">* Analysis based on public reports, news sources, and AI-powered market research. For
+        educational purposes only.</div>
+    </div>
+  </div>
+  </div>
+
+  <div class="note">* Analysis based on public reports, news sources, and industry patterns.</div>
+  </div>
+  </div>
+
+  <!-- Feature Request / Feedback Floating Button -->
+  <button class="fab-button feedback-fab" id="feedbackFab" title="Suggest a feature or add a startup">
+    <span class="fab-icon">💡</span>
+    <span class="fab-text">Suggest</span>
+  </button>
+
+  <!-- Feature Request Modal -->
+  <div class="modal" id="feedbackModal" aria-hidden="true">
+    <div class="modal-backdrop" id="feedbackBackdrop"></div>
+    <div class="modal-content feedback-modal-content">
+      <button class="modal-close" id="feedbackClose">×</button>
+      <div class="modal-header">
+        <h2>💡 Feature Request / Add a Startup</h2>
+      </div>
+      <form class="feedback-form" id="feedbackForm">
+        <div class="form-group">
+          <label for="feedbackType">What would you like to do?</label>
+          <select id="feedbackType" required>
+            <option value="">Select an option...</option>
+            <option value="add_startup">Add a missing startup</option>
+            <option value="fix_data">Fix incorrect data</option>
+            <option value="feature">Suggest a feature</option>
+            <option value="other">Other feedback</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="feedbackDetails">Details</label>
+          <textarea id="feedbackDetails" rows="4" placeholder="Tell us more..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="feedbackEmail">Email (optional)</label>
+          <input type="email" id="feedbackEmail" placeholder="your@email.com" />
+        </div>
+        <button type="submit" class="submit-btn">🚀 Submit Feedback</button>
+      </form>
+      <p class="feedback-note">Your feedback helps make this resource better for everyone!</p>
+    </div>
+  </div>
+
+  <!-- Portfolio Credit Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Built with 🔥 by <a href="https://rahulkumarsingh-portfolio.vercel.app/" target="_blank" rel="noopener">Rahul
+          Kumar Singh</a></p>
+      <p class="footer-tagline">Learning from failures, building for success.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
