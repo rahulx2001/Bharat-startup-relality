@@ -313,37 +313,6 @@ body {
   min-width: 180px;
 }
 
-.card-badges {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-}
-
-.card-badge {
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 3px 8px;
-  border: 2px solid var(--border);
-}
-
-.card-badge.gold {
-  background: #ffd166;
-  color: #101010;
-}
-
-.card-badge.new {
-  background: #8ecae6;
-  color: #101010;
-}
-
-.card-badge.thin {
-  background: #e9ecef;
-  color: #495057;
-}
-
 .sources-list {
   list-style: none;
   padding: 0;

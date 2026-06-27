@@ -205,12 +205,7 @@ const buildCards = (items) => {
     card.className = 'card';
     const foundersText = s.founders?.length ? `👤 ${s.founders.slice(0, 2).join(', ')}` : '';
     const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
-    const badges = [
-      isRecentlyUpdated(s) ? '<span class="card-badge new">Updated</span>' : '',
-      isGoldProfile(s) ? '<span class="card-badge gold">Gold</span>' : '<span class="card-badge thin">Basic</span>',
-    ].join('');
     card.innerHTML = `
-      <div class="card-badges">${badges}</div>
       <div class="card-status ${getStatusClass(s.status)}">${s.status || 'Struggling'}</div>
       <h4>${s.startup_name}</h4>
       <div class="meta">
@@ -943,7 +938,7 @@ const updateHeroMeta = (items) => {
     subtitle.textContent = `The unfiltered truth about Indian startups — failures, struggles, pivots & comebacks. Learn from ${formatInrCr(burned)} in lessons.`;
   }
   if (freshness && state.generatedAt) {
-    freshness.textContent = `📅 Dataset last updated: ${state.generatedAt} · ${items.length} startups · Gold profiles: ${items.filter(isGoldProfile).length}`;
+    freshness.textContent = `📅 Dataset last updated: ${state.generatedAt} · ${items.length} startups`;
   }
 };
 
