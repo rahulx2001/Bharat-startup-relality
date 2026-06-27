@@ -56,7 +56,7 @@ def _chat(system: str, user: str, temperature: float = 0.2, retries: int = 5) ->
             last_error = exc
             message = str(exc).lower()
             if "429" in message or "rate" in message or "too many" in message:
-                wait = min(60, 10 * (attempt + 1))
+                wait = min(120, 20 * (attempt + 1))
                 print(f"[llm] Rate limited — waiting {wait}s (attempt {attempt + 1}/{retries})")
                 time.sleep(wait)
                 continue

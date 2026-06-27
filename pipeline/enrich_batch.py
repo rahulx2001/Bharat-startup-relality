@@ -44,7 +44,7 @@ def _gold_example() -> dict:
     return data["startups"][0]
 
 
-def run_batch(limit: int = 0, force: bool = False, delay: float = 8.0) -> int:
+def run_batch(limit: int = 0, force: bool = False, delay: float = 30.0) -> int:
     if not NVIDIA_API_KEY:
         print("[batch] ERROR: Set NVIDIA_API_KEY")
         return 1
