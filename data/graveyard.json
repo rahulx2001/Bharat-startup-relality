@@ -5,16 +5,16 @@
       "startup_name": "BluSmart",
       "status": "Shut Down",
       "year_founded": 2019,
-      "year_died": 2025,
+      "year_died": 2024,
       "funding_burned_usd": 70000000,
       "peak_valuation": 300000000,
       "employees": 2000,
-      "category": "Electric Mobility / Ride-hailing",
+      "category": "Electric Mobility",
       "headquarters": "Delhi NCR",
       "short_summary": "India's first all-electric ride-hailing platform collapsed after SEBI exposed founders diverted ₹97 crore for luxury purchases while employees went unpaid.",
       "value_proposition": "BluSmart launched as India's first 100% electric ride-hailing platform, promising zero-emission rides with standardized pricing. They built a fleet of thousands of EVs across Delhi NCR, Mumbai, and Bengaluru, partnering with Tata Motors and Jio-BP for charging infrastructure. GMV grew 600%+ from $2.76M to $20M between 2022-2023.",
       "cause_of_death": "SEBI investigation revealed co-founders Anmol and Puneet Singh Jaggi diverted ₹97 crore ($12M) in loans meant for EV leasing to personal luxury purchases: ₹42.94 crore apartment in DLF Camellias, ₹26 lakh golf clubs, ₹66 lakh for UAE travel, and transfers to family members. Parent company Gensol's credit rating was downgraded to junk in Dec 2024. SEBI banned founders from directorships in April 2025. Employees went unpaid for 4 months. Underlying issue: asset-heavy model was fundamentally unprofitable—each EV cost ₹8-10 lakh, breakeven required 70%+ utilization never achieved, and they competed against Uber (50%) and Rapido (30%) with no defensible moat.",
-      "failure_reason": "Founder fraud (₹97Cr diverted), SEBI ban, parent Gensol collapse, unsustainable unit economics, 4 months unpaid salaries",
+      "failure_reason": "Financial irregularities, founder fraud allegations, operations suspended",
       "founders": [
         "Anmol Singh Jaggi",
         "Puneet Singh Jaggi",
@@ -111,23 +111,27 @@
         "monetization": "SaaS platform fee: ₹999/vehicle/month for predictive diagnostics. Service commission: 10-15% on maintenance. Corporate shuttle programs: ₹2-5L/month. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
       "sources": [
-        "{'title': 'Darlings no more: From BluSmart to Hike, Indian startups that shut down', 'url': 'https://news.google.com/rss/articles/CBMiywFBVV95cUxNRHBHQzlPVEpnSzhyQXBoR1FGeHducHZhMzJlOHFoMkF2akpruV2luWXpuX3hSSDR5OXM0bEE0ejZwSmFBaTBCc芜ydmdCcDVOZFQxdmFDSDdPZGtINGZ3TDAzb3p6M2lNbzJ2Y3FPQTVpX1NFNGZiWUhwMFFLSTc3S3N5WGJ3VC01RjNPMEFGdGoyNlRVYzZZZV9BbXphZU84eF91YzZ0MHdZeWJEazVOV3RKUjRaVE4zanZQUkR1RWhXOHFMZWtnaUtic9IB0AFBVV95cUxNNmNVcXN6d0xZV25lZS05T1RTa185cTByZmozRkFYbTBBRUpkSWtSTjd6VDd5SF9oMzEtSmNoaXA3dGJDTkdvbnhxS3BCSG9fNjZ4dDh6MmJfSU5nWDQ3UWZGdEpDQ0ZQQU1RVFd1N3hfMXNNeEp5ZHgyaUE1REM1N3NjclY0TEFESk0tQkRseHNaMWgwWlg0bzUxMzdKYzZOVFFuQloySFZfdk1yM3JFLXRidDdIU19ObFdVOHVGNW16ajltd1RmeDRXbUlDeWVO?oc=5'}"
-      ]
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Dunzo",
       "status": "Shut Down",
       "year_founded": 2015,
-      "year_died": 2025,
+      "year_died": 2024,
       "funding_burned_usd": 476000000,
       "peak_valuation": 775000000,
       "employees": 1000,
-      "category": "Quick Commerce / Delivery",
+      "category": "Quick Commerce",
       "headquarters": "Bangalore",
       "short_summary": "Hyperlocal delivery pioneer - 'Just Dunzo It!' - ran out of cash after Reliance's veto rights blocked emergency funding.",
       "value_proposition": "Dunzo began in 2014 as Bengaluru's concierge delivery startup: runners ('Dunzors') fetched anything – groceries, laundry, even a forgotten laptop charger – in minutes. Its motto 'Just Dunzo It!' captured this on-demand convenience. With backing from Google, Lightrock and Reliance, Dunzo became the go-to errand app, partnering with 40K+ local shops and hitting 100K daily orders during the pandemic. The hyperlocal magic was lost when they pivoted to quick-commerce in 2021, building 130+ dark stores for 'Dunzo Daily' 19-minute grocery delivery - abandoning their core lightweight marketplace model.",
       "cause_of_death": "Dunzo's demise was largely self-inflicted. The 2021 pivot to quick-commerce burned massive cash on 130 dark stores while margins evaporated. By FY2022, losses hit ~₹464 Cr ($62M). The fatal blow: Reliance Retail's $200M investment (Jan 2022) came with VETO RIGHTS over future fundraising. When Dunzo urgently needed emergency capital, Reliance blocked outside investors. Stranded without funds, Dunzo froze hiring, defaulted on vendor bills, and co-founders Dalvir Suri and Mukund Jha departed in late 2023. App and website went offline in January 2025. Founder Kabeer Biswas moved to Flipkart's quick-delivery unit.",
-      "failure_reason": "Quick-commerce pivot burned cash, Reliance veto rights blocked emergency funding, co-founders departed",
+      "failure_reason": "Cash crunch, failed Reliance acquisition talks, massive layoffs",
       "founders": [
         "Kabeer Biswas",
         "Ankur Agarwal",
@@ -188,7 +192,14 @@
         "Investor veto rights can be company killers",
         "Don't abandon your core model for FOMO pivots",
         "Quick commerce needs ₹1000Cr+ war chest to compete"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Zilingo",
@@ -232,97 +243,14 @@
       "lessons": [
         "Governance is essential",
         "Founder misconduct kills companies"
-      ]
-    },
-    {
-      "startup_name": "TaxiForSure",
-      "status": "Shut Down",
-      "year_founded": 2011,
-      "year_died": 2017,
-      "funding_burned_usd": 50000000,
-      "peak_valuation": 200000000,
-      "employees": 1500,
-      "category": "Ride-hailing",
-      "headquarters": "Bangalore",
-      "short_summary": "Acquired by Ola for $200M (₹1,237 crore)—India's second-largest startup deal at the time—but brand was discontinued within 2 years. Founder later admitted: 'We could have been more aggressive... if we had pushed the pedal, the story would have been different.'",
-      "value_proposition": "TaxiForSure was India's ride-hailing pioneer, achieving 40,000+ rides per day at acquisition. Backed by Accel, Bessemer, and Helion, the company prioritized profitability and unit economics over aggressive growth—the opposite of Ola/Uber's subsidy-led strategy.",
-      "cause_of_death": "In winner-takes-most markets, profitability-focused strategies fail. TaxiForSure prioritized unit economics while Ola raised $210M from SoftBank and burned cash to acquire market share. By late 2014, when TaxiForSure dropped prices to ₹49/km, Ola already controlled the narrative. Consolidation was inevitable: Ola acquired TaxiForSure in March 2015 for $200M (₹1,237 crore). The brand was discontinued by 2017—the founders got liquidity but the brand was destroyed. The deeper lesson: in consolidated, winner-takes-most categories (ride-hailing, social media, e-commerce), niche profitability doesn't scale; it gets consolidated.",
-      "failure_reason": "Profitability-focused strategy in winner-takes-most market, Ola acquisition, brand discontinued",
-      "founders": [
-        "Aprameya Radhakrishna",
-        "Raghunandan G"
       ],
-      "investors": [
-        "Accel Partners",
-        "Bessemer Venture Partners",
-        "Helion Venture Partners"
-      ],
-      "timeline": [
+      "sources": [
         {
-          "date": "2011",
-          "event": "Founded by Aprameya Radhakrishna and Raghunandan G in Bangalore"
-        },
-        {
-          "date": "2014",
-          "event": "Ola raises $210M from SoftBank; subsidy war intensifies"
-        },
-        {
-          "date": "Late 2014",
-          "event": "TaxiForSure drops prices to ₹49/km—too late to compete"
-        },
-        {
-          "date": "Mar 2015",
-          "event": "Acquired by Ola for $200M (₹1,237 crore)—second-largest Indian startup deal"
-        },
-        {
-          "date": "2017",
-          "event": "Brand discontinued; TaxiForSure name retired from market"
+          "title": "Forbes",
+          "url": ""
         }
       ],
-      "insights": [
-        "In winner-takes-most markets (ride-hailing), profitability-focused strategies fail; the market rewards aggressive growth-at-all-costs",
-        "Network effects lock-in: drivers want platforms with most demand; customers want platforms with most drivers—no room for 4+ players",
-        "Consolidation is the end state, not the exception: ride-hailing settled into Uber/Rapido/Ola; no room for independents",
-        "Acquisition was a 'successful exit' for founders ($200M) but brand, employees, and vision were destroyed",
-        "The TaxiForSure Principle: in consolidated categories, sell infrastructure to winners rather than compete for consumers"
-      ],
-      "lessons": [
-        "Don't compete in winner-takes-most markets without war-chest capital",
-        "Consolidation is inevitable in ride-hailing",
-        "Infrastructure > consumer platform in consolidated markets"
-      ],
-      "opportunity_score": {
-        "rebuild_difficulty": 4,
-        "scalability": 4,
-        "market_potential": 4
-      },
-      "market_today": "India's ride-hailing is fully consolidated: Uber (50% of cabs), Rapido (30% cabs, 50% overall via bike-taxis), Ola (20%). No room for 4th major player. The opportunity is not consumer ride-hailing but B2B fleet infrastructure: dispatch optimization, driver earnings intelligence, and predictive maintenance for existing operators.",
-      "ai_rebuild": {
-        "name": "AFIP (Apex Fleet Intelligence Platform)",
-        "description": "B2B SaaS for ride-hailing and logistics operators—software that optimizes dispatch, driver earnings, and vehicle utilization for Ola, Uber, Rapido, and corporate fleets. No network effects needed; sells to 1-3 major operators. Clear ROI: 10-15% improvement in vehicle utilization, 20% reduction in driver churn, 25% lower fuel/charging costs.",
-        "tech_stack": [
-          "TensorFlow",
-          "Telematics API",
-          "React",
-          "PostgreSQL",
-          "Google Maps API"
-        ],
-        "execution_plan": [
-          "Build dynamic dispatch and route optimization using real-time telematics (minimize empty miles)",
-          "Launch driver earnings optimization: predictive surge modeling, shift scheduling recommendations",
-          "Add vehicle health scoring and predictive maintenance (predict failures 20-30 days in advance)",
-          "Sell to Uber, Ola, Rapido at ₹50-100k/vehicle/year (10,000-50,000 vehicles each = ₹5-50Cr/customer)",
-          "Scale to 500,000 vehicles monitored by Year 3 with ₹140Cr ARR"
-        ],
-        "innovative": [
-          "No network effects needed—B2B infrastructure for operators, not consumer platform competition",
-          "Consolidation becomes advantage—major players are your customers, not competitors",
-          "B2B SaaS unit economics: high LTV (₹50L-₹1Cr contracts), low CAC (enterprise sales)",
-          "Data moat: optimization models improve with millions of trips—defensible",
-          "Applies TaxiForSure Principle: sell infrastructure to winners instead of competing"
-        ],
-        "monetization": "Per-vehicle annual fee: ₹50-100k. Major ride-hailing customers: 3-5. Logistics customers: 30-100. Target: ₹140Cr ARR by Year 3 with 78% gross margin and 56% operating margin."
-      }
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Staples India",
@@ -380,7 +308,14 @@
         ],
         "monetization": "Transaction commission (5-10% on fulfilled orders). Credit facilitation fee (1-2% on BNPL transactions). SaaS fee for premium supplier features (₹999/mo). Volume rebates from suppliers for demand generation. Target: ₹50Cr ARR by Year 2 via protocol-driven discovery.",
         "strategic_validation": "Highly viable in 2026 market. Google UCP launched early 2026 as open standard for agentic discovery. OpenAI ACP (with Stripe) live for instant checkouts. India piloting AI chatbot-led e-commerce—perfect entry timing before saturation. Solves original cause of death (high CAPEX, low reach) via asset-light, protocol-first model."
-      }
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "AskMe",
@@ -395,7 +330,7 @@
       "short_summary": "Yellow Pages to e-commerce pivot. $300M from Astro Holdings, then the most acrimonious shutdown in Indian startup history.",
       "value_proposition": "AskMe (Getit Infoservices) started as a yellow pages and print directory giant with millions of SMB listings. As print died, they pivoted to digital with AskMe.com (classifieds), AskMe Bazaar (managed marketplace), AskMe Grocery (hyperlocal delivery), and acquired Mebelkart (furniture). The vision: transform a static directory into a 'one-stop destination' for finding AND transacting - bridging offline retail with online demand through 'Next Day Delivery' without holding inventory.",
       "cause_of_death": "UNIT ECONOMICS INSOLVENCY: The hyperlocal model was fundamentally broken. Cost analysis shows they LOST ₹300-520 on EVERY order: AOV ₹800-1200, Commission ₹80-120, but Logistics ₹60-100 + CAC ₹300-500 + Packaging ₹20-40. GMV was a 'leaky bucket' - growth only measured how fast they burned capital. GOVERNANCE WARFARE: Astro Holdings (Malaysia, 98.5% stake) and CEO Sanjiv Gupta (ex-Coca Cola India) had a vicious public 'blame game'. Astro threatened FORENSIC AUDIT alleging mismanagement. Management proposed MBO which Astro rejected. When Astro stopped monthly funding (facing Aircel-Maxis legal issues), 4,000 employees went unpaid for months. Management told staff to 'ask Astro' for salaries. Vendor defaults triggered FIRs. Liabilities hit $76M. Case went to NCLT.",
-      "failure_reason": "Hyperlocal unit economics disaster (lost ₹300+ per order), Astro-management governance warfare, funding freeze",
+      "failure_reason": "Funding dried up, investor disputes",
       "founders": [
         "Sanjiv Gupta (MD, ex-Coca Cola India)"
       ],
@@ -448,13 +383,20 @@
         "98% investor stake = zero alignment on strategy or exit",
         "Hyperlocal needs mature infrastructure (UPI, logistics networks) to work",
         "Public blame games ensure maximum value destruction for everyone"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "WhiteHat Jr",
       "status": "Shut Down",
       "year_founded": 2018,
-      "year_died": 2023,
+      "year_died": 2022,
       "funding_burned_usd": 300000000,
       "peak_valuation": 300000000,
       "employees": 5000,
@@ -463,7 +405,7 @@
       "short_summary": "Kids coding rocket ship crashed under $300/student CAC, misleading 'Wolf Gupta' ads, and Byju's parent crisis.",
       "value_proposition": "WhiteHat Jr rode the 'coding for kids' wave with premium 1:1 live classes taught by trained teachers. Kids aged 6-14 could learn to build apps, games, and even 'become the next Wolf Gupta' (their infamous child prodigy ad). The aggressive GTM and celebrity marketing created a category in India, reaching 5,000+ teachers and global expansion to Brazil, US, and music/math products.",
       "cause_of_death": "UNIT ECONOMICS DISASTER: Live 1:1 classes + heavy sales team + $14M/month Facebook/Google spend made CAC unsustainable. WhiteHat Jr posted ₹1,690 Cr losses in FY21 alone - contributing a massive chunk of Byju's total losses. TRUST & BRAND DAMAGE: Misleading ads showing 'Wolf Gupta' - a fictional child who became an 'app founder' and 'NASA coder' - attracted regulatory scrutiny and parent backlash. The claims were called out as deceptive. PARENT CRISIS CASCADE: Byju's own governance failures (auditor resignations, hidden losses, debt crisis) meant WhiteHat Jr couldn't invest in product - only cuts. 1,000+ employees resigned when asked to return to office in 2022, followed by 300 formal layoffs. Founder Karan Bajaj exited in 2021, just a year after the $300M acquisition.",
-      "failure_reason": "Unsustainable $300+ CAC per student, misleading advertising backlash, Byju's parent company crisis",
+      "failure_reason": "Byju's acquisition led to layoffs, brand struggling",
       "founders": [
         "Karan Bajaj"
       ],
@@ -514,7 +456,14 @@
         "1:1 live classes don't scale economically at mass market",
         "Misleading marketing creates trust debt that compounds",
         "Acquirer risk is real - parent troubles cascade to subsidiaries"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Hike Messenger",
@@ -527,7 +476,7 @@
       "category": "Consumer Internet",
       "headquarters": "New Delhi",
       "short_summary": "Unicorn messaging app (100M+ users) failed due to WhatsApp's network effects, feature bloat, and weak monetization. Founder admits network effects are insurmountable.",
-      "failure_reason": "Network effects (WhatsApp), feature bloat, unsustainable unit economics, weak monetization",
+      "failure_reason": "Couldn't compete with WhatsApp",
       "founders": [
         "Kavin Bharti Mittal"
       ],
@@ -612,8 +561,12 @@
       },
       "market_today": "India's messaging market is 95%+ dominated by WhatsApp (500M+ users). UPI payments (PhonePe, Google Pay, Paytm) have won payments. AI agents and embedded finance are emerging opportunities, but messaging as a standalone is dead. ONDC and Account Aggregator infrastructure now enables better fintech integration than 2016-2021-era Hike Wallet.",
       "sources": [
-        "{'title': 'Darlings no more: From BluSmart to Hike, Indian startups that shut down', 'url': 'https://news.google.com/rss/articles/CBMiywFBVV95cUxNRHBHQzlPVEpnSzhyQXBoR1FGeHducHZhMzJlOHFoMkF2akpDV2luWXpuX3hSSDR5OXM0bEE0ejZwSmFBaTBCcGYydmdCcDVOZFQxdmFDSDdPZGtINGZ3TDAzb3p6M2lNbzJ2Y3FPQTVpX1NFNGZiWUhwMFFLSTc3S3N5WGJ3VC01RjNPMEFGdGoyNlRVYzZZZV9BbXphZU84eF91YzZ0MHdZeWJEazVOV3RKUjRaVE4zanZQUkR1RWhXOHFMZWtnaUtic9IB0AFBVV95cUxNNmNVcXN6d0xZV25lZS05T1RTa185cTByZmozRkFYbTBBRUpkSWtSTjd6VDd5SF9oMzEtSmNoaXA3dGJDTkdvbnhxS3BCSG9fNjZ4dDh6MmJfSU5nWDQ3UWZGdEpDQ0ZQQU1RVFd1N3hfMXNNeEp5ZHgyaUE1REM1N3NjclY0TEFESk0tQkRseHNaMWgwWlg0bzUxMzdKYzZOVFFuQloySFZfdk1yM3JFLXRidDdIU19ObFdVOHVGNW16ajltd1RmeDRXbUlDeWVO?oc=5'}"
-      ]
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "ShopClues",
@@ -626,7 +579,7 @@
       "category": "E-Commerce",
       "headquarters": "India",
       "short_summary": "Unicorn ($1.1B) for Bharat e-commerce, collapsed to <$100M fire sale. Governance crisis, unbranded moat failed, trust deficit. Now a case for agentic supply-side infrastructure.",
-      "failure_reason": "Governance crisis, unbranded moat failed, trust deficit, sold to Qoo10 for <$100M.",
+      "failure_reason": "Sold at massive loss to Qoo10",
       "founders": [
         "Sandeep Aggarwal",
         "Sanjay Sethi",
@@ -681,20 +634,27 @@
           "Phase 3: Cross-border scale-up via Qoo10, global agentic checkout."
         ],
         "monetization": "2-3% transaction fee, SaaS for agentic SEO, Qxpress logistics, data licensing."
-      }
+      },
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Jabong",
       "status": "Shut Down",
       "year_founded": 2012,
-      "year_died": 2020,
+      "year_died": 2018,
       "funding_burned_usd": 220000000,
       "peak_valuation": 500000000,
       "employees": 2000,
       "category": "Fashion E-commerce",
       "headquarters": "Gurugram",
       "short_summary": "Fashion e-com unicorn ($500M) acquired by Flipkart/Myntra for $70M (86% collapse), then shut down. Consolidation, failed marketplace pivot, and competitive trap.",
-      "failure_reason": "Acquired by Flipkart/Myntra for consolidation, failed marketplace pivot, competitive trap.",
+      "failure_reason": "Brand discontinued after Flipkart acquisition of Myntra",
       "founders": [
         "Arun Chandra Mohan",
         "Praveen Sinha",
@@ -748,7 +708,14 @@
           "Phase 3: Seller SaaS for analytics, inventory sync, returns, demand forecasting."
         ],
         "monetization": "0.5-1% GMV fee, ₹25K/month seller SaaS, advertising, BNPL referral. Target: ₹5Cr revenue by Year 2."
-      }
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Uber Eats India",
@@ -779,7 +746,14 @@
       "lessons": [
         "Global giants can lose locally",
         "Food delivery needs local focus"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Foodpanda India",
@@ -815,7 +789,14 @@
       "lessons": [
         "Food delivery is winner-take-most",
         "Late entrants struggle"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Koo",
@@ -830,7 +811,7 @@
       "short_summary": "Indian Twitter alternative raised $66M, reached 10M MAU and $274M valuation, but shut down in July 2024—couldn't overcome WhatsApp's 480M+ users and Instagram's 500M+ users in India.",
       "value_proposition": "Koo launched as India's indigenous microblogging platform with multi-language support (Hindi, Tamil, Telugu, Kannada). Initially gained traction through government endorsements (PM Modi's 'Mann Ki Baat'), 2021 Twitter-India tensions, and regional language focus. Reached 2.1M DAU, 10M MAU, and 9,000+ verified VIPs by 2022. The platform promised to be a 'Made in India' alternative to Twitter.",
       "cause_of_death": "Founders cited lack of 'patient, long-term capital' as primary reason. Funding winter forced layoffs and capped growth. Failed acquisition talks with Dailyhunt, ShareChat, and others (all declined citing 'unpredictable user-generated content'). High technology infrastructure costs were unsustainable without growth trajectory. The deeper structural problem: social media requires exponential network effects. Koo had 10M MAU while Instagram has 500M+ and WhatsApp has 480M+ in India. Cost of growing from 10M to 100M users was economically irrational. Koo's only moat was 'regional language support'—but Instagram added Hindi/Tamil/Telugu, YouTube added regional content discovery, and ShareChat already did this at scale.",
-      "failure_reason": "Network effects unwinnable (10M vs WhatsApp's 480M), failed acquisition talks, funding winter, high infra costs, no viable monetization",
+      "failure_reason": "Shut down",
       "founders": [
         "Aprameya Radhakrishna",
         "Mayank Bidawatka"
@@ -911,15 +892,18 @@
         "monetization": "Free tier: basic dashboard + 1 platform. Pro: ₹499/month (5 platforms, advanced analytics). Enterprise: ₹2999/month (unlimited). 15% commission on brand deals facilitated. Creator course platform: 70% creator / 30% CIN split. Target: ₹59Cr ARR by Year 3 with 78% gross margin."
       },
       "sources": [
-        "{'title': \"From Byju's, Koo to Bluelearn: 7 Indian startups that went from hype to layoffs and shutdowns\", 'url': 'https://news.google.com/rss/articles/CBMi4AFBVV95cUxPWjhaRXRydjFXLS1qcjN1dkV3ci16ZlVEYUtCemtscGpsVTNpc2tYb0E3ZEpsbHpFMmo2a050SnIyaElBclQya1hVUi1BUUlIajZBTUt5MHZlcTlkS2xzVW43YjBRNFk2dFdCVmRBSWI1MVN0QjJ4Y20yZzFwSW9COElaMzUzVW9TTzlQYmlFa3k5T2lGQTRsa2RKU3ZfU1p5NHFwNXRBVl9UWFU3cldBUDdMdWw3djAxTUhBZXVma1Nwa0R6eFgtT0hHUVA1a1E5Zm1iVW5xWWRvUm5nYmFRX9IB5gFBVV95cUxQNjJDajhfNmV5SFZ2X0lyem1JaWVEQnhZcWJMNEx6cmxKbHZtX2tMNi1mTGVfWjJWNVVaREx1V1k2M3g1QXk3UnFDWUhjRFJ2NTV2OTJnUURrTnlYWmtBT0NodzhHeWFPR2MxYzdkaV9mZExELUNIVHMtOWJfY1luSGZpZlVpUEl0OWh3cm9Id3RacHVMd2UzSTdkUWd5eHlfdnhfczN1bmxRWmJsYkVwNkFRR0swR05EQWFhZVZoUWlvbFlRSlA2QTlvZVV4ZWlUUXVzWnREakpRcEF4VWh1ck5NaEJkdw?oc=5'}",
-        "{'title': 'From Byju’s, Koo to Bluelearn: 7 Indian startups that went from hype to layoffs and shutdowns', 'url': 'https://news.google.com/rss/articles/CBMi4AFBVV95cUxPWjhaRXRydjFXLS1qcjN1dkV3ci16ZlVEYUtCemtscGpsVTNpc2tYb0E3ZEpsbHpFMmo2a050SnIyaElBclQya1hVUi1BUUlIajZBTUt5MHZlcTlkS2xzVW43YjBRNFk2dFdCVmRBSWI1MVN0QjJ4Y20yZzFwSW9COElaMzUzVW9TTzlQYmlFa3k5T2lGQTRsa2RKU3ZfU1p5NHFwNXRBVl9UWFU3cldBUDdMdWw3djAxTUhBZXVma1Nwa0R6eFgtT0hHUVA1a1E5Zm1iVW5xWWRvUm5nYmFRX9IB5gFBVV95cUxQNjJDajhfNmV5SFZ2X0lyem1JaWVEQnhZcWJMNEx6cmxKbHZtX2tMNi1mTGVfWjJWNVVaREx1V1k2M3g1QXk3UnFDWUhjRFJ2NTV2OTJnUURrTnlYWmtBT0NodzhHeWFPR2MxYzdkaV9mZExELUNIVHMtOWJfY1luSGZpZlVpUEl0OWh3cm9Id3RacHVMd2UzSTdkUWd5eHlfdnhfczN1bmxRWmJsYkVwNkFRR0swR05EQWFhZVZoUWlvbFlRSlA2QTlvZVV4ZWlUUXVzWnREakpRcEF4VWh1ck5NaEJkdw?oc=5'}"
-      ]
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Trell",
       "status": "Shut Down",
       "year_founded": 2017,
-      "year_died": 2024,
+      "year_died": 2023,
       "funding_burned_usd": 62000000,
       "peak_valuation": 120000000,
       "employees": 200,
@@ -928,7 +912,7 @@
       "short_summary": "Lifestyle short-video + social commerce app. Raised $62M from Sequoia, Mirae, H&M. Grew during TikTok ban (2020) but couldn't sustain when Instagram Reels and YouTube Shorts captured the market. Shut down 2024.",
       "value_proposition": "Vernacular short-video platform focused on lifestyle content (beauty, fashion, travel). Aimed to combine content creation with shoppable links—social commerce before it was mainstream. Hoped to capture TikTok users post-ban.",
       "cause_of_death": "TikTok ban (Jun 2020) created opportunity; Instagram Reels (Aug 2020) and YouTube Shorts (2021) captured it instead. Trell lacked the distribution and creator monetization that global platforms offered. User attention fragmented across 5+ short-video apps (Josh, Moj, Chingari, Roposo). Social commerce monetization never materialized—users browsed but didn't buy. By 2024, burn rate unsustainable; shut down.",
-      "failure_reason": "Instagram Reels and YouTube Shorts captured TikTok vacuum, fragmented market, weak social commerce conversion",
+      "failure_reason": "Layoffs, restructuring",
       "founders": [
         "Pulkit Agrawal",
         "Bimal Kartheek Rebba"
@@ -971,7 +955,14 @@
         "Global platforms capture opportunities faster than local startups",
         "Social commerce needs product-level integration, not just links",
         "Creator monetization is key to platform stickiness"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Commonfloor",
@@ -981,7 +972,7 @@
       "funding_burned_usd": 60000000,
       "peak_valuation": 100000000,
       "employees": 600,
-      "category": "Real Estate",
+      "category": "PropTech",
       "headquarters": "India",
       "short_summary": "Real estate platform merged with Quikr and faded.",
       "failure_reason": "Merged with Quikr",
@@ -1006,7 +997,14 @@
       "lessons": [
         "Real estate portals consolidate",
         "Mergers often kill brands"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "PepperTap",
@@ -1019,7 +1017,7 @@
       "category": "Grocery Delivery",
       "headquarters": "Gurugram",
       "short_summary": "Hyperlocal grocery model proved unsustainable, shut operations.",
-      "failure_reason": "Hyperlocal grocery model unsustainable, shut down operations",
+      "failure_reason": "Unit economics failed, shut operations",
       "founders": [
         "Navneet Singh",
         "Milind Sharma"
@@ -1046,7 +1044,111 @@
       "lessons": [
         "Grocery margins are razor thin",
         "Hyperlocal needs scale"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
+    },
+    {
+      "startup_name": "Taxiforsure",
+      "status": "Shut Down",
+      "year_founded": 2011,
+      "year_died": 2017,
+      "funding_burned_usd": 50000000,
+      "peak_valuation": 200000000,
+      "employees": 1500,
+      "category": "Ride-hailing",
+      "headquarters": "Bangalore",
+      "short_summary": "Acquired by Ola for $200M (₹1,237 crore)—India's second-largest startup deal at the time—but brand was discontinued within 2 years. Founder later admitted: 'We could have been more aggressive... if we had pushed the pedal, the story would have been different.'",
+      "value_proposition": "TaxiForSure was India's ride-hailing pioneer, achieving 40,000+ rides per day at acquisition. Backed by Accel, Bessemer, and Helion, the company prioritized profitability and unit economics over aggressive growth—the opposite of Ola/Uber's subsidy-led strategy.",
+      "cause_of_death": "In winner-takes-most markets, profitability-focused strategies fail. TaxiForSure prioritized unit economics while Ola raised $210M from SoftBank and burned cash to acquire market share. By late 2014, when TaxiForSure dropped prices to ₹49/km, Ola already controlled the narrative. Consolidation was inevitable: Ola acquired TaxiForSure in March 2015 for $200M (₹1,237 crore). The brand was discontinued by 2017—the founders got liquidity but the brand was destroyed. The deeper lesson: in consolidated, winner-takes-most categories (ride-hailing, social media, e-commerce), niche profitability doesn't scale; it gets consolidated.",
+      "failure_reason": "Acquired by Ola, brand discontinued",
+      "founders": [
+        "Aprameya Radhakrishna",
+        "Raghunandan G"
+      ],
+      "investors": [
+        "Accel Partners",
+        "Bessemer Venture Partners",
+        "Helion Venture Partners"
+      ],
+      "timeline": [
+        {
+          "date": "2011",
+          "event": "Founded by Aprameya Radhakrishna and Raghunandan G in Bangalore"
+        },
+        {
+          "date": "2014",
+          "event": "Ola raises $210M from SoftBank; subsidy war intensifies"
+        },
+        {
+          "date": "Late 2014",
+          "event": "TaxiForSure drops prices to ₹49/km—too late to compete"
+        },
+        {
+          "date": "Mar 2015",
+          "event": "Acquired by Ola for $200M (₹1,237 crore)—second-largest Indian startup deal"
+        },
+        {
+          "date": "2017",
+          "event": "Brand discontinued; TaxiForSure name retired from market"
+        }
+      ],
+      "insights": [
+        "In winner-takes-most markets (ride-hailing), profitability-focused strategies fail; the market rewards aggressive growth-at-all-costs",
+        "Network effects lock-in: drivers want platforms with most demand; customers want platforms with most drivers—no room for 4+ players",
+        "Consolidation is the end state, not the exception: ride-hailing settled into Uber/Rapido/Ola; no room for independents",
+        "Acquisition was a 'successful exit' for founders ($200M) but brand, employees, and vision were destroyed",
+        "The TaxiForSure Principle: in consolidated categories, sell infrastructure to winners rather than compete for consumers"
+      ],
+      "lessons": [
+        "Don't compete in winner-takes-most markets without war-chest capital",
+        "Consolidation is inevitable in ride-hailing",
+        "Infrastructure > consumer platform in consolidated markets"
+      ],
+      "opportunity_score": {
+        "rebuild_difficulty": 4,
+        "scalability": 4,
+        "market_potential": 4
+      },
+      "market_today": "India's ride-hailing is fully consolidated: Uber (50% of cabs), Rapido (30% cabs, 50% overall via bike-taxis), Ola (20%). No room for 4th major player. The opportunity is not consumer ride-hailing but B2B fleet infrastructure: dispatch optimization, driver earnings intelligence, and predictive maintenance for existing operators.",
+      "ai_rebuild": {
+        "name": "AFIP (Apex Fleet Intelligence Platform)",
+        "description": "B2B SaaS for ride-hailing and logistics operators—software that optimizes dispatch, driver earnings, and vehicle utilization for Ola, Uber, Rapido, and corporate fleets. No network effects needed; sells to 1-3 major operators. Clear ROI: 10-15% improvement in vehicle utilization, 20% reduction in driver churn, 25% lower fuel/charging costs.",
+        "tech_stack": [
+          "TensorFlow",
+          "Telematics API",
+          "React",
+          "PostgreSQL",
+          "Google Maps API"
+        ],
+        "execution_plan": [
+          "Build dynamic dispatch and route optimization using real-time telematics (minimize empty miles)",
+          "Launch driver earnings optimization: predictive surge modeling, shift scheduling recommendations",
+          "Add vehicle health scoring and predictive maintenance (predict failures 20-30 days in advance)",
+          "Sell to Uber, Ola, Rapido at ₹50-100k/vehicle/year (10,000-50,000 vehicles each = ₹5-50Cr/customer)",
+          "Scale to 500,000 vehicles monitored by Year 3 with ₹140Cr ARR"
+        ],
+        "innovative": [
+          "No network effects needed—B2B infrastructure for operators, not consumer platform competition",
+          "Consolidation becomes advantage—major players are your customers, not competitors",
+          "B2B SaaS unit economics: high LTV (₹50L-₹1Cr contracts), low CAC (enterprise sales)",
+          "Data moat: optimization models improve with millions of trips—defensible",
+          "Applies TaxiForSure Principle: sell infrastructure to winners instead of competing"
+        ],
+        "monetization": "Per-vehicle annual fee: ₹50-100k. Major ride-hailing customers: 3-5. Logistics customers: 30-100. Target: ₹140Cr ARR by Year 3 with 78% gross margin and 56% operating margin."
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "GoMechanic",
@@ -1061,7 +1163,7 @@
       "short_summary": "India's largest multi-brand car service aggregator collapsed in 72 hours after founders admitted to inflating revenues 30-40% during Series D due diligence—70% of 1,000 employees laid off within days.",
       "value_proposition": "GoMechanic built a network of 617+ workshops across 30+ cities, promising 40% lower costs than authorized service centers through standardized quality, genuine parts, and doorstep pickup. They served 100,000+ vehicles with real-time service tracking and transparent pricing. Series C at $42M from Tiger Global and Sequoia (June 2021) valued them at ~$300M.",
       "cause_of_death": "During Series D discussions (targeting $1B valuation from Tiger Global, $800-900M from SoftBank), EY due diligence uncovered massive discrepancies. Founder Amit Bhasin admitted: 'We got carried away. Our passion to survive got the better of us.' Fraud included: 30-40% revenue inflation (FY22 actual: ₹90.5Cr vs claimed ₹150-200Cr), fictitious garages in network, misclassified transactions, and user metrics that didn't reconcile. Beyond fraud, the model was fundamentally broken: 15-25% commission on ₹4-6K services yielded only ₹600-1,500/service, while CAC was ₹400-800. LTV:CAC ratio was 3:1 in practice. 50%+ of first-time users never booked again (called garages directly to avoid platform fee). Within 72 hours of admission, 70% of 1,000 employees were laid off.",
-      "failure_reason": "Founders admitted 30-40% revenue inflation, fictitious garages, EY due diligence exposed fraud, 70% layoffs in 72 hours, ₹120Cr debt",
+      "failure_reason": "Fraud allegations, crisis",
       "founders": [
         "Amit Bhasin",
         "Nitin Rana",
@@ -1148,7 +1250,14 @@
           "Transparent pricing with before/after diagnostics rebuilds trust destroyed by GoMechanic's fraud"
         ],
         "monetization": "SaaS: ₹999/vehicle/month for predictive diagnostics (70% margin). Service commission: 10-15% on maintenance invoices. Parts marketplace: 15-25% margin. Insurance partnerships. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
-      }
+      },
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Yebhi",
@@ -1163,7 +1272,7 @@
       "short_summary": "Started as BigShoeBazaar (2009), raised $40M from Nexus/Catamaran/Fidelity, pioneered 'Try and Buy' but unit economics were disastrous. Failed 2014 pivot to aggregator model and dissolved by 2016.",
       "value_proposition": "Originally BigShoeBazaar—India's first footwear e-commerce. Rebranded to Yebhi (2012) expanding to lifestyle. Pioneered 'Try and Buy': customers could order multiple sizes, try at doorstep while courier waited, pay only for what kept. Reached third-largest e-tail player behind Flipkart/Snapdeal.",
       "cause_of_death": "Multi-layered failure: (1) 'Try and Buy' destroyed unit economics: 1.5-2x logistics cost per order due to courier wait time + guaranteed reverse logistics. (2) Aggressive private label expansion (2013) backfired—Indian consumers wanted Nike/Puma discounts, not unknown brands. (3) Funding gap: Yebhi's $40M couldn't compete with Flipkart's $100M+ war chest. (4) 2014 aggregator pivot failed—became 'dumb pipe' redirecting to Flipkart/Myntra with 2-8% affiliate commissions that competitors squeezed. (5) No user data ownership: lost customer the moment they clicked 'Buy' on partner site.",
-      "failure_reason": "'Try and Buy' unit economics disaster, private label strategic error, capital asymmetry vs Flipkart, failed aggregator pivot",
+      "failure_reason": "Market competition, funding issues",
       "founders": [
         "Danish Ahmed",
         "Manmohan Agrawal",
@@ -1242,7 +1351,14 @@
           "WhatsApp-first launch: zero acquisition friction vs standalone app download"
         ],
         "monetization": "Convenience fee: ₹5-10 per transaction. Seller visibility (retail media): bid for AI recommendations. Data licensing: aggregated intent data to manufacturers. Target: ₹30Cr+ ARR by Year 3 with 70%+ gross margin."
-      }
+      },
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Stayzilla",
@@ -1281,7 +1397,14 @@
       "lessons": [
         "Vendor disputes can turn ugly",
         "Legal issues kill companies"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "FrontRow",
@@ -1321,7 +1444,14 @@
       "lessons": [
         "Celebrity doesn't equal engagement",
         "Niche edtech is hard to scale"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "TinyOwl",
@@ -1334,7 +1464,7 @@
       "category": "Food Delivery",
       "headquarters": "Mumbai",
       "short_summary": "Food delivery pioneer acquired by Runnr after massive layoffs.",
-      "failure_reason": "Acquired by Runnr after massive layoffs, effectively shut",
+      "failure_reason": "Merged with Runnr, then failed",
       "founders": [
         "Harshvardhan Mandad",
         "Gaurav Choudhary"
@@ -1361,7 +1491,14 @@
       "lessons": [
         "Food delivery consolidation is inevitable",
         "Cash burn kills"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Mojocare",
@@ -1376,7 +1513,7 @@
       "short_summary": "Men's health telemedicine startup raised $20M from Chiratae and B Capital but shut down in 2024—niche vertical positioning couldn't compete with generalist platforms (Practo, Apollo, 1mg) that added men's health sections.",
       "value_proposition": "Mojocare positioned as 'on-demand men's health via telemedicine'—doctor consultations for sexual health, fertility, and lifestyle issues addressing a stigmatized ₹5000+ Cr market in India. The platform offered discreet access to specialists for conditions men avoid discussing openly.",
       "cause_of_death": "Unlike fraud-driven failures (GoMechanic, BluSmart), Mojocare failed due to structural positioning: (1) Hardware dependency: initial model relied on in-home diagnostic devices creating capex burden and supply chain complexity. (2) Niche vertical too narrow: 'men's health only' limited TAM relative to $20M raised. (3) Weak unit economics: telemedicine consultation margin is 30-50%; can't support ₹3-5Cr annual burn. (4) Generalist competition: when Practo/Apollo/1mg added men's health sections, Mojocare's niche positioning became irrelevant. (5) Series B impossible: Series A metrics didn't justify follow-on capital; investors saw no differentiation. The deeper lesson: vertical healthcare (men's health only) doesn't scale; horizontal healthcare (all categories + AI intelligence) does.",
-      "failure_reason": "Niche vertical (men's health) too narrow, hardware dependency, generalist platform competition, failed to raise Series B",
+      "failure_reason": "Shut down operations, failed to raise follow-on funding",
       "founders": [
         "Ashwin Swaminathan",
         "Chandrashekhar Bhide"
@@ -1447,7 +1584,14 @@
           "Existing customer relationships: hospitals already have patient bases; HIN increases engagement"
         ],
         "monetization": "Per-provider SaaS: ₹50-100k/month for hospitals, ₹1-5L/month for insurers. 5-10% commission on specialist referrals. Data licensing to pharma. Target: ₹48Cr ARR by Year 3 with 77% gross margin and 63% operating margin."
-      }
+      },
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Lido Learning",
@@ -1481,7 +1625,14 @@
       "lessons": [
         "EdTech winter was brutal",
         "Live classes don't scale well"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Flipkart Ping",
@@ -1496,7 +1647,7 @@
       "short_summary": "Flipkart's attempt to add social messaging to e-commerce. Failed because social requires dedicated network effects—users came to Flipkart to shop, not chat. WhatsApp had 100M+ Indian users by 2015; no one needed another chat app.",
       "value_proposition": "In-app messaging feature allowing Flipkart users to chat, share products, and coordinate purchases. Aimed to increase engagement and social commerce.",
       "cause_of_death": "Social is not a feature—it requires dedicated users, separate experience, and network effects. Flipkart users came to shop, not chat; switching context to messaging was friction. By 2015, WhatsApp had 100M+ Indian users; market was won. Same failure pattern as Koo (2020-2024) and Hike: both tried to compete in messaging/social without network effects defensibility.",
-      "failure_reason": "Social not a feature (needs dedicated network effects), WhatsApp already won, users came to shop not chat",
+      "failure_reason": "Flipkart's social chat feature discontinued",
       "founders": [],
       "investors": [
         "Flipkart (Internal)"
@@ -1552,13 +1703,20 @@
           "UGC Content Engine: Users sharing try-on photos becomes free marketing content"
         ],
         "monetization": "No direct charge—feature drives purchase conversion (+15-20% in fashion category). Reduces return rates (saves ₹50-100 per avoided return). Premium 'Style Concierge' subscription (₹199/mo) for advanced AI styling and priority try-on processing. Brand partnerships for featured virtual try-on experiences."
-      }
+      },
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Lybrate",
       "status": "Shut Down",
       "year_founded": 2013,
-      "year_died": 2023,
+      "year_died": 2017,
       "funding_burned_usd": 15000000,
       "peak_valuation": 50000000,
       "employees": 150,
@@ -1567,7 +1725,7 @@
       "short_summary": "Backed by Tiger Global and Ratan Tata, Lybrate's 'online doctor at a click' promise couldn't compete with Practo. Acquired by Pristyn Care in 2023.",
       "value_proposition": "Lybrate launched in 2013 with the ambition to be an 'online doctor at a click' - democratizing healthcare access. By 2015, they had 80,000+ doctors and 100K daily users, adding home lab tests. The promise: affordable, instant medical consultations for India's underserved population.",
       "cause_of_death": "Lybrate struggled to sustain growth due to two critical factors: 1) Lack of sustained user trust - healthcare platforms need rigorous vetting (Practo's 'Assured' program only admits qualified, high-rated doctors), and 2) Stiff competition - Practo had already built 120K doctors vs Lybrate's 80K, and had 30 crore patients by 2024. In 2023, Lybrate was acquired by rival Pristyn Care, ending its original strategy.",
-      "failure_reason": "Competition from Practo, trust issues, acquired by Pristyn Care in 2023",
+      "failure_reason": "Significant decline",
       "founders": [
         "Saurabh Arora"
       ],
@@ -1605,7 +1763,14 @@
         "Health platforms need trust above all",
         "First mover doesn't win if you can't scale trust",
         "Consolidation is inevitable"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Grabhouse",
@@ -1615,7 +1780,7 @@
       "funding_burned_usd": 10000000,
       "peak_valuation": 20000000,
       "employees": 200,
-      "category": "Real Estate",
+      "category": "PropTech",
       "headquarters": "India",
       "short_summary": "Rental housing platform merged with Quikr.",
       "failure_reason": "Merged with Quikr",
@@ -1637,20 +1802,27 @@
       "lessons": [
         "Rental housing is competitive",
         "Consolidation inevitable"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "LocalBanya",
       "status": "Shut Down",
       "year_founded": 2012,
-      "year_died": 2016,
+      "year_died": 2015,
       "funding_burned_usd": 10000000,
       "peak_valuation": 15000000,
       "employees": 300,
       "category": "Grocery Delivery",
       "headquarters": "Mumbai",
       "short_summary": "Grocery delivery startup ran out of funds.",
-      "failure_reason": "Ran out of funds, couldn't compete in hyperlocal space",
+      "failure_reason": "Couldn't sustain operations",
       "founders": [
         "Karan Mehrotra",
         "Rashi Choudhary"
@@ -1671,7 +1843,14 @@
       "lessons": [
         "Grocery delivery needs scale",
         "Capital efficiency matters"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Fashionara",
@@ -1684,7 +1863,7 @@
       "category": "Fashion E-commerce",
       "headquarters": "Bangalore",
       "short_summary": "Fashion e-commerce failed to compete with Myntra, Jabong.",
-      "failure_reason": "Failed to compete with Myntra, Jabong; shut down",
+      "failure_reason": "Failed to compete",
       "founders": [
         "Arun Sirdeshmukh"
       ],
@@ -1705,7 +1884,14 @@
       "lessons": [
         "Fashion e-commerce consolidates",
         "Differentiation is essential"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Runnr",
@@ -1740,7 +1926,14 @@
       "lessons": [
         "Food delivery consolidates",
         "Bigger players acquire smaller ones"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Ridlr",
@@ -1779,7 +1972,14 @@
       "lessons": [
         "Public transport apps hard to monetize",
         "Acquisition doesn't mean survival"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Frankly.me",
@@ -1814,7 +2014,14 @@
       "lessons": [
         "Celebrity platforms need volume",
         "Monetization is hard"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Dazo",
@@ -1827,7 +2034,7 @@
       "category": "Food Delivery",
       "headquarters": "Bangalore",
       "short_summary": "Food delivery startup shut down amid intense competition.",
-      "failure_reason": "Food delivery startup shut down amid intense competition",
+      "failure_reason": "Bangalore operations shut",
       "founders": [],
       "investors": [
         "Matrix Partners",
@@ -1846,7 +2053,14 @@
       "lessons": [
         "Food delivery is winner-take-most",
         "Competition kills smaller players"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "JustRide",
@@ -1875,7 +2089,14 @@
       "lessons": [
         "Ride-hailing is winner-take-most",
         "Capital intensity kills smaller players"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "ZipDial",
@@ -1914,7 +2135,14 @@
       "lessons": [
         "Acquirers can shut down startups",
         "Strategic fit matters"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Spoonjoy",
@@ -1946,7 +2174,14 @@
       "lessons": [
         "Food delivery needs scale",
         "Unit economics matter"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Crejo.Fun",
@@ -1956,7 +2191,7 @@
       "funding_burned_usd": 3000000,
       "peak_valuation": 10000000,
       "employees": 50,
-      "category": "Edtech",
+      "category": "EdTech",
       "headquarters": "India",
       "short_summary": "Kids edtech platform shut down.",
       "failure_reason": "Shut down",
@@ -1975,7 +2210,14 @@
       "lessons": [
         "Kids edtech is competitive",
         "EdTech winter hit hard"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Zipgo",
@@ -2009,7 +2251,14 @@
       "lessons": [
         "Bus shuttle is capital intensive",
         "Public transport integration hard"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Udayy",
@@ -2019,7 +2268,7 @@
       "funding_burned_usd": 2500000,
       "peak_valuation": 10000000,
       "employees": 50,
-      "category": "Edtech",
+      "category": "EdTech",
       "headquarters": "India",
       "short_summary": "Edtech startup shut down.",
       "failure_reason": "Shut down",
@@ -2043,13 +2292,20 @@
       "lessons": [
         "EdTech is overcrowded",
         "Differentiation is key"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Doodhwala",
       "status": "Shut Down",
       "year_founded": 2015,
-      "year_died": 2019,
+      "year_died": 2016,
       "funding_burned_usd": 2200000,
       "peak_valuation": 10000000,
       "employees": 100,
@@ -2058,7 +2314,7 @@
       "short_summary": "Subscription-based milk/dairy delivery reaching 400K deliveries/month and 30K liters/day. Raised $2.2M seed from Omnivore (Feb 2018). Shut Oct 2019 after failed $12M Series A; vendors filed FIR for ₹6-7Cr unpaid dues.",
       "value_proposition": "Daily doorstep delivery of milk, eggs, fruits before 7 AM via subscription model. Operated in Bangalore, Pune, Hyderabad with dense urban routes and advance ordering.",
       "cause_of_death": "Daily fresh delivery is operationally brutal: complex cold-chain, tight 7AM windows, thin dairy margins. BigBasket/Milkbasket/DailyNinja competitors had deeper pockets for discounting. Doodhwala sought $12M Series A in 2018-19 but only got $2.2M Omnivore bridge. Cash crunch by mid-2019; suspended operations Oct 2019. Customers migrated to FreshToHome. ~30 vendors filed FIR against founders for ₹6-7Cr unpaid dues; employees missed salaries after July 2019.",
-      "failure_reason": "Failed $12M Series A, thin dairy margins, intense competition (BigBasket/Milkbasket), ₹6-7Cr vendor dues, complex cold-chain logistics",
+      "failure_reason": "Operational challenges",
       "founders": [
         "Aakash Agarwal",
         "Ebrahim Akbari"
@@ -2099,7 +2355,14 @@
         "Daily delivery needs proven unit economics before scaling",
         "Thin-margin categories require massive scale or vertical integration",
         "Vendor/employee dues are legal liability post-shutdown"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Autowale",
@@ -2130,7 +2393,14 @@
       "lessons": [
         "Auto booking has thin margins",
         "Ola/Uber dominate"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "SuperLearn",
@@ -2145,7 +2415,7 @@
       "short_summary": "After-school online learning platform for kids aged 3-13 shut down in early 2022 after just 1 year. Conducted 300K+ live classes for 40K+ mothers but collapsed due to dwindling investor interest, high user acquisition costs, and attendance decline as schools reopened post-COVID.",
       "value_proposition": "Founded December 2020 by Kunal Bhatia and Ricky Gupta (Learnfinity Technologies Pvt. Ltd.) as after-school online learning for children aged 3-13. Offered live, webinar-format classes on extracurricular activities including art, craft, dance, yoga, chess, and Vedic maths. Built community of 40,000+ mothers and conducted over 300,000 live classes before shutdown.",
       "cause_of_death": "Investor Interest Evaporated: Founded at peak of COVID edtech boom (Dec 2020), but by 2022 investor sentiment had soured on online education. High CAC: Acquiring users (mothers with young children) was extremely expensive. Marketing costs per enrolled student unsustainable. School Reopening Cliff: As physical schools reopened in 2021-22, demand for online extracurricular classes collapsed. Parents prioritized in-person activities. Competitive Pressure: Byju's, Vedantu, Unacademy all offered kids' content. Small player couldn't compete on content library or pricing.",
-      "failure_reason": "Investor funding dried up, high customer acquisition costs, online class attendance collapsed as schools reopened post-COVID",
+      "failure_reason": "Shut down",
       "founders": [
         "Kunal Bhatia",
         "Ricky Gupta"
@@ -2177,7 +2447,14 @@
         "Don't build on temporary demand spikes (COVID lockdowns)",
         "Extracurricular edtech has weak retention vs core academics",
         "Scale and unit economics must work from Day 1 in edtech"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Eatlo",
@@ -2192,7 +2469,7 @@
       "short_summary": "Smallest capital raise of analyzed startups ($400K). Shut down 2015—failed not due to execution but timing: Zomato (2010) and Swiggy (2012) had already consolidated food delivery with $100M+ raises.",
       "value_proposition": "Eatlo attempted to build food delivery service in the earliest days of India's food-tech boom. The company aimed to compete in the rapidly growing urban food delivery market.",
       "cause_of_death": "Timing and market structure, not operational failure. By 2014-2015, Zomato and Swiggy had raised $100M+ from global VCs and were burning capital to acquire market share. Eatlo's $400K couldn't compete. Food delivery is winner-takes-most: network effects (restaurant density + delivery fleet) favor scale. Independent platforms get consolidated or crushed. This pattern repeated across all 9 analyzed startups: consumer platforms in consolidated categories fail.",
-      "failure_reason": "Market already consolidated by Zomato/Swiggy, insufficient capital ($400K vs $100M+), winner-takes-most dynamics",
+      "failure_reason": "Competition from Swiggy/Zomato",
       "founders": [],
       "investors": [],
       "timeline": [
@@ -2253,13 +2530,100 @@
           "Scalable to food manufacturers and QSR chains (₹50L-₹1Cr enterprise contracts)"
         ],
         "monetization": "Per-restaurant SaaS: ₹5-15k/month (small), ₹50-100k/month (chain). Commission on margin improvement: 5-10% of gains. Enterprise contracts: ₹50L-₹1Cr/year. Target: ₹44Cr ARR by Year 3 with 78% gross margin."
-      }
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
-      "startup_name": "Byju's",
+      "startup_name": "Mobile Premier League",
+      "failure_reason": "Layoffs",
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "year_died": 2023,
+      "status": "Shut Down",
+      "short_summary": "Layoffs",
+      "category": "Technology",
+      "added_at": "2026-06-27",
+      "updated_at": "2026-06-27"
+    },
+    {
+      "startup_name": "UrbanClap/Urban Company",
+      "failure_reason": "Layoffs",
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "year_died": 2022,
+      "status": "Shut Down",
+      "short_summary": "Layoffs",
+      "category": "Technology",
+      "added_at": "2026-06-27",
+      "updated_at": "2026-06-27"
+    },
+    {
+      "startup_name": "Quikr Assured",
+      "failure_reason": "Service discontinued",
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "year_died": 2018,
+      "status": "Shut Down",
+      "short_summary": "Service discontinued",
+      "category": "Technology",
+      "added_at": "2026-06-27",
+      "updated_at": "2026-06-27"
+    },
+    {
+      "startup_name": "Tolexo",
+      "failure_reason": "IndiaMART shut it down",
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "year_died": 2017,
+      "status": "Shut Down",
+      "short_summary": "IndiaMART shut it down",
+      "category": "Technology",
+      "added_at": "2026-06-27",
+      "updated_at": "2026-06-27"
+    },
+    {
+      "startup_name": "Zomato Instant",
+      "failure_reason": "10-min delivery discontinued",
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "year_died": 2022,
+      "status": "Shut Down",
+      "short_summary": "10-min delivery discontinued",
+      "category": "Technology",
+      "added_at": "2026-06-27",
+      "updated_at": "2026-06-27"
+    },
+    {
+      "startup_name": "BYJU'S",
       "status": "Struggling",
       "year_founded": 2011,
-      "year_died": 2024,
+      "year_died": 2023,
       "funding_burned_usd": 5500000000,
       "peak_valuation": 22000000000,
       "employees": 50000,
@@ -2268,7 +2632,7 @@
       "short_summary": "India's most valuable startup ($22B) collapsed 99% - debt crisis, governance failures, and aggressive M&A burn destroyed a once-promising EdTech empire.",
       "value_proposition": "Byju's launched in 2011 to 'make learning accessible, effective, engaging, and personalized'. Founder Byju Raveendran's engaging video lessons and adaptive learning quickly won 150M+ registered students. At peak, it was India's largest EdTech with a vast content library, thousands of educators, and global ambitions spanning K-12, test prep, and coding education.",
       "cause_of_death": "Governance and Compliance Failures: Delayed audited results for years, hidden losses (~$500M), covenant breaches. Regulators probed and police registered fraud cases against executives. Debt and Cash Crunch: $1.2B term loan in 2021 became unserviceable. 2023 rights issue reset at 99% lower valuation to raise just $200M. Aggressive M&A Burn: $2.5B spent on acquisitions (WhiteHat Jr, Aakash, Epic) in 2021-22 - integration failures diluted focus. Overvaluation Collapse: BlackRock cut stake by 95%, valuation crashed from $22B to near-zero.",
-      "failure_reason": "Debt crisis ($1.2B), governance failures, aggressive acquisitions ($2.5B), auditor resignations, insolvency",
+      "failure_reason": "Massive layoffs, valuation crash",
       "founders": [
         "Byju Raveendran",
         "Divya Gokulnath"
@@ -2374,9 +2738,12 @@
         "monetization": "Freemium for students; B2B SaaS for schools (₹50/student/month); Premium AI tutoring at ₹500/month; Verified certification for jobs; Teacher marketplace commission (10%)"
       },
       "sources": [
-        "{'title': \"From Byju's, Koo to Bluelearn: 7 Indian startups that went from hype to layoffs and shutdowns\", 'url': 'https://news.google.com/rss/articles/CBMi4AFBVV95cUxPWjhaRXRydjFXLS1qcjN1dkV3ci16ZlVEYUtCemtscGpsVTNpc2tYb0E3ZEpsbHpFMmo2a050SnIyaElBclQya1hVUi1BUUlIajZBTUt5MHZlcTlkS2xzVW43YjBRNFk2dFdCVmRBSWI1MVN0QjJ4Y20yZzFwSW9COElaMzUzVW9TTzlQYmlFa3k5T2lGQTRsa2RKU3ZfU1p5NHFwNXRBVl9UWFU3cldBUDdMdWw3djAxTUhBZXVma1Nwa0R6eFgtT0hHUVA1a1E5Zm1iVW5xWWRvUm5nYmFRX9IB5gFBVV95cUxQNjJDajhfNmV5SFZ2X0lyem1JaWVEQnhZcWJMNEx6cmxKbHZtX2tMNi1mTGVfWjJWNVVaREx1V1k2M3g1QXk3UnFDWUhjRFJ2NTV2OTJnUURrTnlYWmtBT0NodzhHeWFPR2MxYzdkaV9mZExELUNIVHMtOWJfY1luSGZpZlVpUEl0OWh3cm9Id3RacHVMd2UzSTdkUWd5eHlfdnhfczN1bmxRWmJsYkVwNkFRR0swR05EQWFhZVZoUWlvbFlRSlA2QTlvZVV4ZWlUUXVzWnREakpRcEF4VWh1ck5NaEJkdw?oc=5'}",
-        "{'title': 'From Byju’s, Koo to Bluelearn: 7 Indian startups that went from hype to layoffs and shutdowns', 'url': 'https://news.google.com/rss/articles/CBMi4AFBVV95cUxPWjhaRXRydjFXLS1qcjN1dkV3ci16ZlVEYUtCemtscGpsVTNpc2tYb0E3ZEpsbHpFMmo2a050SnIyaElBclQya1hVUi1BUUlIajZBTUt5MHZlcTlkS2xzVW43YjBRNFk2dFdCVmRBSWI1MVN0QjJ4Y20yZzFwSW9COElaMzUzVW9TTzlQYmlFa3k5T2lGQTRsa2RKU3ZfU1p5NHFwNXRBVl9UWFU3cldBUDdMdWw3djAxTUhBZXVma1Nwa0R6eFgtT0hHUVA1a1E5Zm1iVW5xWWRvUm5nYmFRX9IB5gFBVV95cUxQNjJDajhfNmV5SFZ2X0lyem1JaWVEQnhZcWJMNEx6cmxKbHZtX2tMNi1mTGVfWjJWNVVaREx1V1k2M3g1QXk3UnFDWUhjRFJ2NTV2OTJnUURrTnlYWmtBT0NodzhHeWFPR2MxYzdkaV9mZExELUNIVHMtOWJfY1luSGZpZlVpUEl0OWh3cm9Id3RacHVMd2UzSTdkUWd5eHlfdnhfczN1bmxRWmJsYkVwNkFRR0swR05EQWFhZVZoUWlvbFlRSlA2QTlvZVV4ZWlUUXVzWnREakpRcEF4VWh1ck5NaEJkdw?oc=5'}"
-      ]
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Paytm",
@@ -2494,7 +2861,7 @@
       "startup_name": "Udaan",
       "status": "Struggling",
       "year_founded": 2016,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 1850000000,
       "peak_valuation": 3100000000,
       "employees": 3000,
@@ -2542,13 +2909,20 @@
       "lessons": [
         "B2B margins are razor-thin in India",
         "Unit economics must work before scaling"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Snapdeal",
       "status": "Struggling",
       "year_founded": 2010,
-      "year_died": null,
+      "year_died": 2017,
       "funding_burned_usd": 1650000000,
       "peak_valuation": 6500000000,
       "employees": 1000,
@@ -2557,7 +2931,7 @@
       "short_summary": "Once India's #1 e-commerce ($6.5B in 2016). Lost to Flipkart/Amazon. Failed merger with Flipkart (2017). Kunal Bahl pivoted to 'value e-commerce' for Tier 2/3. Now profitable but tiny—₹186Cr revenue FY23. Survived by shrinking, not growing.",
       "value_proposition": "Value-first e-commerce for Bharat. Unbranded/white-label fashion, home goods for price-sensitive Tier 2/3 customers. 80% orders from non-metro. Low AOV (₹300-500) but profitable via lean ops. Abandoned electronics/phones (Amazon's moat).",
       "cause_of_death": null,
-      "failure_reason": "2015-17: Burned $1.6B competing with Flipkart/Amazon on electronics, phones, discounts. Failed Flipkart merger (2017) when SoftBank pushed sale. Kunal Bahl rejected, chose independent survival. Laid off 5,000+ employees (2017-18). Pivoted to value commerce.",
+      "failure_reason": "Lost to Flipkart/Amazon, massive layoffs",
       "founders": [
         "Kunal Bahl",
         "Rohit Bansal"
@@ -2630,13 +3004,20 @@
           "**WhatsApp Integration**: Share try-on image with family for approval before buying (common in India)—social commerce without building social network."
         ],
         "monetization": "Standard e-commerce margins (20-30% on fashion). Reduced returns = 5% margin improvement. Virtual Try-On premium tier: ₹49/month unlimited. Brand partnerships for AR campaigns. Target: ₹50Cr incremental revenue from reduced returns."
-      }
+      },
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Pharmeasy",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 1200000000,
       "peak_valuation": 5600000000,
       "employees": 6000,
@@ -2674,13 +3055,20 @@
       "lessons": [
         "Acquisitions during bull markets are overpriced",
         "Debt-funded acquisitions are risky"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "ShareChat",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 1100000000,
       "peak_valuation": 5000000000,
       "employees": 1500,
@@ -2689,7 +3077,7 @@
       "short_summary": "India's largest vernacular social platform. Launched Moj (short-video) after TikTok ban (Jun 2020). Raised $1.1B from Google, Tiger, Snap at $5B peak. 400M+ MAU across ShareChat + Moj. 500+ layoffs in 2024, shut fantasy gaming (Jeet11), valuation crashed to ~$2B.",
       "value_proposition": "Vernacular-first social platform for Bharat (non-English India). ShareChat: regional content sharing (launched 2015). Moj: TikTok-clone short-video app (launched Jun 2020). Combined 400M+ MAU at peak. 15+ Indian languages supported. Fantasy gaming (Jeet11) added for monetization.",
       "cause_of_death": null,
-      "failure_reason": "Social media monetization in India is brutal: low ARPU (~$0.50-1 vs $50+ in US), Instagram Reels captured TikTok users faster than Moj, fantasy gaming (Jeet11) shut due to 28% GST, 500+ layoffs, valuation crashed from $5B to ~$2B",
+      "failure_reason": "Major layoffs",
       "founders": [
         "Ankush Sachdeva",
         "Farid Ahsan",
@@ -2736,17 +3124,24 @@
         "Indian social media monetization is extremely hard",
         "Global platforms capture opportunities faster",
         "Diversification (gaming) is risky when regulations are hostile"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "TechCrunch",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Cars24",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 900000000,
       "peak_valuation": 3300000000,
       "employees": 4000,
-      "category": "Used Cars Marketplace",
+      "category": "Auto Marketplace",
       "headquarters": "Gurugram",
       "short_summary": "Used car platform had to exit international markets, conduct mass layoffs after $3.3B peak.",
       "failure_reason": "International exit, heavy layoffs, valuation drop",
@@ -2780,20 +3175,27 @@
       "lessons": [
         "International expansion requires local knowledge",
         "Focus on core market profitability first"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "YourStory",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Unacademy",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2022,
       "funding_burned_usd": 880000000,
       "peak_valuation": 3440000000,
       "employees": 3000,
       "category": "EdTech",
       "headquarters": "Bangalore",
       "short_summary": "EdTech empire at $3.44B shut multiple subsidiaries and laid off thousands.",
-      "failure_reason": "Continuous layoffs, shut down group companies, pivot struggles",
+      "failure_reason": "Multiple rounds of layoffs",
       "founders": [
         "Gaurav Munjal",
         "Roman Saini",
@@ -2825,13 +3227,20 @@
       "lessons": [
         "Acquisition sprees often destroy value",
         "Free content is formidable competition"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Ola Electric",
       "status": "Struggling",
       "year_founded": 2017,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 800000000,
       "peak_valuation": 5400000000,
       "employees": 5000,
@@ -2840,7 +3249,7 @@
       "short_summary": "Once 40% E2W market share, now collapsed to 7-16%. IPO Aug 2024 at ₹76; stock crashed 55% to ₹31-35 by Jan 2026. 'Service Hell' crisis: 10,644 complaints to National Consumer Helpline. CCPA investigation ongoing. Revenue down 43% YoY (Q2 FY26). Pivoting to B2B: Gigafactory cells, Ola Maps, Krutrim AI.",
       "value_proposition": "India's largest E2W manufacturer with Sanand Gigafactory (5 GWh target). 'Futurefactory' with NVIDIA Omniverse digital twins. MoveOS 5 software platform. Pivoting from scooter sales to energy infrastructure: Bharat 4680 cells, Ola Shakti (home BESS), Ola Maps (B2B APIs), Hypercharger network.",
       "cause_of_death": null,
-      "failure_reason": "Service Hell: D2C model couldn't scale (200+ vehicle backlog per center, 45-day spare parts delays). CCPA Show Cause Notice (Oct 2024). Market share collapsed 40%→7-16%. Stock crashed 55%. ₹877Cr IPO funds diverted from cell factory to vehicle operations.",
+      "failure_reason": "Service issues, regulatory problems, stock crash post-IPO",
       "founders": [
         "Bhavish Aggarwal"
       ],
@@ -2917,13 +3326,20 @@
           "Insurance partnerships: riders share data for lower premiums; Ola earns referral fee"
         ],
         "monetization": "Consumer: Free (upsell premium safety features ₹99/month). Fleet API: ₹299/vehicle/month. Insurance referrals: 10-15% of premium. Predictive maintenance reduces warranty costs by 20-30%. Target: ₹100Cr ARR from fleet services by Year 3."
-      }
+      },
+      "sources": [
+        {
+          "title": "LiveMint",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Zetwerk",
       "status": "Struggling",
       "year_founded": 2018,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 560000000,
       "peak_valuation": 2700000000,
       "employees": 2000,
@@ -2957,20 +3373,27 @@
       "lessons": [
         "B2B manufacturing has thin margins",
         "Growth vs profitability tradeoff"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
-      "startup_name": "Curefit (Cult.fit)",
+      "startup_name": "Curefit",
       "status": "Struggling",
       "year_founded": 2016,
-      "year_died": null,
+      "year_died": 2022,
       "funding_burned_usd": 550000000,
       "peak_valuation": 1500000000,
       "employees": 3000,
       "category": "Fitness / HealthTech",
       "headquarters": "Bangalore",
       "short_summary": "Fitness unicorn had layoffs, shut food vertical, gym closures.",
-      "failure_reason": "Layoffs, shut down food vertical, gym closures",
+      "failure_reason": "Layoffs, restructuring",
       "founders": [
         "Mukesh Bansal",
         "Ankit Nagori"
@@ -2997,13 +3420,20 @@
       "lessons": [
         "Fitness business is capital intensive",
         "Diversification needs focus"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Good Glamm Group",
       "status": "Struggling",
       "year_founded": 2017,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 500000000,
       "peak_valuation": 1200000000,
       "employees": 2000,
@@ -3036,13 +3466,20 @@
       "lessons": [
         "D2C rollups need integration",
         "Debt in unprofitable companies is risky"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "OfBusiness",
       "status": "Struggling",
       "year_founded": 2016,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 500000000,
       "peak_valuation": 5000000000,
       "employees": 2500,
@@ -3076,13 +3513,20 @@
       "lessons": [
         "B2B lending has credit risk",
         "High valuations create pressure"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Urban Company",
       "status": "Struggling",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2026,
       "funding_burned_usd": 500000000,
       "peak_valuation": 2800000000,
       "employees": 2000,
@@ -3117,17 +3561,24 @@
       "lessons": [
         "Gig worker relations are complex",
         "Home services margins are thin"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Dhani",
       "status": "Struggling",
       "year_founded": 2016,
-      "year_died": null,
+      "year_died": 2023,
       "funding_burned_usd": 500000000,
       "peak_valuation": 1000000000,
       "employees": 2000,
-      "category": "Fintech",
+      "category": "FinTech",
       "headquarters": "India",
       "short_summary": "Fintech platform facing major layoffs and pivot.",
       "failure_reason": "Major layoffs, pivot",
@@ -3152,13 +3603,20 @@
       "lessons": [
         "Fintech needs compliance",
         "Diversification risky"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Licious",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 490000000,
       "peak_valuation": 1500000000,
       "employees": 3000,
@@ -3192,17 +3650,24 @@
       "lessons": [
         "Niche markets have growth ceiling",
         "Cold chain logistics are expensive"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Spinny",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 475000000,
       "peak_valuation": 1800000000,
       "employees": 2000,
-      "category": "Used Cars Marketplace",
+      "category": "Auto Marketplace",
       "headquarters": "Gurugram",
       "short_summary": "Used cars unicorn facing layoffs and market slowdown.",
       "failure_reason": "Layoffs, market slowdown, profitability pressure",
@@ -3232,13 +3697,20 @@
       "lessons": [
         "Used car business is cyclical",
         "Multiple players make it tough"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Innovaccer",
       "status": "Struggling",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 425000000,
       "peak_valuation": 3200000000,
       "employees": 1500,
@@ -3271,13 +3743,20 @@
       "lessons": [
         "Enterprise SaaS sales cycles are long",
         "US market needs local presence"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "YourStory",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Groww",
       "status": "Struggling",
       "year_founded": 2016,
-      "year_died": null,
+      "year_died": 2026,
       "funding_burned_usd": 400000000,
       "peak_valuation": 3000000000,
       "employees": 1500,
@@ -3286,7 +3765,7 @@
       "short_summary": "Ex-Flipkart founders democratized stock investing for millennials. 8Cr+ users. $3B valuation. Competing with Zerodha (zero-brokerage pioneer) and Upstox. Regulatory tightening on F&O, payment gateway restrictions. Unit economics challenged by zero-commission model—monetize via MF distribution, premium features.",
       "value_proposition": "Made stock investing accessible: simple UX, vernacular support, zero brokerage on equity (revenue from MF distribution, Groww Pro). 8Cr+ registered users. Acquired Indiabulls AMC (now Groww MF). First broker-backed AMC in India.",
       "cause_of_death": null,
-      "failure_reason": "SEBI F&O restrictions hurt retail volume. Payment gateway restrictions (UPI limit). Zerodha still dominates active traders. Zero-commission model requires massive scale for profitability.",
+      "failure_reason": "Regulatory pressures, growth challenges",
       "founders": [
         "Lalit Keshre (ex-Flipkart)",
         "Harsh Jain",
@@ -3359,13 +3838,20 @@
           "**UPI + Agentic Investing**: Voice command 'Invest ₹5000 in my retirement goal' triggers AA check → surplus verification → optimal allocation → execution"
         ],
         "monetization": "Groww Pro subscription: ₹299/month (advanced AI features). Groww MF AUM fee: 0.5-1% annually. Transaction fees on gold/F&O. Lending revenue share with NBFC partners. Target: ₹500Cr ARR by Year 3."
-      }
+      },
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
-      "startup_name": "MPL (Mobile Premier League)",
+      "startup_name": "MPL",
       "status": "Struggling",
       "year_founded": 2018,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 375000000,
       "peak_valuation": 2300000000,
       "employees": 350,
@@ -3374,7 +3860,7 @@
       "short_summary": "India's gaming unicorn ($2.3B peak) with 90M users forced to shut down all paid contests due to India's 2025 Online Gaming Act. Lost 50% of staff (350 jobs in Aug 2023). Pivoting to free-to-play and international markets after regulatory crackdown killed core RMG business.",
       "value_proposition": "India's premier mobile skill-gaming platform hosting 60+ casual and fantasy games. Users could compete in paid tournaments and head-to-head battles across card games, puzzles, sports, and fantasy leagues. Platform claimed 90M registered users globally (70M in India) with ~130M revenue in FY24. Entry fees monetization model with MPL taking commission.",
       "cause_of_death": "Regulatory Apocalypse: India imposed 28% GST on gaming deposits (late 2022), then the Aug 2025 Online Gaming Act banned all paid real-money contests outright. MPL's core revenue model became illegal overnight. Web3 Failures: Launched Good Game Exchange (GGX) blockchain marketplace and Striker NFT fantasy game in 2022-23, only to shut both down by Dec 2023 (sold GGX assets for $32M). Job Cuts: 350 layoffs (50% of team) in Aug 2023 citing GST changes. Further downsizing after 2025 ban (60-80% of India staff). Business Pivot Chaos: Suspended all paid contests in India mid-2025, refocusing on free tournaments and international markets (Indonesia exit 2023, now pushing US/Europe via GameDuell acquisition).",
-      "failure_reason": "India banned real-money gaming (2025 Online Gaming Act), 28% GST killed margins, 350+ layoffs, Web3 ventures failed, valuation collapse",
+      "failure_reason": "GST issues, layoffs, regulatory challenges",
       "founders": [
         "Sai Srinivas Kiran",
         "Shubh Malhotra"
@@ -3484,17 +3970,24 @@
           "Existing Infrastructure: Leverages MPL's payment rails, KYC, 90M user base, broadcast tech - just adds creation layer"
         ],
         "monetization": "15-20% commission on creator-hosted games. ONDC affiliate fees (10-15% of GMV). Premium MPL Studio features (₹499/mo for verified creators). B2B licensing for corporate/education (₹50K-2L per deployment). Target: ₹200Cr ARR from creator economy by Year 3."
-      }
+      },
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "NoBroker",
       "status": "Struggling",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2026,
       "funding_burned_usd": 361000000,
       "peak_valuation": 1000000000,
       "employees": 3000,
-      "category": "PropTech / Real Estate",
+      "category": "PropTech",
       "headquarters": "Bangalore",
       "short_summary": "PropTech unicorn facing layoffs, market slowdown, profitability issues.",
       "failure_reason": "Layoffs, market slowdown, profitability issues",
@@ -3524,13 +4017,20 @@
       "lessons": [
         "Real estate is cyclical",
         "PropTech monetization is hard"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "PhysicsWallah",
       "status": "Struggling",
       "year_founded": 2020,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 300000000,
       "peak_valuation": 1100000000,
       "employees": 5000,
@@ -3563,13 +4063,20 @@
       "lessons": [
         "Offline expansion is expensive",
         "EdTech needs sustainable model"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Mensa Brands",
       "status": "Struggling",
       "year_founded": 2021,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 300000000,
       "peak_valuation": 1200000000,
       "employees": 1500,
@@ -3602,20 +4109,27 @@
       "lessons": [
         "D2C rollups are hard to integrate",
         "Fastest unicorn ≠ best unicorn"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Vedantu",
       "status": "Struggling",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2022,
       "funding_burned_usd": 290000000,
       "peak_valuation": 1000000000,
       "employees": 800,
       "category": "EdTech",
       "headquarters": "Bangalore",
       "short_summary": "Online tutoring unicorn laid off 50%+ staff as post-COVID demand crashed.",
-      "failure_reason": "Multiple layoff rounds, acqui-hire discussions",
+      "failure_reason": "Major layoffs",
       "founders": [
         "Vamsi Krishna",
         "Pulkit Jain"
@@ -3646,13 +4160,20 @@
       "lessons": [
         "COVID growth was borrowed",
         "EdTech faces free content competition"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Purplle",
       "status": "Struggling",
       "year_founded": 2012,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 250000000,
       "peak_valuation": 1100000000,
       "employees": 1000,
@@ -3686,13 +4207,20 @@
       "lessons": [
         "Beauty e-commerce is competitive",
         "Nykaa's first-mover advantage is strong"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Pepperfry",
       "status": "Struggling",
       "year_founded": 2011,
-      "year_died": null,
+      "year_died": 2022,
       "funding_burned_usd": 235000000,
       "peak_valuation": 600000000,
       "employees": 1500,
@@ -3721,13 +4249,20 @@
       "lessons": [
         "Furniture e-commerce needs experience centers",
         "High ticket items need trust"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Slice",
       "status": "Struggling",
       "year_founded": 2016,
-      "year_died": null,
+      "year_died": 2023,
       "funding_burned_usd": 220000000,
       "peak_valuation": 1500000000,
       "employees": 1000,
@@ -3736,7 +4271,7 @@
       "short_summary": "BNPL unicorn for millennials. Credit card for underserved (thin-file users). $1.5B valuation. RBI cracked down on PPI-based credit cards (Jun 2022). Merged with North East Small Finance Bank to become regulated entity. Pivoting from pure BNPL to full-stack banking.",
       "value_proposition": "Credit access for thin-file millennials: Slice card gave credit limits ₹2K-10L to users banks wouldn't touch. Gamified UX, instant approval, cashback rewards. 12M+ users acquired. Now: small finance bank license via merger → can accept deposits, offer savings accounts.",
       "cause_of_death": null,
-      "failure_reason": "RBI Jun 2022: banned non-bank PPI issuers from loading credit lines. Slice's model broke overnight. Forced to find banking partner or become bank. Merged with NESFB but integration is complex. 700+ layoffs.",
+      "failure_reason": "RBI restrictions, layoffs",
       "founders": [
         "Rajan Bajaj"
       ],
@@ -3804,13 +4339,20 @@
           "**Spending Intelligence builds loyalty**: AI becomes user's financial coach → higher engagement → lower churn → higher LTV."
         ],
         "monetization": "Interest income: 24-36% APR on credit. MDR on card transactions: 1.8%. Deposit float (with bank license): NIR spread. Cross-sell insurance/MF: commission. Target: ₹800Cr ARR with <3% NPA by Year 3."
-      }
+      },
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Pocket FM",
       "status": "Struggling",
       "year_founded": 2018,
-      "year_died": null,
+      "year_died": 2025,
       "funding_burned_usd": 200000000,
       "peak_valuation": 750000000,
       "employees": 800,
@@ -3844,13 +4386,20 @@
       "lessons": [
         "Audio monetization is challenging",
         "Content costs are high"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "LEAD School",
       "status": "Struggling",
       "year_founded": 2012,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 160000000,
       "peak_valuation": 1100000000,
       "employees": 3000,
@@ -3884,13 +4433,20 @@
       "lessons": [
         "B2B school partnerships are slow",
         "EdTech winter hit hard"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Droom",
       "status": "Struggling",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2019,
       "funding_burned_usd": 125000000,
       "peak_valuation": 800000000,
       "employees": 500,
@@ -3923,13 +4479,20 @@
       "lessons": [
         "Auto marketplace is capital intensive",
         "IPO timing matters"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Nestaway",
       "status": "Struggling",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2023,
       "funding_burned_usd": 90000000,
       "peak_valuation": 200000000,
       "employees": 500,
@@ -3957,13 +4520,20 @@
       "lessons": [
         "Property management is operationally complex",
         "Rental housing has thin margins"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Craftsvilla",
       "status": "Struggling",
       "year_founded": 2011,
-      "year_died": null,
+      "year_died": 2019,
       "funding_burned_usd": 54000000,
       "peak_valuation": 200000000,
       "employees": 200,
@@ -3996,13 +4566,20 @@
       "lessons": [
         "Ethnic fashion is niche",
         "Competition from larger platforms"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Portea Medical",
       "status": "Struggling",
       "year_founded": 2013,
-      "year_died": null,
+      "year_died": 2020,
       "funding_burned_usd": 50000000,
       "peak_valuation": 120000000,
       "employees": 500,
@@ -4031,13 +4608,20 @@
       "lessons": [
         "Home healthcare is operationally complex",
         "Healthcare needs trust"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Furlenco",
       "status": "Struggling",
       "year_founded": 2012,
-      "year_died": null,
+      "year_died": 2023,
       "funding_burned_usd": 40000000,
       "peak_valuation": 150000000,
       "employees": 500,
@@ -4064,13 +4648,20 @@
       "lessons": [
         "Furniture rental needs dense demand",
         "Asset-heavy model is expensive"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Chingari",
       "status": "Struggling",
       "year_founded": 2018,
-      "year_died": null,
+      "year_died": 2023,
       "funding_burned_usd": 30000000,
       "peak_valuation": 100000000,
       "employees": 150,
@@ -4079,7 +4670,7 @@
       "short_summary": "Indian TikTok alternative that surged after Jun 2020 ban. Raised $30M, introduced $GARI crypto token. But Instagram Reels (Aug 2020) captured the market. Chingari has 100M+ downloads but struggles with monetization and creator retention.",
       "value_proposition": "Vernacular short-video platform targeting Tier 2/3 India. Innovated with $GARI crypto token for creator tipping. Built-in video editor and regional language support. Aimed to capture TikTok's 200M+ user vacuum.",
       "cause_of_death": null,
-      "failure_reason": "Instagram Reels launched 2 months after TikTok ban and captured most users. Crypto token ($GARI) crashed with broader market. Creator monetization insufficient vs YouTube/Instagram. Low ARPU in India limits ad revenue.",
+      "failure_reason": "Decline",
       "founders": [
         "Sumit Ghosh",
         "Biswatma Nayak",
@@ -4151,13 +4742,20 @@
           "Can white-label tools to agencies/brands for B2B revenue stream"
         ],
         "monetization": "Freemium: 5 videos/month free. Pro: ₹499/month (unlimited, AI avatars). Studio: ₹1999/month (voice cloning, API access). Agency licensing: ₹10L+/year. Target: ₹25Cr ARR by Year 2."
-      }
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "YourStory",
       "status": "Struggling",
       "year_founded": 2008,
-      "year_died": null,
+      "year_died": 2023,
       "funding_burned_usd": 8000000,
       "peak_valuation": 30000000,
       "employees": 100,
@@ -4185,13 +4783,20 @@
       "lessons": [
         "Media monetization is hard",
         "Ad revenues fluctuate"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "BharatPe",
       "status": "Pivoted",
       "year_founded": 2018,
-      "year_died": null,
+      "year_died": 2024,
       "funding_burned_usd": 650000000,
       "peak_valuation": 2850000000,
       "employees": 1500,
@@ -4200,7 +4805,7 @@
       "short_summary": "Survived ugly founder crisis. Ashneer Grover ousted (Mar 2022) amid ₹81Cr fake invoice fraud allegations. Raised $370M at $2.85B from Tiger/Sequoia. 1Cr+ merchants on zero-commission UPI QR. Co-founded Unity Small Finance Bank. Now stabilizing under new leadership.",
       "value_proposition": "Revolutionized offline payments with zero-commission UPI QR codes for small merchants. Expanded into merchant lending, POS terminals, and banking (Unity Small Finance Bank). 1 crore+ merchants nationwide. India's fintech market projected at $150B+ by 2025; UPI handles 20B+ transactions/month.",
       "cause_of_death": null,
-      "failure_reason": "Governance crisis: Ashneer Grover ousted (Mar 2022) for ₹81Cr fake invoice fraud, audio leak controversy, board conflicts. Company survived under new CEO Suhail Sameer.",
+      "failure_reason": "Founder ousted for fraud, governance crisis, lawsuits",
       "founders": [
         "Ashneer Grover (terminated Mar 2022)",
         "Shashvat Nakrani"
@@ -4250,13 +4855,20 @@
         "Founder behavior impacts survival",
         "Companies can survive founder exits",
         "Zero-commission builds distribution; monetize via lending"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
-      "startup_name": "Grofers (Blinkit)",
+      "startup_name": "Grofers",
       "status": "Pivoted",
       "year_founded": 2013,
-      "year_died": null,
+      "year_died": 2021,
       "funding_burned_usd": 500000000,
       "peak_valuation": 1000000000,
       "employees": 3000,
@@ -4265,7 +4877,7 @@
       "short_summary": "Started as kirana aggregator (2013-2016)—failed due to 'Phantom Inventory' (60-70% fill rates) and inability to match BigBasket's bulk-buying margins. Pivoted to Dark Stores (2017), then acquired by Zomato (2022) as Blinkit for 10-minute delivery.",
       "value_proposition": "Original model (2013-2016): Logistics layer on top of 13M kirana stores. Raised $120M+ from SoftBank/Tiger. Promised 90-minute delivery leveraging existing retail infrastructure without owning inventory.",
       "cause_of_death": "Three structural flaws killed the 2015 aggregator model: (1) **Phantom Inventory**: Kiranas updated stock via Excel uploads; no real-time sync. Customers ordered items that were sold out minutes prior. Fill rates ~60-70% destroyed trust. (2) **Pricing Trap**: Kiranas sell at MRP with 5-10% margins. BigBasket bought bulk from FMCG at 15-25% margin. Grofers had zero margin to subsidize discounts. FY16: losses 15x to ₹60Cr, revenue dropped 32%. (3) **Pick Efficiency**: Delivery partners wasted time navigating chaotic kirana layouts vs optimized dark stores. Shopkeepers prioritized walk-in customers over digital orders. By late 2016: shut 9 cities, admitted 'we failed to get kirana to become storefront.'",
-      "failure_reason": "Phantom inventory (60-70% fill rates), zero margin vs BigBasket's bulk buying, kirana layout inefficiency, 2016 shutdown of 9 cities",
+      "failure_reason": "Rebranded to Blinkit, sold to Zomato",
       "founders": [
         "Albinder Dhindsa",
         "Saurabh Kumar"
@@ -4308,20 +4920,27 @@
         "Aggregation needs real-time inventory visibility",
         "Bulk-buying margin is structural moat",
         "Pivoting saved the company—Zomato acquisition was successful exit"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Housing.com",
       "status": "Pivoted",
       "year_founded": 2012,
-      "year_died": null,
+      "year_died": 2016,
       "funding_burned_usd": 120000000,
       "peak_valuation": 250000000,
       "employees": 2500,
-      "category": "PropTech / Real Estate",
+      "category": "PropTech",
       "headquarters": "Mumbai",
       "short_summary": "PropTech pioneer saw CEO Rahul Yadav fired, later sold to PropTech group.",
-      "failure_reason": "CEO Rahul Yadav fired, company later sold to Proptech group",
+      "failure_reason": "Founder fired, merged with PropTiger",
       "founders": [
         "Rahul Yadav (fired)"
       ],
@@ -4347,13 +4966,20 @@
       "lessons": [
         "Founder behavior impacts company fate",
         "PropTech needs patience"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Meru Cabs",
       "status": "Pivoted",
       "year_founded": 2007,
-      "year_died": null,
+      "year_died": 2020,
       "funding_burned_usd": 100000000,
       "peak_valuation": 200000000,
       "employees": 500,
@@ -4362,7 +4988,7 @@
       "short_summary": "India's first organized radio taxi service (2007) dominated until Ola/Uber's subsidy wars destroyed it. Mahindra acquired 55% for ₹103 crore ($28M) in 2019—a 'stress deal' at fraction of True North's $80M investment. Now operating as 'Alyte' for B2B corporate mobility.",
       "value_proposition": "Meru pioneered organized mobility in India with asset-heavy model: owned 5,000+ air-conditioned vehicles, GPS/GPRS dispatch centers, and a subscription driver model. By 2010, Meru was the third-largest taxi operator globally by fleet size. Their 'call-to-book' reliability dominated airport transfers and corporate travel when 'Kaali-Peeli' taxis were unreliable.",
       "cause_of_death": "Venture Capital as Subsidy destroyed Meru's economics. Ola/Uber didn't compete on service—they burned hundreds of millions subsidizing both drivers AND riders. Meru's cost-plus pricing (₹20-23/km) couldn't compete with Uber's ₹6-9/km. Backed by True North's finite $80M (vs SoftBank's infinite capital for Ola), Meru tried pivoting with 'Meru Genie' and marketplace model—insufficient. CCI rejected Meru's predatory pricing complaints, ruling low prices benefited consumers. Revenue crashed 77% from ₹277 crore (FY17) to ₹156 crore (FY18). Mahindra Logistics acquired 55% in Aug 2019 for ₹103 crore, consolidated to 100% by 2021. Now operates as 'Alyte' for B2B employee transport—profitable but a shadow of its former ambition.",
-      "failure_reason": "Subsidy war (couldn't match Ola/Uber's capital), asset-heavy model liability during app era, CCI rejected predatory pricing complaint, stress sale to Mahindra",
+      "failure_reason": "Massive decline, sold assets",
       "founders": [
         "Neeraj Gupta"
       ],
@@ -4440,13 +5066,20 @@
           "Mahindra manufacturing integration: direct vehicle supply chain unlike competitor BluSmart"
         ],
         "monetization": "Fixed-price airport transfers (₹1500-2500), corporate B2B contracts (₹2-5L/month), ONDC commission share (1-2%). Target: profitability by FY27 through EV TCO advantage and protocol-based zero-CAC distribution."
-      }
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Yepme",
       "status": "Pivoted",
       "year_founded": 2010,
-      "year_died": null,
+      "year_died": 2018,
       "funding_burned_usd": 50000000,
       "peak_valuation": 100000000,
       "employees": 500,
@@ -4479,13 +5112,20 @@
       "lessons": [
         "Fashion e-commerce needs differentiation",
         "B2C to B2B pivot can work"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Roposo",
       "status": "Pivoted",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2020,
       "funding_burned_usd": 40000000,
       "peak_valuation": 100000000,
       "employees": 200,
@@ -4514,13 +5154,20 @@
       "lessons": [
         "Social platforms need scale",
         "Acquisition can be exit"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "HealthKart",
       "status": "Pivoted",
       "year_founded": 2011,
-      "year_died": null,
+      "year_died": 2017,
       "funding_burned_usd": 25000000,
       "peak_valuation": 100000000,
       "employees": 500,
@@ -4549,13 +5196,20 @@
       "lessons": [
         "B2C to B2B pivot can work",
         "Own brand has better margins"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Housejoy",
       "status": "Pivoted",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2018,
       "funding_burned_usd": 24000000,
       "peak_valuation": 50000000,
       "employees": 200,
@@ -4583,13 +5237,20 @@
       "lessons": [
         "Home services is competitive",
         "Urban Company dominates"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Jugnoo",
       "status": "Pivoted",
       "year_founded": 2014,
-      "year_died": null,
+      "year_died": 2017,
       "funding_burned_usd": 17000000,
       "peak_valuation": 50000000,
       "employees": 343,
@@ -4598,7 +5259,7 @@
       "short_summary": "India's first auto-rickshaw aggregator. IIT Delhi founders adopted 'cockroach strategy'—avoided Ola/Uber subsidy wars by focusing on Tier 2/3 cities. Raised ~$17M from Paytm, Snow Leopard. Pivoted to B2B SaaS (JungleWorks 'Mobility Cloud'). Mar 2025: bought back Paytm's 12.75% stake at lower valuation. Still alive, selling white-label mobility software.",
       "value_proposition": "2014-16: 'Uber for autos' in 30+ cities. Low-cost rides without subsidies. 2019+: Pivoted to Mobility-as-a-Service platform (JungleWorks)—sells white-label taxi/delivery apps to entrepreneurs. Technology asset (dispatch, mapping, driver apps) became the product.",
       "cause_of_death": null,
-      "failure_reason": "Consumer ride business couldn't compete with Ola/Uber subsidies. Metro expansion (Bangalore pilot) shut down. Multiple pivots: Fatafat (grocery), Menus (food), Dodo (B2B logistics). Now a modest B2B SaaS company.",
+      "failure_reason": "Failed to sustain",
       "founders": [
         "Samar Singla (IIT Delhi)",
         "Chinmay Agarwal (IIT Delhi)"
@@ -4672,7 +5333,14 @@
           "SaaS revenue (recurring) + logistics revenue (transactional) = diversified model"
         ],
         "monetization": "Per-delivery fee: ₹15-25. Fleet SaaS: ₹5K/month. Target: ₹15Cr ARR by Year 2 in 10 Tier 2 cities."
-      }
+      },
+      "sources": [
+        {
+          "title": "News Reports",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Sarvam AI",
@@ -4682,7 +5350,7 @@
       "funding_burned_usd": 0,
       "peak_valuation": null,
       "employees": null,
-      "category": "AI / Generative AI",
+      "category": "AI",
       "headquarters": "Bengaluru, India",
       "short_summary": "Sarvam AI was an Indian generative AI startup building large language models (LLMs) for Indic languages. In early 2026, it pivoted away from its original model-building mission to a Rs 10,000 crore enterprise AI services and solutions model after struggling to compete with global LLM providers and secure sustainable revenue.",
       "value_proposition": "Initially aimed to build sovereign, Indic-language-first LLMs to reduce India's dependence on Western AI models. Post-pivot, repositioned as an enterprise AI implementation and services company.",
@@ -4839,7 +5507,7 @@
       "startup_name": "Zepto",
       "status": "Comeback",
       "year_founded": 2021,
-      "year_died": null,
+      "year_died": 2026,
       "funding_burned_usd": 1300000000,
       "peak_valuation": 7000000000,
       "employees": 5000,
@@ -4848,7 +5516,7 @@
       "short_summary": "19-year-old Stanford dropouts Aadit Palicha and Kaivalya Vohra pioneered 10-min delivery. **₹11,110Cr revenue FY25 (+150%)**. **₹3,367Cr loss (+177%)**. $7B valuation. 700+ dark stores → targeting 1,200 by 2026. Super Mall (electronics/fashion), Zepto Cafe (100K orders/day). Confidential IPO filing late 2025. Positioned for agentic commerce: real-time inventory API for UCP/ACP.",
       "value_proposition": "10-minute grocery delivery via dark stores. Diversifying into: (1) **Super Mall** - electronics, fashion, home (₹300-350Cr/month) at 30-50% margins vs 15% grocery, (2) **Zepto Cafe** - cloud cafes in dark stores (50% gross margin, 100K orders/day), (3) **AdTech** - $200M ARR from CPG brands. 75% of mature stores EBITDA positive.",
       "cause_of_death": null,
-      "failure_reason": "FY25: ₹3,367Cr loss on ₹11,110Cr revenue. ₹1.29 spend per ₹1 revenue improving. Heavy CapEx on dark store expansion (350→700 stores). Returns logistics for electronics (Super Mall) is operational risk. Leadership exodus late 2025.",
+      "failure_reason": "Cash burn concerns, competition from Blinkit/Instamart",
       "founders": [
         "Aadit Palicha (Stanford dropout, 19 at founding)",
         "Kaivalya Vohra (Stanford dropout, 19 at founding)"
@@ -4926,13 +5594,20 @@
           "**Consumption automation**: Move from reactive ordering to proactive replenishment—AI manages household inventory autonomously"
         ],
         "monetization": "Same unit economics as current model. Agentic orders have higher intent = lower CAC. UCP/ACP traffic is incremental volume on fixed dark store costs. Target: 20% of orders via agentic channels by 2027."
-      }
+      },
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Meesho",
       "status": "Comeback",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2026,
       "funding_burned_usd": 1100000000,
       "peak_valuation": 8700000000,
       "employees": 2400,
@@ -4941,7 +5616,7 @@
       "short_summary": "'Meri Shop' for India's Bharat. Founded by IIT Delhi grads Vidit Aatrey and Sanjeev Barnwal. 187M Annual Transacting Users, 1.3B orders (FY24), claims **31% of India's e-commerce orders**. Dec 2025 IPO at $8.7B market cap. First Meta (Facebook) India investment.",
       "value_proposition": "Democratized e-commerce for Tier 2/3 India. Zero-commission marketplace for small sellers and women resellers. 10M+ women resellers empowered. Content commerce: 50,000+ creators. Valmo logistics: 50% of daily orders. AI voicebot: 60,000 calls/day in English/Hindi.",
       "cause_of_death": null,
-      "failure_reason": "May 2023: 15% layoffs (~251 jobs) for profitability timeline. Project Redbull to cut burn. FY25: ₹3,945Cr loss (ramped logistics costs). Now: IPO'd successfully.",
+      "failure_reason": "Large-scale layoffs, profitability pressure",
       "founders": [
         "Vidit Aatrey",
         "Sanjeev Barnwal"
@@ -4994,13 +5669,20 @@
         "Focus on underserved Tier 2/3 works",
         "Zero-commission builds distribution; monetize via services",
         "Patience and cost control lead to IPO success"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Inc42",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Rapido",
       "status": "Comeback",
       "year_founded": 2015,
-      "year_died": null,
+      "year_died": 2026,
       "funding_burned_usd": 330000000,
       "peak_valuation": 1000000000,
       "employees": 500,
@@ -5009,7 +5691,7 @@
       "short_summary": "India's largest bike-taxi platform. 50M+ app downloads. Pioneered two-wheeler ride-hailing. $1B+ valuation. Swiggy and TVS as strategic investors. Operates in 100+ cities. Key moat: 40% cheaper than auto-rickshaws, 2x faster in traffic. Expanding into auto-rickshaws and parcel delivery ('Rapido Store').",
       "value_proposition": "Bike-taxis are 40% cheaper than autos/cabs and 2x faster in Indian traffic. Asset-light model: drivers use own bikes. 100+ cities. Expanding into: (1) Auto-rickshaws (like Ola/Uber), (2) Rapido Store (hyperlocal delivery), (3) B2B logistics for e-commerce last-mile.",
       "cause_of_death": null,
-      "failure_reason": "Regulatory gray area: bike-taxis banned in some states (Delhi was contested). Profitability challenged: thin margins, high driver churn. Competition from Ola/Uber's bike services.",
+      "failure_reason": "Regulatory issues, profitability struggles",
       "founders": [
         "Aravind Sanka",
         "Pavan Guntupalli",
@@ -5082,13 +5764,20 @@
           "**Commute Subscription**: ₹999/month for daily office commute. AI books same driver, same time. Builds rider-driver relationships → loyalty."
         ],
         "monetization": "Commission per ride (20%). Commute subscription: ₹999/month. Rapido Store delivery fee: ₹25-40. B2B logistics contracts with e-commerce. Target: ₹300Cr ARR by Year 2."
-      }
+      },
+      "sources": [
+        {
+          "title": "Entrackr",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     },
     {
       "startup_name": "Oyo Rooms",
       "status": "Recovery",
       "year_founded": 2013,
-      "year_died": null,
+      "year_died": 2020,
       "funding_burned_usd": 3400000000,
       "peak_valuation": 10000000000,
       "employees": 5000,
@@ -5097,7 +5786,7 @@
       "short_summary": "The Survivor. Founded by 19-year-old Ritesh Agarwal (2013). Crashed 70% during COVID (FY21). Executed 'Prism' pivot: eliminated Minimum Guarantees, shifted to Revenue Share, launched premium brands (Sunday, Palette). **FY24: ₹229Cr net profit. FY25: ₹623Cr projected.** IPO at $6-9B valuation pending.",
       "value_proposition": "Started as budget hotel aggregator standardizing fragmented inventory. Peak: 43,000+ properties in 80+ countries, $10B valuation. Now a 'Full-Stack Hospitality Tech Platform'—owns the hotel's operating system (OYO OS) rather than just customer acquisition.",
       "cause_of_death": null,
-      "failure_reason": "COVID devastation (70% revenue drop FY21), Minimum Guarantee trap ($300M+ annual burn), quality inconsistency ('OYO Lottery'), CCI antitrust probe. Now recovered via Prism pivot.",
+      "failure_reason": "Massive layoffs, valuation crash",
       "founders": [
         "Ritesh Agarwal"
       ],
@@ -5147,7 +5836,14 @@
         "Minimum Guarantees = hidden fixed costs on asset-light model",
         "Premiumization breaks margin ceiling",
         "Profitability focus saves companies"
-      ]
+      ],
+      "sources": [
+        {
+          "title": "Economic Times",
+          "url": ""
+        }
+      ],
+      "updated_at": "2026-06-27"
     }
   ]
 }
