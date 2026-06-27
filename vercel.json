@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "startup-graveyard-ui",
+  "routes": [
+    { "src": "/data/(.*)", "dest": "/data/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
