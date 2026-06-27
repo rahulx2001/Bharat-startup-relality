@@ -35,18 +35,33 @@ def _extract_json(text: str) -> Any:
         raise
 
 
-def _chat(system: str, user: str, temperature: float = 0.2) -> str:
-    response = _client().chat.completions.create(
-        model=NVIDIA_MODEL,
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-        temperature=temperature,
-        max_tokens=8192,
-        response_format={"type": "json_object"},
-    )
-    return response.choices[0].message.content or ""
+def _chat(system: str, user: str, temperature: float = 0.2, retries: int = 5) -> str:
+    import time
+
+    last_error = None
+    for attempt in range(retries):
+        try:
+            response = _client().chat.completions.create(
+                model=NVIDIA_MODEL,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
+                temperature=temperature,
+                max_tokens=8192,
+                response_format={"type": "json_object"},
+            )
+            return response.choices[0].message.content or ""
+        except Exception as exc:
+            last_error = exc
+            message = str(exc).lower()
+            if "429" in message or "rate" in message or "too many" in message:
+                wait = min(60, 10 * (attempt + 1))
+                print(f"[llm] Rate limited — waiting {wait}s (attempt {attempt + 1}/{retries})")
+                time.sleep(wait)
+                continue
+            raise
+    raise last_error  # type: ignore[misc]
 
 
 def extract_signals(articles: list[dict[str, Any]], known_names: list[str]) -> list[dict[str, Any]]:

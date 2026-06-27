@@ -44,7 +44,7 @@ def _gold_example() -> dict:
     return data["startups"][0]
 
 
-def run_batch(limit: int = 0, force: bool = False, delay: float = 2.0) -> int:
+def run_batch(limit: int = 0, force: bool = False, delay: float = 8.0) -> int:
     if not NVIDIA_API_KEY:
         print("[batch] ERROR: Set NVIDIA_API_KEY")
         return 1
@@ -83,23 +83,23 @@ def run_batch(limit: int = 0, force: bool = False, delay: float = 2.0) -> int:
             entry["updated_at"] = now
             if not existing.get("added_at"):
                 entry["added_at"] = existing.get("added_at") or now
-            enriched.append(entry)
+            apply_updates([entry])
             done.add(name)
             _save_progress(done)
 
             after = profile_score(entry)
-            print(f"         → tier {after['tier']} score {after['score']}")
+            print(f"         → tier {after['tier']} score {after['score']} (saved)")
         except Exception as exc:
             print(f"         ✗ failed: {exc}")
 
         if i < len(targets):
             time.sleep(delay)
 
-    if enriched:
-        stats = apply_updates(enriched)
-        print(f"[batch] Saved — updated {stats['updated']}, total {stats['total']}")
+    if done:
+        data = load_graveyard()
+        print(f"[batch] Complete — {len(done)} enriched, total {len(data['startups'])} startups")
     else:
-        print("[batch] Nothing to save")
+        print("[batch] Nothing saved")
 
     return 0
 
