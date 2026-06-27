@@ -1,9 +1,12 @@
 const DATA_URL = './data/graveyard.json';
 
+const PAGE_SIZE = 12;
+
 const state = {
   data: [],
   filtered: [],
   activeStatus: 'All',
+  currentPage: 1,
 };
 
 const el = (id) => document.getElementById(id);
@@ -71,9 +74,90 @@ const getStatusClass = (status) => {
   return map[status] || 'struggling';
 };
 
+const getPageSlice = (items) => {
+  const total = items.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (state.currentPage > totalPages) state.currentPage = totalPages;
+  if (state.currentPage < 1) state.currentPage = 1;
+
+  const startIndex = (state.currentPage - 1) * PAGE_SIZE;
+  const endIndex = Math.min(startIndex + PAGE_SIZE, total);
+
+  return {
+    pageItems: items.slice(startIndex, endIndex),
+    total,
+    totalPages,
+    startIndex,
+    endIndex,
+  };
+};
+
+const buildPagination = ({ total, totalPages, startIndex, endIndex }) => {
+  const nav = el('pagination');
+  const info = el('paginationInfo');
+  const controls = el('paginationControls');
+
+  if (!nav || !info || !controls) return;
+
+  if (total === 0) {
+    nav.classList.add('hidden');
+    return;
+  }
+
+  nav.classList.remove('hidden');
+  info.textContent = `Showing ${startIndex + 1}–${endIndex} of ${total} startups`;
+
+  const goToPage = (page) => {
+    state.currentPage = page;
+    renderResults();
+    el('cardsGrid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  controls.innerHTML = '';
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'page-btn';
+  prevBtn.textContent = '← Prev';
+  prevBtn.disabled = state.currentPage <= 1;
+  prevBtn.onclick = () => goToPage(state.currentPage - 1);
+  controls.appendChild(prevBtn);
+
+  const pages = new Set([1, totalPages, state.currentPage, state.currentPage - 1, state.currentPage + 1]);
+  const sortedPages = [...pages].filter((p) => p >= 1 && p <= totalPages).sort((a, b) => a - b);
+
+  let lastPage = 0;
+  sortedPages.forEach((page) => {
+    if (page - lastPage > 1) {
+      const dots = document.createElement('span');
+      dots.className = 'page-ellipsis';
+      dots.textContent = '…';
+      controls.appendChild(dots);
+    }
+    const pageBtn = document.createElement('button');
+    pageBtn.className = `page-btn ${page === state.currentPage ? 'active' : ''}`;
+    pageBtn.textContent = String(page);
+    pageBtn.onclick = () => goToPage(page);
+    controls.appendChild(pageBtn);
+    lastPage = page;
+  });
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'page-btn';
+  nextBtn.textContent = 'Next →';
+  nextBtn.disabled = state.currentPage >= totalPages;
+  nextBtn.onclick = () => goToPage(state.currentPage + 1);
+  controls.appendChild(nextBtn);
+};
+
 const buildCards = (items) => {
   const grid = el('cardsGrid');
   grid.innerHTML = '';
+
+  if (!items.length) {
+    grid.innerHTML = '<div class="empty-state">No startups match your search or filter.</div>';
+    return;
+  }
+
   items.forEach((s) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -118,8 +202,15 @@ const applyFilters = () => {
     });
   }
   state.filtered = filtered;
-  buildCards(filtered);
-  buildStats(filtered);
+  state.currentPage = 1;
+  renderResults();
+};
+
+const renderResults = () => {
+  const slice = getPageSlice(state.filtered);
+  buildCards(slice.pageItems);
+  buildPagination(slice);
+  buildStats(state.filtered);
 };
 
 const openModal = (s) => {
@@ -721,9 +812,9 @@ const loadData = async () => {
   const res = await fetch(DATA_URL);
   const json = await res.json();
   state.data = json.startups || [];
+  state.filtered = state.data;
   buildStatusFilters();
-  buildCards(state.data);
-  buildStats(state.data);
+  renderResults();
 };
 
 el('searchInput').addEventListener('input', applyFilters);
