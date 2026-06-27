@@ -6,7 +6,11 @@ const state = {
   data: [],
   filtered: [],
   activeStatus: 'All',
+  categoryFilter: 'All',
+  sortBy: 'default',
+  recentOnly: false,
   currentPage: 1,
+  generatedAt: '',
 };
 
 const el = (id) => document.getElementById(id);
@@ -21,6 +25,44 @@ const formatMoney = (num) => {
 };
 
 const unique = (arr) => [...new Set(arr)];
+
+const isGoldProfile = (s) => s.profile_tier === 'gold' || (
+  s.value_proposition && s.cause_of_death && s.ai_rebuild?.name
+  && (s.timeline?.length || 0) >= 6 && (s.insights?.length || 0) >= 5
+);
+
+const isRecentlyUpdated = (s) => {
+  const date = s.updated_at || s.added_at;
+  if (!date) return false;
+  const updated = new Date(date);
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 90);
+  return updated >= cutoff;
+};
+
+const formatInrCr = (usd) => {
+  const inrCr = Math.round((usd || 0) * 0.012 * 10) / 10;
+  if (inrCr >= 1000) return `₹${(inrCr / 100).toFixed(1)}k Cr`;
+  return `₹${inrCr.toLocaleString('en-IN')} Cr`;
+};
+
+const parseSources = (sources) => {
+  if (!sources?.length) return [];
+  return sources.map((item) => {
+    if (typeof item === 'object' && item !== null) {
+      return { title: item.title || 'Source', url: item.url || '' };
+    }
+    if (typeof item === 'string' && item.includes('title')) {
+      try {
+        const parsed = JSON.parse(item.replace(/'/g, '"'));
+        return { title: parsed.title || 'Source', url: parsed.url || '' };
+      } catch (_) {
+        return { title: item.slice(0, 120), url: '' };
+      }
+    }
+    return { title: String(item), url: '' };
+  });
+};
 
 // Theme toggle
 const initTheme = () => {
@@ -163,7 +205,12 @@ const buildCards = (items) => {
     card.className = 'card';
     const foundersText = s.founders?.length ? `👤 ${s.founders.slice(0, 2).join(', ')}` : '';
     const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
+    const badges = [
+      isRecentlyUpdated(s) ? '<span class="card-badge new">Updated</span>' : '',
+      isGoldProfile(s) ? '<span class="card-badge gold">Gold</span>' : '<span class="card-badge thin">Basic</span>',
+    ].join('');
     card.innerHTML = `
+      <div class="card-badges">${badges}</div>
       <div class="card-status ${getStatusClass(s.status)}">${s.status || 'Struggling'}</div>
       <h4>${s.startup_name}</h4>
       <div class="meta">
@@ -201,9 +248,52 @@ const applyFilters = () => {
       return blob.includes(term);
     });
   }
+
+  if (state.categoryFilter !== 'All') {
+    filtered = filtered.filter((s) => s.category === state.categoryFilter);
+  }
+
+  if (state.recentOnly) {
+    filtered = filtered.filter(isRecentlyUpdated);
+  }
+
+  filtered = sortStartups(filtered, state.sortBy);
+
   state.filtered = filtered;
   state.currentPage = 1;
   renderResults();
+};
+
+const sortStartups = (items, sortBy) => {
+  const list = [...items];
+  switch (sortBy) {
+    case 'recent':
+      return list.sort((a, b) => (b.updated_at || b.added_at || '').localeCompare(a.updated_at || a.added_at || ''));
+    case 'funding':
+      return list.sort((a, b) => (b.funding_burned_usd || 0) - (a.funding_burned_usd || 0));
+    case 'year_died':
+      return list.sort((a, b) => (b.year_died || 0) - (a.year_died || 0));
+    case 'name':
+      return list.sort((a, b) => a.startup_name.localeCompare(b.startup_name));
+    default:
+      return list;
+  }
+};
+
+const buildCategoryFilter = (items) => {
+  const select = el('categoryFilter');
+  if (!select) return;
+  const categories = unique(items.map((s) => s.category).filter(Boolean)).sort();
+  const current = state.categoryFilter;
+  select.innerHTML = '<option value="All">All categories</option>';
+  categories.forEach((cat) => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    select.appendChild(opt);
+  });
+  select.value = categories.includes(current) ? current : 'All';
+  state.categoryFilter = select.value;
 };
 
 const renderResults = () => {
@@ -231,7 +321,10 @@ const openModal = (s) => {
   el('modalValueProp').textContent = s.value_proposition || s.short_summary || `${s.startup_name} was a startup in the ${s.category || 'Tech'} space that aimed to solve problems in their industry.`;
 
   // Opportunity Score
-  const oppScore = s.opportunity_score || generateOpportunityScore(s);
+  const oppScore = s.opportunity_score || (isGoldProfile(s) ? null : generateOpportunityScore(s));
+  if (!oppScore) {
+    el('modalOpportunity').innerHTML = '<p class="thin-note">Profile enrichment in progress.</p>';
+  } else {
   el('modalOpportunity').innerHTML = `
     <div class="opportunity-card">
       <div class="opp-label">🔧 Rebuild Difficulty</div>
@@ -249,6 +342,7 @@ const openModal = (s) => {
       <div class="opp-value">${getMarketLabel(oppScore.market_potential)}</div>
     </div>
   `;
+  }
 
   // Cause of Death / Decline (only show for Shut Down or if explicitly has cause_of_death)
   const deathSection = document.querySelector('.death-section');
@@ -277,7 +371,7 @@ const openModal = (s) => {
   // Lessons/Loot
   const lessonsList = el('modalLessons');
   lessonsList.innerHTML = '';
-  const insights = s.insights || s.lessons || generateInsights(s);
+  const insights = s.insights?.length ? s.insights : (s.lessons?.length ? s.lessons : (isGoldProfile(s) ? [] : generateInsights(s)));
   insights.forEach((p, i) => {
     const li = document.createElement('li');
     li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${p}`;
@@ -304,10 +398,10 @@ const openModal = (s) => {
   }
 
   // Market Today
-  el('modalMarketToday').textContent = s.market_today || generateMarketToday(s);
+  el('modalMarketToday').textContent = s.market_today || (isGoldProfile(s) ? 'Market analysis pending enrichment.' : generateMarketToday(s));
 
   // AI Rebuild Idea
-  const rebuild = s.ai_rebuild || generateAIRebuild(s);
+  const rebuild = s.ai_rebuild?.name ? s.ai_rebuild : (isGoldProfile(s) ? { name: 'Pending', description: 'AI rebuild being enriched.', tech_stack: [], execution_plan: [], innovative: [], monetization: '' } : generateAIRebuild(s));
   el('modalRebuildName').textContent = rebuild.name;
   el('modalRebuildDesc').textContent = rebuild.description;
   el('modalTechStack').innerHTML = (rebuild.tech_stack || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
@@ -332,7 +426,27 @@ const openModal = (s) => {
   });
 
   // Monetization
-  el('modalMonetization').textContent = rebuild.monetization || generateMonetization(s);
+  el('modalMonetization').textContent = rebuild.monetization || (isGoldProfile(s) ? '' : generateMonetization(s));
+
+  // Sources
+  const sources = parseSources(s.sources);
+  const sourcesSection = el('sourcesSection');
+  const sourcesList = el('modalSources');
+  if (sources.length && sourcesSection && sourcesList) {
+    sourcesSection.style.display = 'block';
+    sourcesList.innerHTML = '';
+    sources.forEach((src) => {
+      const li = document.createElement('li');
+      if (src.url) {
+        li.innerHTML = `<a href="${src.url}" target="_blank" rel="noopener noreferrer">${src.title}</a>`;
+      } else {
+        li.textContent = src.title;
+      }
+      sourcesList.appendChild(li);
+    });
+  } else if (sourcesSection) {
+    sourcesSection.style.display = 'none';
+  }
 };
 
 // Helper functions for generating content
@@ -813,11 +927,48 @@ const loadData = async () => {
   const json = await res.json();
   state.data = json.startups || [];
   state.filtered = state.data;
+  state.generatedAt = json.generated_at || '';
   buildStatusFilters();
+  buildCategoryFilter(state.data);
+  updateHeroMeta(state.data);
   renderResults();
+  openDeepLink();
+};
+
+const updateHeroMeta = (items) => {
+  const burned = items.reduce((sum, s) => sum + (s.funding_burned_usd || 0), 0);
+  const subtitle = el('heroSubtitle');
+  const freshness = el('dataFreshness');
+  if (subtitle) {
+    subtitle.textContent = `The unfiltered truth about Indian startups — failures, struggles, pivots & comebacks. Learn from ${formatInrCr(burned)} in lessons.`;
+  }
+  if (freshness && state.generatedAt) {
+    freshness.textContent = `📅 Dataset last updated: ${state.generatedAt} · ${items.length} startups · Gold profiles: ${items.filter(isGoldProfile).length}`;
+  }
+};
+
+const openDeepLink = () => {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('startup');
+  if (!slug) return;
+  const match = state.data.find((s) => s.startup_name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug.toLowerCase());
+  if (match) openModal(match);
 };
 
 el('searchInput').addEventListener('input', applyFilters);
+el('categoryFilter')?.addEventListener('change', (e) => {
+  state.categoryFilter = e.target.value;
+  applyFilters();
+});
+el('sortBy')?.addEventListener('change', (e) => {
+  state.sortBy = e.target.value;
+  applyFilters();
+});
+el('recentOnlyBtn')?.addEventListener('click', () => {
+  state.recentOnly = !state.recentOnly;
+  el('recentOnlyBtn').classList.toggle('active', state.recentOnly);
+  applyFilters();
+});
 el('modalBackdrop').addEventListener('click', closeModal);
 el('modalClose').addEventListener('click', closeModal);
 

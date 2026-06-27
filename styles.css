@@ -277,6 +277,92 @@ body {
   width: fit-content;
 }
 
+.data-freshness {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.toolbar-group {
+  display: grid;
+  gap: 6px;
+}
+
+.toolbar-group label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.toolbar select {
+  border: 3px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  padding: 10px 12px;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--border);
+  min-width: 180px;
+}
+
+.card-badges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.card-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border: 2px solid var(--border);
+}
+
+.card-badge.gold {
+  background: #ffd166;
+  color: #101010;
+}
+
+.card-badge.new {
+  background: #8ecae6;
+  color: #101010;
+}
+
+.card-badge.thin {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.sources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.sources-list a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.thin-note {
+  font-weight: 600;
+  opacity: 0.8;
+}
+
 .filter-btn {
   border: 3px solid var(--border);
   background: var(--card);

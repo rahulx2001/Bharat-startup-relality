@@ -168,4 +168,112 @@ def enrich_startup(signal: dict[str, Any], funding: dict[str, Any], existing: di
 
     entry["startup_name"] = entry.get("startup_name") or signal["startup_name"]
     entry["status"] = signal.get("status") or entry.get("status")
+    entry["sources"] = _normalize_sources(entry.get("sources"))
+    return entry
+
+
+def _normalize_sources(sources: Any) -> list[dict[str, str]]:
+    cleaned: list[dict[str, str]] = []
+    for item in sources or []:
+        if isinstance(item, dict):
+            title = str(item.get("title", "")).strip()
+            url = str(item.get("url", "")).strip()
+            if title or url:
+                cleaned.append({"title": title or "Source", "url": url})
+        elif isinstance(item, str) and item.strip():
+            text = item.strip()
+            if text.startswith("{") and "title" in text:
+                try:
+                    import ast
+
+                    parsed = ast.literal_eval(text)
+                    if isinstance(parsed, dict):
+                        cleaned.append(
+                            {
+                                "title": str(parsed.get("title", "Source")),
+                                "url": str(parsed.get("url", "")),
+                            }
+                        )
+                        continue
+                except (SyntaxError, ValueError):
+                    pass
+            cleaned.append({"title": text[:120], "url": ""})
+    return cleaned[:6]
+
+
+def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_example: dict[str, Any]) -> dict[str, Any]:
+    """BluSmart-level deep enrichment for an existing startup profile."""
+    schema_hint = {
+        "startup_name": "string",
+        "status": "Shut Down | Struggling | Pivoted | Comeback | Recovery",
+        "year_founded": "number",
+        "year_died": "number or null",
+        "funding_burned_usd": "number",
+        "peak_valuation": "number or null",
+        "employees": "number or null",
+        "category": "string — one clear sector label",
+        "headquarters": "string",
+        "short_summary": "string — 1-2 punchy sentences with numbers",
+        "value_proposition": "string — 3-5 sentences on what they promised, scale, investors",
+        "cause_of_death": "string or null — detailed paragraph with ₹ figures, regulators, unit economics",
+        "failure_reason": "string — comma-separated key reasons",
+        "founders": ["string"],
+        "investors": ["string"],
+        "timeline": [{"date": "string", "event": "string"}],
+        "insights": ["string — 5 bullet market/strategy insights with numbers"],
+        "lessons": ["string — 3-4 founder lessons"],
+        "opportunity_score": {"rebuild_difficulty": "1-5", "scalability": "1-5", "market_potential": "1-5"},
+        "market_today": "string — 3-4 sentences on India market today",
+        "ai_rebuild": {
+            "name": "string",
+            "description": "string — 2-3 sentences",
+            "tech_stack": ["string — 5-6 items"],
+            "execution_plan": ["string — 5 steps"],
+            "innovative": ["string — 5 moat points"],
+            "monetization": "string — specific revenue model with ₹ targets",
+        },
+        "sources": [{"title": "string", "url": "string"}],
+        "profile_tier": "gold",
+    }
+
+    system = (
+        "You are a senior Indian startup analyst writing for Bharat Startup Reality graveyard. "
+        "Return ONE JSON object matching the schema at BluSmart gold-standard depth. "
+        "Requirements: 6+ timeline events, 5+ insights, 3+ lessons, rich cause_of_death with ₹ amounts, "
+        "detailed ai_rebuild with 5 execution steps and 5 innovative points. "
+        "Use real public facts about the Indian startup. Preserve accurate numbers from existing_entry. "
+        "Never invent funding figures — use funding_lookup or existing_entry. "
+        "sources must be array of {title, url} objects, not strings."
+    )
+    user = json.dumps(
+        {
+            "gold_standard_example": {
+                "startup_name": gold_example.get("startup_name"),
+                "short_summary": gold_example.get("short_summary"),
+                "value_proposition": gold_example.get("value_proposition"),
+                "cause_of_death": gold_example.get("cause_of_death"),
+                "timeline_count": len(gold_example.get("timeline") or []),
+                "insights_count": len(gold_example.get("insights") or []),
+                "ai_rebuild": gold_example.get("ai_rebuild"),
+            },
+            "existing_entry": existing,
+            "funding_lookup": funding,
+            "schema": schema_hint,
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
+
+    raw = _chat(system, user, temperature=0.25)
+    entry = _extract_json(raw)
+
+    entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
+    entry["status"] = existing.get("status") or entry.get("status")
+    entry["profile_tier"] = "gold"
+
+    csv_funding = funding.get("funding_burned_usd") or 0
+    existing_funding = existing.get("funding_burned_usd") or 0
+    entry["funding_burned_usd"] = max(existing_funding, csv_funding, entry.get("funding_burned_usd") or 0)
+
+    entry["sources"] = _normalize_sources(entry.get("sources") or existing.get("sources"))
     return entry

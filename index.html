@@ -4,7 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bharat Startup Reality</title>
+  <title>Bharat Startup Reality — Indian Startup Graveyard</title>
+  <meta name="description"
+    content="The unfiltered database of Indian startup failures, struggles, pivots and comebacks. Deep profiles, timelines, cause-of-death analysis and AI rebuild ideas." />
+  <meta property="og:title" content="Bharat Startup Reality — Indian Startup Graveyard" />
+  <meta property="og:description"
+    content="Learn from ₹50,000+ Cr in Indian startup failures. Shut downs, layoffs, pivots — with BluSmart-level depth." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://startup-graveyard-ui.vercel.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>"
     type="image/svg+xml">
@@ -32,8 +40,8 @@
         </div>
       </div>
       <h1>Bharat Startup Reality</h1>
-      <p class="subtitle">The unfiltered truth about Indian startups — failures, struggles, pivots & comebacks. Learn
-        from ₹50,000+ Cr in lessons.</p>
+      <p class="subtitle" id="heroSubtitle">The unfiltered truth about Indian startups — failures, struggles, pivots &amp; comebacks.</p>
+      <p class="data-freshness" id="dataFreshness"></p>
       <div class="stats">
         <div class="stat">
           <div class="stat-value" id="stat-failed">0</div>
@@ -59,7 +67,26 @@
         <input id="searchInput" type="text" placeholder="Search startups, founders, investors, categories…" />
       </div>
       <div class="status-filters" id="statusFilters"></div>
-      <div class="hint">� <strong>Click any card below</strong> to explore the full story — AI rebuild ideas, execution
+      <div class="toolbar">
+        <div class="toolbar-group">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="All">All categories</option>
+          </select>
+        </div>
+        <div class="toolbar-group">
+          <label for="sortBy">Sort by</label>
+          <select id="sortBy">
+            <option value="default">Fame &amp; funding</option>
+            <option value="recent">Recently updated</option>
+            <option value="funding">Funding (high → low)</option>
+            <option value="year_died">Year died (recent first)</option>
+            <option value="name">Name (A → Z)</option>
+          </select>
+        </div>
+        <button class="filter-btn" id="recentOnlyBtn" type="button">🆕 Recently updated</button>
+      </div>
+      <div class="hint">👆� <strong>Click any card below</strong> to explore the full story — AI rebuild ideas, execution
         plans & monetization strategies inside!</div>
     </section>
 
@@ -145,14 +172,15 @@
         <p id="modalMonetization"></p>
       </div>
 
+      <!-- Sources -->
+      <div class="section sources-section" id="sourcesSection" style="display:none;">
+        <h3>📰 SOURCES &amp; REFERENCES</h3>
+        <ul id="modalSources" class="sources-list"></ul>
+      </div>
+
       <div class="note">* Analysis based on public reports, news sources, and AI-powered market research. For
         educational purposes only.</div>
     </div>
-  </div>
-  </div>
-
-  <div class="note">* Analysis based on public reports, news sources, and industry patterns.</div>
-  </div>
   </div>
 
   <!-- Feature Request / Feedback Floating Button -->

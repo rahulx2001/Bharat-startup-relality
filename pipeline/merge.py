@@ -35,6 +35,20 @@ def _merge_timeline(existing: list[dict], incoming: list[dict]) -> list[dict]:
     return merged[-12:]
 
 
+def _merge_sources(existing: list, incoming: list) -> list:
+    merged: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in (existing or []) + (incoming or []):
+        if isinstance(item, dict):
+            title = str(item.get("title", "")).strip()
+            url = str(item.get("url", "")).strip()
+            key = f"{title}|{url}"
+            if key not in seen and (title or url):
+                merged.append({"title": title or "Source", "url": url})
+                seen.add(key)
+    return merged[:8]
+
+
 def _merge_lists(existing: list, incoming: list, limit: int = 12) -> list:
     merged = []
     for value in (existing or []) + (incoming or []):
@@ -57,7 +71,7 @@ def merge_entry(existing: dict[str, Any] | None, incoming: dict[str, Any]) -> di
         elif key in {"insights", "lessons", "founders", "investors"}:
             merged[key] = _merge_lists(existing.get(key, []), value)
         elif key == "sources":
-            merged[key] = _merge_lists(existing.get(key, []), value, limit=8)
+            merged[key] = _merge_sources(existing.get("sources", []), value)
         elif key == "funding_burned_usd":
             current = existing.get("funding_burned_usd") or 0
             incoming_val = value or 0
@@ -93,10 +107,14 @@ def apply_updates(entries: list[dict[str, Any]]) -> dict[str, int]:
         norm = _normalize_name(entry.get("startup_name", ""))
         if not norm:
             continue
+        now = datetime.now(timezone.utc).date().isoformat()
+        entry["updated_at"] = entry.get("updated_at") or now
         if norm in index:
             index[norm] = merge_entry(index[norm], entry)
+            index[norm]["updated_at"] = now
             updated += 1
         else:
+            entry.setdefault("added_at", now)
             index[norm] = entry
             added += 1
 
