@@ -15,6 +15,11 @@ from .config import (
     RSS_FEEDS,
     SEEN_CACHE,
 )
+from .http_security import clamp_body, is_public_http_url, validate_feed_url
+
+# Bound single RSS response size (bytes) to avoid memory exhaustion
+_MAX_FEED_BYTES = 2_000_000
+_REQUEST_TIMEOUT = 20
 
 
 def _session():
@@ -78,9 +83,16 @@ def fetch_articles(force: bool = False) -> list[dict[str, Any]]:
 
     for source, feed_url in RSS_FEEDS:
         try:
-            response = session.get(feed_url, timeout=20)
+            safe_feed = validate_feed_url(feed_url)
+        except ValueError as exc:
+            print(f"[scrape] Skipping {source}: invalid feed URL ({exc})")
+            continue
+
+        try:
+            response = session.get(safe_feed, timeout=_REQUEST_TIMEOUT)
             response.raise_for_status()
-            feed = feedparser.parse(response.content)
+            body = clamp_body(response.content, max_bytes=_MAX_FEED_BYTES)
+            feed = feedparser.parse(body)
         except requests.RequestException as exc:
             print(f"[scrape] Skipping {source}: {exc}")
             continue
@@ -92,6 +104,9 @@ def fetch_articles(force: bool = False) -> list[dict[str, Any]]:
             summary = re.sub(r"\s+", " ", summary).strip()
 
             if not title or not link:
+                continue
+            # Only retain public http(s) article links (drop javascript:/file:/internal)
+            if not is_public_http_url(link):
                 continue
 
             blob = f"{title} {summary}"
@@ -105,7 +120,7 @@ def fetch_articles(force: bool = False) -> list[dict[str, Any]]:
             articles.append(
                 {
                     "source": source,
-                    "title": title,
+                    "title": title[:500],
                     "summary": summary[:500],
                     "url": link,
                     "date": _parse_date(entry),

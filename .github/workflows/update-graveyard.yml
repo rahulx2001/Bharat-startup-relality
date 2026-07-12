@@ -5,12 +5,19 @@ on:
     - cron: "0 6 * * 1"
   workflow_dispatch:
 
+# Least privilege for auto-commit of data/graveyard.json only.
+# Contents write is required by git-auto-commit-action.
 permissions:
   contents: write
+
+concurrency:
+  group: update-graveyard
+  cancel-in-progress: true
 
 jobs:
   refresh-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,6 +26,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -35,8 +43,11 @@ jobs:
         with:
           commit_message: "chore(data): automated graveyard refresh"
           file_pattern: data/graveyard.json
+          # Never commit secrets or caches if they appear untracked
+          skip_dirty_check: false
 
       - name: Deploy to Vercel
+        # secrets.* always string; empty secret means skip deploy step
         if: ${{ secrets.VERCEL_TOKEN != '' }}
         uses: amondnet/vercel-action@v25
         with:

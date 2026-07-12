@@ -17,10 +17,17 @@ from .config import (
     nvidia_model,
     research_max_repair_passes,
 )
+from .http_security import redact_secrets
 from .identity import identity_problems
 from .prompts import SIGNAL_SYSTEM_PROMPT, enrich_system_prompt
 from .quality import profile_score
 from .research_gate import GateResult, evaluate_research, merge_research
+
+
+def _safe_log(msg: str) -> None:
+    """Print without leaking API keys if an exception string embeds them."""
+    key = nvidia_api_key()
+    print(redact_secrets(msg, secrets=[key] if key else None))
 
 
 def _client():
@@ -104,12 +111,12 @@ def _chat(system: str, user: str, temperature: float = 0.2, retries: int = 5) ->
         except Exception as exc:
             last_error = exc
             if use_json_mode and _is_json_mode_unsupported(exc):
-                print(f"[llm] JSON mode unsupported for {model}; falling back")
+                _safe_log(f"[llm] JSON mode unsupported for {model}; falling back")
                 use_json_mode = False
                 continue
             if _is_retryable(exc):
                 wait = min(120, 20 * (attempt + 1))
-                print(f"[llm] Transient error — waiting {wait}s ({attempt + 1}/{retries})")
+                _safe_log(f"[llm] Transient error — waiting {wait}s ({attempt + 1}/{retries})")
                 time.sleep(wait)
                 continue
             raise
@@ -353,7 +360,7 @@ def research_startup(
                 reasons=gate.reasons,
             )
         except Exception as exc:
-            print(f"[research] Repair pass failed: {exc}")
+            _safe_log(f"[research] Repair pass failed: {exc}")
             break
         gate = evaluate_research(entry, is_new=is_new)
         entry = _stamp_tier(entry, gate)
@@ -483,7 +490,7 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
             entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
             entry["status"] = existing.get("status") or entry.get("status")
         except Exception as exc:
-            print(f"[research] Gold repair failed: {exc}")
+            _safe_log(f"[research] Gold repair failed: {exc}")
             break
         gate = evaluate_research(entry, is_new=False, require_gold=True)
         entry = _stamp_tier(entry, gate)

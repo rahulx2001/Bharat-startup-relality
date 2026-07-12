@@ -2,6 +2,12 @@ const DATA_URL = './data/graveyard.json';
 
 const PAGE_SIZE = 12;
 
+// Security helpers (security.js) — escape untrusted catalog/LLM text
+const escapeHtml = (v) => (globalThis.BSRSecurity ? BSRSecurity.escapeHtml(v) : String(v ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;'));
+const safeHttpUrl = (v) => (globalThis.BSRSecurity ? BSRSecurity.safeHttpUrl(v) : '');
+
 const state = {
   data: [],
   filtered: [],
@@ -112,6 +118,9 @@ const buildStatusFilters = () => {
 };
 
 const getStatusClass = (status) => {
+  if (globalThis.BSRSecurity && BSRSecurity.statusClassToken) {
+    return BSRSecurity.statusClassToken(status);
+  }
   const map = { 'Shut Down': 'dead', 'Struggling': 'struggling', 'Crisis': 'struggling', 'Layoffs': 'struggling', 'Pivoted': 'pivoted', 'Comeback': 'comeback', 'Recovery': 'comeback' };
   return map[status] || 'struggling';
 };
@@ -203,18 +212,19 @@ const buildCards = (items) => {
   items.forEach((s) => {
     const card = document.createElement('div');
     card.className = 'card';
-    const foundersText = s.founders?.length ? `👤 ${s.founders.slice(0, 2).join(', ')}` : '';
+    const foundersRaw = s.founders?.length ? `👤 ${s.founders.slice(0, 2).join(', ')}` : '';
     const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
+    // Escape all catalog fields — data may include LLM-generated or untrusted text
     card.innerHTML = `
-      <div class="card-status ${getStatusClass(s.status)}">${s.status || 'Struggling'}</div>
-      <h4>${s.startup_name}</h4>
+      <div class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</div>
+      <h4>${escapeHtml(s.startup_name)}</h4>
       <div class="meta">
-        ${yearRange ? `<span class="tag">${yearRange}</span>` : ''}
-        <span class="tag alt">${formatMoney(s.funding_burned_usd)}</span>
-        <span class="tag warn">${s.category || 'Tech'}</span>
+        ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
+        <span class="tag alt">${escapeHtml(formatMoney(s.funding_burned_usd))}</span>
+        <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
       </div>
-      <p>${s.short_summary || s.failure_reason || 'No details available.'}</p>
-      ${foundersText ? `<div class="card-founders">${foundersText}</div>` : ''}
+      <p>${escapeHtml(s.short_summary || s.failure_reason || 'No details available.')}</p>
+      ${foundersRaw ? `<div class="card-founders">${escapeHtml(foundersRaw)}</div>` : ''}
       <div class="card-cta">🔍 Tap to explore full story & AI rebuild idea →</div>
     `;
     card.onclick = () => openModal(s);
@@ -305,11 +315,11 @@ const openModal = (s) => {
 
   const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
   el('modalMeta').innerHTML = `
-    <span class="card-status ${getStatusClass(s.status)}">${s.status || 'Struggling'}</span>
-    ${yearRange ? `<span class="tag">${yearRange}</span>` : ''}
-    <span class="tag alt">${formatMoney(s.funding_burned_usd)}</span>
-    <span class="tag warn">${s.category || 'Tech'}</span>
-    <span class="tag">${s.headquarters || 'India'}</span>
+    <span class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</span>
+    ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
+    <span class="tag alt">${escapeHtml(formatMoney(s.funding_burned_usd))}</span>
+    <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
+    <span class="tag">${escapeHtml(s.headquarters || 'India')}</span>
   `;
 
   // Value Proposition
@@ -359,7 +369,7 @@ const openModal = (s) => {
   (s.timeline || []).forEach(t => {
     const div = document.createElement('div');
     div.className = 'timeline-item';
-    div.innerHTML = `<div class="date">${t.date}</div><div>${t.event}</div>`;
+    div.innerHTML = `<div class="date">${escapeHtml(t.date)}</div><div>${escapeHtml(t.event)}</div>`;
     timeline.appendChild(div);
   });
 
@@ -369,7 +379,7 @@ const openModal = (s) => {
   const insights = s.insights?.length ? s.insights : (s.lessons?.length ? s.lessons : (isGoldProfile(s) ? [] : generateInsights(s)));
   insights.forEach((p, i) => {
     const li = document.createElement('li');
-    li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${p}`;
+    li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${escapeHtml(p)}`;
     lessonsList.appendChild(li);
   });
 
@@ -379,13 +389,13 @@ const openModal = (s) => {
   (s.founders || []).forEach((f) => {
     const div = document.createElement('div');
     div.className = 'person-card';
-    div.innerHTML = `<div class="role">Founder</div><div class="name">${f}</div>`;
+    div.innerHTML = `<div class="role">Founder</div><div class="name">${escapeHtml(f)}</div>`;
     people.appendChild(div);
   });
   (s.investors || []).forEach((i) => {
     const div = document.createElement('div');
     div.className = 'person-card';
-    div.innerHTML = `<div class="role">Investor</div><div class="name">${i}</div>`;
+    div.innerHTML = `<div class="role">Investor</div><div class="name">${escapeHtml(i)}</div>`;
     people.appendChild(div);
   });
   if (!s.founders?.length && !s.investors?.length) {
@@ -399,7 +409,9 @@ const openModal = (s) => {
   const rebuild = s.ai_rebuild?.name ? s.ai_rebuild : (isGoldProfile(s) ? { name: 'Pending', description: 'AI rebuild being enriched.', tech_stack: [], execution_plan: [], innovative: [], monetization: '' } : generateAIRebuild(s));
   el('modalRebuildName').textContent = rebuild.name;
   el('modalRebuildDesc').textContent = rebuild.description;
-  el('modalTechStack').innerHTML = (rebuild.tech_stack || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
+  el('modalTechStack').innerHTML = (rebuild.tech_stack || [])
+    .map((t) => `<span class="tech-tag">${escapeHtml(t)}</span>`)
+    .join('');
 
   // Execution Plan
   const execList = el('modalExecutionPlan');
@@ -432,10 +444,16 @@ const openModal = (s) => {
     sourcesList.innerHTML = '';
     sources.forEach((src) => {
       const li = document.createElement('li');
-      if (src.url) {
-        li.innerHTML = `<a href="${src.url}" target="_blank" rel="noopener noreferrer">${src.title}</a>`;
+      const safeUrl = safeHttpUrl(src.url);
+      if (safeUrl) {
+        const a = document.createElement('a');
+        a.href = safeUrl;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer nofollow';
+        a.textContent = src.title || 'Source';
+        li.appendChild(a);
       } else {
-        li.textContent = src.title;
+        li.textContent = src.title || 'Source';
       }
       sourcesList.appendChild(li);
     });
@@ -446,9 +464,17 @@ const openModal = (s) => {
 
 // Helper functions for generating content
 const generateBar = (value, max, color = '') => {
+  const m = globalThis.BSRSecurity?.clampScore
+    ? BSRSecurity.clampScore(max, 20) || 5
+    : Math.min(20, Math.max(1, Number(max) || 5));
+  const v = globalThis.BSRSecurity?.clampScore
+    ? BSRSecurity.clampScore(value, m)
+    : Math.min(m, Math.max(0, Math.floor(Number(value) || 0)));
+  // color is allowlisted — never free-text from catalog
+  const safeColor = color === 'green' || color === 'orange' ? color : '';
   let html = '';
-  for (let i = 1; i <= max; i++) {
-    const filled = i <= value ? `filled ${color}` : '';
+  for (let i = 1; i <= m; i++) {
+    const filled = i <= v ? `filled ${safeColor}`.trim() : '';
     html += `<span class="${filled}"></span>`;
   }
   return html;
@@ -1026,14 +1052,25 @@ el('feedbackClose').addEventListener('click', closeFeedbackModal);
 el('feedbackForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const type = el('feedbackType').value;
-  const details = el('feedbackDetails').value;
-  const email = el('feedbackEmail').value;
+  const type = String(el('feedbackType').value || '').slice(0, 80);
+  const details = String(el('feedbackDetails').value || '').slice(0, 4000);
+  const email = String(el('feedbackEmail').value || '').slice(0, 200);
+  if (!details.trim()) {
+    alert('Please enter feedback details.');
+    return;
+  }
   const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
-  // Store in localStorage as backup
-  const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+  // Store in localStorage as backup (cap size)
+  let feedbacks = [];
+  try {
+    feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+    if (!Array.isArray(feedbacks)) feedbacks = [];
+  } catch (_) {
+    feedbacks = [];
+  }
   feedbacks.push({ type, details, email, timestamp });
+  if (feedbacks.length > 50) feedbacks = feedbacks.slice(-50);
   localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
 
   const submitBtn = e.target.querySelector('button[type="submit"]');
