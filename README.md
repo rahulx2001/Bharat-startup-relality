@@ -12,7 +12,7 @@ Live data: [`data/graveyard.json`](data/graveyard.json)
 | Gold verified | ~2% | **~23%** | ≥30% |
 | Fake gold labels | 0 | **0** | 0 |
 
-Honesty-first: thin company-index URLs rejected; curated article seeds only. Terminal UX: compare, export, URL state, provisional banners, `/` search, Escape close.
+Honesty-first: thin company-index URLs rejected; curated article seeds only. Terminal UX: compare, URL state, `/` search, Escape close (no public data export).
 
 ## Master upgrade prompt (full 10/10 roadmap)
 

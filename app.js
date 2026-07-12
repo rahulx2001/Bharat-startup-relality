@@ -1267,49 +1267,6 @@ const closeComparePanel = () => {
   panel.classList.remove('show');
 };
 
-const exportFiltered = (format) => {
-  const rows = state.filtered || [];
-  if (!rows.length) {
-    alert('Nothing to export for current filters.');
-    return;
-  }
-  const slim = rows.map((s) => ({
-    startup_name: s.startup_name,
-    status: s.status,
-    category: s.category,
-    funding_burned_usd: s.funding_burned_usd ?? null,
-    profile_tier: s.profile_tier,
-    research_status: s.research_status,
-    research_score: s.research_score,
-    sources_count: sourceCountOf(s),
-    headquarters: s.headquarters,
-    year_founded: s.year_founded,
-    year_died: s.year_died,
-  }));
-  let blob;
-  let filename;
-  if (format === 'csv') {
-    const headers = Object.keys(slim[0]);
-    const lines = [headers.join(',')];
-    slim.forEach((r) => {
-      lines.push(headers.map((h) => {
-        const v = r[h] == null ? '' : String(r[h]);
-        return `"${v.replace(/"/g, '""')}"`;
-      }).join(','));
-    });
-    blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-    filename = 'bharat-startup-reality-export.csv';
-  } else {
-    blob = new Blob([JSON.stringify(slim, null, 2)], { type: 'application/json' });
-    filename = 'bharat-startup-reality-export.json';
-  }
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(a.href);
-};
-
 const updateWatchlistBadge = () => {
   const btn = el('watchlistOnlyBtn');
   if (!btn || !Q()) return;
@@ -1348,8 +1305,6 @@ el('watchlistOnlyBtn')?.addEventListener('click', () => {
   applyFilters();
   syncUrlState();
 });
-el('exportJsonBtn')?.addEventListener('click', () => exportFiltered('json'));
-el('exportCsvBtn')?.addEventListener('click', () => exportFiltered('csv'));
 el('compareClose')?.addEventListener('click', closeComparePanel);
 el('compareBackdrop')?.addEventListener('click', closeComparePanel);
 el('modalBackdrop').addEventListener('click', closeModal);
