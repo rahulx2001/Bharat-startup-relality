@@ -17,18 +17,24 @@ intelligence / graveyard product (BluSmart-depth profiles).
 
 1. DETAIL IS MANDATORY when adding or fully researching a startup.
    Thin, one-line, or placeholder profiles are forbidden.
-2. Every material claim should be concrete: names, dates, ₹/$ amounts, cities,
+2. IDENTITY LOCK: Research ONLY the company named in startup_name / existing_entry.
+   The first sentence of short_summary MUST begin with that exact company name.
+   Never write about a different startup (no Zolve/Zetwerk/Zetabox/Zostel swaps).
+   Every narrative field (summary, value_proposition, cause_of_death) must clearly
+   be about that company. Sources titles/URLs must match the same company.
+3. Every material claim should be concrete: names, dates, ₹/$ amounts, cities,
    investor names, headcount, product facts — not vague marketing language.
-3. Prefer public, India-relevant facts. If a fact is unknown, write null / omit
+4. Prefer public, India-relevant facts. If a fact is unknown, write null / omit
    inventing numbers. NEVER invent funding amounts, valuations, or regulatory
-   orders.
-4. When funding_lookup or existing_entry provide numbers, preserve them unless
+   orders. NEVER invent article URLs — only use real public URLs you are sure of;
+   if unsure, use an empty url string rather than a fabricated articleshow link.
+5. When funding_lookup or existing_entry provide numbers, preserve them unless
    a clearly stronger public figure is available.
-5. sources must be an array of objects: {"title": "...", "url": "..."}.
+6. sources must be an array of objects: {"title": "...", "url": "..."}.
    Include the news URL from the signal and other known public references.
-6. Output ONE JSON object only (no markdown, no preamble) matching the schema.
-7. Write in clear English suitable for founders and investors.
-8. Status must be one of: Shut Down, Struggling, Pivoted, Comeback, Recovery
+7. Output ONE JSON object only (no markdown, no preamble) matching the schema.
+8. Write in clear English suitable for founders and investors.
+9. Status must be one of: Shut Down, Struggling, Pivoted, Comeback, Recovery
    (or Crisis / Layoffs only if clearly justified by the research).
 
 ## MINIMUM DEPTH CHECKLIST (new or full research)
@@ -119,10 +125,22 @@ def enrich_system_prompt(*, mode: str = "new") -> str:
             "A previous draft failed the research quality gate. "
             "You are given missing_fields and the partial draft. "
             "Return a FULL JSON profile that fixes every missing field to gold depth. "
-            "Do not remove strong existing content — only deepen and complete. "
+            "IDENTITY LOCK still applies — short_summary must start with the company name; "
+            "delete any wrong-company paragraphs (Zolve/Zetwerk/etc.). "
+            "Do not remove strong correct facts — only deepen and complete. "
             "Prioritize: timeline (≥8), insights (≥6), lessons (≥4), long value_proposition, "
             "cause_of_death for distress, complete ai_rebuild, sources with real URLs, "
-            "and concrete numbers/dates. NEVER invent funding figures."
+            "and concrete numbers/dates. NEVER invent funding figures or fake URLs."
+        )
+    elif mode == "identity_fix":
+        focus = (
+            "MODE: IDENTITY FIX.\n"
+            "The previous dossier was REJECTED because it described the WRONG company. "
+            "existing_entry.startup_name is the ONLY company you may write about. "
+            "short_summary MUST start with that exact name. Rewrite summary, value_proposition, "
+            "cause_of_death, timeline, insights, lessons, ai_rebuild, and sources about that "
+            "company alone. Discard any Zolve/Zetwerk/Zetabox/Zostel or other wrong-brand text. "
+            "Use only defensible public facts; never invent funding or URLs."
         )
     else:
         focus = (

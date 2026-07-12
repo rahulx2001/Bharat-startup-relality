@@ -8,6 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
+from .identity import identity_problems
 from .prompts import RESEARCH_MINIMUMS
 from .quality import profile_score
 
@@ -98,10 +99,9 @@ def evaluate_research(
         missing.append("status")
         reasons.append("missing status")
 
-    # Evidence: at least one http(s) source URL
+    # Evidence: at least one http(s) source URL (required for gold, new or existing)
     urls = _source_urls(entry)
-    min_sources = 1 if is_new else 1
-    if len(urls) < min_sources:
+    if len(urls) < 1:
         missing.append("sources_with_url")
         reasons.append("need ≥1 source with http(s) URL")
 
@@ -127,6 +127,13 @@ def evaluate_research(
         missing.append("concrete_facts")
         reasons.append("core narrative lacks numbers/dates/currency (too vague)")
 
+    # Identity integrity (wrong-company dossiers)
+    id_problems = identity_problems(entry)
+    if id_problems:
+        missing.append("identity_integrity")
+        for p in id_problems:
+            reasons.append(f"identity: {p}")
+
     # Timeline event quality: events should not be empty strings
     timeline = entry.get("timeline") or []
     if isinstance(timeline, list):
@@ -142,43 +149,38 @@ def evaluate_research(
             seen.add(item)
             missing_unique.append(item)
 
-    # Hard blockers for gold acceptance.
-    # New startups must have real source URLs; legacy catalog rows can pass on
-    # score completeness without http sources (many predate URL-normalized sources).
-    hard_blockers = {"concrete_facts", "startup_name", "status"}
+    # Hard blockers for gold — sources + identity always required
+    hard_blockers = {
+        "concrete_facts",
+        "startup_name",
+        "status",
+        "sources_with_url",
+        "identity_integrity",
+    }
     if is_new:
         hard_blockers.add("founders")
-        hard_blockers.add("sources_with_url")
-    if status in DISTRESS_STATUSES:
-        # only hard-block cause when depth score also lacks it (profile_score missing)
-        if "cause_of_death" in missing:
-            hard_blockers.add("cause_of_death")
-
+    if status in DISTRESS_STATUSES and "cause_of_death" in missing_unique:
+        hard_blockers.add("cause_of_death")
 
     blocked = [m for m in missing_unique if m in hard_blockers]
     score_ok = depth["score"] >= 85
-    # profile_score "complete" means gold bar on weighted fields
     complete = bool(depth["complete"] and not blocked)
 
     if require_gold:
-        # Accept gold-tier dossiers: high score + no hard blockers.
-        # Soft gaps (e.g. insights 5/6 on an 85+ profile) do not reject if score_ok.
         accepted = score_ok and not blocked and bool(name and status)
         if is_new and depth["score"] < 85:
             accepted = False
-        # Brand-new rows still need core structure, not a bare 85 from weird weights
         if is_new and any(
             m in missing_unique
             for m in ("value_proposition", "timeline", "ai_rebuild", "ai_rebuild_detail", "short_summary")
         ):
             accepted = False
     else:
-        accepted = bool(name and status and entry.get("short_summary"))
+        accepted = bool(name and status and entry.get("short_summary") and "identity_integrity" not in missing_unique)
 
     if blocked:
         for b in blocked:
-            if b not in {r.split()[0] for r in reasons}:
-                reasons.append(f"hard blocker: {b}")
+            reasons.append(f"hard blocker: {b}")
 
     return GateResult(
         accepted=accepted,

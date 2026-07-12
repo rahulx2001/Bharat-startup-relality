@@ -17,6 +17,7 @@ from .config import (
     nvidia_model,
     research_max_repair_passes,
 )
+from .identity import identity_problems
 from .prompts import SIGNAL_SYSTEM_PROMPT, enrich_system_prompt
 from .quality import profile_score
 from .research_gate import GateResult, evaluate_research, merge_research
@@ -396,13 +397,17 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
     """BluSmart-level deep enrichment with repair until gold (or max passes)."""
     schema_hint = _detailed_schema_hint()
     schema_hint["profile_tier"] = "gold"
+    target_name = existing.get("startup_name") or ""
     system = enrich_system_prompt(mode="gold")
     user = json.dumps(
         {
             "research_mode": "gold",
+            "target_company": target_name,
             "instruction": (
-                "Apply RESEARCH_SYSTEM_RULES at maximum depth. "
-                "Match or exceed the gold_standard_example. System rejects thin output."
+                f"Apply RESEARCH_SYSTEM_RULES at maximum depth for ONLY '{target_name}'. "
+                f"short_summary MUST start with '{target_name}'. "
+                "Match structure/depth of gold_standard_example but NEVER copy another company's story. "
+                "System rejects thin output and wrong-identity dossiers."
             ),
             "gold_standard_example": {
                 "startup_name": gold_example.get("startup_name"),
@@ -446,14 +451,37 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
         attempt += 1
         print(f"[research] Gold repair {attempt}/{passes} for {entry.get('startup_name')}")
         try:
-            entry = repair_research(
-                entry,
-                signal=None,
-                funding=funding,
-                existing=existing,
-                missing=gate.missing,
-                reasons=gate.reasons,
-            )
+            # Identity failures get a dedicated fix prompt
+            mode = "identity_fix" if "identity_integrity" in gate.missing else "repair"
+            if mode == "identity_fix":
+                ctx = {
+                    "research_mode": "identity_fix",
+                    "target_company": existing.get("startup_name"),
+                    "identity_problems": identity_problems(entry),
+                    "partial_draft": entry,
+                    "existing_entry": existing,
+                    "funding_lookup": funding,
+                    "schema": _detailed_schema_hint(),
+                }
+                raw = _chat(
+                    enrich_system_prompt(mode="identity_fix"),
+                    json.dumps(ctx, ensure_ascii=False, indent=2),
+                    temperature=0.2,
+                )
+                patch = _extract_json(raw)
+                if not isinstance(patch, dict):
+                    raise ValueError("identity_fix expected JSON object")
+                entry = merge_research(entry, patch)
+                entry = _apply_funding_and_sources(entry, None, funding, existing)
+            else:
+                entry = repair_research(
+                    entry,
+                    signal=None,
+                    funding=funding,
+                    existing=existing,
+                    missing=gate.missing,
+                    reasons=gate.reasons,
+                )
             entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
             entry["status"] = existing.get("status") or entry.get("status")
         except Exception as exc:
