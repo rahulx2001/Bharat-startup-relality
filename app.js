@@ -13,11 +13,15 @@ const state = {
   filtered: [],
   activeStatus: 'All',
   categoryFilter: 'All',
+  qualityFilter: 'all',
   sortBy: 'default',
   recentOnly: false,
+  watchlistOnly: false,
   currentPage: 1,
   generatedAt: '',
 };
+
+const Q = () => globalThis.BSRQuality || null;
 
 const el = (id) => document.getElementById(id);
 
@@ -214,11 +218,18 @@ const buildCards = (items) => {
     card.className = 'card';
     const foundersRaw = s.founders?.length ? `👤 ${s.founders.slice(0, 2).join(', ')}` : '';
     const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
+    const badgeLabel = Q() ? Q().qualityBadgeLabel(s) : String(s.profile_tier || 'unscored');
+    const badgeClass = Q() ? Q().qualityBadgeClass(s) : 'tier-unset';
+    const watched = Q() ? Q().isWatched(s.startup_name) : false;
     // Escape all catalog fields — data may include LLM-generated or untrusted text
     card.innerHTML = `
-      <div class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</div>
+      <div class="card-top-row">
+        <div class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</div>
+        <button type="button" class="watch-btn ${watched ? 'active' : ''}" data-watch="${escapeHtml(s.startup_name)}" aria-label="Toggle watchlist" title="Watchlist">${watched ? '★' : '☆'}</button>
+      </div>
       <h4>${escapeHtml(s.startup_name)}</h4>
       <div class="meta">
+        <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
         ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
         <span class="tag alt">${escapeHtml(formatMoney(s.funding_burned_usd))}</span>
         <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
@@ -227,7 +238,19 @@ const buildCards = (items) => {
       ${foundersRaw ? `<div class="card-founders">${escapeHtml(foundersRaw)}</div>` : ''}
       <div class="card-cta">🔍 Tap to explore full story & AI rebuild idea →</div>
     `;
-    card.onclick = () => openModal(s);
+    card.onclick = (ev) => {
+      if (ev.target.closest('.watch-btn')) return;
+      openModal(s);
+    };
+    const watchBtn = card.querySelector('.watch-btn');
+    if (watchBtn) {
+      watchBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        if (!Q()) return;
+        Q().toggleWatchlist(s.startup_name);
+        applyFilters();
+      });
+    }
     grid.appendChild(card);
   });
 };
@@ -262,6 +285,15 @@ const applyFilters = () => {
     filtered = filtered.filter(isRecentlyUpdated);
   }
 
+  if (state.qualityFilter && state.qualityFilter !== 'all' && Q()) {
+    filtered = filtered.filter((s) => Q().matchesQualityFilter(s, state.qualityFilter));
+  }
+
+  if (state.watchlistOnly && Q()) {
+    const names = new Set(Q().loadWatchlist());
+    filtered = filtered.filter((s) => names.has(s.startup_name));
+  }
+
   filtered = sortStartups(filtered, state.sortBy);
 
   state.filtered = filtered;
@@ -270,6 +302,9 @@ const applyFilters = () => {
 };
 
 const sortStartups = (items, sortBy) => {
+  if (Q() && typeof Q().sortStartupsList === 'function') {
+    return Q().sortStartupsList(items, sortBy);
+  }
   const list = [...items];
   switch (sortBy) {
     case 'recent':
@@ -314,13 +349,26 @@ const openModal = (s) => {
   el('modalTitle').textContent = s.startup_name;
 
   const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
+  const badgeLabel = Q() ? Q().qualityBadgeLabel(s) : String(s.profile_tier || 'unscored');
+  const badgeClass = Q() ? Q().qualityBadgeClass(s) : 'tier-unset';
+  const watched = Q() ? Q().isWatched(s.startup_name) : false;
   el('modalMeta').innerHTML = `
     <span class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</span>
+    <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
     ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
     <span class="tag alt">${escapeHtml(formatMoney(s.funding_burned_usd))}</span>
     <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
     <span class="tag">${escapeHtml(s.headquarters || 'India')}</span>
+    <button type="button" class="watch-btn modal-watch ${watched ? 'active' : ''}" id="modalWatchBtn">${watched ? '★ In watchlist' : '☆ Watchlist'}</button>
   `;
+  const modalWatch = el('modalWatchBtn');
+  if (modalWatch && Q()) {
+    modalWatch.onclick = () => {
+      Q().toggleWatchlist(s.startup_name);
+      openModal(s);
+      if (state.watchlistOnly) applyFilters();
+    };
+  }
 
   // Value Proposition
   el('modalValueProp').textContent = s.value_proposition || s.short_summary || `${s.startup_name} was a startup in the ${s.category || 'Tech'} space that aimed to solve problems in their industry.`;
@@ -958,17 +1006,44 @@ const closeModal = () => {
   el('detailModal').setAttribute('aria-hidden', 'true');
 };
 
+const showLoadError = (message) => {
+  const box = el('loadError');
+  const grid = el('cardsGrid');
+  if (box) {
+    box.hidden = false;
+    box.textContent = message;
+  }
+  if (grid) {
+    grid.innerHTML = '<div class="empty-state">Catalog could not be loaded. Check your connection or try again later.</div>';
+  }
+};
+
 const loadData = async () => {
-  const res = await fetch(DATA_URL);
-  const json = await res.json();
-  state.data = json.startups || [];
-  state.filtered = state.data;
-  state.generatedAt = json.generated_at || '';
-  buildStatusFilters();
-  buildCategoryFilter(state.data);
-  updateHeroMeta(state.data);
-  renderResults();
-  openDeepLink();
+  const box = el('loadError');
+  if (box) {
+    box.hidden = true;
+    box.textContent = '';
+  }
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    const json = await res.json();
+    state.data = json.startups || [];
+    state.filtered = state.data;
+    state.generatedAt = json.generated_at || '';
+    buildStatusFilters();
+    buildCategoryFilter(state.data);
+    updateHeroMeta(state.data);
+    renderResults();
+    openDeepLink();
+  } catch (err) {
+    console.error('[loadData]', err);
+    showLoadError(
+      'Failed to load startup catalog (data/graveyard.json). The rest of the page shell still works — retry by refreshing.'
+    );
+  }
 };
 
 const updateHeroMeta = (items) => {
@@ -978,8 +1053,16 @@ const updateHeroMeta = (items) => {
   if (subtitle) {
     subtitle.textContent = `The unfiltered truth about Indian startups — failures, struggles, pivots & comebacks. Learn from ${formatInrCr(burned)} in lessons.`;
   }
-  if (freshness && state.generatedAt) {
-    freshness.textContent = `📅 Dataset last updated: ${state.generatedAt} · ${items.length} startups`;
+  const gold = items.filter((s) => s.profile_tier === 'gold' && s.research_status === 'gold_pass').length;
+  const withSrc = items.filter((s) => Q() ? Q().sourceCount(s) > 0 : (s.sources || []).length > 0).length;
+  if (freshness) {
+    const datePart = state.generatedAt ? `📅 Dataset last updated: ${state.generatedAt}` : '📅 Dataset date unknown';
+    freshness.textContent = `${datePart} · ${items.length} startups · ${gold} gold verified · ${withSrc} with sources`;
+  }
+  const qLine = el('qualitySummaryLine');
+  if (qLine) {
+    const blocked = items.filter((s) => s.research_rejected || s.research_status === 'blocked').length;
+    qLine.textContent = `Live honesty: ${gold}/${items.length} gold-verified · ${blocked} below gold bar · ${withSrc} profiles with source URLs. Silver is not failure — it means depth or sources still incomplete.`;
   }
 };
 
@@ -1000,13 +1083,32 @@ el('sortBy')?.addEventListener('change', (e) => {
   state.sortBy = e.target.value;
   applyFilters();
 });
+el('qualityFilter')?.addEventListener('change', (e) => {
+  state.qualityFilter = e.target.value;
+  applyFilters();
+});
 el('recentOnlyBtn')?.addEventListener('click', () => {
   state.recentOnly = !state.recentOnly;
   el('recentOnlyBtn').classList.toggle('active', state.recentOnly);
   applyFilters();
 });
+el('watchlistOnlyBtn')?.addEventListener('click', () => {
+  state.watchlistOnly = !state.watchlistOnly;
+  el('watchlistOnlyBtn')?.classList.toggle('active', state.watchlistOnly);
+  applyFilters();
+});
 el('modalBackdrop').addEventListener('click', closeModal);
 el('modalClose').addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  const detail = el('detailModal');
+  const feedback = el('feedbackModal');
+  if (detail?.classList.contains('show')) closeModal();
+  if (feedback?.classList.contains('show') && typeof closeFeedbackModal === 'function') {
+    closeFeedbackModal();
+  }
+});
 
 // Bubble Animation
 const createBubbles = () => {

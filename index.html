@@ -60,6 +60,17 @@
           <div class="stat-label">🔥 Total Funding at Risk</div>
         </div>
       </div>
+      <details class="methodology-strip" id="methodologyStrip">
+        <summary>How research quality works (gold gate · sources · honesty)</summary>
+        <div class="methodology-body">
+          <p><strong>Gold verified</strong> means a profile passed the research gate: concrete narrative fields,
+            founders when public, on-topic source URLs, and no identity contamination. Most cards are
+            <strong>silver/bronze</strong> until sources and depth clear that bar — we never invent funding or fake gold.</p>
+          <p>Pipeline: RSS signals → cloud NIM research → gold gate + repair → restamp → <code>data/graveyard.json</code>.
+            Badges show <em>tier · score · source count</em> from those fields. Use quality filters to browse honestly.</p>
+          <p id="qualitySummaryLine" class="quality-summary-line"></p>
+        </div>
+      </details>
     </header>
 
     <section class="controls">
@@ -75,9 +86,23 @@
           </select>
         </div>
         <div class="toolbar-group">
+          <label for="qualityFilter">Research quality</label>
+          <select id="qualityFilter">
+            <option value="all">All tiers</option>
+            <option value="gold">Gold verified only</option>
+            <option value="silver">Silver</option>
+            <option value="bronze">Bronze</option>
+            <option value="thin">Thin</option>
+            <option value="has_sources">Has sources</option>
+            <option value="no_sources">Missing sources</option>
+            <option value="blocked">Below gold bar</option>
+          </select>
+        </div>
+        <div class="toolbar-group">
           <label for="sortBy">Sort by</label>
           <select id="sortBy">
-            <option value="default">Fame &amp; funding</option>
+            <option value="default">Default order</option>
+            <option value="quality">Research quality</option>
             <option value="recent">Recently updated</option>
             <option value="funding">Funding (high → low)</option>
             <option value="year_died">Year died (recent first)</option>
@@ -85,11 +110,13 @@
           </select>
         </div>
         <button class="filter-btn" id="recentOnlyBtn" type="button">🆕 Recently updated</button>
+        <button class="filter-btn" id="watchlistOnlyBtn" type="button">★ Watchlist</button>
       </div>
-      <div class="hint">👆� <strong>Click any card below</strong> to explore the full story — AI rebuild ideas, execution
-        plans & monetization strategies inside!</div>
+      <div class="hint"><strong>Click any card</strong> for the full story. Quality badges show honest research depth —
+        not marketing gold. ★ saves to a local watchlist (this browser only).</div>
     </section>
 
+    <div id="loadError" class="load-error" hidden role="alert"></div>
     <section class="grid" id="cardsGrid"></section>
 
     <nav class="pagination" id="pagination" aria-label="Startup pages">
@@ -232,6 +259,7 @@
   </footer>
 
   <script src="security.js"></script>
+  <script src="quality.js"></script>
   <script src="app.js"></script>
 </body>
 
