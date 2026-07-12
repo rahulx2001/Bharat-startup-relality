@@ -479,6 +479,13 @@ body {
   border: 3px solid var(--border);
   background: var(--card);
   box-shadow: 3px 3px 0 var(--border);
+  position: sticky;
+  top: 8px;
+  z-index: 40;
+}
+
+.compare-bar[hidden] {
+  display: none !important;
 }
 
 .compare-bar-inner {
@@ -486,6 +493,25 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+}
+
+.compare-bar-inner .filter-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+[data-theme="dark"] .compare-bar {
+  background: #252525;
+  border-color: #666;
+}
+
+[data-theme="dark"] .compare-table th {
+  background: #3a3520;
+  color: #fff4c2;
+}
+
+[data-theme="dark"] .compare-table td {
+  color: var(--ink);
 }
 
 .compare-table {

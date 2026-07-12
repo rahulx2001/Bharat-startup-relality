@@ -248,21 +248,37 @@ const buildCards = (items) => {
       <p>${escapeHtml(s.short_summary || s.failure_reason || 'No details available.')}</p>
       ${foundersRaw ? `<div class="card-founders">${escapeHtml(foundersRaw)}</div>` : ''}
       <div class="card-actions-row">
-        <label class="compare-check" onclick="event.stopPropagation()">
-          <input type="checkbox" data-compare="${escapeHtml(s.startup_name)}" ${state.compareIds.includes(s.startup_name) ? 'checked' : ''}/> Compare
+        <label class="compare-check">
+          <input type="checkbox" data-compare-name="${escapeHtml(s.startup_name)}" ${state.compareIds.includes(s.startup_name) ? 'checked' : ''}/> Compare
         </label>
         <div class="card-cta">🔍 Tap to explore →</div>
       </div>
     `;
-    card.onclick = (ev) => {
-      if (ev.target.closest('.watch-btn') || ev.target.closest('.compare-check')) return;
+    card.addEventListener('click', (ev) => {
+      if (ev.target.closest('.watch-btn') || ev.target.closest('.compare-check')) {
+        ev.stopPropagation();
+        return;
+      }
       openModal(s);
-    };
-    const cmp = card.querySelector('input[data-compare]');
+    });
+    const cmpWrap = card.querySelector('.compare-check');
+    const cmp = card.querySelector('input[data-compare-name]');
+    if (cmpWrap) {
+      cmpWrap.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+      });
+    }
     if (cmp) {
+      cmp.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+      });
       cmp.addEventListener('change', (ev) => {
         ev.stopPropagation();
-        toggleCompare(s.startup_name, cmp.checked);
+        const added = toggleCompare(s.startup_name, cmp.checked);
+        if (cmp.checked && !added) {
+          // already at max 3
+          cmp.checked = false;
+        }
       });
     }
     const watchBtn = card.querySelector('.watch-btn');
@@ -1192,15 +1208,25 @@ const syncUrlState = () => {
   window.history.replaceState({}, '', next);
 };
 
+/** @returns {boolean} whether the name is in the compare list after the update */
 const toggleCompare = (name, on) => {
   const n = String(name || '');
-  if (!n) return;
+  if (!n) return false;
   if (on) {
-    if (!state.compareIds.includes(n) && state.compareIds.length < 3) state.compareIds.push(n);
+    if (state.compareIds.includes(n)) {
+      renderCompareBar();
+      return true;
+    }
+    if (state.compareIds.length >= 3) {
+      renderCompareBar();
+      return false;
+    }
+    state.compareIds.push(n);
   } else {
     state.compareIds = state.compareIds.filter((x) => x !== n);
   }
   renderCompareBar();
+  return state.compareIds.includes(n);
 };
 
 const renderCompareBar = () => {
@@ -1208,40 +1234,57 @@ const renderCompareBar = () => {
   if (!bar) return;
   if (!state.compareIds.length) {
     bar.hidden = true;
+    bar.setAttribute('hidden', '');
     bar.innerHTML = '';
     return;
   }
   bar.hidden = false;
+  bar.removeAttribute('hidden');
+  const canOpen = state.compareIds.length >= 2;
   bar.innerHTML = `
     <div class="compare-bar-inner">
       <strong>Compare (${state.compareIds.length}/3):</strong>
       ${state.compareIds.map((n) => `<span class="tag">${escapeHtml(n)}</span>`).join('')}
-      <button type="button" class="filter-btn" id="runCompareBtn">Open compare</button>
+      <button type="button" class="filter-btn" id="runCompareBtn" ${canOpen ? '' : 'disabled'}>
+        ${canOpen ? 'Open compare' : 'Pick 1 more'}
+      </button>
       <button type="button" class="filter-btn" id="clearCompareBtn">Clear</button>
     </div>`;
-  el('runCompareBtn')?.addEventListener('click', openComparePanel);
-  el('clearCompareBtn')?.addEventListener('click', () => {
+  el('runCompareBtn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openComparePanel();
+  });
+  el('clearCompareBtn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     state.compareIds = [];
     renderCompareBar();
     renderResults();
   });
+  // Auto-open when user reaches 2 selections (clearer UX)
+  if (state.compareIds.length === 2 && !el('comparePanel')?.classList.contains('show')) {
+    // keep manual open — only enable button; auto-open can surprise. leave manual.
+  }
 };
 
 const openComparePanel = () => {
   const panel = el('comparePanel');
   const body = el('compareBody');
   if (!panel || !body) return;
-  const rows = state.compareIds.map((name) => state.data.find((s) => s.startup_name === name)).filter(Boolean);
+  const rows = state.compareIds
+    .map((name) => state.data.find((s) => s.startup_name === name))
+    .filter(Boolean);
   if (rows.length < 2) {
-    alert('Select at least 2 startups to compare.');
+    alert('Select at least 2 startups with the Compare checkbox, then open compare.');
     return;
   }
   const fields = [
     ['Status', (s) => s.status || '—'],
     ['Funding', (s) => formatMoneyOrUnknown(s.funding_burned_usd)],
-    ['Peak valuation', (s) => (Q()?.formatUsdCompact(s.peak_valuation) || '—')],
-    ['Team size', (s) => (Q()?.formatEmployees(s.employees) || '—')],
-    ['Years active', (s) => (Q()?.formatYearsActive(s) || '—')],
+    ['Peak valuation', (s) => (Q()?.formatUsdCompact?.(s.peak_valuation) || '—')],
+    ['Team size', (s) => (Q()?.formatEmployees?.(s.employees) || '—')],
+    ['Years active', (s) => (Q()?.formatYearsActive?.(s) || '—')],
     ['Category', (s) => s.category || '—'],
     ['HQ', (s) => s.headquarters || '—'],
     ['Cause / struggle', (s) => (s.cause_of_death || s.failure_reason || '—').slice(0, 160)],
@@ -1257,14 +1300,20 @@ const openComparePanel = () => {
   html += '</tbody></table>';
   body.innerHTML = html;
   panel.hidden = false;
+  panel.removeAttribute('hidden');
   panel.classList.add('show');
+  panel.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 };
 
 const closeComparePanel = () => {
   const panel = el('comparePanel');
   if (!panel) return;
   panel.hidden = true;
+  panel.setAttribute('hidden', '');
   panel.classList.remove('show');
+  panel.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
 };
 
 const updateWatchlistBadge = () => {
