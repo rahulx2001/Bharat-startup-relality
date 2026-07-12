@@ -115,11 +115,14 @@
         </div>
         <button class="filter-btn" id="recentOnlyBtn" type="button">🆕 Recently updated</button>
         <button class="filter-btn" id="watchlistOnlyBtn" type="button">★ Watchlist</button>
+        <button class="filter-btn" id="exportJsonBtn" type="button">⬇ JSON</button>
+        <button class="filter-btn" id="exportCsvBtn" type="button">⬇ CSV</button>
       </div>
       <div class="hint"><strong>Click any card</strong> for the full story. Quality badges show honest research depth —
-        not marketing gold. ★ saves to a local watchlist (this browser only).</div>
+        not marketing gold. ★ watchlist · Compare checkbox · <kbd>/</kbd> search · <kbd>Esc</kbd> close.</div>
     </section>
 
+    <div id="compareBar" class="compare-bar" hidden></div>
     <div id="loadError" class="load-error" hidden role="alert"></div>
     <section class="grid" id="cardsGrid"></section>
 
@@ -137,6 +140,8 @@
         <h2 id="modalTitle">Startup</h2>
         <div class="modal-meta" id="modalMeta"></div>
       </div>
+
+      <div class="section integrity-section" id="modalIntegrity" hidden></div>
 
       <!-- Value Proposition -->
       <div class="section value-prop-section">
@@ -261,6 +266,16 @@
       <p class="footer-tagline">Learning from failures, building for success.</p>
     </div>
   </footer>
+
+
+  <div class="modal" id="comparePanel" hidden aria-hidden="true">
+    <div class="modal-backdrop" id="compareBackdrop"></div>
+    <div class="modal-content compare-modal-content">
+      <button class="modal-close" id="compareClose" type="button">×</button>
+      <div class="modal-header"><h2>Compare startups</h2></div>
+      <div id="compareBody"></div>
+    </div>
+  </div>
 
   <script src="security.js"></script>
   <script src="quality.js"></script>

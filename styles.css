@@ -391,6 +391,104 @@ body {
   box-shadow: 3px 3px 0 var(--border);
 }
 
+.tag.provisional-tag {
+  background: #ffe8c8;
+  border-color: #c80;
+  color: #402000;
+}
+
+.tag.tag-verified {
+  background: #d8ffe0;
+  border-color: #080;
+  color: #040;
+}
+
+.provisional-note,
+.integrity-warn {
+  color: #602000;
+  font-weight: 700;
+}
+
+.integrity-ok {
+  color: #064;
+  font-weight: 700;
+}
+
+.integrity-section {
+  background: #fff8e8;
+  border: 2px dashed var(--border);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.integrity-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.card-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.compare-check {
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.compare-bar {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 3px solid var(--border);
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--border);
+}
+
+.compare-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 2px solid var(--border);
+  padding: 8px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.compare-table th {
+  background: #fff4c2;
+}
+
+.compare-modal-content {
+  max-width: 960px;
+  width: 95%;
+}
+
+kbd {
+  border: 2px solid var(--border);
+  padding: 1px 5px;
+  font-weight: 800;
+  background: #fff;
+  box-shadow: 1px 1px 0 var(--border);
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;

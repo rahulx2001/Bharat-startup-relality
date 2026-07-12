@@ -51,8 +51,12 @@ class TestQualityContracts(unittest.TestCase):
         for s in gold_pass:
             src = s.get("sources") or []
             self.assertTrue(src, msg=f"{s.get('startup_name')} gold_pass without sources")
-        # Not mass-fake-gold
-        self.assertLessEqual(len(gold), max(5, len(items) // 5))
+        # Not mass-fake-gold: gold must not exceed sourced rows or 50% of catalog
+        with_src = sum(1 for s in items if s.get("sources"))
+        self.assertLessEqual(len(gold_pass), with_src)
+        self.assertLessEqual(len(gold), max(5, len(items) // 2))
+        # every gold_pass must match honest pair
+        self.assertEqual(len(gold), len(gold_pass))
 
     def test_restamp_matches_catalog_tiers(self):
         from pipeline.restamp import restamp_entry

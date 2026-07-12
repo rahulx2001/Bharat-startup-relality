@@ -171,6 +171,16 @@ def _is_publisher_root(url: str) -> bool:
     # /en /india /search only
     if path.lower() in {"en", "in", "india", "search", "tech", "startups"}:
         return True
+    # company index / latest listing pages are not article-grade sources
+    pl = path.lower()
+    if "/company/" in f"/{pl}/" and (
+        pl.endswith("/latest")
+        or pl.endswith("/latest/")
+        or pl.count("/") <= 2
+    ):
+        return True
+    if re.search(r"/company/[^/]+/?$", pl):
+        return True
     # known publisher root with no article slug depth
     if host in _PUBLISHER_ROOTS and path.count("/") == 0 and len(path) < 12:
         # e.g. inc42.com/ or yourstory.com/ — still root-ish

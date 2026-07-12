@@ -17,8 +17,10 @@ const state = {
   sortBy: 'default',
   recentOnly: false,
   watchlistOnly: false,
+  compareIds: [],
   currentPage: 1,
   generatedAt: '',
+  qualitySummary: null,
 };
 
 const Q = () => globalThis.BSRQuality || null;
@@ -36,10 +38,20 @@ const formatMoney = (num) => {
 
 const unique = (arr) => [...new Set(arr)];
 
-const isGoldProfile = (s) => s.profile_tier === 'gold' || (
-  s.value_proposition && s.cause_of_death && s.ai_rebuild?.name
-  && (s.timeline?.length || 0) >= 6 && (s.insights?.length || 0) >= 5
-);
+/** Honest gold only — never treat long prose as verified gold. */
+const isGoldProfile = (s) =>
+  s && s.profile_tier === 'gold' && s.research_status === 'gold_pass';
+
+const isProvisionalProfile = (s) => !isGoldProfile(s);
+
+const sourceCountOf = (s) => (Q() ? Q().sourceCount(s) : (Array.isArray(s?.sources) ? s.sources.length : 0));
+
+const formatMoneyOrUnknown = (num) => {
+  if (num == null || num === '' || Number(num) === 0 || Number.isNaN(Number(num))) {
+    return 'Funding unknown';
+  }
+  return formatMoney(num);
+};
 
 const isRecentlyUpdated = (s) => {
   const date = s.updated_at || s.added_at;
@@ -231,17 +243,30 @@ const buildCards = (items) => {
       <div class="meta">
         <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
         ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
-        <span class="tag alt">${escapeHtml(formatMoney(s.funding_burned_usd))}</span>
+        <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
         <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
+        ${isProvisionalProfile(s) ? '<span class="tag provisional-tag">Provisional</span>' : ''}
       </div>
       <p>${escapeHtml(s.short_summary || s.failure_reason || 'No details available.')}</p>
       ${foundersRaw ? `<div class="card-founders">${escapeHtml(foundersRaw)}</div>` : ''}
-      <div class="card-cta">🔍 Tap to explore full story & AI rebuild idea →</div>
+      <div class="card-actions-row">
+        <label class="compare-check" onclick="event.stopPropagation()">
+          <input type="checkbox" data-compare="${escapeHtml(s.startup_name)}" ${state.compareIds.includes(s.startup_name) ? 'checked' : ''}/> Compare
+        </label>
+        <div class="card-cta">🔍 Tap to explore →</div>
+      </div>
     `;
     card.onclick = (ev) => {
-      if (ev.target.closest('.watch-btn')) return;
+      if (ev.target.closest('.watch-btn') || ev.target.closest('.compare-check')) return;
       openModal(s);
     };
+    const cmp = card.querySelector('input[data-compare]');
+    if (cmp) {
+      cmp.addEventListener('change', (ev) => {
+        ev.stopPropagation();
+        toggleCompare(s.startup_name, cmp.checked);
+      });
+    }
     const watchBtn = card.querySelector('.watch-btn');
     if (watchBtn) {
       watchBtn.addEventListener('click', (ev) => {
@@ -355,8 +380,9 @@ const openModal = (s) => {
   el('modalMeta').innerHTML = `
     <span class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</span>
     <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
+    ${isProvisionalProfile(s) ? '<span class="tag provisional-tag">Provisional research</span>' : '<span class="tag tag-verified">Gold verified</span>'}
     ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
-    <span class="tag alt">${escapeHtml(formatMoney(s.funding_burned_usd))}</span>
+    <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
     <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
     <span class="tag">${escapeHtml(s.headquarters || 'India')}</span>
     <button type="button" class="watch-btn modal-watch ${watched ? 'active' : ''}" id="modalWatchBtn">${watched ? '★ In watchlist' : '☆ Watchlist'}</button>
@@ -370,46 +396,55 @@ const openModal = (s) => {
     };
   }
 
-  // Value Proposition
-  el('modalValueProp').textContent = s.value_proposition || s.short_summary || `${s.startup_name} was a startup in the ${s.category || 'Tech'} space that aimed to solve problems in their industry.`;
+  // Research integrity / why blocked
+  const integrity = el('modalIntegrity');
+  if (integrity) {
+    if (isGoldProfile(s)) {
+      integrity.hidden = false;
+      integrity.innerHTML = '<p class="integrity-ok">✓ Gold verified — gate passed with sourced research.</p>';
+    } else {
+      integrity.hidden = false;
+      const reasons = Array.isArray(s.research_gate_reasons) ? s.research_gate_reasons : [];
+      const missing = Array.isArray(s.research_missing) ? s.research_missing : [];
+      const blocked = s.research_blocked_reason || '';
+      const lines = [];
+      lines.push('<p class="integrity-warn"><strong>Provisional profile</strong> — not gold-verified. Treat narrative as incomplete until sources clear the gate.</p>');
+      if (sourceCountOf(s) === 0) {
+        lines.push('<p>No verified sources yet — treat narrative as provisional.</p>');
+      }
+      if (blocked) lines.push(`<p>Blocked reason: ${escapeHtml(blocked)}</p>`);
+      if (missing.length) lines.push(`<p>Missing fields: ${escapeHtml(missing.slice(0, 12).join(', '))}</p>`);
+      if (reasons.length) {
+        lines.push('<ul class="integrity-list">' + reasons.slice(0, 8).map((r) => `<li>${escapeHtml(r)}</li>`).join('') + '</ul>');
+      }
+      integrity.innerHTML = lines.join('');
+    }
+  }
 
-  // Opportunity Score — clamp + escape via BSRSecurity (never raw catalog fields in HTML)
-  const oppScoreRaw = s.opportunity_score || (isGoldProfile(s) ? null : generateOpportunityScore(s));
+  // Value Proposition — catalog text only; no invented pitch for provisional
+  el('modalValueProp').textContent = s.value_proposition || s.short_summary
+    || (isGoldProfile(s)
+      ? `${s.startup_name} — enrichment pending.`
+      : `${s.startup_name}: detailed pitch not verified yet (provisional).`);
+
+  // Opportunity Score — only catalog scores or explicit speculative label
+  const oppScoreRaw = s.opportunity_score || null;
   if (!oppScoreRaw) {
-    el('modalOpportunity').innerHTML = '<p class="thin-note">Profile enrichment in progress.</p>';
+    el('modalOpportunity').innerHTML = isGoldProfile(s)
+      ? '<p class="thin-note">Profile enrichment in progress.</p>'
+      : '<p class="thin-note provisional-note">No opportunity score on file. Speculative scoring is disabled for provisional profiles.</p>';
   } else if (globalThis.BSRSecurity && BSRSecurity.opportunityScoreHtml) {
     const safe = BSRSecurity.sanitizeOppScore(oppScoreRaw);
-    el('modalOpportunity').innerHTML = BSRSecurity.opportunityScoreHtml(safe, {
+    const prefix = isProvisionalProfile(s)
+      ? '<p class="thin-note provisional-note">Scores from catalog (not independently re-verified).</p>'
+      : '';
+    el('modalOpportunity').innerHTML = prefix + BSRSecurity.opportunityScoreHtml(safe, {
       difficulty: getDifficultyLabel(safe.rebuild_difficulty),
       scale: getScaleLabel(safe.scalability),
       market: getMarketLabel(safe.market_potential),
     });
   } else {
-    // Fallback if security.js missing: numeric clamp only, no raw strings
-    const clamp = (v) => {
-      const n = Number(v);
-      return Number.isFinite(n) ? Math.max(0, Math.min(5, Math.floor(n))) : 0;
-    };
-    const rd = clamp(oppScoreRaw.rebuild_difficulty);
-    const sc = clamp(oppScoreRaw.scalability);
-    const mp = clamp(oppScoreRaw.market_potential);
-    el('modalOpportunity').innerHTML = `
-    <div class="opportunity-card">
-      <div class="opp-label">🔧 Rebuild Difficulty</div>
-      <div class="opp-bar">${generateBar(rd, 5)}</div>
-      <div class="opp-value">${escapeHtml(String(rd))}/5 (${escapeHtml(getDifficultyLabel(rd))})</div>
-    </div>
-    <div class="opportunity-card">
-      <div class="opp-label">📈 Scalability Potential</div>
-      <div class="opp-bar">${generateBar(sc, 5, 'green')}</div>
-      <div class="opp-value">${escapeHtml(String(sc))}/5 (${escapeHtml(getScaleLabel(sc))})</div>
-    </div>
-    <div class="opportunity-card">
-      <div class="opp-label">🎯 Market Potential Today</div>
-      <div class="opp-bar">${generateBar(mp, 5, 'orange')}</div>
-      <div class="opp-value">${escapeHtml(getMarketLabel(mp))}</div>
-    </div>
-  `;
+    el('modalOpportunity').innerHTML = '<p class="thin-note">Opportunity score unavailable.</p>';
   }
 
   // Cause of Death / Decline (only show for Shut Down or if explicitly has cause_of_death)
@@ -436,15 +471,23 @@ const openModal = (s) => {
     timeline.appendChild(div);
   });
 
-  // Lessons/Loot
+  // Lessons/Loot — catalog only; no synthetic insights for provisional
   const lessonsList = el('modalLessons');
   lessonsList.innerHTML = '';
-  const insights = s.insights?.length ? s.insights : (s.lessons?.length ? s.lessons : (isGoldProfile(s) ? [] : generateInsights(s)));
-  insights.forEach((p, i) => {
+  const insights = s.insights?.length ? s.insights : (s.lessons?.length ? s.lessons : []);
+  if (!insights.length) {
     const li = document.createElement('li');
-    li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${escapeHtml(p)}`;
+    li.textContent = isGoldProfile(s)
+      ? 'Insights pending enrichment.'
+      : 'No verified insights on file (provisional profile).';
     lessonsList.appendChild(li);
-  });
+  } else {
+    insights.forEach((p, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${escapeHtml(p)}`;
+      lessonsList.appendChild(li);
+    });
+  }
 
   // People
   const people = el('modalPeople');
@@ -465,13 +508,28 @@ const openModal = (s) => {
     people.innerHTML = '<div class="person-card"><div class="name">No data available</div></div>';
   }
 
-  // Market Today
-  el('modalMarketToday').textContent = s.market_today || (isGoldProfile(s) ? 'Market analysis pending enrichment.' : generateMarketToday(s));
+  // Market Today — catalog only
+  el('modalMarketToday').textContent = s.market_today
+    || (isGoldProfile(s)
+      ? 'Market analysis pending enrichment.'
+      : 'No verified market-today brief on file (provisional).');
 
-  // AI Rebuild Idea
-  const rebuild = s.ai_rebuild?.name ? s.ai_rebuild : (isGoldProfile(s) ? { name: 'Pending', description: 'AI rebuild being enriched.', tech_stack: [], execution_plan: [], innovative: [], monetization: '' } : generateAIRebuild(s));
+  // AI Rebuild Idea — catalog only; never invent rebuild for provisional
+  const rebuild = s.ai_rebuild?.name
+    ? s.ai_rebuild
+    : {
+        name: isGoldProfile(s) ? 'Pending' : 'Not available (provisional)',
+        description: isGoldProfile(s)
+          ? 'AI rebuild being enriched.'
+          : 'Rebuild ideas are only shown when present in the catalog. We do not invent speculative rebuilds for unverified profiles.',
+        tech_stack: [],
+        execution_plan: [],
+        innovative: [],
+        monetization: '',
+      };
   el('modalRebuildName').textContent = rebuild.name;
-  el('modalRebuildDesc').textContent = rebuild.description;
+  el('modalRebuildDesc').textContent = rebuild.description
+    + (isProvisionalProfile(s) && s.ai_rebuild?.name ? ' (Catalog field — treat as speculative unless gold-verified.)' : '');
   el('modalTechStack').innerHTML = (rebuild.tech_stack || [])
     .map((t) => `<span class="tech-tag">${escapeHtml(t)}</span>`)
     .join('');
@@ -479,49 +537,66 @@ const openModal = (s) => {
   // Execution Plan
   const execList = el('modalExecutionPlan');
   execList.innerHTML = '';
-  (rebuild.execution_plan || []).forEach((step) => {
+  const plan = rebuild.execution_plan || [];
+  if (!plan.length) {
     const li = document.createElement('li');
-    li.textContent = step;
+    li.textContent = 'No execution plan on file.';
     execList.appendChild(li);
-  });
+  } else {
+    plan.forEach((step) => {
+      const li = document.createElement('li');
+      li.textContent = step;
+      execList.appendChild(li);
+    });
+  }
 
   // What Makes This Innovative
   const innovativeList = el('modalInnovative');
   innovativeList.innerHTML = '';
-  const innovations = rebuild.innovative || generateInnovative(s);
-  innovations.forEach((point) => {
+  const innovations = rebuild.innovative || [];
+  if (!innovations.length) {
     const li = document.createElement('li');
-    li.textContent = point;
+    li.textContent = 'No innovation notes on file.';
     innovativeList.appendChild(li);
-  });
+  } else {
+    innovations.forEach((point) => {
+      const li = document.createElement('li');
+      li.textContent = point;
+      innovativeList.appendChild(li);
+    });
+  }
 
   // Monetization
-  el('modalMonetization').textContent = rebuild.monetization || (isGoldProfile(s) ? '' : generateMonetization(s));
+  el('modalMonetization').textContent = rebuild.monetization || 'No monetization plan on file.';
 
-  // Sources
+  // Sources — always show section
   const sources = parseSources(s.sources);
   const sourcesSection = el('sourcesSection');
   const sourcesList = el('modalSources');
-  if (sources.length && sourcesSection && sourcesList) {
+  if (sourcesSection && sourcesList) {
     sourcesSection.style.display = 'block';
     sourcesList.innerHTML = '';
-    sources.forEach((src) => {
+    if (!sources.length) {
       const li = document.createElement('li');
-      const safeUrl = safeHttpUrl(src.url);
-      if (safeUrl) {
-        const a = document.createElement('a');
-        a.href = safeUrl;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer nofollow';
-        a.textContent = src.title || 'Source';
-        li.appendChild(a);
-      } else {
-        li.textContent = src.title || 'Source';
-      }
+      li.textContent = 'No verified sources yet — treat narrative as provisional.';
       sourcesList.appendChild(li);
-    });
-  } else if (sourcesSection) {
-    sourcesSection.style.display = 'none';
+    } else {
+      sources.forEach((src) => {
+        const li = document.createElement('li');
+        const safeUrl = safeHttpUrl(src.url);
+        if (safeUrl) {
+          const a = document.createElement('a');
+          a.href = safeUrl;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer nofollow';
+          a.textContent = src.title || 'Source';
+          li.appendChild(a);
+        } else {
+          li.textContent = src.title || 'Source';
+        }
+        sourcesList.appendChild(li);
+      });
+    }
   }
 };
 
@@ -1018,6 +1093,24 @@ const showLoadError = (message) => {
   }
 };
 
+const computeQualitySummary = (items) => {
+  const total = items.length || 1;
+  const gold = items.filter((s) => isGoldProfile(s)).length;
+  const withSrc = items.filter((s) => sourceCountOf(s) > 0).length;
+  const blocked = items.filter((s) => s.research_rejected || s.research_status === 'blocked').length;
+  const scores = items.map((s) => Number(s.research_score)).filter((n) => Number.isFinite(n));
+  const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+  return {
+    total: items.length,
+    gold_pass: gold,
+    gold_pass_pct: +(gold / total).toFixed(4),
+    with_sources: withSrc,
+    with_sources_pct: +(withSrc / total).toFixed(4),
+    blocked,
+    avg_research_score: avg,
+  };
+};
+
 const loadData = async () => {
   const box = el('loadError');
   if (box) {
@@ -1033,11 +1126,14 @@ const loadData = async () => {
     state.data = json.startups || [];
     state.filtered = state.data;
     state.generatedAt = json.generated_at || '';
+    state.qualitySummary = json.quality_summary || computeQualitySummary(state.data);
     buildStatusFilters();
     buildCategoryFilter(state.data);
+    applyUrlState();
     updateHeroMeta(state.data);
-    renderResults();
+    applyFilters();
     openDeepLink();
+    updateWatchlistBadge();
   } catch (err) {
     console.error('[loadData]', err);
     showLoadError(
@@ -1053,60 +1149,246 @@ const updateHeroMeta = (items) => {
   if (subtitle) {
     subtitle.textContent = `The unfiltered truth about Indian startups — failures, struggles, pivots & comebacks. Learn from ${formatInrCr(burned)} in lessons.`;
   }
-  const gold = items.filter((s) => s.profile_tier === 'gold' && s.research_status === 'gold_pass').length;
-  const withSrc = items.filter((s) => Q() ? Q().sourceCount(s) > 0 : (s.sources || []).length > 0).length;
+  const qs = state.qualitySummary || computeQualitySummary(items);
+  const gold = qs.gold_pass;
+  const withSrc = qs.with_sources;
   if (freshness) {
     const datePart = state.generatedAt ? `📅 Dataset last updated: ${state.generatedAt}` : '📅 Dataset date unknown';
-    freshness.textContent = `${datePart} · ${items.length} startups · ${gold} gold verified · ${withSrc} with sources`;
+    freshness.textContent = `${datePart} · ${items.length} startups · ${gold} gold verified (${Math.round((qs.gold_pass_pct || 0) * 100)}%) · ${withSrc} with sources (${Math.round((qs.with_sources_pct || 0) * 100)}%) · avg score ${qs.avg_research_score || '—'}`;
   }
   const qLine = el('qualitySummaryLine');
   if (qLine) {
-    const blocked = items.filter((s) => s.research_rejected || s.research_status === 'blocked').length;
-    qLine.textContent = `Live honesty: ${gold}/${items.length} gold-verified · ${blocked} below gold bar · ${withSrc} profiles with source URLs. Silver is not failure — it means depth or sources still incomplete.`;
+    const blocked = qs.blocked;
+    qLine.textContent = `Live honesty: ${gold}/${items.length} gold-verified · ${blocked} below gold bar · ${withSrc} with source URLs · avg research score ${qs.avg_research_score}. Path A targets: ≥70% sources, ≥30% gold.`;
   }
+  updateWatchlistBadge();
 };
+
+const slugifyName = (name) => String(name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 const openDeepLink = () => {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('startup');
   if (!slug) return;
-  const match = state.data.find((s) => s.startup_name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug.toLowerCase());
+  const match = state.data.find((s) => slugifyName(s.startup_name) === slug.toLowerCase());
   if (match) openModal(match);
 };
 
-el('searchInput').addEventListener('input', applyFilters);
+const applyUrlState = () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('q') && el('searchInput')) el('searchInput').value = params.get('q');
+  if (params.get('status')) state.activeStatus = params.get('status');
+  if (params.get('quality')) {
+    state.qualityFilter = params.get('quality');
+    if (el('qualityFilter')) el('qualityFilter').value = state.qualityFilter;
+  }
+  if (params.get('sort')) {
+    state.sortBy = params.get('sort');
+    if (el('sortBy')) el('sortBy').value = state.sortBy;
+  }
+  if (params.get('category')) {
+    state.categoryFilter = params.get('category');
+  }
+  if (params.get('recent') === '1') state.recentOnly = true;
+  if (params.get('watch') === '1') state.watchlistOnly = true;
+  el('recentOnlyBtn')?.classList.toggle('active', state.recentOnly);
+  el('watchlistOnlyBtn')?.classList.toggle('active', state.watchlistOnly);
+};
+
+const syncUrlState = () => {
+  const params = new URLSearchParams();
+  const q = el('searchInput')?.value?.trim();
+  if (q) params.set('q', q);
+  if (state.activeStatus && state.activeStatus !== 'All') params.set('status', state.activeStatus);
+  if (state.qualityFilter && state.qualityFilter !== 'all') params.set('quality', state.qualityFilter);
+  if (state.sortBy && state.sortBy !== 'default') params.set('sort', state.sortBy);
+  if (state.categoryFilter && state.categoryFilter !== 'All') params.set('category', state.categoryFilter);
+  if (state.recentOnly) params.set('recent', '1');
+  if (state.watchlistOnly) params.set('watch', '1');
+  const qs = params.toString();
+  const next = qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+  window.history.replaceState({}, '', next);
+};
+
+const toggleCompare = (name, on) => {
+  const n = String(name || '');
+  if (!n) return;
+  if (on) {
+    if (!state.compareIds.includes(n) && state.compareIds.length < 3) state.compareIds.push(n);
+  } else {
+    state.compareIds = state.compareIds.filter((x) => x !== n);
+  }
+  renderCompareBar();
+};
+
+const renderCompareBar = () => {
+  const bar = el('compareBar');
+  if (!bar) return;
+  if (!state.compareIds.length) {
+    bar.hidden = true;
+    bar.innerHTML = '';
+    return;
+  }
+  bar.hidden = false;
+  bar.innerHTML = `
+    <div class="compare-bar-inner">
+      <strong>Compare (${state.compareIds.length}/3):</strong>
+      ${state.compareIds.map((n) => `<span class="tag">${escapeHtml(n)}</span>`).join('')}
+      <button type="button" class="filter-btn" id="runCompareBtn">Open compare</button>
+      <button type="button" class="filter-btn" id="clearCompareBtn">Clear</button>
+    </div>`;
+  el('runCompareBtn')?.addEventListener('click', openComparePanel);
+  el('clearCompareBtn')?.addEventListener('click', () => {
+    state.compareIds = [];
+    renderCompareBar();
+    renderResults();
+  });
+};
+
+const openComparePanel = () => {
+  const panel = el('comparePanel');
+  const body = el('compareBody');
+  if (!panel || !body) return;
+  const rows = state.compareIds.map((name) => state.data.find((s) => s.startup_name === name)).filter(Boolean);
+  if (rows.length < 2) {
+    alert('Select at least 2 startups to compare.');
+    return;
+  }
+  const fields = [
+    ['Status', (s) => s.status || '—'],
+    ['Tier', (s) => (Q() ? Q().qualityBadgeLabel(s) : s.profile_tier || '—')],
+    ['Funding', (s) => formatMoneyOrUnknown(s.funding_burned_usd)],
+    ['Category', (s) => s.category || '—'],
+    ['Sources', (s) => String(sourceCountOf(s))],
+    ['Research score', (s) => String(s.research_score ?? '—')],
+    ['Cause / struggle', (s) => (s.cause_of_death || s.failure_reason || '—').slice(0, 160)],
+  ];
+  let html = '<table class="compare-table"><thead><tr><th>Field</th>';
+  rows.forEach((s) => { html += `<th>${escapeHtml(s.startup_name)}</th>`; });
+  html += '</tr></thead><tbody>';
+  fields.forEach(([label, fn]) => {
+    html += `<tr><th>${escapeHtml(label)}</th>`;
+    rows.forEach((s) => { html += `<td>${escapeHtml(fn(s))}</td>`; });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  body.innerHTML = html;
+  panel.hidden = false;
+  panel.classList.add('show');
+};
+
+const closeComparePanel = () => {
+  const panel = el('comparePanel');
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove('show');
+};
+
+const exportFiltered = (format) => {
+  const rows = state.filtered || [];
+  if (!rows.length) {
+    alert('Nothing to export for current filters.');
+    return;
+  }
+  const slim = rows.map((s) => ({
+    startup_name: s.startup_name,
+    status: s.status,
+    category: s.category,
+    funding_burned_usd: s.funding_burned_usd ?? null,
+    profile_tier: s.profile_tier,
+    research_status: s.research_status,
+    research_score: s.research_score,
+    sources_count: sourceCountOf(s),
+    headquarters: s.headquarters,
+    year_founded: s.year_founded,
+    year_died: s.year_died,
+  }));
+  let blob;
+  let filename;
+  if (format === 'csv') {
+    const headers = Object.keys(slim[0]);
+    const lines = [headers.join(',')];
+    slim.forEach((r) => {
+      lines.push(headers.map((h) => {
+        const v = r[h] == null ? '' : String(r[h]);
+        return `"${v.replace(/"/g, '""')}"`;
+      }).join(','));
+    });
+    blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    filename = 'bharat-startup-reality-export.csv';
+  } else {
+    blob = new Blob([JSON.stringify(slim, null, 2)], { type: 'application/json' });
+    filename = 'bharat-startup-reality-export.json';
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+const updateWatchlistBadge = () => {
+  const btn = el('watchlistOnlyBtn');
+  if (!btn || !Q()) return;
+  const n = Q().loadWatchlist().length;
+  btn.textContent = n ? `★ Watchlist (${n})` : '★ Watchlist';
+};
+
+// Patch applyFilters to sync URL after filter
+const _applyFiltersOrig = typeof applyFilters === 'function' ? null : null;
+
+el('searchInput')?.addEventListener('input', () => { applyFilters(); syncUrlState(); });
 el('categoryFilter')?.addEventListener('change', (e) => {
   state.categoryFilter = e.target.value;
   applyFilters();
+  syncUrlState();
 });
 el('sortBy')?.addEventListener('change', (e) => {
   state.sortBy = e.target.value;
   applyFilters();
+  syncUrlState();
 });
 el('qualityFilter')?.addEventListener('change', (e) => {
   state.qualityFilter = e.target.value;
   applyFilters();
+  syncUrlState();
 });
 el('recentOnlyBtn')?.addEventListener('click', () => {
   state.recentOnly = !state.recentOnly;
   el('recentOnlyBtn').classList.toggle('active', state.recentOnly);
   applyFilters();
+  syncUrlState();
 });
 el('watchlistOnlyBtn')?.addEventListener('click', () => {
   state.watchlistOnly = !state.watchlistOnly;
   el('watchlistOnlyBtn')?.classList.toggle('active', state.watchlistOnly);
   applyFilters();
+  syncUrlState();
 });
+el('exportJsonBtn')?.addEventListener('click', () => exportFiltered('json'));
+el('exportCsvBtn')?.addEventListener('click', () => exportFiltered('csv'));
+el('compareClose')?.addEventListener('click', closeComparePanel);
+el('compareBackdrop')?.addEventListener('click', closeComparePanel);
 el('modalBackdrop').addEventListener('click', closeModal);
 el('modalClose').addEventListener('click', closeModal);
 
 document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
-  const detail = el('detailModal');
-  const feedback = el('feedbackModal');
-  if (detail?.classList.contains('show')) closeModal();
-  if (feedback?.classList.contains('show') && typeof closeFeedbackModal === 'function') {
-    closeFeedbackModal();
+  const tag = (e.target && e.target.tagName) || '';
+  const typing = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target?.isContentEditable;
+  if (e.key === 'Escape') {
+    const detail = el('detailModal');
+    const feedback = el('feedbackModal');
+    const compare = el('comparePanel');
+    if (compare && !compare.hidden) closeComparePanel();
+    if (detail?.classList.contains('show')) closeModal();
+    if (feedback?.classList.contains('show') && typeof closeFeedbackModal === 'function') {
+      closeFeedbackModal();
+    }
+    return;
+  }
+  if (!typing && e.key === '/') {
+    e.preventDefault();
+    el('searchInput')?.focus();
   }
 });
 

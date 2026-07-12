@@ -36,6 +36,24 @@ def _catalog():
     return catalog_brand_tokens([{"startup_name": n} for n in names])
 
 
+class TestSourceIntegrityThinPages(unittest.TestCase):
+    def test_company_latest_pages_rejected(self):
+        from pipeline.source_integrity import source_integrity_problems, brand_tokens_from_name
+
+        entry = {
+            "startup_name": "BluSmart",
+            "sources": [
+                {
+                    "title": "BluSmart page",
+                    "url": "https://inc42.com/company/blusmart/latest/",
+                }
+            ],
+        }
+        cat = {"BluSmart": brand_tokens_from_name("BluSmart")}
+        probs = source_integrity_problems(entry, cat)
+        self.assertTrue(probs, msg="company/latest must not count as article-grade")
+
+
 class TestSourceIntegrityPure(unittest.TestCase):
     def test_swiggy_sole_zomato_fundraising_url_fails(self):
         entry = {

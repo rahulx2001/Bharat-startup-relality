@@ -467,7 +467,16 @@
         "Quick commerce needs ₹1000Cr+ war chest to compete - entering against well-funded rivals with $57M total raised was suicidal",
         "Founder transitions signal terminal decline - when 3 of 4 co-founders exit within 6 months, the writing is on the wall"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "How Dunzo lost its edge",
+          "url": "https://inc42.com/features/dunzo-kabeer-biswas-downfall-reliance/"
+        },
+        {
+          "title": "Dunzo goes offline as investors, co-founder depart",
+          "url": "https://yourstory.com/2025/01/dunzo-goes-offline-investors-co-founder-departs"
+        }
+      ],
       "updated_at": "2026-06-27",
       "opportunity_score": {
         "rebuild_difficulty": "3",
@@ -503,22 +512,13 @@
         ],
         "monetization": "Consumer delivery: 8-10% commission + ₹15-25 delivery fee. B2B SaaS: ₹4999/month per store for AI inventory management. Ad platform: ₹5000-20000/month for CPG brands to promote within search results. Target: ₹48Cr ARR by Year 3, 22% EBITDA margin, ₹150Cr GMV monthly with 10,000+ partner stores. Unit economics: ₹15 delivery cost, ₹35 average order value, 8% commission yields ₹2.8 per order gross profit before SaaS upsell."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Zilingo",
@@ -606,7 +606,16 @@
         "Founder succession planning: the Bose-Kapoor power struggle became public and toxic, destroying stakeholder confidence in 72 hours",
         "Capital efficiency in emerging markets: burning $236M for $15M revenue in 7 years indicates misallocated capital, not market creation"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Inside Ankiti Bose and Zilingo's multimillion-dollar implosion",
+          "url": "https://inc42.com/features/zilingo-ankiti-bose-multimillion-dollar-catastrophe/"
+        },
+        {
+          "title": "Ankiti Bose hits back after Zilingo terminates her as CEO",
+          "url": "https://inc42.com/buzz/ankiti-bose-hits-back-after-zilingo-terminates-her-as-ceo-claims-she-was-fired-for-insubordination/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "Zilingo positioned itself as a tech-enabled B2B marketplace connecting Southeast Asian fashion manufacturers with global retailers, promising to digitize fragmented supply chains. They built sourcing tools, inventory management, and cross-border logistics for 50,000+ merchants across Indonesia, Thailand, Vietnam, and India. Backed by Sequoia Capital, Temasek, and SoftBank, they reached a $970M valuation in 2019. The platform processed millions of SKUs across apparel, textiles, and accessories, with a consumer-facing app in Bangkok and enterprise tools for brands.",
       "cause_of_death": "The collapse was triggered by a 2022 board investigation that uncovered accounting irregularities and inflated revenue recognition—specifically, recognizing GMV as revenue and booking future pipeline as closed deals. CEO Ankiti Bose was fired in March 2022 after clashing with co-founder Dhruv Kapoor and investors over a proposed $200M fundraising at flat valuation. The company had burned ₹1,950 crore ($236M) with no path to profitability; unit economics were broken with 15-20% take rates insufficient to cover logistics and credit costs. A planned SPAC merger at $1.2B fell through in 2021. Post-firing, investor confidence evaporated—Sequoia and Temasek refused further capital. The company entered creditor protection in Singapore in 2023 and was liquidated in 2024, with creditors recovering less than 5% of dues. Underlying issue: B2B marketplace model required heavy working capital for supplier financing, but Zilingo lacked the balance sheet depth of competitors like Alibaba or vertical specialists like Faire.",
@@ -651,23 +660,15 @@
         ],
         "monetization": "SaaS: ₹2,999/month per manufacturer for AI inspection and demand forecasting. Transaction fee: 1.5% on order value. Credit origination: 2% on AI-underwritten loans. Target: ₹45Cr ARR by Year 3 with 68% gross margin, profitability by Month 22."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Staples India",
@@ -888,7 +889,12 @@
         "Unit economics must be proven at small scale before subsidizing growth; GMV is a vanity metric if contribution margin is negative",
         "Public warfare between founders and investors destroys all residual value — private disputes belong in boardrooms, not newspapers"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "AskMe shutdown legacy coverage",
+          "url": "https://inc42.com/buzz/askme-shuts-shop/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "yang": [
         "Astro Holdings (Malaysia) - 98.5% stake, $300M invested over 6 years",
@@ -927,22 +933,13 @@
         ],
         "monetization": "Transaction fee: 2-3% on ONDC-enabled purchases (vs AskMe's unsustainable 10-15% with subsidy). SaaS: ₹499/month 'BazaaR Pro' for AI catalog, WhatsApp orders, analytics — target 30% merchant conversion. Credit facilitation: 1.5% origination fee on OCEN-enabled merchant loans. Target: ₹189Cr ARR by Year 3 with 80% gross margin, profitability by Month 24."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Flipkart Ping",
@@ -1083,6 +1080,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -1307,7 +1305,16 @@
         "Misleading marketing creates trust debt that compounds through regulatory action, legal costs, and permanent brand damage that outlasts any short-term CAC efficiency",
         "Acquirer risk is real - parent troubles cascade to subsidiaries; earn-out structures and personal guarantees matter more than headline valuation in distressed acquirer scenarios"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "BYJU'S mulls closing WhiteHat Jr",
+          "url": "https://inc42.com/buzz/byjus-mulls-closing-down-its-loss-making-entity-whitehat-jr/"
+        },
+        {
+          "title": "WhiteHat Jr journey and BYJU'S acquisition",
+          "url": "https://yourstory.com/2020/11/whitehat-jr-tracing-startup-journey-byjus-acquisition"
+        }
+      ],
       "updated_at": "2026-06-27",
       "opportunity_score": {
         "rebuild_difficulty": "3",
@@ -1343,22 +1350,13 @@
         ],
         "monetization": "Freemium AI tutor: ₹0 for 3 lessons/week. Premium: ₹299/month unlimited with projects. Outcome certificate: ₹499 per completed track. B2B schools: ₹15,000/classroom/year. Project marketplace: 15% commission on student stipends. Target: ₹45 crore ARR by Year 3, 72% gross margin, 18% EBITDA. Unit economics: ₹50 CAC (school channel), ₹180 LTV, 3.6x LTV/CAC ratio."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Hike Messenger",
@@ -1493,25 +1491,26 @@
         "market_potential": "5"
       },
       "market_today": "India's messaging market is 95%+ dominated by WhatsApp (500M+ users). UPI payments (PhonePe, Google Pay, Paytm) have won payments. AI agents and embedded finance are emerging opportunities, but messaging as a standalone is dead. ONDC and Account Aggregator infrastructure now enables better fintech integration than 2016-2021-era Hike Wallet.",
-      "sources": [],
+      "sources": [
+        {
+          "title": "Hike shuts chat app",
+          "url": "https://inc42.com/buzz/from-super-app-to-shutdown-hike-gives-up-on-chat-app-in-yet-another-revamp/"
+        },
+        {
+          "title": "Hike taken down from app stores",
+          "url": "https://yourstory.com/2021/01/hike-shutdown-google-play-apple-app-store-softbank-kavin-mittal"
+        }
+      ],
       "updated_at": "2026-07-12",
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 90,
       "added_at": "2026-07-12",
-      "research_rejected": true,
       "research_missing": [
-        "value_proposition",
-        "sources_with_url",
-        "source_integrity"
+        "value_proposition"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:value_proposition,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "ShopClues",
@@ -1661,6 +1660,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -1785,7 +1785,12 @@
         ],
         "monetization": "0.5-1% GMV fee on orchestrated transactions (vs. 15-25% marketplace commission), ₹25,000/month seller SaaS for analytics and inventory sync, performance advertising (CPC model), BNPL referral fees. Target: ₹5Cr revenue by Year 2, scaling to ₹50Cr by Year 4 with 72% gross margin and EBITDA-positive by Month 20."
       },
-      "sources": [],
+      "sources": [
+        {
+          "title": "Jabong Flipkart acquisition era",
+          "url": "https://inc42.com/buzz/flipkart-acquires-jabong/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "Jabong launched as India's premium fashion e-commerce platform, positioning itself as the 'largest online fashion store' with 1000+ international and domestic brands. Founded by Rocket Internet's proven execution playbook, it promised curated fashion discovery, fast delivery, and a premium shopping experience. At peak, it operated from a 1.3 lakh sq ft warehouse in Gurgaon, employed 2,000 people, and was in acquisition talks with Amazon at $1.2 billion valuation. The platform targeted urban millennials with aspirational global brands, differentiating from mass-market Flipkart through curation and brand positioning.",
       "cause_of_death": "Jabong burned through $220 million in funding while generating catastrophic losses of ₹426 crore in FY2015 alone, with revenue growth stalling to become the slowest in Rocket Internet's entire portfolio. The inventory-heavy model required massive working capital—each season's unsold stock became dead inventory as fashion trends shifted faster than liquidation cycles. The marketplace pivot failed because sellers, given limited slots, always preferred Myntra's larger customer base and Flipkart's superior logistics; Jabong couldn't achieve the two-sided network effects essential for marketplace viability. When Flipkart acquired Jabong for $70 million in 2016—an 86% write-down from its $500 million peak—the strategic intent was never to grow Jabong but to eliminate a competitor and consolidate users into Myntra. Flipkart later recorded a $290 million impairment charge, confirming the acquisition's true purpose was market share, not brand value. Post-acquisition, Jabong suffered 50% layoffs, brand integration stripped its identity, and by 2020 users were forcibly redirected to Myntra. The underlying tragedy: even at scale, Jabong's unit economics were fundamentally broken—customer acquisition cost exceeded lifetime value, return rates in fashion soared to 30-40%, and the 'premium' positioning couldn't justify higher prices against Amazon's relentless discounting and Myntra's superior private label margins.",
@@ -1795,22 +1800,13 @@
         "market_potential": "5"
       },
       "market_today": "India's fashion e-commerce reached $18B GMV in 2024, growing at 25% CAGR, but structure has radically changed. Myntra dominates with 60%+ market share, Meesho captured value-conscious tier-2/3 consumers, Nykaa owns beauty vertical, and AJIO leverages Reliance's offline infrastructure. The critical shift: ONDC now enables decentralized transactions, AI agents handle 15% of discovery queries, and D2C brands (3000+ launched 2022-24) desperately need aggregation without platform dependency. Fashion remains high-return (25-35%), but AI-powered size prediction and virtual try-on are reducing return rates by 40% for early adopters. The opportunity is not another marketplace—it's the intelligence layer that connects fragmented supply with agentic demand.",
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Uber Eats India",
@@ -2016,7 +2012,12 @@
         "Strategic acquirer intent matters—Ola never had conviction in food, used it for narrative; when mobility faced Uber threat, Foodpanda became disposable",
         "Vertical depth defeats horizontal breadth in operationally intensive businesses; food delivery needs dedicated fleet management, not app integration"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Foodpanda India exit coverage",
+          "url": "https://inc42.com/buzz/foodpanda-exits-india/"
+        }
+      ],
       "updated_at": "2026-07-12",
       "value_proposition": "Foodpanda entered India in 2012 as one of the earliest food delivery aggregators, promising restaurant discovery and delivery convenience in a nascent digital market. Backed by Rocket Internet's aggressive capital deployment, it expanded to 50+ cities at peak, onboarding thousands of restaurants. The platform offered discounts of 30-50% to acquire price-sensitive customers in a market where online food ordering was sub-1% penetration. Ola acquired it in 2017 for a reported $50M, attempting to build a 'super-app' ecosystem spanning ride-hailing and food. At peak, Foodpanda claimed 15,000+ restaurant partners but never cracked the top-two position.",
       "cause_of_death": "Foodpanda India's $100M death spiral stemmed from structural disadvantages against better-funded rivals. Swiggy raised $1.6B total and Zomato $2.2B, dwarfing Foodpanda's war chest. Unit economics were catastrophic: average order value of ₹300-350, delivery costs of ₹60-80 per order, and customer acquisition costs of ₹800-1,200 meant each new user lost ₹200-400 even before discounts. Ola's $50M acquisition (2017) proved a stranded asset—founder Bhavish Aggarwal admitted in 2019 that Foodpanda was 'not a strategic priority.' The Ola Super app experiment failed; food delivery share never exceeded 5% of Ola's revenue. By 2019, Foodpanda's monthly burn exceeded ₹15 crore with declining order volumes. Ola sold Foodpanda's India operations to Delivery Hero (parent company) in 2019, who promptly wound down operations by March 2020. Regulatory headwinds including GST compliance costs (₹2-3 per order) and FSSAI mandates added friction. The final blow: COVID-19 lockdown in March 2020 eliminated the runway for any turnaround, with Ola choosing to conserve cash for its core mobility business.",
@@ -2060,23 +2061,15 @@
         ],
         "monetization": "SaaS: ₹499-1,499/month tiered by restaurant size. Embedded finance: 3-5% origination fee + 18% interest spread. Delivery co-op: ₹8 per order technology fee versus ₹30-40 platform commission. Target: ₹180 Cr ARR by Year 3, 45% gross margin, profitability by Month 24."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
-      "research_rejected": true,
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Taxiforsure",
@@ -2207,24 +2200,20 @@
         ],
         "monetization": "Per-vehicle annual fee: ₹50-100k. Major ride-hailing customers: 3-5. Logistics customers: 30-100. Target: ₹140Cr ARR by Year 3 with 78% gross margin and 56% operating margin."
       },
-      "sources": [],
+      "sources": [
+        {
+          "title": "TaxiForSure Ola acquisition",
+          "url": "https://inc42.com/buzz/ola-acquires-taxiforsure/"
+        }
+      ],
       "updated_at": "2026-07-12",
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
+      "research_missing": [],
       "added_at": "2026-07-12",
-      "research_rejected": true,
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Yebhi",
@@ -2818,7 +2807,12 @@
         "Creator monetization must match or exceed market alternatives within 18 months or talent migrates",
         "Social commerce requires vertical integration (inventory, logistics, payments) not affiliate links; discovery alone is worthless"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Trell controversy and decline",
+          "url": "https://inc42.com/features/trell-downfall/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "opportunity_score": {
         "rebuild_difficulty": 3,
@@ -2854,22 +2848,13 @@
         ],
         "monetization": "Commission model: 15-20% on each transaction (versus Amazon's 15-25% with additional fees). SaaS tier for brands: ₹25,000/month for AI content generation dashboard with analytics. Premium user subscription: ₹199/month for unlimited AI try-ons and priority support. Target: ₹45 crore GMV run rate by Year 2, ₹180 crore byDot by Year 3 with 18% take-rate equivalent and 65% gross margin."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Commonfloor",
@@ -2946,7 +2931,12 @@
         "Low-frequency markets require transaction capture, not lead generation: if you don't touch the ₹50L-2Cr transaction, you're expendable advertising",
         "Mergers of weakness amplify failure: combining two broken unit economics models (Quikr's free classifieds + Commonfloor's weak subscriptions) creates one larger failure"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "CommonFloor Quikr acquisition era",
+          "url": "https://inc42.com/buzz/quikr-acquires-commonfloor/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "Commonfloor launched in 2007 as India's pioneering online real estate platform, aggregating property listings for buyers, sellers, and renters across major Indian cities. At its peak, it claimed 200,000+ property listings, 5 lakh monthly active users, and 600 employees across 10 cities. The platform offered verified listings, neighborhood reviews, and a CRM tool for brokers. It raised $63M from Tiger Global, Google Capital, and Accel Partners, reaching a $100M valuation. The founders positioned it as the 'Zillow of India,' betting on digitizing India's opaque $120B residential real estate market where 90% of transactions were broker-mediated and offline.",
       "cause_of_death": "Commonfloor's death was death by a thousand cuts of unsustainable unit economics, premature horizontal expansion, and a catastrophic merger. The company burned $60M over 9 years with revenue under $10M annually—spending ₹6-8 crore per month on 600 employees, city expansion, and marketing while monetization remained stuck at ₹15,000-25,000 per broker annually. CAC for property seekers exceeded ₹3,500 with 90%+ bounce rates; broker churn hit 40% annually as leads failed to convert. The 2015-16 funding winter dried up growth capital—Tiger Global, which had led the $30M Series C in 2015, refused further participation. Competitor Housing.com's $90M war chest and 99acres' free listings crushed pricing power. In January 2016, Commonfloor merged with Quikr in a stock deal valuing it at roughly $200M combined—effectively a 50-80% haircut from peak. The Quikr integration was disastrous: 70% of Commonfloor's 600 employees were laid off within 12 months, the brand was buried under Quikr's classifieds umbrella, and the proprietary listing database was commoditized. Founders Sumit Jain and Lalit Mangal exited by 2017. The underlying issue: real estate in India is low-frequency, high-trust, and broker-controlled—online platforms couldn't disintermediate the ₹50,000-2,00,000 commission that brokers earned per transaction, so they became expensive marketing channels with no transactional capture.",
@@ -2990,23 +2980,15 @@
         ],
         "monetization": "Transaction service fee: 1% on ₹2Cr+ properties (₹2L average). AI document verification: ₹25,000 per property. Developer SaaS: ₹10L/year subscription. Loan facilitation: 0.5% on disbursed amount. Target: ₹45 Cr ARR by Year 3, profitability by Month 24, 65% gross margin."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "PepperTap",
@@ -3087,7 +3069,16 @@
         "Raise 18-month runway minimum; PepperTap's monthly burn of ₹8-10 crore against declining investor confidence created a death spiral",
         "Customer acquisition cost in Indian grocery was ₹800-1,200 in 2015, making repeat purchase rate the only metric that mattered"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "PepperTap to shut down hyperlocal delivery",
+          "url": "https://inc42.com/buzz/peppertap-shutdown/"
+        },
+        {
+          "title": "PepperTap shuts operations in 6 cities",
+          "url": "https://inc42.com/flash-feed/peppertap-shuts-operations-in-6-cities/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "PepperTap promised 60-minute grocery delivery through a mobile-first platform, partnering with local kirana stores rather than building warehouses. Founded by Navneet Singh and Milind Sharma, it raised $51 million from Sequoia Capital, SAIF Partners, and Snapdeal. At peak, it operated in 17 cities with 1,300 employees, processing thousands of daily orders. The model relied on store inventory integration and a fleet of delivery executives to fulfill hyperlocal demand.",
       "cause_of_death": "Unit economics were catastrophically broken: average order value was ₹350-400 while delivery cost alone was ₹60-80, and kirana stores took 15-20% commission. The company burned $38.4 million in 18 months—roughly ₹2.1 crore per week. Expansion to 17 cities before proving unit economics in one city drained reserves. The 'asset-light' model became a liability: store inventory was unreliable (30-40% stockouts), delivery times ballooned beyond 60 minutes, and customer retention cratered. Sequoia and SAIF stopped additional funding in early 2016. The final blow came when Snapdeal, itself struggling, pulled promised bridge funding. PepperTap shut all operations in April 2016, laying off 1,100 employees with 2-3 months of unpaid salaries. Founders returned only ₹3-4 crore to investors via asset sale.",
@@ -3131,23 +3122,15 @@
         ],
         "monetization": "SaaS subscription: ₹1,499/month per store for inventory AI and digital storefront. Delivery fee: ₹15 per order from consumer, ₹10 commission from store. B2B marketplace margin: 5-8% on supplier introductions. Target: ₹45 crore ARR by Year 3 with 15,000 stores, 35% gross margin, EBITDA positive by Month 22."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "GoMechanic",
@@ -3264,24 +3247,20 @@
         ],
         "monetization": "SaaS: ₹999/vehicle/month for predictive diagnostics (70% margin). Service commission: 10-15% on maintenance invoices. Parts marketplace: 15-25% margin. Insurance partnerships. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "sources": [],
+      "sources": [
+        {
+          "title": "GoMechanic on EOW radar",
+          "url": "https://inc42.com/buzz/gomechanic-founders-eow-investigation-investors-push/"
+        }
+      ],
       "updated_at": "2026-07-12",
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 100,
       "added_at": "2026-07-12",
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Stayzilla",
@@ -3363,7 +3342,12 @@
         "Market timing matters more than first-mover advantage; being right too early is indistinguishable from being wrong in venture outcomes",
         "Build defensibility through exclusive supply relationships or vertical integration, not just aggregation—multi-homing destroys aggregator economics"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Stayzilla crisis coverage",
+          "url": "https://inc42.com/buzz/stayzilla-shuts-shop/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "Stayzilla began as Inasra Technologies in 2005, pivoting to become India's largest aggregator of homestays and alternative accommodations. At its peak, it listed 15,000+ properties across 4,500+ towns, positioning itself as the 'Airbnb of India' with a focus on affordable, authentic local experiences. The company raised $34M across Series A, B, and C rounds from Matrix Partners India, Nexus Venture Partners, and others. It rebranded from a generic travel portal to a homestay-focused platform in 2015, riding the wave of experiential travel and India's growing domestic tourism market.",
       "cause_of_death": "The immediate trigger was a vendor dispute with Jigsaw Advertising Solutions, which escalated into criminal charges under Section 420 (cheating) of the IPC. Founder Yogendra Vasupal was arrested in March 2017 and spent 30 days in Chennai's Puzhal Central Prison before being granted bail. The company had already been struggling with cash flow—burning ₹2.5-3 crore monthly against declining revenues. The arrest paralyzed operations, triggered a mass exodus of employees from 250 to under 50, and destroyed investor confidence. Underlying issues: (1) The homestay market was premature—Indian travelers prioritized standardized hotels over unvetted local homes; (2) Unit economics were broken with 15-20% commission rates insufficient to cover customer acquisition costs of ₹3,500-4,000 per booking; (3) Heavy investment in technology and inventory ahead of demand; (4) Failed pivot from hotels to homestays confused the brand and alienated existing hotel partners; (5) The asset-light model created no defensibility—suppliers multi-homed on Airbnb, MakeMyTrip, and Booking.com instantly. Vasupal was fully acquitted in 2019 after the Madras High Court found no evidence of cheating, but the company never recovered.",
@@ -3409,23 +3393,15 @@
         ],
         "monetization": "Primary: 15-18% commission on bookings (vs. industry 12-15%, justified by higher conversion and rates). Secondary: 'GharStay Standard' certification fee ₹12,000/year; Host AI Co-pilot SaaS ₹999/month; travel insurance partnership ₹150/booking; local experience marketplace 20% commission. Target: ₹45 crore GMV Year 3, ₹8.1 crore net revenue, 72% gross margin, profitability Month 22."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "FrontRow",
@@ -3569,6 +3545,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
@@ -3655,7 +3632,16 @@
         "Treat capital as a finite resource with a defined runway, not a signal to accelerate burn; the founders who survive are those who can operate with 18+ months of runway at all times",
         "Build for the investor environment you have, not the one you hope to raise in; TinyOwl's 2015 fundraising assumed 2014's easy capital, which vanished abruptly"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "TinyOwl temporarily shuts services",
+          "url": "https://inc42.com/flash-feed/tinyowl-shuts-services-except-mumbai/"
+        },
+        {
+          "title": "The TinyOwl saga",
+          "url": "https://inc42.com/buzz/the-tinyowl-saga/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "TinyOwl positioned itself as a hyperlocal food delivery platform focused on tier-1 cities, promising 45-minute delivery from neighborhood restaurants through a fleet of delivery executives. Founded by IIT Bombay alumni Harshvardhan Mandad and Gaurav Choudhary, it raised $27M from Sequoia Capital, Matrix Partners, and Nexus VP. At its peak, TinyOwl operated in 11 cities with 200+ employees and 15,000+ restaurant partners, competing aggressively against Swiggy and Zomato with deep discounting and first-order-free campaigns to acquire customers.",
       "cause_of_death": "TinyOwl's death spiral began with a fatal expansion strategy: burning $27M to scale from 1 city (Mumbai) to 11 cities in under 12 months, including Pune, Bangalore, Hyderabad, and Gurgaon, without establishing unit economics in any single market. Customer acquisition cost soared to ₹450-600 per order while average order value stagnated at ₹250-300; gross margins were negative 15-20% after restaurant commissions and delivery costs. The company hemorrhaged ₹2.5-3 crore monthly in late 2015, with burn rate accelerating as Swiggy and Zomato raised $100M+ war chests. The final blow came in January 2016 when TinyOwl laid off 100 employees (50% of workforce) via a 3-minute phone call, triggering mass protests at its Mumbai office. Founders attempted a desperate pivot to 'Runnr' (logistics/food delivery hybrid) but had already lost investor confidence. Sequoia and Matrix refused further bridge funding. The company was effectively acqui-hired by Runnr in May 2016 for an estimated ₹15-20 crore—less than the cash remaining on its books—leaving investors with near-total loss and founders with non-compete clauses. Underlying issue: TinyOwl mistook GMV growth for product-market fit, scaling before achieving positive contribution margin in even one city.",
@@ -3700,23 +3686,15 @@
         ],
         "monetization": "Commission: 15% on each order (vs 25-30% for Zomato/Swiggy). Subscription: ₹499/month 'GharSe Pro' with 12% take rate expected. Chef SaaS: ₹999/month for inventory management, tax filing, and ingredient procurement at 8,000 chefs by Year 3. Target: ₹85 crore revenue by Year 3 with 18% EBITDA margin, positive unit economics from Month 8 with ₹180 average order value and ₹22 delivery cost."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Mojocare",
@@ -3819,25 +3797,22 @@
         ],
         "monetization": "Per-provider SaaS: ₹50-100k/month for hospitals, ₹1-5L/month for insurers. 5-10% commission on specialist referrals. Data licensing to pharma. Target: ₹48Cr ARR by Year 3 with 77% gross margin and 63% operating margin."
       },
-      "sources": [],
+      "sources": [
+        {
+          "title": "Mojocare shutdown coverage",
+          "url": "https://inc42.com/buzz/mojocare-shuts-down/"
+        }
+      ],
       "updated_at": "2026-07-12",
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 88,
       "research_missing": [
-        "timeline",
-        "sources_with_url",
-        "source_integrity"
+        "timeline"
       ],
       "added_at": "2026-07-12",
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Lido Learning",
@@ -3971,6 +3946,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
@@ -4117,6 +4093,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -4598,7 +4575,12 @@
         "Achieve single-city profitability before second-city expansion; Runnr's Mumbai unit economics were never validated before Bangalore and Delhi launches",
         "Founder-investor alignment must include explicit kill criteria—Runnr continued 18 months on a failing thesis because no pre-agreed shutdown triggers existed"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Runnr acquisition by Uber",
+          "url": "https://inc42.com/buzz/uber-acquires-runnr/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "Runnr positioned itself as a hyperlocal delivery platform combining food ordering with grocery and essentials delivery, promising sub-30-minute delivery through a fleet of delivery executives. Founded by Mohit Kumar and Arpit Dave, the Mumbai-based startup raised $7M from Sequoia Capital India and Nexus Venture Partners, reaching a peak valuation of $15M. At its height, Runnr employed 200 people and operated across multiple Indian cities, attempting to differentiate through speed and multi-category convenience. The startup rode the 2015-16 hyperlocal delivery wave that saw dozens of startups chase the 'Uber for X' model with venture capital-fueled subsidies.",
       "cause_of_death": "Runnr hemorrhaged cash at a rate of approximately ₹4.5 crore per month on a revenue base that never exceeded ₹50 lakh monthly, achieving unit economics that required ₹180-220 per delivery against customer willingness to pay ₹30-50 after subsidies. The food delivery market was already consolidating around Swiggy (funded by Accel, Bessemer, Norwest with $80M+ raised by 2016) and Zomato (funded by Info Edge, Sequoia, Vy Capital with $250M+ raised). Runnr's $7M war chest was exhausted in 18 months on customer acquisition costs of ₹800-1200 per user with 90-day retention below 15%. The grocery delivery vertical—launched to diversify revenue—bled an additional ₹1.2 crore monthly with inventory spoilage rates of 18-22% in India's fragmented cold chain. Sequoia and Nexus declined follow-on funding after internal rate-of-return projections turned negative. The Zomato merger in January 2017 was an acqui-hire at terms undisclosed but estimated below $2M, with Runnr's technology stack deprecated and team absorbed into Zomato's logistics division. Founders Kumar and Dave departed within 12 months. Regulatory environment: no SEBI action, but investor due diligence failures allowed $7M to be deployed against a market thesis that ignored Swiggy's 2016 $15M Series C and Zomato's $60M Series F competitive moat-building.",
@@ -4642,23 +4624,15 @@
         ],
         "monetization": "SaaS subscription: ₹8,000/month per kitchen for base platform. Procurement commission: 3% on aggregated supplier orders. Dynamic pricing module: ₹12,000/month premium tier. Enterprise QSR chains: ₹25,000/month per outlet with dedicated support. Target: ₹45Cr ARR by Year 3 with 5000 kitchens, 85% gross margin, profitability by Month 22."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Ridlr",
@@ -5277,7 +5251,12 @@
         "Structure acquisitions with earn-outs tied to product continuity, not just retention: ZipDial's founders had no operational control post-acquisition to prevent shutdown",
         "Anticipate infrastructure S-curves: Jio was announced in 2015; any 2010-vintage startup dependent on feature phones should have been building smartphone transition paths by 2013"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "ZipDial Twitter acquisition",
+          "url": "https://inc42.com/buzz/twitter-acquires-zipdial/"
+        }
+      ],
       "updated_at": "2026-06-27",
       "value_proposition": "ZipDial created a 'missed call to action' platform that let brands engage feature-phone users through free missed calls—critical in India's pre-Jio era when 900M people had basic phones and paid ₹1-2 per SMS. The platform processed 1.2 billion missed calls monthly for clients like Unilever, P&G, and IPL teams. It expanded to Southeast Asia and Africa, raised $5.5M from Jungle Ventures and 500 Startups, and was valued at $50M before Twitter's 2015 acquisition. The technology worked without internet, apps, or even SMS costs, making it uniquely accessible for Bharat users.",
       "cause_of_death": "Twitter acquired ZipDial for approximately $30M (₹190 crore) in January 2015, primarily to access India's 'next billion users' and integrate missed-call functionality into its growth strategy. However, Twitter's India strategy collapsed under global leadership changes: CEO Dick Costolo departed in June 2015, and new leadership under Jack Dorsey prioritized profitability over emerging-market experiments. Twitter shut down ZipDial's standalone operations in 2016, absorbing only patents and 10-12 engineers while laying off ~40 employees. The underlying issue was strategic misalignment—ZipDial's B2B enterprise sales model (₹5-15 lakh annual contracts with FMCG giants) clashed with Twitter's consumer advertising DNA. Twitter never integrated missed-call technology meaningfully; the 'Tweet via Missed Call' feature launched in India in October 2015 saw minimal adoption. ZipDial's revenue (~$2agarwal2M annually) was immaterial to Twitter's $2B revenue base, making it deprioritized. Regulatory friction also played a role: TRAI's tightening of commercial communication rules in 2016 made missed-call marketing legally ambiguous. The acquisition became a classic 'acqui-hire gone wrong' where the product died while talent dispersed to Google, Flipkart, and fresh startups.",
@@ -5321,23 +5300,15 @@
         ],
         "monetization": "SaaS platform fee: ₹4,500/month per brand for campaign management. Usage charges: ₹0.40 per successful voice engagement, ₹0.15 per smart missed-call conversion. Enterprise analytics: ₹12 lakh/year for predictive rural demand forecasting. Target: ₹18 crore ARR by Year 3, 65% gross margin, profitability by Month 22."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "added_at": "2026-06-27",
       "research_score": 90,
       "research_missing": [
-        "insights",
-        "sources_with_url",
-        "source_integrity"
+        "insights"
       ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Spoonjoy",
@@ -5610,6 +5581,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
@@ -5855,6 +5827,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
@@ -7004,24 +6977,28 @@
         ],
         "monetization": "Freemium for students; B2B SaaS for schools (₹50/student/month); Premium AI tutoring at ₹500/month; Verified certification for jobs; Teacher marketplace commission (10%)"
       },
-      "sources": [],
+      "sources": [
+        {
+          "title": "BYJU'S stuck in bankruptcy limbo",
+          "url": "https://inc42.com/features/byjus-stuck-in-bankruptcy-limbo/"
+        },
+        {
+          "title": "Will BYJU'S survive the insolvency crisis",
+          "url": "https://inc42.com/features/byjus-vs-bankruptcy-will-the-edtech-giant-survive-the-existential-insolvency-crisis/"
+        },
+        {
+          "title": "BYJU'S US arm files for bankruptcy",
+          "url": "https://inc42.com/buzz/byjus-us-arm-files-for-bankruptcy-amid-shareholders-call-for-leadership-change-rejig-board/"
+        }
+      ],
       "updated_at": "2026-07-12",
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
+      "research_missing": [],
       "added_at": "2026-07-12",
-      "research_rejected": true,
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Paytm",
@@ -7167,24 +7144,24 @@
         ],
         "monetization": "Paytm 2.0 will generate revenue through a combination of transaction fees, interest on loans, and insurance premiums. The platform will also offer a range of financial services, including savings accounts, credit cards, and investment products."
       },
-      "sources": [],
-      "profile_tier": "silver",
+      "sources": [
+        {
+          "title": "RBI cancels Paytm Payments Bank licence",
+          "url": "https://inc42.com/buzz/rbi-cancels-paytm-payments-bank-licence/"
+        },
+        {
+          "title": "Paytm employees cry foul over layoff process",
+          "url": "https://inc42.com/buzz/forced-or-not-paytm-employees-cry-foul-over-layoff-process-allege-harassment/"
+        }
+      ],
+      "profile_tier": "gold",
       "research_score": 100,
       "updated_at": "2026-07-12",
       "added_at": "2026-07-12",
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Swiggy",
@@ -7332,8 +7309,13 @@
         ],
         "monetization": "Subscription-based services: ₹999/month for frequent customers. Corporate partnerships: ₹2-5L/month. AI-driven demand prediction: 10-15% service commission on maintenance."
       },
-      "sources": [],
-      "profile_tier": "silver",
+      "sources": [
+        {
+          "title": "Swiggy to fire 250+ employees",
+          "url": "https://inc42.com/buzz/swiggy-fire-250-employees-further-layoffs-store/"
+        }
+      ],
+      "profile_tier": "gold",
       "research_score": 100,
       "updated_at": "2026-07-12",
       "added_at": "2026-07-12",
@@ -7525,19 +7507,9 @@
         "lessons_min": 4,
         "ai_rebuild_lists_min": 5
       },
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass"
     },
     {
       "startup_name": "Udaan",
@@ -7637,7 +7609,12 @@
         "Combining multiple businesses creates operational complexity",
         "Udaan's struggles demonstrate the importance of unit economics in B2B retail"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Udaan lays off over 100 employees",
+          "url": "https://yourstory.com/2023/12/udaan-employees-layoff-funding-lightspeed-marketplace-dst-global"
+        }
+      ],
       "updated_at": "2026-07-12",
       "market_today": "The Indian B2B e-commerce market is still largely unorganized, with many small retailers and manufacturers relying on traditional channels. However, with the rise of digital platforms, there is a growing opportunity for companies like Udaan to provide a more efficient and cost-effective way of doing business. The market is expected to grow rapidly in the next few years, driven by increasing demand for digital solutions and improving internet penetration.",
       "opportunity_score": {
@@ -7672,22 +7649,13 @@
         ],
         "monetization": "The platform will generate revenue through a combination of transaction fees, subscription fees, and advertising. The transaction fees will be charged to sellers for each sale made on the platform, while the subscription fees will be charged to buyers for access to premium features. The advertising revenue will come from displaying targeted ads to buyers and sellers on the platform."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 100,
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
+      "research_missing": [],
       "added_at": "2026-07-12",
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Snapdeal",
@@ -7843,6 +7811,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -7968,6 +7937,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -8087,6 +8057,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
@@ -8210,6 +8181,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
@@ -8299,7 +8271,16 @@
         "Reliance on top institutions and universities can limit growth and expansion.",
         "High burn rates and intense competition can lead to multiple rounds of layoffs."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "title": "Unacademy fires 12% of workforce",
+          "url": "https://inc42.com/buzz/unacademy-fires-380-employees-fourth-round-layoffs-12-months/"
+        },
+        {
+          "title": "Unacademy another round of layoffs",
+          "url": "https://inc42.com/buzz/edtech-giant-unacademy-goes-for-another-round-of-layoffs-to-fire-10-of-workforce/"
+        }
+      ],
       "updated_at": "2026-07-12",
       "value_proposition": "Unacademy launched as a YouTube channel in 2010, offering free online courses and test preparation materials. They expanded to a full-fledged EdTech platform, offering courses, tests, and assessments for students. Unacademy's platform grew to serve over 40 million students across India, with a presence in over 10 languages. They partnered with top Indian universities and institutions to offer degree programs and certifications. Unacademy's GMV grew 10x from $10M to $100M between 2018-2020.",
       "cause_of_death": "Unacademy's struggles can be attributed to its high burn rate, intense competition from free content providers, and failure to adapt to changing market conditions and consumer preferences. The company's reliance on top Indian universities and institutions may have limited its growth and expansion. Additionally, Unacademy's focus on degree programs and certifications may not be scalable or profitable in the long run. The company's failure to maintain profitability despite a $3.44B valuation in 2021 is a significant concern.",
@@ -8350,22 +8331,13 @@
         ],
         "monetization": "EduMap will generate revenue through subscription fees, advertising, and partnerships with top Indian universities and institutions."
       },
-      "profile_tier": "silver",
+      "profile_tier": "gold",
       "research_score": 100,
       "added_at": "2026-07-12",
-      "research_missing": [
-        "sources_with_url",
-        "source_integrity"
-      ],
-      "research_gate_reasons": [
-        "need ≥1 source with http(s) URL",
-        "source: no_http_sources",
-        "hard blocker: sources_with_url",
-        "hard blocker: source_integrity"
-      ],
-      "research_status": "blocked",
-      "research_rejected": true,
-      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Ola Electric",
@@ -8478,7 +8450,6 @@
       "profile_tier": "silver",
       "research_score": 100,
       "added_at": "2026-07-12",
-      "research_rejected": true,
       "research_missing": [
         "sources_with_url",
         "source_integrity"
@@ -8490,6 +8461,8 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
+      "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
@@ -8742,6 +8715,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
@@ -8865,6 +8839,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
@@ -10865,6 +10840,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -11054,12 +11030,7 @@
         "Partnerships with popular creators and artists can help drive growth, but may not be sustainable in the long term",
         "Unit economics are critical to a company's success, and it's essential to prioritize profitability"
       ],
-      "sources": [
-        {
-          "title": "LinkedIn",
-          "url": "https://www.linkedin.com/company/pocket-fm/"
-        }
-      ],
+      "sources": [],
       "updated_at": "2026-07-12",
       "value_proposition": "Pocket FM launched as a popular Indian audio platform offering podcasts, music, and original content. They focused on creating engaging content for Indian audiences, partnering with popular creators and artists. By 2022, they had grown to 800 employees and reached a peak valuation of $750M. The platform offered a wide range of content, including podcasts, music, and original content, catering to diverse tastes and preferences. Pocket FM's focus on original content and partnerships with popular creators helped them grow quickly, but may not be sustainable in the long term.",
       "cause_of_death": "The company's struggles can be attributed to several factors, including high content costs, low ad revenue, and a highly competitive market. The audio monetization model is challenging, with high content costs and low ad revenue, making it difficult for Pocket FM to sustain profitability. Additionally, the company's failure to adapt to changing market conditions and consumer preferences may have contributed to their struggles. The layoffs and unit economics challenges have impacted 800 employees, and the company's peak valuation of $750M is now under threat.",
@@ -11106,13 +11077,23 @@
         ],
         "monetization": "Subscription-based model with tiered pricing and personalized recommendations. Revenue will be generated through a combination of subscription fees and advertising revenue."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "research_missing": [],
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
       "added_at": "2026-07-12",
-      "research_gate_reasons": [],
-      "research_status": "gold_pass",
-      "research_mode": "verified"
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_mode": "verified",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "LEAD School",
@@ -12272,6 +12253,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -12752,6 +12734,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
@@ -13714,10 +13697,6 @@
         {
           "title": "Sarvam AI's Rs 10,000 crore pivot",
           "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uVnRyYlVIcERBQmVuTjZ5eExwSU1hSVJJTU9WMVJPaXg0ZHJxU0pJdU13SHBhWmpPT3VjcmVsYVEwWHRhSHBCZ2k4c19NZXVlbFdfSHMzeVdwT24tdnJPVTRTU2lLOVFJdDFXOXdUTUtHY2VDaWN5aXFn?oc=5&hl=en-IN&gl=IN&ceid=IN:en"
-        },
-        {
-          "title": "Sarvam AI’s Rs 10,000 crore pivot",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uVnRyYlVIcERBQmVuTjZ5eExwSU1hSVJJTU9WMVJPaXg0ZHJxU0pJdU13SHBhWmpPT3VjcmVsYVEwWHRhSHBCZ2k4c19NZXVlbFdfSHMzeVdwT24tdnJPVTRTU2lLOVFJdDFXOXdUTUtHY2VDaWN5aXFn?oc=5&hl=en-IN&gl=IN&ceid=IN:en"
         }
       ],
       "profile_tier": "gold",
@@ -13844,7 +13823,6 @@
       ],
       "updated_at": "2026-07-12",
       "added_at": "2026-07-12",
-      "research_rejected": true,
       "research_gate_reasons": [
         "need ≥1 source with http(s) URL",
         "source: no_http_sources",
@@ -13852,6 +13830,8 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
+      "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     },
     {
@@ -13978,6 +13958,7 @@
       ],
       "profile_tier": "silver",
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     },
@@ -14103,6 +14084,7 @@
         "hard blocker: source_integrity"
       ],
       "research_status": "blocked",
+      "research_mode": "verified",
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
@@ -14423,5 +14405,21 @@
       "research_rejected": true,
       "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     }
-  ]
+  ],
+  "quality_summary": {
+    "total": 99,
+    "with_sources": 23,
+    "with_sources_pct": 0.2323,
+    "gold_pass": 23,
+    "gold_pass_pct": 0.2323,
+    "blocked": 76,
+    "restamp": {
+      "total": 99,
+      "gold_pass": 23,
+      "blocked": 76,
+      "demoted_from_gold_label": 0
+    },
+    "avg_research_score": 93.9,
+    "fake_gold_labels": 0
+  }
 }

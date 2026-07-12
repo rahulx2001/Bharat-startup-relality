@@ -1,0 +1,50 @@
+name: CI Quality Gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Python unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: JS security + quality tests
+        run: |
+          node tests/test_security_js.js
+          node tests/test_quality_js.js
+          node --check security.js
+          node --check quality.js
+          node --check app.js
+      - name: Catalog honesty metrics
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("data/graveyard.json").read_text())
+          items=d["startups"]
+          total=len(items)
+          gold=sum(1 for s in items if s.get("profile_tier")=="gold" and s.get("research_status")=="gold_pass")
+          fake=sum(1 for s in items if s.get("profile_tier")=="gold" and s.get("research_status")!="gold_pass")
+          with_src=sum(1 for s in items if s.get("sources"))
+          print(f"total={total} gold_pass={gold} with_sources={with_src} fake_gold={fake}")
+          if fake:
+              raise SystemExit("fake gold labels present")
+          # Anti-fake-gold: gold share cannot exceed source share by large margin without sources
+          if gold > with_src:
+              raise SystemExit("gold_pass exceeds with_sources")
+          print("honesty_gate_ok")
+          PY

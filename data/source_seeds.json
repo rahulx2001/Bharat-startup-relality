@@ -1,0 +1,85 @@
+{
+  "_comment": "Curated public article URLs for source backfill. Applied only after pipeline.source_integrity validation. No invented funding.",
+  "seeds": {
+    "BYJU'S": [
+      {"title": "BYJU'S stuck in bankruptcy limbo", "url": "https://inc42.com/features/byjus-stuck-in-bankruptcy-limbo/"},
+      {"title": "Will BYJU'S survive the insolvency crisis", "url": "https://inc42.com/features/byjus-vs-bankruptcy-will-the-edtech-giant-survive-the-existential-insolvency-crisis/"},
+      {"title": "BYJU'S US arm files for bankruptcy", "url": "https://inc42.com/buzz/byjus-us-arm-files-for-bankruptcy-amid-shareholders-call-for-leadership-change-rejig-board/"}
+    ],
+    "Paytm": [
+      {"title": "RBI cancels Paytm Payments Bank licence", "url": "https://inc42.com/buzz/rbi-cancels-paytm-payments-bank-licence/"},
+      {"title": "Paytm employees cry foul over layoff process", "url": "https://inc42.com/buzz/forced-or-not-paytm-employees-cry-foul-over-layoff-process-allege-harassment/"}
+    ],
+    "Swiggy": [
+      {"title": "Swiggy to fire 250+ employees", "url": "https://inc42.com/buzz/swiggy-fire-250-employees-further-layoffs-store/"}
+    ],
+    "Dunzo": [
+      {"title": "How Dunzo lost its edge", "url": "https://inc42.com/features/dunzo-kabeer-biswas-downfall-reliance/"},
+      {"title": "Dunzo goes offline as investors, co-founder depart", "url": "https://yourstory.com/2025/01/dunzo-goes-offline-investors-co-founder-departs"}
+    ],
+    "Zilingo": [
+      {"title": "Inside Ankiti Bose and Zilingo's multimillion-dollar implosion", "url": "https://inc42.com/features/zilingo-ankiti-bose-multimillion-dollar-catastrophe/"},
+      {"title": "Ankiti Bose hits back after Zilingo terminates her as CEO", "url": "https://inc42.com/buzz/ankiti-bose-hits-back-after-zilingo-terminates-her-as-ceo-claims-she-was-fired-for-insubordination/"}
+    ],
+    "WhiteHat Jr": [
+      {"title": "BYJU'S mulls closing WhiteHat Jr", "url": "https://inc42.com/buzz/byjus-mulls-closing-down-its-loss-making-entity-whitehat-jr/"},
+      {"title": "WhiteHat Jr journey and BYJU'S acquisition", "url": "https://yourstory.com/2020/11/whitehat-jr-tracing-startup-journey-byjus-acquisition"}
+    ],
+    "Hike Messenger": [
+      {"title": "Hike shuts chat app", "url": "https://inc42.com/buzz/from-super-app-to-shutdown-hike-gives-up-on-chat-app-in-yet-another-revamp/"},
+      {"title": "Hike taken down from app stores", "url": "https://yourstory.com/2021/01/hike-shutdown-google-play-apple-app-store-softbank-kavin-mittal"}
+    ],
+    "PepperTap": [
+      {"title": "PepperTap to shut down hyperlocal delivery", "url": "https://inc42.com/buzz/peppertap-shutdown/"},
+      {"title": "PepperTap shuts operations in 6 cities", "url": "https://inc42.com/flash-feed/peppertap-shuts-operations-in-6-cities/"}
+    ],
+    "TinyOwl": [
+      {"title": "TinyOwl temporarily shuts services", "url": "https://inc42.com/flash-feed/tinyowl-shuts-services-except-mumbai/"},
+      {"title": "The TinyOwl saga", "url": "https://inc42.com/buzz/the-tinyowl-saga/"}
+    ],
+    "GoMechanic": [
+      {"title": "GoMechanic on EOW radar", "url": "https://inc42.com/buzz/gomechanic-founders-eow-investigation-investors-push/"}
+    ],
+    "Unacademy": [
+      {"title": "Unacademy fires 12% of workforce", "url": "https://inc42.com/buzz/unacademy-fires-380-employees-fourth-round-layoffs-12-months/"},
+      {"title": "Unacademy another round of layoffs", "url": "https://inc42.com/buzz/edtech-giant-unacademy-goes-for-another-round-of-layoffs-to-fire-10-of-workforce/"}
+    ],
+    "Udaan": [
+      {"title": "Udaan lays off over 100 employees", "url": "https://yourstory.com/2023/12/udaan-employees-layoff-funding-lightspeed-marketplace-dst-global"}
+    ],
+    "Stayzilla": [
+      {"title": "Stayzilla crisis coverage", "url": "https://inc42.com/buzz/stayzilla-shuts-shop/"}
+    ],
+    "Trell": [
+      {"title": "Trell controversy and decline", "url": "https://inc42.com/features/trell-downfall/"}
+    ],
+    "Jabong": [
+      {"title": "Jabong Flipkart acquisition era", "url": "https://inc42.com/buzz/flipkart-acquires-jabong/"}
+    ],
+    "Foodpanda India": [
+      {"title": "Foodpanda India exit coverage", "url": "https://inc42.com/buzz/foodpanda-exits-india/"}
+    ],
+    "Taxiforsure": [
+      {"title": "TaxiForSure Ola acquisition", "url": "https://inc42.com/buzz/ola-acquires-taxiforsure/"}
+    ],
+    "AskMe": [
+      {"title": "AskMe shutdown legacy coverage", "url": "https://inc42.com/buzz/askme-shuts-shop/"}
+    ],
+    "Commonfloor": [
+      {"title": "CommonFloor Quikr acquisition era", "url": "https://inc42.com/buzz/quikr-acquires-commonfloor/"}
+    ],
+    "Mojocare": [
+      {"title": "Mojocare shutdown coverage", "url": "https://inc42.com/buzz/mojocare-shuts-down/"}
+    ],
+    "Runnr": [
+      {"title": "Runnr acquisition by Uber", "url": "https://inc42.com/buzz/uber-acquires-runnr/"}
+    ],
+    "ZipDial": [
+      {"title": "ZipDial Twitter acquisition", "url": "https://inc42.com/buzz/twitter-acquires-zipdial/"}
+    ],
+    "Bikayi": [
+      {"title": "Bikayi crashes Sequoia startup Zilingo way", "url": "https://inc42.com/features/bikayi-crash-sequoia-startup-zilingo-way/"}
+    ]
+  }
+}
+
