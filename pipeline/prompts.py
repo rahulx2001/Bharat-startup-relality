@@ -98,6 +98,7 @@ def enrich_system_prompt(*, mode: str = "new") -> str:
       - "new": first-time research when adding a startup (maximum depth)
       - "refresh": update existing entry while preserving depth
       - "gold": BluSmart-level batch enrichment
+      - "repair": fill only missing/weak fields after a failed quality gate
     """
     mode = (mode or "new").lower()
     if mode == "gold":
@@ -112,13 +113,25 @@ def enrich_system_prompt(*, mode: str = "new") -> str:
             "existing_entry is provided. Preserve strong facts; never thin the profile. "
             "Add new timeline events, update status/summary from the signal, deepen weak fields."
         )
+    elif mode == "repair":
+        focus = (
+            "MODE: REPAIR / FILL MISSING RESEARCH GAPS.\n"
+            "A previous draft failed the research quality gate. "
+            "You are given missing_fields and the partial draft. "
+            "Return a FULL JSON profile that fixes every missing field to gold depth. "
+            "Do not remove strong existing content — only deepen and complete. "
+            "Prioritize: timeline (≥8), insights (≥6), lessons (≥4), long value_proposition, "
+            "cause_of_death for distress, complete ai_rebuild, sources with real URLs, "
+            "and concrete numbers/dates. NEVER invent funding figures."
+        )
     else:
         focus = (
             "MODE: NEW STARTUP RESEARCH (ADDING TO THE DATABASE).\n"
             "This company is being added for the first time. Produce a FULL research dossier, "
             "not a stub. Treat this as an investment-committee postmortem memo in JSON form. "
             "If the input articles are thin, still structure a detailed profile using only "
-            "defensible public knowledge; mark unknowns as null rather than inventing figures."
+            "defensible public knowledge; mark unknowns as null rather than inventing figures. "
+            "The system will REJECT this profile if it fails the gold research gate."
         )
 
     return (
@@ -140,4 +153,5 @@ RESEARCH_MINIMUMS = {
     "ai_rebuild_tech_stack": 5,
     "ai_rebuild_execution_plan": 5,
     "ai_rebuild_innovative": 5,
+    "min_source_urls": 1,
 }

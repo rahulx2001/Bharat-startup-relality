@@ -1,21 +1,34 @@
-"""NVIDIA NIM API helpers for article parsing and startup enrichment."""
+"""NVIDIA NIM API helpers for article parsing and startup enrichment.
+
+Cloud-only OpenAI-compatible client. Research depth is enforced by
+`research_gate` + repair passes — not prompts alone.
+"""
 from __future__ import annotations
 
 import json
 import re
+import time
 from typing import Any
 
-from .config import NVIDIA_API_KEY, NVIDIA_BASE_URL, NVIDIA_MODEL
+from .config import (
+    nvidia_api_key,
+    nvidia_base_url,
+    nvidia_max_tokens,
+    nvidia_model,
+    research_max_repair_passes,
+)
 from .prompts import SIGNAL_SYSTEM_PROMPT, enrich_system_prompt
 from .quality import profile_score
+from .research_gate import GateResult, evaluate_research, merge_research
 
 
 def _client():
-    if not NVIDIA_API_KEY:
+    api_key = nvidia_api_key()
+    if not api_key:
         raise RuntimeError("NVIDIA_API_KEY is not set")
-    from openai import OpenAI  # cloud NIM only; lazy so pure helpers import without the SDK
+    from openai import OpenAI
 
-    return OpenAI(base_url=NVIDIA_BASE_URL, api_key=NVIDIA_API_KEY)
+    return OpenAI(base_url=nvidia_base_url(), api_key=api_key)
 
 
 def _extract_json(text: str) -> Any:
@@ -24,42 +37,78 @@ def _extract_json(text: str) -> Any:
         raise ValueError("Empty LLM response")
 
     if text.startswith("```"):
-        text = re.sub(r"^```(?:json)?\s*", "", text)
+        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
         text = re.sub(r"\s*```$", "", text).strip()
 
     try:
         return json.loads(text)
     except json.JSONDecodeError:
-        start = text.find("{")
-        end = text.rfind("}")
+        pass
+
+    for open_c, close_c in (("{", "}"), ("[", "]")):
+        start = text.find(open_c)
+        end = text.rfind(close_c)
         if start != -1 and end != -1 and end > start:
-            return json.loads(text[start : end + 1])
-        raise
+            try:
+                return json.loads(text[start : end + 1])
+            except json.JSONDecodeError:
+                continue
+    raise ValueError(f"Could not parse JSON from LLM response: {text[:200]!r}")
+
+
+def _is_retryable(exc: BaseException) -> bool:
+    message = str(exc).lower()
+    return any(
+        m in message
+        for m in ("429", "rate", "too many", "timeout", "temporar", "503", "502")
+    )
+
+
+def _is_json_mode_unsupported(exc: BaseException) -> bool:
+    message = str(exc).lower()
+    return any(
+        m in message
+        for m in (
+            "response_format",
+            "json_object",
+            "json mode",
+            "unsupported",
+            "unknown parameter",
+            "extra inputs are not permitted",
+        )
+    )
 
 
 def _chat(system: str, user: str, temperature: float = 0.2, retries: int = 5) -> str:
-    import time
+    last_error: BaseException | None = None
+    use_json_mode = True
+    model = nvidia_model()
+    max_tokens = nvidia_max_tokens()
 
-    last_error = None
     for attempt in range(retries):
         try:
-            response = _client().chat.completions.create(
-                model=NVIDIA_MODEL,
-                messages=[
+            kwargs: dict[str, Any] = {
+                "model": model,
+                "messages": [
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
                 ],
-                temperature=temperature,
-                max_tokens=8192,
-                response_format={"type": "json_object"},
-            )
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }
+            if use_json_mode:
+                kwargs["response_format"] = {"type": "json_object"}
+            response = _client().chat.completions.create(**kwargs)
             return response.choices[0].message.content or ""
         except Exception as exc:
             last_error = exc
-            message = str(exc).lower()
-            if "429" in message or "rate" in message or "too many" in message:
+            if use_json_mode and _is_json_mode_unsupported(exc):
+                print(f"[llm] JSON mode unsupported for {model}; falling back")
+                use_json_mode = False
+                continue
+            if _is_retryable(exc):
                 wait = min(120, 20 * (attempt + 1))
-                print(f"[llm] Rate limited — waiting {wait}s (attempt {attempt + 1}/{retries})")
+                print(f"[llm] Transient error — waiting {wait}s ({attempt + 1}/{retries})")
                 time.sleep(wait)
                 continue
             raise
@@ -73,7 +122,6 @@ def extract_signals(articles: list[dict[str, Any]], known_names: list[str]) -> l
 
     known = ", ".join(known_names[:120])
     payload = json.dumps(articles, ensure_ascii=False, indent=2)
-    system = SIGNAL_SYSTEM_PROMPT
     user = (
         f"Known startups already in database: {known}\n\n"
         f"Articles:\n{payload}\n\n"
@@ -81,11 +129,16 @@ def extract_signals(articles: list[dict[str, Any]], known_names: list[str]) -> l
         "Only add new startups when the article clearly names one Indian company."
     )
 
-    raw = _chat(system, user)
+    raw = _chat(SIGNAL_SYSTEM_PROMPT, user)
     parsed = _extract_json(raw)
-    signals = parsed.get("signals", parsed if isinstance(parsed, list) else [])
+    if isinstance(parsed, list):
+        signals = parsed
+    else:
+        signals = parsed.get("signals", [])
     cleaned = []
     for item in signals:
+        if not isinstance(item, dict):
+            continue
         name = (item.get("startup_name") or "").strip()
         status = (item.get("status") or "").strip()
         if not name or status not in {"Shut Down", "Struggling", "Pivoted", "Comeback", "Recovery"}:
@@ -105,7 +158,6 @@ def extract_signals(articles: list[dict[str, Any]], known_names: list[str]) -> l
 
 
 def _detailed_schema_hint() -> dict[str, Any]:
-    """Schema with explicit depth requirements for research outputs."""
     return {
         "startup_name": "string",
         "status": "Shut Down | Struggling | Pivoted | Comeback | Recovery",
@@ -144,35 +196,73 @@ def _detailed_schema_hint() -> dict[str, Any]:
     }
 
 
-def _log_research_depth(entry: dict[str, Any], label: str) -> None:
-    """Print quality score so thin research is visible in pipeline logs."""
-    score = profile_score(entry)
-    name = entry.get("startup_name") or "?"
-    print(
-        f"[llm] Research depth for {name} ({label}): "
-        f"tier={score['tier']} score={score['score']} "
-        f"complete={score['complete']} missing={score['missing']}"
-    )
-    if not score["complete"]:
-        print(
-            f"[llm] WARNING: {name} is below gold research depth. "
-            "System prompt requires detailed research — review sources or re-enrich."
-        )
+def _apply_funding_and_sources(
+    entry: dict[str, Any],
+    signal: dict[str, Any] | None,
+    funding: dict[str, Any],
+    existing: dict[str, Any] | None,
+) -> dict[str, Any]:
+    csv_funding = funding.get("funding_burned_usd") or 0
+    existing_funding = (existing or {}).get("funding_burned_usd") or 0
+    entry_funding = entry.get("funding_burned_usd") or 0
+    try:
+        entry["funding_burned_usd"] = max(int(csv_funding or 0), int(existing_funding or 0), int(entry_funding or 0))
+    except (TypeError, ValueError):
+        pass
+
+    if funding.get("category") and not entry.get("category"):
+        entry["category"] = funding["category"]
+    if funding.get("headquarters") and not entry.get("headquarters"):
+        entry["headquarters"] = funding["headquarters"]
+    if funding.get("investors") and not entry.get("investors"):
+        entry["investors"] = funding["investors"]
+
+    if signal and signal.get("source_url"):
+        sources = entry.get("sources") or []
+        sources.append({"title": signal.get("headline") or "News update", "url": signal["source_url"]})
+        entry["sources"] = sources
+
+    if signal:
+        entry["startup_name"] = entry.get("startup_name") or signal.get("startup_name")
+        entry["status"] = signal.get("status") or entry.get("status")
+
+    if existing:
+        entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
+        if not entry.get("status"):
+            entry["status"] = existing.get("status")
+
+    entry["sources"] = _normalize_sources(entry.get("sources") or (existing or {}).get("sources"))
+    return entry
+
+
+def _stamp_tier(entry: dict[str, Any], gate: GateResult) -> dict[str, Any]:
+    if gate.accepted and gate.score >= 85:
+        entry["profile_tier"] = "gold"
+    else:
+        entry["profile_tier"] = gate.tier
+    entry["research_score"] = gate.score
+    entry["research_missing"] = gate.missing
+    return entry
+
+
+def _log_gate(gate: GateResult, label: str, name: str) -> None:
+    print(f"[research] {name} ({label}): {gate.summary()}")
+    for reason in gate.reasons[:6]:
+        print(f"[research]   • {reason}")
 
 
 def enrich_startup(signal: dict[str, Any], funding: dict[str, Any], existing: dict[str, Any] | None) -> dict[str, Any]:
-    """Generate or refresh a full graveyard.json startup entry (detailed research required)."""
-    schema_hint = _detailed_schema_hint()
+    """Single-pass research (prefer research_startup for gated production use)."""
     mode = "refresh" if existing else "new"
-
+    schema_hint = _detailed_schema_hint()
     context = {
         "research_mode": mode,
         "instruction": (
             "Apply RESEARCH_SYSTEM_RULES. "
             + (
-                "This is a NEW startup being added — produce a full detailed dossier."
+                "NEW startup — full detailed dossier; system will REJECT thin output."
                 if mode == "new"
-                else "This is a REFRESH — deepen gaps, never shrink a detailed profile."
+                else "REFRESH — deepen gaps, never shrink a detailed profile."
             )
         ),
         "signal": signal,
@@ -186,43 +276,91 @@ def enrich_startup(signal: dict[str, Any], funding: dict[str, Any], existing: di
             "ai_rebuild_lists_min": 5,
         },
     }
-    system = enrich_system_prompt(mode=mode)
-    user = json.dumps(context, ensure_ascii=False, indent=2)
-    raw = _chat(system, user, temperature=0.3)
+    raw = _chat(enrich_system_prompt(mode=mode), json.dumps(context, ensure_ascii=False, indent=2), temperature=0.3)
     entry = _extract_json(raw)
     if not isinstance(entry, dict):
         raise ValueError("enrich_startup expected a JSON object from the model")
-
-    csv_funding = funding.get("funding_burned_usd") or 0
-    existing_funding = (existing or {}).get("funding_burned_usd") or 0
-    if csv_funding and csv_funding >= existing_funding:
-        entry["funding_burned_usd"] = csv_funding
-    elif existing_funding:
-        entry["funding_burned_usd"] = existing_funding
-    if funding.get("category") and not entry.get("category"):
-        entry["category"] = funding["category"]
-    if funding.get("headquarters") and not entry.get("headquarters"):
-        entry["headquarters"] = funding["headquarters"]
-    if funding.get("investors") and not entry.get("investors"):
-        entry["investors"] = funding["investors"]
-
-    if signal.get("source_url"):
-        sources = entry.get("sources") or []
-        sources.append({"title": signal.get("headline") or "News update", "url": signal["source_url"]})
-        entry["sources"] = sources[:8]
-
-    entry["startup_name"] = entry.get("startup_name") or signal["startup_name"]
-    entry["status"] = signal.get("status") or entry.get("status")
-    entry["sources"] = _normalize_sources(entry.get("sources"))
-
-    depth = profile_score(entry)
-    if depth["complete"]:
-        entry["profile_tier"] = "gold"
-    elif not entry.get("profile_tier"):
-        entry["profile_tier"] = depth["tier"]
-
-    _log_research_depth(entry, mode)
+    entry = _apply_funding_and_sources(entry, signal, funding, existing)
+    gate = evaluate_research(entry, is_new=existing is None)
+    entry = _stamp_tier(entry, gate)
+    _log_gate(gate, mode, entry.get("startup_name") or "?")
     return entry
+
+
+def repair_research(
+    draft: dict[str, Any],
+    *,
+    signal: dict[str, Any] | None,
+    funding: dict[str, Any],
+    existing: dict[str, Any] | None,
+    missing: list[str],
+    reasons: list[str],
+) -> dict[str, Any]:
+    """Second-pass LLM call to fill gaps that failed the research gate."""
+    context = {
+        "research_mode": "repair",
+        "missing_fields": missing,
+        "gate_reasons": reasons,
+        "partial_draft": draft,
+        "signal": signal,
+        "funding_lookup": funding,
+        "existing_entry": existing,
+        "schema": _detailed_schema_hint(),
+        "instruction": (
+            "Return a COMPLETE gold-depth JSON profile that fixes every missing field. "
+            "Keep all strong facts from partial_draft."
+        ),
+    }
+    raw = _chat(
+        enrich_system_prompt(mode="repair"),
+        json.dumps(context, ensure_ascii=False, indent=2),
+        temperature=0.25,
+    )
+    patch = _extract_json(raw)
+    if not isinstance(patch, dict):
+        raise ValueError("repair_research expected a JSON object")
+    merged = merge_research(draft, patch)
+    return _apply_funding_and_sources(merged, signal, funding, existing)
+
+
+def research_startup(
+    signal: dict[str, Any],
+    funding: dict[str, Any],
+    existing: dict[str, Any] | None,
+) -> tuple[dict[str, Any], GateResult]:
+    """Research with automatic repair passes and hard gate evaluation.
+
+    Returns (entry, gate). Caller must not persist if gate.accepted is False
+    for new startups (when require-gold is enabled).
+    """
+    is_new = existing is None
+    entry = enrich_startup(signal, funding, existing)
+    gate = evaluate_research(entry, is_new=is_new)
+    entry = _stamp_tier(entry, gate)
+
+    passes = research_max_repair_passes()
+    attempt = 0
+    while not gate.accepted and attempt < passes:
+        attempt += 1
+        name = entry.get("startup_name") or signal.get("startup_name")
+        print(f"[research] Repair pass {attempt}/{passes} for {name} — missing {gate.missing}")
+        try:
+            entry = repair_research(
+                entry,
+                signal=signal,
+                funding=funding,
+                existing=existing,
+                missing=gate.missing,
+                reasons=gate.reasons,
+            )
+        except Exception as exc:
+            print(f"[research] Repair pass failed: {exc}")
+            break
+        gate = evaluate_research(entry, is_new=is_new)
+        entry = _stamp_tier(entry, gate)
+        _log_gate(gate, f"repair-{attempt}", name or "?")
+
+    return entry, gate
 
 
 def _normalize_sources(sources: Any) -> list[dict[str, str]]:
@@ -251,21 +389,20 @@ def _normalize_sources(sources: Any) -> list[dict[str, str]]:
                 except (SyntaxError, ValueError):
                     pass
             cleaned.append({"title": text[:120], "url": ""})
-    return cleaned[:6]
+    return cleaned[:8]
 
 
 def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_example: dict[str, Any]) -> dict[str, Any]:
-    """BluSmart-level deep enrichment for an existing startup profile."""
+    """BluSmart-level deep enrichment with repair until gold (or max passes)."""
     schema_hint = _detailed_schema_hint()
     schema_hint["profile_tier"] = "gold"
-
     system = enrich_system_prompt(mode="gold")
     user = json.dumps(
         {
             "research_mode": "gold",
             "instruction": (
                 "Apply RESEARCH_SYSTEM_RULES at maximum depth. "
-                "Match or exceed the gold_standard_example structure and richness."
+                "Match or exceed the gold_standard_example. System rejects thin output."
             ),
             "gold_standard_example": {
                 "startup_name": gold_example.get("startup_name"),
@@ -295,14 +432,39 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
     if not isinstance(entry, dict):
         raise ValueError("enrich_profile_full expected a JSON object from the model")
 
+    entry = _apply_funding_and_sources(entry, None, funding, existing)
     entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
     entry["status"] = existing.get("status") or entry.get("status")
-    entry["profile_tier"] = "gold"
 
-    csv_funding = funding.get("funding_burned_usd") or 0
-    existing_funding = existing.get("funding_burned_usd") or 0
-    entry["funding_burned_usd"] = max(existing_funding, csv_funding, entry.get("funding_burned_usd") or 0)
+    gate = evaluate_research(entry, is_new=False, require_gold=True)
+    entry = _stamp_tier(entry, gate)
+    _log_gate(gate, "gold", entry.get("startup_name") or "?")
 
-    entry["sources"] = _normalize_sources(entry.get("sources") or existing.get("sources"))
-    _log_research_depth(entry, "gold")
+    passes = research_max_repair_passes()
+    attempt = 0
+    while not gate.accepted and attempt < passes:
+        attempt += 1
+        print(f"[research] Gold repair {attempt}/{passes} for {entry.get('startup_name')}")
+        try:
+            entry = repair_research(
+                entry,
+                signal=None,
+                funding=funding,
+                existing=existing,
+                missing=gate.missing,
+                reasons=gate.reasons,
+            )
+            entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
+            entry["status"] = existing.get("status") or entry.get("status")
+        except Exception as exc:
+            print(f"[research] Gold repair failed: {exc}")
+            break
+        gate = evaluate_research(entry, is_new=False, require_gold=True)
+        entry = _stamp_tier(entry, gate)
+        _log_gate(gate, f"gold-repair-{attempt}", entry.get("startup_name") or "?")
+
+    if not gate.accepted:
+        # Still return best effort for batch, but mark clearly
+        entry["profile_tier"] = gate.tier
+        entry["research_rejected"] = True
     return entry

@@ -83,4 +83,6 @@ startup-graveyard-ui/
 - The UI still has category-based fallbacks in `app.js` for entries missing `ai_rebuild` fields
 - Set `MAX_NEW_STARTUPS_PER_RUN` to control API cost per run (default: 5)
 - Pipeline cache lives in `pipeline/cache/` (gitignored except what Actions commits)
-- **Research system prompt:** [`pipeline/prompts.py`](pipeline/prompts.py) enforces detailed research when adding/enriching startups (timeline ≥8, insights ≥6, lessons ≥4, rich `cause_of_death` / `ai_rebuild`, no invented funding). New startups use `MODE: NEW STARTUP RESEARCH`.
+- **Research system prompt:** [`pipeline/prompts.py`](pipeline/prompts.py) — detailed research constitution (timeline ≥8, insights ≥6, lessons ≥4, rich narrative / `ai_rebuild`, no invented funding).
+- **Hard research gate:** [`pipeline/research_gate.py`](pipeline/research_gate.py) — new startups are **rejected** unless gold depth is met (sources with URLs, concrete facts, founders, full dossier). Failed drafts get up to `RESEARCH_MAX_REPAIR_PASSES` automatic fill-missing LLM repairs (`research_startup` in `pipeline/llm.py`).
+- Env knobs: `RESEARCH_REQUIRE_GOLD_FOR_NEW=true` (default), `RESEARCH_REQUIRE_GOLD_FOR_UPDATE=false`, `RESEARCH_MAX_REPAIR_PASSES=2`.

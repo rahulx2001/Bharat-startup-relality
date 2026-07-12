@@ -6,14 +6,14 @@ import argparse
 import json
 import time
 from datetime import datetime, timezone
-from pathlib import Path
 
-from .config import CACHE_DIR, GRAVEYARD_JSON, NVIDIA_API_KEY
+from .config import CACHE_DIR, nvidia_api_key, nvidia_model
 from .funding import lookup_startup
 from .llm import enrich_profile_full
 from .merge import apply_updates, load_graveyard
 from .normalize import normalize_category
 from .quality import needs_enrichment, profile_score
+from .research_gate import evaluate_research
 
 PROGRESS_FILE = CACHE_DIR / "enrich_progress.json"
 
@@ -38,17 +38,21 @@ def _save_progress(done: set[str]) -> None:
 
 def _gold_example() -> dict:
     data = load_graveyard()
-    for s in data.get("startups", []):
+    startups = data.get("startups") or []
+    if not startups:
+        raise RuntimeError("graveyard.json has no startups for gold example")
+    for s in startups:
         if s.get("startup_name") == "BluSmart":
             return s
-    return data["startups"][0]
+    return startups[0]
 
 
 def run_batch(limit: int = 0, force: bool = False, delay: float = 30.0) -> int:
-    if not NVIDIA_API_KEY:
+    if not nvidia_api_key():
         print("[batch] ERROR: Set NVIDIA_API_KEY")
         return 1
 
+    print(f"[batch] Model: {nvidia_model()}")
     data = load_graveyard()
     startups = data.get("startups", [])
     gold = _gold_example()
@@ -70,7 +74,8 @@ def run_batch(limit: int = 0, force: bool = False, delay: float = 30.0) -> int:
 
     print(f"[batch] Enriching {len(targets)} startups to BluSmart gold standard")
 
-    enriched = []
+    saved = 0
+    skipped = 0
     for i, existing in enumerate(targets, 1):
         name = existing["startup_name"]
         before = profile_score(existing)
@@ -83,24 +88,26 @@ def run_batch(limit: int = 0, force: bool = False, delay: float = 30.0) -> int:
             entry["updated_at"] = now
             if not existing.get("added_at"):
                 entry["added_at"] = existing.get("added_at") or now
-            apply_updates([entry])
-            done.add(name)
-            _save_progress(done)
 
-            after = profile_score(entry)
-            print(f"         → tier {after['tier']} score {after['score']} (saved)")
+            gate = evaluate_research(entry, is_new=False, require_gold=True)
+            if not gate.accepted:
+                print(f"         ✗ gate failed: {gate.summary()} — not saving")
+                skipped += 1
+            else:
+                apply_updates([entry])
+                done.add(name)
+                _save_progress(done)
+                saved += 1
+                after = profile_score(entry)
+                print(f"         → tier {after['tier']} score {after['score']} (saved)")
         except Exception as exc:
             print(f"         ✗ failed: {exc}")
+            skipped += 1
 
         if i < len(targets):
             time.sleep(delay)
 
-    if done:
-        data = load_graveyard()
-        print(f"[batch] Complete — {len(done)} enriched, total {len(data['startups'])} startups")
-    else:
-        print("[batch] Nothing saved")
-
+    print(f"[batch] Complete — saved {saved}, skipped {skipped}, progress {len(done)}")
     return 0
 
 

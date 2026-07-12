@@ -7,9 +7,6 @@ from datetime import datetime, timezone
 from typing import Any
 from urllib.parse import urlparse
 
-import feedparser
-import requests
-
 from .config import (
     ARTICLES_CACHE,
     CACHE_DIR,
@@ -19,13 +16,18 @@ from .config import (
     SEEN_CACHE,
 )
 
-SESSION = requests.Session()
-SESSION.headers.update(
-    {
-        "User-Agent": "StartupGraveyardBot/1.0 (+https://github.com/startup-graveyard)",
-        "Accept": "application/rss+xml, application/xml, text/xml, */*",
-    }
-)
+
+def _session():
+    import requests
+
+    session = requests.Session()
+    session.headers.update(
+        {
+            "User-Agent": "StartupGraveyardBot/1.0 (+https://github.com/startup-graveyard)",
+            "Accept": "application/rss+xml, application/xml, text/xml, */*",
+        }
+    )
+    return session
 
 
 def _load_json(path, default):
@@ -67,12 +69,16 @@ def fetch_articles(force: bool = False) -> list[dict[str, Any]]:
         if cached:
             return cached[:MAX_ARTICLES_PER_RUN]
 
+    import feedparser
+    import requests
+
     seen_urls = set(_load_json(SEEN_CACHE, []))
     articles: list[dict[str, Any]] = []
+    session = _session()
 
     for source, feed_url in RSS_FEEDS:
         try:
-            response = SESSION.get(feed_url, timeout=20)
+            response = session.get(feed_url, timeout=20)
             response.raise_for_status()
             feed = feedparser.parse(response.content)
         except requests.RequestException as exc:

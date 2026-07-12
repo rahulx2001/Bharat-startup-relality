@@ -19,9 +19,16 @@ def profile_score(startup: dict[str, Any]) -> dict[str, Any]:
     auto-added startups fail the gold bar until re-researched.
     """
     m = RESEARCH_MINIMUMS
+    status = (startup.get("status") or "").strip()
+    distress = status in {"Shut Down", "Struggling", "Crisis", "Layoffs"}
+    cause_ok = _len_text(startup.get("cause_of_death"), m["cause_of_death_chars"])
+    if not distress:
+        # Pivoted / Comeback / Recovery may use long failure_reason as narrative
+        cause_ok = cause_ok or _len_text(startup.get("failure_reason"), 80)
+
     checks: list[tuple[str, bool, int]] = [
         ("value_proposition", _len_text(startup.get("value_proposition"), m["value_proposition_chars"]), 10),
-        ("cause_of_death", _len_text(startup.get("cause_of_death"), m["cause_of_death_chars"]), 12),
+        ("cause_of_death", cause_ok, 12),
         ("short_summary", _len_text(startup.get("short_summary"), m["short_summary_chars"]), 5),
         ("timeline", len(startup.get("timeline") or []) >= m["timeline_events"], 12),
         ("insights", len(startup.get("insights") or []) >= m["insights"], 10),
