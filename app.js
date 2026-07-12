@@ -1141,7 +1141,7 @@ const updateHeroMeta = (items) => {
   }
   const qLine = el('qualitySummaryLine');
   if (qLine) {
-    qLine.textContent = `Profiles combine public reporting with structured fields (funding, valuation, timeline, lessons, rebuild ideas). Filter by status, category, or research quality when you want a narrower view.`;
+    qLine.textContent = `Tip: start with Shut Down or Struggling filters, then open a card for the full timeline and founder takeaways. Use Compare on 2–3 companies in the same category to spot patterns.`;
   }
   updateWatchlistBadge();
 };

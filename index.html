@@ -65,13 +65,14 @@
         </div>
       </div>
       <details class="methodology-strip" id="methodologyStrip">
-        <summary>How research quality works (gold gate · sources · honesty)</summary>
+        <summary>What you’ll find here · how to use this catalog</summary>
         <div class="methodology-body">
-          <p><strong>Gold verified</strong> means a profile passed the research gate: concrete narrative fields,
-            founders when public, on-topic source URLs, and no identity contamination. Most cards are
-            <strong>silver/bronze</strong> until sources and depth clear that bar — we never invent funding or fake gold.</p>
-          <p>Pipeline: RSS signals → cloud NIM research → gold gate + repair → restamp → <code>data/graveyard.json</code>.
-            Badges show <em>tier · score · source count</em> from those fields. Use quality filters to browse honestly.</p>
+          <p><strong>Bharat Startup Reality</strong> is a public map of Indian startups that shut down, struggled,
+            pivoted, or fought back. Each profile is built for founders, operators, and students who want the
+            <em>story</em> — not marketing decks.</p>
+          <p>Open any card for: pitch &amp; failure narrative, timeline, key people &amp; investors, funding and
+            peak valuation, lessons, market context, and practical rebuild ideas. Filter by status or category,
+            search founders/investors, save a personal watchlist, and compare companies side by side.</p>
           <p id="qualitySummaryLine" class="quality-summary-line"></p>
         </div>
       </details>
@@ -90,16 +91,12 @@
           </select>
         </div>
         <div class="toolbar-group">
-          <label for="qualityFilter">Research quality</label>
+          <label for="qualityFilter">Profile depth</label>
           <select id="qualityFilter">
-            <option value="all">All tiers</option>
-            <option value="gold">Gold verified only</option>
-            <option value="silver">Silver</option>
-            <option value="bronze">Bronze</option>
-            <option value="thin">Thin</option>
-            <option value="has_sources">Has sources</option>
-            <option value="no_sources">Missing sources</option>
-            <option value="blocked">Below gold bar</option>
+            <option value="all">All profiles</option>
+            <option value="gold">Most complete</option>
+            <option value="silver">Standard depth</option>
+            <option value="has_sources">With linked sources</option>
           </select>
         </div>
         <div class="toolbar-group">
