@@ -104,7 +104,37 @@ function testWatchlistPure() {
   assert.strictEqual(api.isWatched("Foo", mem), false);
 }
 
+function testTimelineSortChronological() {
+  const mixed = [
+    { date: "Jan 2025", event: "App offline" },
+    { date: "Jul 2014", event: "Founded" },
+    { date: "May 2020", event: "Pandemic boom" },
+  ];
+  const sorted = api.sortTimeline(mixed);
+  assert.strictEqual(sorted[0].date, "Jul 2014");
+  assert.strictEqual(sorted[1].date, "May 2020");
+  assert.strictEqual(sorted[2].date, "Jan 2025");
+  assert.strictEqual(sorted[0].event, "Founded");
+
+  // keys
+  assert.ok(api.timelineDateKey("Jul 2014") < api.timelineDateKey("May 2020"));
+  assert.ok(api.timelineDateKey("May 2020") < api.timelineDateKey("Jan 2025"));
+  assert.ok(api.timelineDateKey("Q1 2019") < api.timelineDateKey("2021-06-15"));
+
+  // stable with unparseable at end
+  const withBad = [
+    { date: "TBD", event: "unknown" },
+    { date: "2015", event: "year only" },
+    { date: "Mar 2018", event: "mid" },
+  ];
+  const s2 = api.sortTimeline(withBad);
+  assert.strictEqual(s2[0].date, "2015");
+  assert.strictEqual(s2[1].date, "Mar 2018");
+  assert.strictEqual(s2[2].date, "TBD");
+}
+
 testBadgeHonesty();
 testQualityFilterAndSort();
 testWatchlistPure();
+testTimelineSortChronological();
 console.log("OK tests/test_quality_js.js");

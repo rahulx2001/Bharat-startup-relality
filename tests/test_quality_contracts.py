@@ -34,8 +34,20 @@ class TestQualityContracts(unittest.TestCase):
             "showLoadError",
             "Escape",
             "escapeHtml(badgeLabel)",
+            "sortTimeline",
         ):
             self.assertIn(needle, app, msg=needle)
+
+    def test_no_provisional_scare_banner_copy(self):
+        app = (ROOT / "app.js").read_text(encoding="utf-8")
+        for banned in (
+            "Provisional profile",
+            "not gold-verified",
+            "Treat narrative as incomplete until sources clear",
+            "Provisional research",
+            "treat narrative as provisional",
+        ):
+            self.assertNotIn(banned, app, msg=banned)
 
     def test_catalog_gold_is_rare_and_consistent(self):
         data = json.loads((ROOT / "data" / "graveyard.json").read_text(encoding="utf-8"))

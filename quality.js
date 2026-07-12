@@ -161,6 +161,76 @@
     return { names, watched };
   }
 
+  const MONTHS = {
+    jan: 1, january: 1, feb: 2, february: 2, mar: 3, march: 3,
+    apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7,
+    aug: 8, august: 8, sep: 9, sept: 9, september: 9,
+    oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12,
+  };
+
+  /**
+   * Parse free-form timeline dates to a sortable key (YYYYMMDD number).
+   * Supports: "Jul 2014", "January 2025", "2020-05", "2020", "Q3 2020", ISO dates.
+   * Unparseable → null (sorted last, stable).
+   */
+  function timelineDateKey(dateStr) {
+    const raw = String(dateStr == null ? "" : dateStr).trim();
+    if (!raw) return null;
+
+    // ISO / YYYY-MM-DD / YYYY-MM
+    const iso = raw.match(/^(\d{4})(?:-(\d{1,2})(?:-(\d{1,2}))?)?/);
+    if (iso && raw.indexOf(iso[0]) === 0 && /^\d{4}/.test(raw)) {
+      const y = Number(iso[1]);
+      const m = iso[2] ? Number(iso[2]) : 1;
+      const d = iso[3] ? Number(iso[3]) : 1;
+      if (y >= 1900 && y <= 2100) return y * 10000 + m * 100 + d;
+    }
+
+    // Q1 2020 / Q3'20
+    const q = raw.match(/Q\s*([1-4])\s*['’]?\s*(\d{2,4})/i);
+    if (q) {
+      let y = Number(q[2]);
+      if (y < 100) y += 2000;
+      const m = (Number(q[1]) - 1) * 3 + 1;
+      return y * 10000 + m * 100 + 1;
+    }
+
+    // Mon YYYY / Month YYYY (e.g. "Jul 2014", "January 2025")
+    const monYear = raw.match(
+      /\b(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept?|oct|nov|dec)\b\.?\s*['’]?\s*(\d{4})\b/i
+    );
+    if (monYear) {
+      const token = monYear[1].toLowerCase();
+      const month = MONTHS[token] || MONTHS[token.slice(0, 3)] || 1;
+      return Number(monYear[2]) * 10000 + month * 100 + 1;
+    }
+
+    // Bare year
+    const yearOnly = raw.match(/\b(19|20)\d{2}\b/);
+    if (yearOnly) return Number(yearOnly[0]) * 10000 + 101;
+
+    return null;
+  }
+
+  /** Oldest → newest. Unparseable dates keep relative order at the end. */
+  function sortTimeline(events) {
+    const list = Array.isArray(events) ? events.slice() : [];
+    return list
+      .map((ev, idx) => ({
+        ev,
+        idx,
+        key: timelineDateKey(ev && (ev.date != null ? ev.date : ev.year)),
+      }))
+      .sort((a, b) => {
+        if (a.key == null && b.key == null) return a.idx - b.idx;
+        if (a.key == null) return 1;
+        if (b.key == null) return -1;
+        if (a.key !== b.key) return a.key - b.key;
+        return a.idx - b.idx;
+      })
+      .map((x) => x.ev);
+  }
+
   const api = {
     WATCHLIST_KEY,
     sourceCount,
@@ -176,6 +246,8 @@
     saveWatchlist,
     isWatched,
     toggleWatchlist,
+    timelineDateKey,
+    sortTimeline,
   };
 
   if (typeof module !== "undefined" && module.exports) {

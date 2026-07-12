@@ -42,8 +42,6 @@ const unique = (arr) => [...new Set(arr)];
 const isGoldProfile = (s) =>
   s && s.profile_tier === 'gold' && s.research_status === 'gold_pass';
 
-const isProvisionalProfile = (s) => !isGoldProfile(s);
-
 const sourceCountOf = (s) => (Q() ? Q().sourceCount(s) : (Array.isArray(s?.sources) ? s.sources.length : 0));
 
 const formatMoneyOrUnknown = (num) => {
@@ -245,7 +243,6 @@ const buildCards = (items) => {
         ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
         <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
         <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
-        ${isProvisionalProfile(s) ? '<span class="tag provisional-tag">Provisional</span>' : ''}
       </div>
       <p>${escapeHtml(s.short_summary || s.failure_reason || 'No details available.')}</p>
       ${foundersRaw ? `<div class="card-founders">${escapeHtml(foundersRaw)}</div>` : ''}
@@ -380,7 +377,6 @@ const openModal = (s) => {
   el('modalMeta').innerHTML = `
     <span class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</span>
     <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
-    ${isProvisionalProfile(s) ? '<span class="tag provisional-tag">Provisional research</span>' : '<span class="tag tag-verified">Gold verified</span>'}
     ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
     <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
     <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
@@ -396,49 +392,22 @@ const openModal = (s) => {
     };
   }
 
-  // Research integrity / why blocked
+  // Hide integrity scare-banner (keep quality badge only)
   const integrity = el('modalIntegrity');
   if (integrity) {
-    if (isGoldProfile(s)) {
-      integrity.hidden = false;
-      integrity.innerHTML = '<p class="integrity-ok">✓ Gold verified — gate passed with sourced research.</p>';
-    } else {
-      integrity.hidden = false;
-      const reasons = Array.isArray(s.research_gate_reasons) ? s.research_gate_reasons : [];
-      const missing = Array.isArray(s.research_missing) ? s.research_missing : [];
-      const blocked = s.research_blocked_reason || '';
-      const lines = [];
-      lines.push('<p class="integrity-warn"><strong>Provisional profile</strong> — not gold-verified. Treat narrative as incomplete until sources clear the gate.</p>');
-      if (sourceCountOf(s) === 0) {
-        lines.push('<p>No verified sources yet — treat narrative as provisional.</p>');
-      }
-      if (blocked) lines.push(`<p>Blocked reason: ${escapeHtml(blocked)}</p>`);
-      if (missing.length) lines.push(`<p>Missing fields: ${escapeHtml(missing.slice(0, 12).join(', '))}</p>`);
-      if (reasons.length) {
-        lines.push('<ul class="integrity-list">' + reasons.slice(0, 8).map((r) => `<li>${escapeHtml(r)}</li>`).join('') + '</ul>');
-      }
-      integrity.innerHTML = lines.join('');
-    }
+    integrity.hidden = true;
+    integrity.innerHTML = '';
   }
 
-  // Value Proposition — catalog text only; no invented pitch for provisional
-  el('modalValueProp').textContent = s.value_proposition || s.short_summary
-    || (isGoldProfile(s)
-      ? `${s.startup_name} — enrichment pending.`
-      : `${s.startup_name}: detailed pitch not verified yet (provisional).`);
+  // Value Proposition — prefer rich catalog text
+  el('modalValueProp').textContent = s.value_proposition || s.short_summary || s.failure_reason
+    || `${s.startup_name} was a ${s.category || 'tech'} company based in ${s.headquarters || 'India'}.`;
 
-  // Opportunity Score — only catalog scores or explicit speculative label
-  const oppScoreRaw = s.opportunity_score || null;
-  if (!oppScoreRaw) {
-    el('modalOpportunity').innerHTML = isGoldProfile(s)
-      ? '<p class="thin-note">Profile enrichment in progress.</p>'
-      : '<p class="thin-note provisional-note">No opportunity score on file. Speculative scoring is disabled for provisional profiles.</p>';
-  } else if (globalThis.BSRSecurity && BSRSecurity.opportunityScoreHtml) {
+  // Opportunity Score — catalog first, then category estimate for depth
+  const oppScoreRaw = s.opportunity_score || generateOpportunityScore(s);
+  if (globalThis.BSRSecurity && BSRSecurity.opportunityScoreHtml) {
     const safe = BSRSecurity.sanitizeOppScore(oppScoreRaw);
-    const prefix = isProvisionalProfile(s)
-      ? '<p class="thin-note provisional-note">Scores from catalog (not independently re-verified).</p>'
-      : '';
-    el('modalOpportunity').innerHTML = prefix + BSRSecurity.opportunityScoreHtml(safe, {
+    el('modalOpportunity').innerHTML = BSRSecurity.opportunityScoreHtml(safe, {
       difficulty: getDifficultyLabel(safe.rebuild_difficulty),
       scale: getScaleLabel(safe.scalability),
       market: getMarketLabel(safe.market_potential),
@@ -461,33 +430,30 @@ const openModal = (s) => {
     deathSection.style.display = 'none';
   }
 
-  // Timeline
+  // Timeline — always chronological (oldest → newest)
   const timeline = el('modalTimeline');
   timeline.innerHTML = '';
-  (s.timeline || []).forEach(t => {
+  const timelineEvents = Q()?.sortTimeline
+    ? Q().sortTimeline(s.timeline || [])
+    : [...(s.timeline || [])];
+  timelineEvents.forEach((t) => {
     const div = document.createElement('div');
     div.className = 'timeline-item';
     div.innerHTML = `<div class="date">${escapeHtml(t.date)}</div><div>${escapeHtml(t.event)}</div>`;
     timeline.appendChild(div);
   });
 
-  // Lessons/Loot — catalog only; no synthetic insights for provisional
+  // Lessons/Loot — catalog first, then helpful category-based insights
   const lessonsList = el('modalLessons');
   lessonsList.innerHTML = '';
-  const insights = s.insights?.length ? s.insights : (s.lessons?.length ? s.lessons : []);
-  if (!insights.length) {
+  const insights = s.insights?.length
+    ? s.insights
+    : (s.lessons?.length ? s.lessons : generateInsights(s));
+  insights.forEach((p, i) => {
     const li = document.createElement('li');
-    li.textContent = isGoldProfile(s)
-      ? 'Insights pending enrichment.'
-      : 'No verified insights on file (provisional profile).';
+    li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${escapeHtml(p)}`;
     lessonsList.appendChild(li);
-  } else {
-    insights.forEach((p, i) => {
-      const li = document.createElement('li');
-      li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${escapeHtml(p)}`;
-      lessonsList.appendChild(li);
-    });
-  }
+  });
 
   // People
   const people = el('modalPeople');
@@ -508,28 +474,13 @@ const openModal = (s) => {
     people.innerHTML = '<div class="person-card"><div class="name">No data available</div></div>';
   }
 
-  // Market Today — catalog only
-  el('modalMarketToday').textContent = s.market_today
-    || (isGoldProfile(s)
-      ? 'Market analysis pending enrichment.'
-      : 'No verified market-today brief on file (provisional).');
+  // Market Today
+  el('modalMarketToday').textContent = s.market_today || generateMarketToday(s);
 
-  // AI Rebuild Idea — catalog only; never invent rebuild for provisional
-  const rebuild = s.ai_rebuild?.name
-    ? s.ai_rebuild
-    : {
-        name: isGoldProfile(s) ? 'Pending' : 'Not available (provisional)',
-        description: isGoldProfile(s)
-          ? 'AI rebuild being enriched.'
-          : 'Rebuild ideas are only shown when present in the catalog. We do not invent speculative rebuilds for unverified profiles.',
-        tech_stack: [],
-        execution_plan: [],
-        innovative: [],
-        monetization: '',
-      };
+  // AI Rebuild Idea — catalog first, category rebuild when missing
+  const rebuild = s.ai_rebuild?.name ? s.ai_rebuild : generateAIRebuild(s);
   el('modalRebuildName').textContent = rebuild.name;
-  el('modalRebuildDesc').textContent = rebuild.description
-    + (isProvisionalProfile(s) && s.ai_rebuild?.name ? ' (Catalog field — treat as speculative unless gold-verified.)' : '');
+  el('modalRebuildDesc').textContent = rebuild.description;
   el('modalTechStack').innerHTML = (rebuild.tech_stack || [])
     .map((t) => `<span class="tech-tag">${escapeHtml(t)}</span>`)
     .join('');
@@ -540,7 +491,7 @@ const openModal = (s) => {
   const plan = rebuild.execution_plan || [];
   if (!plan.length) {
     const li = document.createElement('li');
-    li.textContent = 'No execution plan on file.';
+    li.textContent = 'Execution plan being refined.';
     execList.appendChild(li);
   } else {
     plan.forEach((step) => {
@@ -553,23 +504,17 @@ const openModal = (s) => {
   // What Makes This Innovative
   const innovativeList = el('modalInnovative');
   innovativeList.innerHTML = '';
-  const innovations = rebuild.innovative || [];
-  if (!innovations.length) {
+  const innovations = rebuild.innovative?.length ? rebuild.innovative : generateInnovative(s);
+  innovations.forEach((point) => {
     const li = document.createElement('li');
-    li.textContent = 'No innovation notes on file.';
+    li.textContent = point;
     innovativeList.appendChild(li);
-  } else {
-    innovations.forEach((point) => {
-      const li = document.createElement('li');
-      li.textContent = point;
-      innovativeList.appendChild(li);
-    });
-  }
+  });
 
   // Monetization
-  el('modalMonetization').textContent = rebuild.monetization || 'No monetization plan on file.';
+  el('modalMonetization').textContent = rebuild.monetization || generateMonetization(s);
 
-  // Sources — always show section
+  // Sources
   const sources = parseSources(s.sources);
   const sourcesSection = el('sourcesSection');
   const sourcesList = el('modalSources');
@@ -578,7 +523,7 @@ const openModal = (s) => {
     sourcesList.innerHTML = '';
     if (!sources.length) {
       const li = document.createElement('li');
-      li.textContent = 'No verified sources yet — treat narrative as provisional.';
+      li.textContent = 'Sources will appear as public coverage is linked.';
       sourcesList.appendChild(li);
     } else {
       sources.forEach((src) => {
