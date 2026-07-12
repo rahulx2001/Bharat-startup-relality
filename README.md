@@ -4,6 +4,10 @@
 
 Live data: [`data/graveyard.json`](data/graveyard.json)
 
+## Master upgrade prompt (full 10/10 roadmap)
+
+See **[`docs/MASTER_PROMPT_MAKE_10_OF_10.md`](docs/MASTER_PROMPT_MAKE_10_OF_10.md)** — paste into a new agent session to execute Phases 0–4 (data rescue, terminal UX, events, ops, moat). Includes leftovers, invariants, favicon/brand spec, and anti-fake-gold rules.
+
 ## What “10/10” means here
 
 This product is **not** multi-tenant SaaS, a funding data warehouse, or a full Bloomberg terminal.
