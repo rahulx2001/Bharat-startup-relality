@@ -100,3 +100,12 @@ python scripts/enrich_failing_nim.py
 ```
 
 Template gold padding is **disabled**. Failures without successful NIM research must appear on a blocked list with reasons.
+
+### Source integrity
+
+Gold profiles require **on-topic article sources** (not publisher homepages, not other companies' URLs).
+
+```bash
+python -m pipeline.audit_research --out audit.json
+python scripts/remediate_sources.py --check-redirects
+```

@@ -83,8 +83,14 @@ def _gold_profile(**overrides):
             "monetization": "SaaS ₹2–5 per underwriting decision + 40 bps success fee; target ₹8 crore ARR by year 3",
         },
         "sources": [
-            {"title": "Inc42 shutdown report", "url": "https://inc42.com/example-testco"},
-            {"title": "YourStory", "url": "https://yourstory.com/example-testco"},
+            {
+                "title": "TestCo India shutdown report",
+                "url": "https://inc42.com/buzz/testco-india-shuts-down-after-unit-economics-collapse/",
+            },
+            {
+                "title": "TestCo India raises series A",
+                "url": "https://yourstory.com/2022/01/testco-india-funding-story",
+            },
         ],
     }
     base.update(overrides)
@@ -171,8 +177,12 @@ class TestResearchGate(unittest.TestCase):
         blusmart = next(s for s in data["startups"] if s.get("startup_name") == "BluSmart")
         blusmart = dict(blusmart)
         # Gate requires http sources — attach a real domain homepage, not a fake article id
-        blusmart["sources"] = [{"title": "Inc42 BluSmart coverage", "url": "https://inc42.com/"}]
-        # Ensure identity fields mention BluSmart
+        blusmart["sources"] = [
+            {
+                "title": "BluSmart operations suspended after SEBI action",
+                "url": "https://inc42.com/buzz/blusmart-operations-suspended-sebi/",
+            }
+        ]
         if "blusmart" not in (blusmart.get("short_summary") or "").lower():
             blusmart["short_summary"] = "BluSmart " + (blusmart.get("short_summary") or "")
         gate = evaluate_research(blusmart, is_new=False, require_gold=True)
@@ -189,7 +199,12 @@ class TestResearchStartupOrchestration(unittest.TestCase):
             "status": "Shut Down",
             "short_summary": "RepairCo closed in 2024 after burning $3M.",
             "value_proposition": "RepairCo offered SME tools in India.",
-            "sources": [{"title": "News", "url": "https://example.com/r"}],
+            "sources": [
+                {
+                    "title": "RepairCo news",
+                    "url": "https://inc42.com/buzz/repairco-news-update/",
+                }
+            ],
         }
         gold = _gold_profile(startup_name="RepairCo")
         gold["short_summary"] = (
@@ -210,6 +225,12 @@ class TestResearchStartupOrchestration(unittest.TestCase):
             "months. By Q1 2024, runway was under 4 months after a failed $20M round. "
             "Operations suspended in April 2024 with ₹45 crore payables outstanding."
         )
+        gold["sources"] = [
+            {
+                "title": "RepairCo shuts down after burn",
+                "url": "https://inc42.com/buzz/repairco-shuts-down-unit-economics/",
+            }
+        ]
 
         calls = {"n": 0}
 

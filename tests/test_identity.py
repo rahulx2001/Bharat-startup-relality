@@ -34,7 +34,12 @@ class TestIdentity(unittest.TestCase):
                 "innovative": ["1", "2", "3", "4", "5"],
                 "monetization": "Subscription with ₹ targets for courses and cohorts.",
             },
-            "sources": [{"title": "Zolve raises", "url": "https://example.com/zolve"}],
+            "sources": [
+                {
+                    "title": "Zolve raises $100M",
+                    "url": "https://entrackr.com/2023/02/zolve-raises-100m-series-a/",
+                }
+            ],
             "founders": ["Gaurav Munjal"],
         }
         probs = identity_problems(entry)
@@ -60,7 +65,12 @@ class TestIdentity(unittest.TestCase):
                 "Unacademy faced post-COVID demand normalization, high content CAC, and capital "
                 "markets demanding profitability; restructuring and layoffs followed 2022–2024."
             ),
-            "sources": [{"title": "Unacademy coverage", "url": "https://inc42.com/"}],
+            "sources": [
+                {
+                    "title": "Unacademy coverage",
+                    "url": "https://inc42.com/buzz/unacademy-edtech-restructuring/",
+                }
+            ],
         }
         self.assertEqual(identity_problems(entry), [])
         self.assertTrue(identity_ok(entry))
@@ -100,7 +110,10 @@ class TestIdentity(unittest.TestCase):
         }
         gate = evaluate_research(entry, is_new=False, require_gold=True)
         self.assertFalse(gate.accepted)
-        self.assertIn("sources_with_url", gate.missing)
+        self.assertTrue(
+            "sources_with_url" in gate.missing or "source_integrity" in gate.missing,
+            msg=gate.missing,
+        )
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ from typing import Any
 from .identity import identity_problems
 from .prompts import RESEARCH_MINIMUMS
 from .quality import profile_score
+from .source_integrity import source_integrity_problems
 
 
 DISTRESS_STATUSES = {"Shut Down", "Struggling", "Crisis", "Layoffs"}
@@ -70,6 +71,7 @@ def evaluate_research(
     *,
     is_new: bool = False,
     require_gold: bool | None = None,
+    catalog_tokens: dict[str, set[str]] | None = None,
 ) -> GateResult:
     """Evaluate whether a profile meets research standards.
 
@@ -78,6 +80,8 @@ def evaluate_research(
       - False → accept any structurally valid entry (not used for new adds)
       - None  → default: require gold for new startups, gold for updates too
                 when RESEARCH_REQUIRE_GOLD is enabled (caller passes explicit)
+    catalog_tokens:
+      - optional precomputed map from catalog_brand_tokens() for foreign-brand detection
     """
     from .config import research_require_gold_for_new, research_require_gold_for_update
 
@@ -134,6 +138,13 @@ def evaluate_research(
         for p in id_problems:
             reasons.append(f"identity: {p}")
 
+    # Source integrity (foreign-brand URLs, publisher-root padding, offtopic)
+    src_problems = source_integrity_problems(entry, catalog_tokens)
+    if src_problems:
+        missing.append("source_integrity")
+        for p in src_problems[:8]:
+            reasons.append(f"source: {p}")
+
     # Timeline event quality: events should not be empty strings
     timeline = entry.get("timeline") or []
     if isinstance(timeline, list):
@@ -149,13 +160,14 @@ def evaluate_research(
             seen.add(item)
             missing_unique.append(item)
 
-    # Hard blockers for gold — sources + identity always required
+    # Hard blockers for gold — sources + identity + source integrity always required
     hard_blockers = {
         "concrete_facts",
         "startup_name",
         "status",
         "sources_with_url",
         "identity_integrity",
+        "source_integrity",
     }
     if is_new:
         hard_blockers.add("founders")
