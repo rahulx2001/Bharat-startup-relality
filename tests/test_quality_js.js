@@ -104,6 +104,49 @@ function testWatchlistPure() {
   assert.strictEqual(api.isWatched("Foo", mem), false);
 }
 
+function testKeyFactFormatters() {
+  assert.strictEqual(api.formatUsdCompact(null), "");
+  assert.strictEqual(api.formatUsdCompact(0), "");
+  assert.strictEqual(api.formatUsdCompact(5500000000), "$5.5B");
+  assert.strictEqual(api.formatUsdCompact(775000000), "$775M");
+  assert.ok(api.formatUsdCompact(300000000).includes("M"));
+
+  assert.strictEqual(api.formatEmployees(null), "");
+  assert.strictEqual(api.formatEmployees(0), "");
+  assert.strictEqual(api.formatEmployees(2000), "2K people");
+  assert.strictEqual(api.formatEmployees(50), "50 people");
+  assert.strictEqual(api.formatEmployees("1000+"), "1000+");
+
+  assert.strictEqual(api.formatYearsActive({}), "");
+  assert.strictEqual(
+    api.formatYearsActive({ year_founded: 2015, year_died: 2024 }),
+    "2015–2024 (9 years)"
+  );
+  assert.ok(api.formatYearsActive({ year_founded: 2019 }, 2026).includes("present"));
+
+  const facts = api.keyFactsFromStartup({
+    funding_burned_usd: 1e9,
+    peak_valuation: 2e9,
+    employees: 500,
+    year_founded: 2018,
+    year_died: 2023,
+    headquarters: "Bengaluru",
+    category: "EdTech",
+    status: "Shut Down",
+    founders: ["A", "B"],
+    investors: ["Seq"],
+    sources: [{ url: "https://inc42.com/a/b" }],
+  });
+  const labels = facts.map((f) => f.label);
+  assert.ok(labels.includes("Peak valuation"));
+  assert.ok(labels.includes("Team size (peak/known)"));
+  assert.ok(labels.includes("Years active"));
+  assert.ok(labels.includes("Funding raised / at risk"));
+  assert.ok(api.statusReaderTip("Shut Down").toLowerCase().includes("closed"));
+  // missing fields → no empty values
+  assert.strictEqual(api.keyFactsFromStartup({}).length, 0);
+}
+
 function testTimelineSortChronological() {
   const mixed = [
     { date: "Jan 2025", event: "App offline" },
@@ -136,5 +179,6 @@ function testTimelineSortChronological() {
 testBadgeHonesty();
 testQualityFilterAndSort();
 testWatchlistPure();
+testKeyFactFormatters();
 testTimelineSortChronological();
 console.log("OK tests/test_quality_js.js");

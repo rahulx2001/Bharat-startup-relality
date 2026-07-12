@@ -15,6 +15,117 @@
     return 0;
   }
 
+  /** Format USD-ish numbers for funding / peak valuation. Empty → "". */
+  function formatUsdCompact(num) {
+    if (num == null || num === "") return "";
+    const n = Number(num);
+    if (!Number.isFinite(n) || n <= 0) return "";
+    if (n >= 1e9) return `$${(n / 1e9).toFixed(n >= 1e10 ? 0 : 1)}B`;
+    if (n >= 1e6) return `$${(n / 1e6).toFixed(n >= 1e8 ? 0 : 1)}M`;
+    if (n >= 1e3) return `$${(n / 1e3).toFixed(0)}K`;
+    return `$${Math.round(n)}`;
+  }
+
+  /** Employees: number or string ranges. Empty → "". */
+  function formatEmployees(value) {
+    if (value == null || value === "") return "";
+    if (typeof value === "string") {
+      const t = value.trim();
+      if (!t || t === "0") return "";
+      // already human ("50-100", "1000+")
+      if (/[a-zA-Z+\-]/.test(t) && !/^\d+(\.\d+)?$/.test(t)) return t;
+      const n = Number(t.replace(/,/g, ""));
+      if (!Number.isFinite(n) || n <= 0) return "";
+      return formatEmployeeCount(n);
+    }
+    const n = Number(value);
+    if (!Number.isFinite(n) || n <= 0) return "";
+    return formatEmployeeCount(n);
+  }
+
+  function formatEmployeeCount(n) {
+    if (n >= 1000) {
+      const k = n / 1000;
+      return `${k >= 10 ? Math.round(k) : k.toFixed(k % 1 ? 1 : 0)}K people`;
+    }
+    return `${Math.round(n)} people`;
+  }
+
+  /**
+   * Years active from year_founded / year_died.
+   * e.g. "2015–2024 (9 years)" or "2019–present (active)".
+   */
+  function formatYearsActive(startup, asOfYear) {
+    const founded = Number(startup && startup.year_founded);
+    if (!Number.isFinite(founded) || founded < 1900 || founded > 2100) return "";
+    const diedRaw = startup && startup.year_died;
+    const died = diedRaw == null || diedRaw === "" ? null : Number(diedRaw);
+    const now = Number.isFinite(asOfYear) ? asOfYear : new Date().getUTCFullYear();
+    if (died != null && Number.isFinite(died) && died >= founded) {
+      const span = died - founded;
+      const years = span <= 0 ? "<1 year" : span === 1 ? "1 year" : `${span} years`;
+      return `${founded}–${died} (${years})`;
+    }
+    const span = Math.max(0, now - founded);
+    const years = span <= 0 ? "<1 year" : span === 1 ? "1 year" : `${span} years`;
+    return `${founded}–present (${years})`;
+  }
+
+  /** Status → short reader guidance (static map, not invented company facts). */
+  function statusReaderTip(status) {
+    const s = String(status || "").toLowerCase();
+    if (s.includes("shut")) {
+      return "Closed operations — study capital burn, unit economics, and late-stage governance.";
+    }
+    if (s.includes("strug") || s.includes("crisis") || s.includes("layoff")) {
+      return "Still operating under stress — watch cash runway, layoffs, and pivot signals.";
+    }
+    if (s.includes("pivot")) {
+      return "Changed direction — compare original thesis vs new product and who stayed.";
+    }
+    if (s.includes("come") || s.includes("recover") || s.includes("ipo")) {
+      return "Turnaround path — note what changed in product, costs, and capital.";
+    }
+    return "Track status over time against funding raised and competitive set.";
+  }
+
+  /**
+   * At-a-glance facts for readers. Only real catalog fields.
+   * Returns [{label, value}] — omit empty values.
+   */
+  function keyFactsFromStartup(startup, asOfYear) {
+    const s = startup || {};
+    const facts = [];
+    const funding = formatUsdCompact(s.funding_burned_usd);
+    if (funding) facts.push({ label: "Funding raised / at risk", value: funding });
+    const peak = formatUsdCompact(s.peak_valuation);
+    if (peak) facts.push({ label: "Peak valuation", value: peak });
+    const emp = formatEmployees(s.employees);
+    if (emp) facts.push({ label: "Team size (peak/known)", value: emp });
+    const years = formatYearsActive(s, asOfYear);
+    if (years) facts.push({ label: "Years active", value: years });
+    if (s.headquarters) facts.push({ label: "Headquarters", value: String(s.headquarters) });
+    if (s.category) facts.push({ label: "Category", value: String(s.category) });
+    if (s.status) facts.push({ label: "Status", value: String(s.status) });
+    const founders = Array.isArray(s.founders) ? s.founders.filter(Boolean) : [];
+    if (founders.length) {
+      facts.push({
+        label: "Founders",
+        value: founders.slice(0, 4).join(", ") + (founders.length > 4 ? ` +${founders.length - 4}` : ""),
+      });
+    }
+    const inv = Array.isArray(s.investors) ? s.investors.filter(Boolean) : [];
+    if (inv.length) {
+      facts.push({
+        label: "Notable investors",
+        value: inv.slice(0, 4).join(", ") + (inv.length > 4 ? ` +${inv.length - 4}` : ""),
+      });
+    }
+    const srcN = sourceCount(s);
+    if (srcN > 0) facts.push({ label: "Linked sources", value: String(srcN) });
+    return facts;
+  }
+
   function normalizeTier(startup) {
     const t = String((startup && startup.profile_tier) || "")
       .toLowerCase()
@@ -248,6 +359,11 @@
     toggleWatchlist,
     timelineDateKey,
     sortTimeline,
+    formatUsdCompact,
+    formatEmployees,
+    formatYearsActive,
+    statusReaderTip,
+    keyFactsFromStartup,
   };
 
   if (typeof module !== "undefined" && module.exports) {

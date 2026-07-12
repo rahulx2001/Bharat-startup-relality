@@ -227,7 +227,9 @@ const buildCards = (items) => {
     const card = document.createElement('div');
     card.className = 'card';
     const foundersRaw = s.founders?.length ? `👤 ${s.founders.slice(0, 2).join(', ')}` : '';
-    const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
+    const yearsActive = Q()?.formatYearsActive ? Q().formatYearsActive(s) : (s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '');
+    const peakLabel = Q()?.formatUsdCompact ? Q().formatUsdCompact(s.peak_valuation) : '';
+    const empLabel = Q()?.formatEmployees ? Q().formatEmployees(s.employees) : '';
     const badgeLabel = Q() ? Q().qualityBadgeLabel(s) : String(s.profile_tier || 'unscored');
     const badgeClass = Q() ? Q().qualityBadgeClass(s) : 'tier-unset';
     const watched = Q() ? Q().isWatched(s.startup_name) : false;
@@ -240,8 +242,10 @@ const buildCards = (items) => {
       <h4>${escapeHtml(s.startup_name)}</h4>
       <div class="meta">
         <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
-        ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
+        ${yearsActive ? `<span class="tag">${escapeHtml(yearsActive)}</span>` : ''}
         <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
+        ${peakLabel ? `<span class="tag funding">Peak ${escapeHtml(peakLabel)}</span>` : ''}
+        ${empLabel ? `<span class="tag">${escapeHtml(empLabel)}</span>` : ''}
         <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
       </div>
       <p>${escapeHtml(s.short_summary || s.failure_reason || 'No details available.')}</p>
@@ -370,15 +374,19 @@ const openModal = (s) => {
   el('detailModal').setAttribute('aria-hidden', 'false');
   el('modalTitle').textContent = s.startup_name;
 
-  const yearRange = s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '';
+  const yearsActive = Q()?.formatYearsActive ? Q().formatYearsActive(s) : (s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ''}` : '');
+  const peakLabel = Q()?.formatUsdCompact ? Q().formatUsdCompact(s.peak_valuation) : '';
+  const empLabel = Q()?.formatEmployees ? Q().formatEmployees(s.employees) : '';
   const badgeLabel = Q() ? Q().qualityBadgeLabel(s) : String(s.profile_tier || 'unscored');
   const badgeClass = Q() ? Q().qualityBadgeClass(s) : 'tier-unset';
   const watched = Q() ? Q().isWatched(s.startup_name) : false;
   el('modalMeta').innerHTML = `
     <span class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</span>
     <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
-    ${yearRange ? `<span class="tag">${escapeHtml(yearRange)}</span>` : ''}
+    ${yearsActive ? `<span class="tag">${escapeHtml(yearsActive)}</span>` : ''}
     <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
+    ${peakLabel ? `<span class="tag funding">Peak ${escapeHtml(peakLabel)}</span>` : ''}
+    ${empLabel ? `<span class="tag">${escapeHtml(empLabel)}</span>` : ''}
     <span class="tag warn">${escapeHtml(s.category || 'Tech')}</span>
     <span class="tag">${escapeHtml(s.headquarters || 'India')}</span>
     <button type="button" class="watch-btn modal-watch ${watched ? 'active' : ''}" id="modalWatchBtn">${watched ? '★ In watchlist' : '☆ Watchlist'}</button>
@@ -397,6 +405,32 @@ const openModal = (s) => {
   if (integrity) {
     integrity.hidden = true;
     integrity.innerHTML = '';
+  }
+
+  // At-a-glance key facts — underused catalog fields for readers
+  const tipEl = el('modalReaderTip');
+  if (tipEl) {
+    tipEl.textContent = Q()?.statusReaderTip
+      ? Q().statusReaderTip(s.status)
+      : '';
+  }
+  const factsHost = el('modalKeyFacts');
+  if (factsHost) {
+    factsHost.innerHTML = '';
+    const facts = Q()?.keyFactsFromStartup ? Q().keyFactsFromStartup(s) : [];
+    facts.forEach((f) => {
+      const cell = document.createElement('div');
+      cell.className = 'key-fact';
+      const lab = document.createElement('div');
+      lab.className = 'key-fact-label';
+      lab.textContent = f.label;
+      const val = document.createElement('div');
+      val.className = 'key-fact-value';
+      val.textContent = f.value;
+      cell.appendChild(lab);
+      cell.appendChild(val);
+      factsHost.appendChild(cell);
+    });
   }
 
   // Value Proposition — prefer rich catalog text
@@ -443,13 +477,23 @@ const openModal = (s) => {
     timeline.appendChild(div);
   });
 
-  // Lessons/Loot — catalog first, then helpful category-based insights
+  // Lessons/Loot — insights + distinct lessons (both help founders)
   const lessonsList = el('modalLessons');
   lessonsList.innerHTML = '';
-  const insights = s.insights?.length
-    ? s.insights
-    : (s.lessons?.length ? s.lessons : generateInsights(s));
-  insights.forEach((p, i) => {
+  const insights = s.insights?.length ? s.insights : [];
+  const lessons = Array.isArray(s.lessons) ? s.lessons : [];
+  const seen = new Set();
+  const combined = [];
+  [...insights, ...lessons].forEach((p) => {
+    const t = String(p || '').trim();
+    if (!t) return;
+    const key = t.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    combined.push(t);
+  });
+  const finalLessons = combined.length ? combined : generateInsights(s);
+  finalLessons.forEach((p, i) => {
     const li = document.createElement('li');
     li.innerHTML = `<strong>Insight ${i + 1}:</strong> ${escapeHtml(p)}`;
     lessonsList.appendChild(li);
@@ -1203,7 +1247,11 @@ const openComparePanel = () => {
     ['Status', (s) => s.status || '—'],
     ['Tier', (s) => (Q() ? Q().qualityBadgeLabel(s) : s.profile_tier || '—')],
     ['Funding', (s) => formatMoneyOrUnknown(s.funding_burned_usd)],
+    ['Peak valuation', (s) => (Q()?.formatUsdCompact(s.peak_valuation) || '—')],
+    ['Team size', (s) => (Q()?.formatEmployees(s.employees) || '—')],
+    ['Years active', (s) => (Q()?.formatYearsActive(s) || '—')],
     ['Category', (s) => s.category || '—'],
+    ['HQ', (s) => s.headquarters || '—'],
     ['Sources', (s) => String(sourceCountOf(s))],
     ['Research score', (s) => String(s.research_score ?? '—')],
     ['Cause / struggle', (s) => (s.cause_of_death || s.failure_reason || '—').slice(0, 160)],

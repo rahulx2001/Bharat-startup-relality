@@ -489,6 +489,53 @@ kbd {
   box-shadow: 1px 1px 0 var(--border);
 }
 
+.key-facts-section {
+  margin-bottom: 8px;
+}
+
+.key-facts-tip {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 2px dashed var(--border);
+  background: #eef9ff;
+  color: var(--ink);
+}
+
+.key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.key-fact {
+  border: 3px solid var(--border);
+  background: var(--card);
+  padding: 10px 12px;
+  box-shadow: 3px 3px 0 var(--border);
+}
+
+.key-fact-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.key-fact-value {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+[data-theme="dark"] .key-facts-tip {
+  background: #1a2a33;
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;

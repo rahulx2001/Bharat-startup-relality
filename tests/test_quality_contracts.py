@@ -49,6 +49,33 @@ class TestQualityContracts(unittest.TestCase):
         ):
             self.assertNotIn(banned, app, msg=banned)
 
+    def test_existing_modal_sections_and_key_facts(self):
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        for needle in (
+            "modalValueProp",
+            "modalOpportunity",
+            "modalCauseOfDeath",
+            "modalTimeline",
+            "modalLessons",
+            "modalPeople",
+            "modalMarketToday",
+            "modalRebuildName",
+            "modalSources",
+            "modalKeyFacts",
+            "keyFactsSection",
+            "modalReaderTip",
+        ):
+            self.assertIn(needle, html, msg=needle)
+        app = (ROOT / "app.js").read_text(encoding="utf-8")
+        for needle in (
+            "keyFactsFromStartup",
+            "formatYearsActive",
+            "formatEmployees",
+            "peak_valuation",
+            "statusReaderTip",
+        ):
+            self.assertIn(needle, app, msg=needle)
+
     def test_catalog_gold_is_rare_and_consistent(self):
         data = json.loads((ROOT / "data" / "graveyard.json").read_text(encoding="utf-8"))
         items = data["startups"]
