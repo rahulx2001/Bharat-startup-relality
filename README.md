@@ -83,3 +83,4 @@ startup-graveyard-ui/
 - The UI still has category-based fallbacks in `app.js` for entries missing `ai_rebuild` fields
 - Set `MAX_NEW_STARTUPS_PER_RUN` to control API cost per run (default: 5)
 - Pipeline cache lives in `pipeline/cache/` (gitignored except what Actions commits)
+- **Research system prompt:** [`pipeline/prompts.py`](pipeline/prompts.py) enforces detailed research when adding/enriching startups (timeline ≥8, insights ≥6, lessons ≥4, rich `cause_of_death` / `ai_rebuild`, no invented funding). New startups use `MODE: NEW STARTUP RESEARCH`.

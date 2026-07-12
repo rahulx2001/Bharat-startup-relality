@@ -5,14 +5,16 @@ import json
 import re
 from typing import Any
 
-from openai import OpenAI
-
 from .config import NVIDIA_API_KEY, NVIDIA_BASE_URL, NVIDIA_MODEL
+from .prompts import SIGNAL_SYSTEM_PROMPT, enrich_system_prompt
+from .quality import profile_score
 
 
-def _client() -> OpenAI:
+def _client():
     if not NVIDIA_API_KEY:
         raise RuntimeError("NVIDIA_API_KEY is not set")
+    from openai import OpenAI  # cloud NIM only; lazy so pure helpers import without the SDK
+
     return OpenAI(base_url=NVIDIA_BASE_URL, api_key=NVIDIA_API_KEY)
 
 
@@ -71,14 +73,7 @@ def extract_signals(articles: list[dict[str, Any]], known_names: list[str]) -> l
 
     known = ", ".join(known_names[:120])
     payload = json.dumps(articles, ensure_ascii=False, indent=2)
-    system = (
-        "You analyze Indian startup news. Extract only concrete startup signals about "
-        "shutdowns, layoffs, insolvency, pivots, or ongoing struggles. "
-        "Return strict JSON: {\"signals\": [{\"startup_name\": str, \"status\": str, "
-        "\"headline\": str, \"source_url\": str, \"date\": str, \"confidence\": float}]}. "
-        "Statuses must be one of: Shut Down, Struggling, Pivoted, Comeback, Recovery. "
-        "Ignore non-Indian startups and vague market commentary."
-    )
+    system = SIGNAL_SYSTEM_PROMPT
     user = (
         f"Known startups already in database: {known}\n\n"
         f"Articles:\n{payload}\n\n"
@@ -109,59 +104,94 @@ def extract_signals(articles: list[dict[str, Any]], known_names: list[str]) -> l
     return cleaned
 
 
-def enrich_startup(signal: dict[str, Any], funding: dict[str, Any], existing: dict[str, Any] | None) -> dict[str, Any]:
-    """Generate or refresh a full graveyard.json startup entry."""
-    schema_hint = {
+def _detailed_schema_hint() -> dict[str, Any]:
+    """Schema with explicit depth requirements for research outputs."""
+    return {
         "startup_name": "string",
         "status": "Shut Down | Struggling | Pivoted | Comeback | Recovery",
         "year_founded": "number or null",
         "year_died": "number or null",
-        "funding_burned_usd": "number",
+        "funding_burned_usd": "number — use funding_lookup/existing; never invent",
         "peak_valuation": "number or null",
         "employees": "number or null",
-        "category": "string",
-        "headquarters": "string",
-        "short_summary": "string",
-        "value_proposition": "string",
-        "cause_of_death": "string or null",
-        "failure_reason": "string",
-        "founders": ["string"],
-        "investors": ["string"],
-        "timeline": [{"date": "string", "event": "string"}],
-        "insights": ["string"],
-        "lessons": ["string"],
+        "category": "string — one clear sector label",
+        "headquarters": "string — city/region in India when known",
+        "short_summary": "string — 1-2 dense sentences with numbers/dates (min ~80 chars)",
+        "value_proposition": "string — 3-5 sentences: product, customer, scale, positioning (min ~180 chars)",
+        "cause_of_death": "string or null — detailed research paragraph with ₹/$ , unit economics, governance",
+        "failure_reason": "string — comma-separated key reasons",
+        "founders": ["string — full names"],
+        "investors": ["string — firm names"],
+        "timeline": [{"date": "Mon YYYY or YYYY", "event": "specific event"}],
+        "insights": ["string — ≥6 concrete market/strategy insights"],
+        "lessons": ["string — ≥4 founder lessons"],
         "opportunity_score": {
             "rebuild_difficulty": "1-5",
             "scalability": "1-5",
             "market_potential": "1-5",
         },
-        "market_today": "string",
+        "market_today": "string — 3-5 sentences on India market after this company",
         "ai_rebuild": {
             "name": "string",
-            "description": "string",
-            "tech_stack": ["string"],
-            "execution_plan": ["string"],
-            "innovative": ["string"],
-            "monetization": "string",
+            "description": "string — 2-3 sentences",
+            "tech_stack": ["string — ≥5 items"],
+            "execution_plan": ["string — ≥5 steps"],
+            "innovative": ["string — ≥5 moat points"],
+            "monetization": "string — specific ₹ revenue model",
         },
         "sources": [{"title": "string", "url": "string"}],
+        "profile_tier": "gold when checklist met",
     }
 
+
+def _log_research_depth(entry: dict[str, Any], label: str) -> None:
+    """Print quality score so thin research is visible in pipeline logs."""
+    score = profile_score(entry)
+    name = entry.get("startup_name") or "?"
+    print(
+        f"[llm] Research depth for {name} ({label}): "
+        f"tier={score['tier']} score={score['score']} "
+        f"complete={score['complete']} missing={score['missing']}"
+    )
+    if not score["complete"]:
+        print(
+            f"[llm] WARNING: {name} is below gold research depth. "
+            "System prompt requires detailed research — review sources or re-enrich."
+        )
+
+
+def enrich_startup(signal: dict[str, Any], funding: dict[str, Any], existing: dict[str, Any] | None) -> dict[str, Any]:
+    """Generate or refresh a full graveyard.json startup entry (detailed research required)."""
+    schema_hint = _detailed_schema_hint()
+    mode = "refresh" if existing else "new"
+
     context = {
+        "research_mode": mode,
+        "instruction": (
+            "Apply RESEARCH_SYSTEM_RULES. "
+            + (
+                "This is a NEW startup being added — produce a full detailed dossier."
+                if mode == "new"
+                else "This is a REFRESH — deepen gaps, never shrink a detailed profile."
+            )
+        ),
         "signal": signal,
         "funding_lookup": funding,
         "existing_entry": existing,
         "schema": schema_hint,
+        "depth_targets": {
+            "timeline_min": 8,
+            "insights_min": 6,
+            "lessons_min": 4,
+            "ai_rebuild_lists_min": 5,
+        },
     }
-    system = (
-        "You are a startup analyst for an Indian startup graveyard website. "
-        "Return one JSON object only, matching the schema. Be factual, concise, and India-specific. "
-        "If existing_entry is provided, preserve strong facts and refresh status/timeline/insights. "
-        "Use funding_lookup values when available. Add sources from the signal URL."
-    )
+    system = enrich_system_prompt(mode=mode)
     user = json.dumps(context, ensure_ascii=False, indent=2)
     raw = _chat(system, user, temperature=0.3)
     entry = _extract_json(raw)
+    if not isinstance(entry, dict):
+        raise ValueError("enrich_startup expected a JSON object from the model")
 
     csv_funding = funding.get("funding_burned_usd") or 0
     existing_funding = (existing or {}).get("funding_burned_usd") or 0
@@ -179,11 +209,19 @@ def enrich_startup(signal: dict[str, Any], funding: dict[str, Any], existing: di
     if signal.get("source_url"):
         sources = entry.get("sources") or []
         sources.append({"title": signal.get("headline") or "News update", "url": signal["source_url"]})
-        entry["sources"] = sources[:5]
+        entry["sources"] = sources[:8]
 
     entry["startup_name"] = entry.get("startup_name") or signal["startup_name"]
     entry["status"] = signal.get("status") or entry.get("status")
     entry["sources"] = _normalize_sources(entry.get("sources"))
+
+    depth = profile_score(entry)
+    if depth["complete"]:
+        entry["profile_tier"] = "gold"
+    elif not entry.get("profile_tier"):
+        entry["profile_tier"] = depth["tier"]
+
+    _log_research_depth(entry, mode)
     return entry
 
 
@@ -218,50 +256,17 @@ def _normalize_sources(sources: Any) -> list[dict[str, str]]:
 
 def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_example: dict[str, Any]) -> dict[str, Any]:
     """BluSmart-level deep enrichment for an existing startup profile."""
-    schema_hint = {
-        "startup_name": "string",
-        "status": "Shut Down | Struggling | Pivoted | Comeback | Recovery",
-        "year_founded": "number",
-        "year_died": "number or null",
-        "funding_burned_usd": "number",
-        "peak_valuation": "number or null",
-        "employees": "number or null",
-        "category": "string — one clear sector label",
-        "headquarters": "string",
-        "short_summary": "string — 1-2 punchy sentences with numbers",
-        "value_proposition": "string — 3-5 sentences on what they promised, scale, investors",
-        "cause_of_death": "string or null — detailed paragraph with ₹ figures, regulators, unit economics",
-        "failure_reason": "string — comma-separated key reasons",
-        "founders": ["string"],
-        "investors": ["string"],
-        "timeline": [{"date": "string", "event": "string"}],
-        "insights": ["string — 5 bullet market/strategy insights with numbers"],
-        "lessons": ["string — 3-4 founder lessons"],
-        "opportunity_score": {"rebuild_difficulty": "1-5", "scalability": "1-5", "market_potential": "1-5"},
-        "market_today": "string — 3-4 sentences on India market today",
-        "ai_rebuild": {
-            "name": "string",
-            "description": "string — 2-3 sentences",
-            "tech_stack": ["string — 5-6 items"],
-            "execution_plan": ["string — 5 steps"],
-            "innovative": ["string — 5 moat points"],
-            "monetization": "string — specific revenue model with ₹ targets",
-        },
-        "sources": [{"title": "string", "url": "string"}],
-        "profile_tier": "gold",
-    }
+    schema_hint = _detailed_schema_hint()
+    schema_hint["profile_tier"] = "gold"
 
-    system = (
-        "You are a senior Indian startup analyst writing for Bharat Startup Reality graveyard. "
-        "Return ONE JSON object matching the schema at BluSmart gold-standard depth. "
-        "Requirements: 6+ timeline events, 5+ insights, 3+ lessons, rich cause_of_death with ₹ amounts, "
-        "detailed ai_rebuild with 5 execution steps and 5 innovative points. "
-        "Use real public facts about the Indian startup. Preserve accurate numbers from existing_entry. "
-        "Never invent funding figures — use funding_lookup or existing_entry. "
-        "sources must be array of {title, url} objects, not strings."
-    )
+    system = enrich_system_prompt(mode="gold")
     user = json.dumps(
         {
+            "research_mode": "gold",
+            "instruction": (
+                "Apply RESEARCH_SYSTEM_RULES at maximum depth. "
+                "Match or exceed the gold_standard_example structure and richness."
+            ),
             "gold_standard_example": {
                 "startup_name": gold_example.get("startup_name"),
                 "short_summary": gold_example.get("short_summary"),
@@ -274,6 +279,12 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
             "existing_entry": existing,
             "funding_lookup": funding,
             "schema": schema_hint,
+            "depth_targets": {
+                "timeline_min": 8,
+                "insights_min": 6,
+                "lessons_min": 4,
+                "ai_rebuild_lists_min": 5,
+            },
         },
         ensure_ascii=False,
         indent=2,
@@ -281,6 +292,8 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
 
     raw = _chat(system, user, temperature=0.25)
     entry = _extract_json(raw)
+    if not isinstance(entry, dict):
+        raise ValueError("enrich_profile_full expected a JSON object from the model")
 
     entry["startup_name"] = existing.get("startup_name") or entry.get("startup_name")
     entry["status"] = existing.get("status") or entry.get("status")
@@ -291,4 +304,5 @@ def enrich_profile_full(existing: dict[str, Any], funding: dict[str, Any], gold_
     entry["funding_burned_usd"] = max(existing_funding, csv_funding, entry.get("funding_burned_usd") or 0)
 
     entry["sources"] = _normalize_sources(entry.get("sources") or existing.get("sources"))
+    _log_research_depth(entry, "gold")
     return entry

@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from .prompts import RESEARCH_MINIMUMS
+
 REQUIRED_STATUS = {"Shut Down", "Struggling", "Pivoted", "Comeback", "Recovery", "Crisis", "Layoffs"}
 
 
@@ -11,15 +13,20 @@ def _len_text(value: Any, minimum: int = 80) -> bool:
 
 
 def profile_score(startup: dict[str, Any]) -> dict[str, Any]:
-    """Return score 0-100 and missing fields list."""
+    """Return score 0-100 and missing fields list.
+
+    Thresholds follow RESEARCH_SYSTEM_RULES / RESEARCH_MINIMUMS so thin
+    auto-added startups fail the gold bar until re-researched.
+    """
+    m = RESEARCH_MINIMUMS
     checks: list[tuple[str, bool, int]] = [
-        ("value_proposition", _len_text(startup.get("value_proposition"), 120), 10),
-        ("cause_of_death", _len_text(startup.get("cause_of_death"), 100), 12),
-        ("short_summary", _len_text(startup.get("short_summary"), 60), 5),
-        ("timeline", len(startup.get("timeline") or []) >= 6, 12),
-        ("insights", len(startup.get("insights") or []) >= 5, 10),
-        ("lessons", len(startup.get("lessons") or []) >= 3, 5),
-        ("market_today", _len_text(startup.get("market_today"), 100), 8),
+        ("value_proposition", _len_text(startup.get("value_proposition"), m["value_proposition_chars"]), 10),
+        ("cause_of_death", _len_text(startup.get("cause_of_death"), m["cause_of_death_chars"]), 12),
+        ("short_summary", _len_text(startup.get("short_summary"), m["short_summary_chars"]), 5),
+        ("timeline", len(startup.get("timeline") or []) >= m["timeline_events"], 12),
+        ("insights", len(startup.get("insights") or []) >= m["insights"], 10),
+        ("lessons", len(startup.get("lessons") or []) >= m["lessons"], 5),
+        ("market_today", _len_text(startup.get("market_today"), m["market_today_chars"]), 8),
         ("opportunity_score", bool(startup.get("opportunity_score")), 5),
         ("ai_rebuild", bool((startup.get("ai_rebuild") or {}).get("name")), 15),
         ("ai_rebuild_detail", _ai_rebuild_rich(startup.get("ai_rebuild")), 18),
@@ -44,11 +51,12 @@ def profile_score(startup: dict[str, Any]) -> dict[str, Any]:
 def _ai_rebuild_rich(rebuild: dict | None) -> bool:
     if not rebuild:
         return False
+    m = RESEARCH_MINIMUMS
     return (
         _len_text(rebuild.get("description"), 80)
-        and len(rebuild.get("tech_stack") or []) >= 4
-        and len(rebuild.get("execution_plan") or []) >= 4
-        and len(rebuild.get("innovative") or []) >= 4
+        and len(rebuild.get("tech_stack") or []) >= m["ai_rebuild_tech_stack"]
+        and len(rebuild.get("execution_plan") or []) >= m["ai_rebuild_execution_plan"]
+        and len(rebuild.get("innovative") or []) >= m["ai_rebuild_innovative"]
         and _len_text(rebuild.get("monetization"), 40)
     )
 
