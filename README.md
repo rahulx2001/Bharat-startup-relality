@@ -4,6 +4,16 @@
 
 Live data: [`data/graveyard.json`](data/graveyard.json)
 
+## Path A progress (benchmarked)
+
+| Metric | Baseline | Now | Target |
+|--------|----------|-----|--------|
+| Profiles with sources | ~2% | **~23%** | ≥70% |
+| Gold verified | ~2% | **~23%** | ≥30% |
+| Fake gold labels | 0 | **0** | 0 |
+
+Honesty-first: thin company-index URLs rejected; curated article seeds only. Terminal UX: compare, export, URL state, provisional banners, `/` search, Escape close.
+
 ## Master upgrade prompt (full 10/10 roadmap)
 
 See **[`docs/MASTER_PROMPT_MAKE_10_OF_10.md`](docs/MASTER_PROMPT_MAKE_10_OF_10.md)** — paste into a new agent session to execute Phases 0–4 (data rescue, terminal UX, events, ops, moat). Includes leftovers, invariants, favicon/brand spec, and anti-fake-gold rules.
