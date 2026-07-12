@@ -1,4 +1,4 @@
-"""Tests for gold upgrade path — drives shipped upgrade + gate."""
+"""Tests: no template gold; classify_failures honest blocked list."""
 from __future__ import annotations
 
 import json
@@ -11,62 +11,39 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from pipeline.audit_research import audit_startups  # noqa: E402
-from pipeline.gold_upgrader import upgrade_all, upgrade_entry  # noqa: E402
-from pipeline.quality import profile_score  # noqa: E402
+from pipeline.gold_upgrader import classify_failures, upgrade_all, upgrade_entry  # noqa: E402
 from pipeline.research_gate import evaluate_research  # noqa: E402
 
 
-class TestGoldUpgrader(unittest.TestCase):
-    def test_thin_stub_becomes_gold(self):
+class TestNoTemplateGold(unittest.TestCase):
+    def test_upgrade_entry_disabled(self):
+        with self.assertRaises(RuntimeError):
+            upgrade_entry({"startup_name": "X", "status": "Shut Down"})
+
+    def test_upgrade_all_disabled(self):
+        with self.assertRaises(RuntimeError):
+            upgrade_all([{"startup_name": "X", "status": "Shut Down"}])
+
+    def test_classify_failures_blocks_without_key(self):
         thin = {
-            "startup_name": "ThinStub Co",
+            "startup_name": "ThinStub",
             "status": "Shut Down",
-            "year_founded": 2016,
-            "year_died": 2020,
-            "funding_burned_usd": 2_000_000,
-            "category": "Logistics",
-            "headquarters": "Bengaluru",
-            "failure_reason": "Unit economics",
-            "short_summary": "Shut due to unit economics.",
-            "timeline": [{"date": "2016", "event": "Founded"}],
-            "lessons": ["Burn less"],
+            "short_summary": "gone",
         }
-        before = evaluate_research(thin, is_new=False, require_gold=True)
-        self.assertFalse(before.accepted)
-        gold = upgrade_entry(thin)
-        after = evaluate_research(gold, is_new=False, require_gold=True)
-        self.assertTrue(after.accepted, msg=after.summary())
-        self.assertGreaterEqual(profile_score(gold)["score"], 85)
-        self.assertGreaterEqual(len(gold["timeline"]), 8)
-        self.assertGreaterEqual(len(gold["insights"]), 6)
-        self.assertTrue(any(str(s.get("url", "")).startswith("http") for s in gold["sources"]))
-        # never invent higher funding
-        self.assertEqual(gold["funding_burned_usd"], 2_000_000)
+        report = classify_failures([thin], api_key_present=False)
+        self.assertEqual(report["gold_pass"], 0)
+        self.assertEqual(report["blocked_count"], 1)
+        self.assertIn("NVIDIA_API_KEY", report["blocked"][0]["blocked_reason"])
 
-    def test_upgrade_all_on_real_graveyard_sample(self):
-        data = json.loads((ROOT / "data" / "graveyard.json").read_text(encoding="utf-8"))
-        startups = data["startups"]
-        # pick known previously thin names if present
-        names = {s["startup_name"] for s in startups}
-        sample_names = [n for n in ("Autowale", "Paytm", "Swiggy", "Koo") if n in names]
-        sample = [s for s in startups if s["startup_name"] in sample_names]
-        self.assertGreaterEqual(len(sample), 1)
-        upgraded, stats = upgrade_all(sample)
-        audit = audit_startups(upgraded)
-        self.assertEqual(audit["failing_count"], 0, msg=audit["failing"][:3])
-        self.assertEqual(audit["gold_pass"], len(sample))
-
-    def test_full_graveyard_currently_gold(self):
-        """After upgrade run, every listed startup must pass shipped audit."""
+    def test_audit_matches_gate_on_real_file(self):
         data = json.loads((ROOT / "data" / "graveyard.json").read_text(encoding="utf-8"))
         report = audit_startups(data["startups"])
         self.assertEqual(report["total"], len(data["startups"]))
-        self.assertEqual(
-            report["failing_count"],
-            0,
-            msg=f"still failing: {[r['startup_name'] for r in report['failing'][:10]]}",
-        )
-        self.assertEqual(report["gold_pass"], report["total"])
+        # every failing row must fail evaluate_research or score
+        for row in report["failing"]:
+            s = next(x for x in data["startups"] if x["startup_name"] == row["startup_name"])
+            gate = evaluate_research(s, is_new=False, require_gold=True)
+            self.assertFalse(gate.accepted and row["score"] >= 85 and row["pass"])
 
 
 if __name__ == "__main__":

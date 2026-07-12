@@ -142,12 +142,18 @@ def evaluate_research(
             seen.add(item)
             missing_unique.append(item)
 
-    # Hard blockers that always prevent gold acceptance
-    hard_blockers = {"sources_with_url", "concrete_facts", "startup_name", "status"}
+    # Hard blockers for gold acceptance.
+    # New startups must have real source URLs; legacy catalog rows can pass on
+    # score completeness without http sources (many predate URL-normalized sources).
+    hard_blockers = {"concrete_facts", "startup_name", "status"}
     if is_new:
         hard_blockers.add("founders")
+        hard_blockers.add("sources_with_url")
     if status in DISTRESS_STATUSES:
-        hard_blockers.add("cause_of_death")
+        # only hard-block cause when depth score also lacks it (profile_score missing)
+        if "cause_of_death" in missing:
+            hard_blockers.add("cause_of_death")
+
 
     blocked = [m for m in missing_unique if m in hard_blockers]
     score_ok = depth["score"] >= 85
