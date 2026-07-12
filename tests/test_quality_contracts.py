@@ -26,17 +26,17 @@ class TestQualityContracts(unittest.TestCase):
     def test_app_uses_quality_helpers_safely(self):
         app = (ROOT / "app.js").read_text(encoding="utf-8")
         for needle in (
-            "qualityBadgeLabel",
-            "qualityBadgeClass",
             "matchesQualityFilter",
             "sortStartupsList",
             "toggleWatchlist",
             "showLoadError",
             "Escape",
-            "escapeHtml(badgeLabel)",
             "sortTimeline",
         ):
             self.assertIn(needle, app, msg=needle)
+        # Research quality badges ("Silver · no sources") must not appear in public UI
+        self.assertNotIn("qualityBadgeLabel", app)
+        self.assertNotIn("quality-badge", app)
 
     def test_no_provisional_scare_banner_copy(self):
         app = (ROOT / "app.js").read_text(encoding="utf-8")

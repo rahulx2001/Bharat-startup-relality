@@ -230,8 +230,6 @@ const buildCards = (items) => {
     const yearsActive = Q()?.formatYearsActive ? Q().formatYearsActive(s) : (s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ' → Present'}` : '');
     const peakLabel = Q()?.formatUsdCompact ? Q().formatUsdCompact(s.peak_valuation) : '';
     const empLabel = Q()?.formatEmployees ? Q().formatEmployees(s.employees) : '';
-    const badgeLabel = Q() ? Q().qualityBadgeLabel(s) : String(s.profile_tier || 'unscored');
-    const badgeClass = Q() ? Q().qualityBadgeClass(s) : 'tier-unset';
     const watched = Q() ? Q().isWatched(s.startup_name) : false;
     // Escape all catalog fields — data may include LLM-generated or untrusted text
     card.innerHTML = `
@@ -241,7 +239,6 @@ const buildCards = (items) => {
       </div>
       <h4>${escapeHtml(s.startup_name)}</h4>
       <div class="meta">
-        <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
         ${yearsActive ? `<span class="tag">${escapeHtml(yearsActive)}</span>` : ''}
         <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
         ${peakLabel ? `<span class="tag funding">Peak ${escapeHtml(peakLabel)}</span>` : ''}
@@ -377,12 +374,9 @@ const openModal = (s) => {
   const yearsActive = Q()?.formatYearsActive ? Q().formatYearsActive(s) : (s.year_founded ? `${s.year_founded}${s.year_died ? ' → ' + s.year_died : ''}` : '');
   const peakLabel = Q()?.formatUsdCompact ? Q().formatUsdCompact(s.peak_valuation) : '';
   const empLabel = Q()?.formatEmployees ? Q().formatEmployees(s.employees) : '';
-  const badgeLabel = Q() ? Q().qualityBadgeLabel(s) : String(s.profile_tier || 'unscored');
-  const badgeClass = Q() ? Q().qualityBadgeClass(s) : 'tier-unset';
   const watched = Q() ? Q().isWatched(s.startup_name) : false;
   el('modalMeta').innerHTML = `
     <span class="card-status ${getStatusClass(s.status)}">${escapeHtml(s.status || 'Struggling')}</span>
-    <span class="quality-badge ${escapeHtml(badgeClass)}">${escapeHtml(badgeLabel)}</span>
     ${yearsActive ? `<span class="tag">${escapeHtml(yearsActive)}</span>` : ''}
     <span class="tag alt">${escapeHtml(formatMoneyOrUnknown(s.funding_burned_usd))}</span>
     ${peakLabel ? `<span class="tag funding">Peak ${escapeHtml(peakLabel)}</span>` : ''}
@@ -400,7 +394,7 @@ const openModal = (s) => {
     };
   }
 
-  // Hide integrity scare-banner (keep quality badge only)
+  // Integrity panel unused in public UI
   const integrity = el('modalIntegrity');
   if (integrity) {
     integrity.hidden = true;
@@ -1143,12 +1137,11 @@ const updateHeroMeta = (items) => {
   const withSrc = qs.with_sources;
   if (freshness) {
     const datePart = state.generatedAt ? `📅 Dataset last updated: ${state.generatedAt}` : '📅 Dataset date unknown';
-    freshness.textContent = `${datePart} · ${items.length} startups · ${gold} gold verified (${Math.round((qs.gold_pass_pct || 0) * 100)}%) · ${withSrc} with sources (${Math.round((qs.with_sources_pct || 0) * 100)}%) · avg score ${qs.avg_research_score || '—'}`;
+    freshness.textContent = `${datePart} · ${items.length} startups tracked · shut downs, struggles, pivots & comebacks`;
   }
   const qLine = el('qualitySummaryLine');
   if (qLine) {
-    const blocked = qs.blocked;
-    qLine.textContent = `Live honesty: ${gold}/${items.length} gold-verified · ${blocked} below gold bar · ${withSrc} with source URLs · avg research score ${qs.avg_research_score}. Path A targets: ≥70% sources, ≥30% gold.`;
+    qLine.textContent = `Profiles combine public reporting with structured fields (funding, valuation, timeline, lessons, rebuild ideas). Filter by status, category, or research quality when you want a narrower view.`;
   }
   updateWatchlistBadge();
 };
@@ -1245,15 +1238,12 @@ const openComparePanel = () => {
   }
   const fields = [
     ['Status', (s) => s.status || '—'],
-    ['Tier', (s) => (Q() ? Q().qualityBadgeLabel(s) : s.profile_tier || '—')],
     ['Funding', (s) => formatMoneyOrUnknown(s.funding_burned_usd)],
     ['Peak valuation', (s) => (Q()?.formatUsdCompact(s.peak_valuation) || '—')],
     ['Team size', (s) => (Q()?.formatEmployees(s.employees) || '—')],
     ['Years active', (s) => (Q()?.formatYearsActive(s) || '—')],
     ['Category', (s) => s.category || '—'],
     ['HQ', (s) => s.headquarters || '—'],
-    ['Sources', (s) => String(sourceCountOf(s))],
-    ['Research score', (s) => String(s.research_score ?? '—')],
     ['Cause / struggle', (s) => (s.cause_of_death || s.failure_reason || '—').slice(0, 160)],
   ];
   let html = '<table class="compare-table"><thead><tr><th>Field</th>';

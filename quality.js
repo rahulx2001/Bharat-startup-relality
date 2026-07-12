@@ -121,8 +121,6 @@
         value: inv.slice(0, 4).join(", ") + (inv.length > 4 ? ` +${inv.length - 4}` : ""),
       });
     }
-    const srcN = sourceCount(s);
-    if (srcN > 0) facts.push({ label: "Linked sources", value: String(srcN) });
     return facts;
   }
 
