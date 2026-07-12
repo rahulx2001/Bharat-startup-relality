@@ -131,7 +131,7 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "research_mode": "gold",
+      "research_mode": "unverified",
       "target_company": "BluSmart",
       "instruction": "Apply RESEARCH_SYSTEM_RULES at maximum depth for ONLY 'BluSmart'. short_summary MUST start with 'BluSmart'. Match structure/depth of gold_standard_example but NEVER copy another company's story. System rejects thin output and wrong-identity dossiers.",
       "gold_standard_example": {
@@ -352,8 +352,21 @@
         "lessons_min": 4,
         "ai_rebuild_lists_min": 5
       },
-      "profile_tier": "gold",
-      "research_score": 100
+      "profile_tier": "silver",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Dunzo",
@@ -490,8 +503,22 @@
         ],
         "monetization": "Consumer delivery: 8-10% commission + ₹15-25 delivery fee. B2B SaaS: ₹4999/month per store for AI inventory management. Ad platform: ₹5000-20000/month for CPG brands to promote within search results. Target: ₹48Cr ARR by Year 3, 22% EBITDA margin, ₹150Cr GMV monthly with 10,000+ partner stores. Unit economics: ₹15 delivery cost, ₹35 average order value, 8% commission yields ₹2.8 per order gross profit before SaaS upsell."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Zilingo",
@@ -624,8 +651,23 @@
         ],
         "monetization": "SaaS: ₹2,999/month per manufacturer for AI inspection and demand forecasting. Transaction fee: 1.5% on order value. Credit origination: 2% on AI-underwritten loans. Target: ₹45Cr ARR by Year 3 with 68% gross margin, profitability by Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Staples India",
@@ -737,8 +779,23 @@
         "market_potential": "5"
       },
       "market_today": "India's B2B e-commerce market reached $50 billion GMV in 2024, growing at 35% CAGR. Office supplies digitization accelerated post-COVID with hybrid work models. Udaan, OfBusiness, and Amazon Business now dominate, but all struggle with AI-native procurement. Agentic commerce protocols (Google UCP, OpenAI ACP) launched 2025-2026 create new distribution rails. B2B BNPL penetration reached 15% of SME transactions. The kirana layer remains under-digitized—40 lakh stationers still operate offline. Corporate procurement SaaS penetration is under 8%, leaving massive whitespace for protocol-first, AI-native entrants.",
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "AskMe",
@@ -870,8 +927,22 @@
         ],
         "monetization": "Transaction fee: 2-3% on ONDC-enabled purchases (vs AskMe's unsustainable 10-15% with subsidy). SaaS: ₹499/month 'BazaaR Pro' for AI catalog, WhatsApp orders, analytics — target 30% merchant conversion. Credit facilitation: 1.5% origination fee on OCEN-enabled merchant loans. Target: ₹189Cr ARR by Year 3 with 80% gross margin, profitability by Month 24."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Flipkart Ping",
@@ -998,8 +1069,22 @@
         "market_potential": "5"
       },
       "market_today": "India's social commerce market reached $7 billion in 2024, growing 35% annually, but the mechanism has inverted: WhatsApp Business (500M+ global users, 15M+ Indian businesses) is now the default channel, not standalone apps. Meesho (social resale, $5 billion valuation) and DealShare (community buying) succeeded by leveraging existing WhatsApp networks rather than building messaging infrastructure. AI-powered personalization and influencer-led live commerce (Moglix, GlowRoad) represent the actual frontier—social proof embedded in transaction flow, not conversation layers. The 'Ping' concept is dead; 'commerce with social data' is the viable path.",
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Zomato Instant",
@@ -1112,11 +1197,22 @@
         ],
         "monetization": "QuickDelivery will generate revenue through a combination of delivery fees and commission-based sales. The service will charge a delivery fee of ₹50-100 per order, and will also earn a commission of 10-15% on sales from partner restaurants and food establishments."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 90,
       "research_missing": [
-        "insights"
-      ]
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "WhiteHat Jr",
@@ -1247,8 +1343,22 @@
         ],
         "monetization": "Freemium AI tutor: ₹0 for 3 lessons/week. Premium: ₹299/month unlimited with projects. Outcome certificate: ₹499 per completed track. B2B schools: ₹15,000/classroom/year. Project marketplace: 15% commission on student stipends. Target: ₹45 crore ARR by Year 3, 72% gross margin, 18% EBITDA. Unit economics: ₹50 CAC (school channel), ₹180 LTV, 3.6x LTV/CAC ratio."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Hike Messenger",
@@ -1385,10 +1495,23 @@
       "market_today": "India's messaging market is 95%+ dominated by WhatsApp (500M+ users). UPI payments (PhonePe, Google Pay, Paytm) have won payments. AI agents and embedded finance are emerging opportunities, but messaging as a standalone is dead. ONDC and Account Aggregator infrastructure now enables better fintech integration than 2016-2021-era Hike Wallet.",
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
-      "research_score": 100,
+      "profile_tier": "silver",
+      "research_score": 90,
       "added_at": "2026-07-12",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_missing": [
+        "value_proposition",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:value_proposition,sources_with_url,source_integrity"
     },
     {
       "startup_name": "ShopClues",
@@ -1524,8 +1647,22 @@
         "market_potential": "5"
       },
       "market_today": "India's e-commerce market reached $70 billion GMV in 2024, with Tier 2/3 cities driving 60% of growth. ONDC has processed 100M+ transactions, proving decentralized commerce infrastructure works. Agentic AI shopping—where LLMs like Gemini and ChatGPT handle full purchase journeys—is emerging as the next interface layer, with 200M+ Indian users expected by 2027. However, the supply side remains fragmented: 50M+ SME sellers lack structured data, cataloging tools, or API access for AI agents. Cross-border e-commerce from India to Southeast Asia, Middle East, and Africa is growing 40% annually, creating demand for trusted Indian supply aggregation. The gap ShopClues originally identified—Bharat's long-tail commerce—remains underserved, but now requires AI-native infrastructure rather than marketplace aggregation.",
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Jabong",
@@ -1658,8 +1795,22 @@
         "market_potential": "5"
       },
       "market_today": "India's fashion e-commerce reached $18B GMV in 2024, growing at 25% CAGR, but structure has radically changed. Myntra dominates with 60%+ market share, Meesho captured value-conscious tier-2/3 consumers, Nykaa owns beauty vertical, and AJIO leverages Reliance's offline infrastructure. The critical shift: ONDC now enables decentralized transactions, AI agents handle 15% of discovery queries, and D2C brands (3000+ launched 2022-24) desperately need aggregation without platform dependency. Fashion remains high-return (25-35%), but AI-powered size prediction and virtual try-on are reducing return rates by 40% for early adopters. The opportunity is not another marketplace—it's the intelligence layer that connects fragmented supply with agentic demand.",
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Uber Eats India",
@@ -1773,8 +1924,23 @@
         ],
         "monetization": "Revenue share: 20% from home chefs, 15% from cloud kitchen operators. Delivery fee: ₹15-25 per order with ₹49/month 'Rasoi Pass' for free delivery. B2B corporate catering: ₹3-5L/month per company for daily meal programs. Target: ₹85Cr revenue by Year 3, profitability at kitchen level by Month 12, platform EBITDA positive by Month 24."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Foodpanda India",
@@ -1894,9 +2060,23 @@
         ],
         "monetization": "SaaS: ₹499-1,499/month tiered by restaurant size. Embedded finance: 3-5% origination fee + 18% interest spread. Delivery co-op: ₹8 per order technology fee versus ₹30-40 platform commission. Target: ₹180 Cr ARR by Year 3, 45% gross margin, profitability by Month 24."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "added_at": "2026-06-27",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Taxiforsure",
@@ -2029,13 +2209,22 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "research_missing": [
-        "timeline"
+        "sources_with_url",
+        "source_integrity"
       ],
       "added_at": "2026-07-12",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Yebhi",
@@ -2179,10 +2368,10 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
       "added_at": "2026-07-12",
-      "research_mode": "gold",
+      "research_mode": "unverified",
       "target_company": "Yebhi",
       "instruction": "Apply RESEARCH_SYSTEM_RULES at maximum depth for ONLY 'Yebhi'. short_summary MUST start with 'Yebhi'. Match structure/depth of gold_standard_example but NEVER copy another company's story. System rejects thin output and wrong-identity dossiers.",
       "gold_standard_example": {
@@ -2386,7 +2575,20 @@
         "insights_min": 6,
         "lessons_min": 4,
         "ai_rebuild_lists_min": 5
-      }
+      },
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Koo",
@@ -2506,9 +2708,22 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Trell",
@@ -2639,8 +2854,22 @@
         ],
         "monetization": "Commission model: 15-20% on each transaction (versus Amazon's 15-25% with additional fees). SaaS tier for brands: ₹25,000/month for AI content generation dashboard with analytics. Premium user subscription: ₹199/month for unlimited AI try-ons and priority support. Target: ₹45 crore GMV run rate by Year 2, ₹180 crore byDot by Year 3 with 18% take-rate equivalent and 65% gross margin."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Commonfloor",
@@ -2761,8 +2990,23 @@
         ],
         "monetization": "Transaction service fee: 1% on ₹2Cr+ properties (₹2L average). AI document verification: ₹25,000 per property. Developer SaaS: ₹10L/year subscription. Loan facilitation: 0.5% on disbursed amount. Target: ₹45 Cr ARR by Year 3, profitability by Month 24, 65% gross margin."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "PepperTap",
@@ -2887,8 +3131,23 @@
         ],
         "monetization": "SaaS subscription: ₹1,499/month per store for inventory AI and digital storefront. Delivery fee: ₹15 per order from consumer, ₹10 commission from store. B2B marketplace margin: 5-8% on supplier introductions. Target: ₹45 crore ARR by Year 3 with 15,000 stores, 35% gross margin, EBITDA positive by Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "GoMechanic",
@@ -3007,9 +3266,22 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Stayzilla",
@@ -3137,8 +3409,23 @@
         ],
         "monetization": "Primary: 15-18% commission on bookings (vs. industry 12-15%, justified by higher conversion and rates). Secondary: 'GharStay Standard' certification fee ₹12,000/year; Host AI Co-pilot SaaS ₹999/month; travel insurance partnership ₹150/booking; local experience marketplace 20% commission. Target: ₹45 crore GMV Year 3, ₹8.1 crore net revenue, 72% gross margin, profitability Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "FrontRow",
@@ -3267,8 +3554,23 @@
         ],
         "monetization": "B2B2C employer fees: ₹500-₹1,000 per job-ready worker placed. B2C milestone payments: ₹99-₹299 per completed module with income verification. Platform tips/upsell: advanced modules at ₹499. Target: ₹45Cr ARR by Year 3 with 65% gross margin, 15M monthly active learners, and unit profitability by Month 14."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "TinyOwl",
@@ -3398,8 +3700,23 @@
         ],
         "monetization": "Commission: 15% on each order (vs 25-30% for Zomato/Swiggy). Subscription: ₹499/month 'GharSe Pro' with 12% take rate expected. Chef SaaS: ₹999/month for inventory management, tax filing, and ingredient procurement at 8,000 chefs by Year 3. Target: ₹85 crore revenue by Year 3 with 18% EBITDA margin, positive unit economics from Month 8 with ₹180 average order value and ₹22 delivery cost."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Mojocare",
@@ -3504,12 +3821,23 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Lido Learning",
@@ -3628,8 +3956,23 @@
         ],
         "monetization": "Freemium AI content with premium tiers: ₹4,999/year for test prep (AI + 4 tutor sessions/month), ₹24,999 for professional courses with placement guarantee. B2B licensing to coaching centers at ₹50,000/year. Corporate upskilling contracts at ₹5-10L/year. Target: ₹85Cr ARR by Year 3 with 65% gross margin, profitability by Month 20."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Lybrate",
@@ -3760,8 +4103,22 @@
         ],
         "monetization": "B2C subscription: ₹2,999/year for AI coaching + quarterly HbA1c tests + CGM data integration. B2B insurance partnerships: ₹600-800 per covered life annually for risk scoring and intervention alerts. Pharma partnerships: ₹150-300 per patient for anonymized real-world evidence on drug adherence (compliant with DPDP Act 2023). Target: ₹45 crore ARR by Year 3 with 50,000 subscribers, 15 insurance contracts covering 2 lakh lives, and 3 pharma data partnerships. Path to profitability: Month 20 with 72% gross margin and ₹8 crore annual burn declining to breakeven."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Grabhouse",
@@ -3881,8 +4238,23 @@
         ],
         "monetization": "Management fee: 10% of monthly rent collected. Maintenance markup: 15% on vendor services. Fintech revenue: 2.5% on deposit financing, ₹199/rent insurance policy. Target: ₹45 crore platform GMV by Year 3, ₹6.5 crore net revenue, 35% EBITDA margin at 50,000 units. Path to profitability by Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "LocalBanya",
@@ -4001,8 +4373,23 @@
         ],
         "monetization": "SaaS subscription: ₹499/store/month for demand prediction and inventory optimization. Collective buying commission: 2% on FMCG orders (₹2,000 Cr GMV target = ₹40Cr revenue). Brand advertising: ₹5,000-20,000/month for FMCG companies to promote on merchant dashboards. Target: ₹74 Cr ARR by Year 3 with 80% gross margin, profitability by Month 14."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Fashionara",
@@ -4118,9 +4505,23 @@
         ],
         "monetization": "SaaS fees: ₹3-5 per accurate fit prediction charged to brand partners. Conversion commission: 8-12% on completed purchases versus 20-25% marketplace take. AR try-on premium: ₹10,000/month per brand for virtual try-on integration. Creator marketplace: 10% of stylist commissions. Target: ₹50Cr ARR by Year 3, 65% gross margin, profitability by Month 24."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "added_at": "2026-06-27",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Runnr",
@@ -4241,8 +4642,23 @@
         ],
         "monetization": "SaaS subscription: ₹8,000/month per kitchen for base platform. Procurement commission: 3% on aggregated supplier orders. Dynamic pricing module: ₹12,000/month premium tier. Enterprise QSR chains: ₹25,000/month per outlet with dedicated support. Target: ₹45Cr ARR by Year 3 with 5000 kitchens, 85% gross margin, profitability by Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Ridlr",
@@ -4362,8 +4778,23 @@
         ],
         "monetization": "STU SaaS: ₹15-20 lakh/year per city for demand forecasting + route optimization (target 15 cities by Year 3 = ₹2.25-3 crore ARR). Transaction fees: ₹1.5-2.5 per digital ticket on white-label apps (target 5 lakh daily transactions by Year 3 = ₹2.5-3.5 crore ARR). Corporate/campus intelligence: ₹5-10 lakh/year per contract (target 30 clients = ₹1.5-3 crore ARR). Total target: ₹6-8.5 crore ARR by Year 3 with 65% gross margin, profitability by Month 24."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Frankly.me",
@@ -4484,8 +4915,23 @@
         ],
         "monetization": "Consumer subscriptions: ₹199-₹1,499/month tiers targeting 200K paid users by Year 3 (₹48 Cr ARR). B2B corporate training: ₹2-5 lakh/year licenses for AI expert training modules. Creator marketplace commission: 30% platform fee on all transactions. Branded AI campaigns: ₹5-15 lakh per campaign for brands to sponsor creator AI interactions. Target: ₹72 Cr ARR by Year 3 with 65% gross margin, profitability by Month 24."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Dazo",
@@ -4598,9 +5044,23 @@
         ],
         "monetization": "Corporate SaaS: ₹500/employee/year platform fee. Meal markup: 25% on kitchen partner revenue. Outcome bonuses: ₹10,000 per employee achieving health targets. Insurance partnerships: ₹200/employee/month for risk-adjusted premium discounts. Target: ₹45Cr ARR by Year 3 with 35% EBITDA margins."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "added_at": "2026-06-27",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "JustRide",
@@ -4719,8 +5179,23 @@
         ],
         "monetization": "Revenue streams: (1) Consumer subscriptions at ₹2,499-4,999/month with 78% gross margin, (2) Corporate campus programs at ₹12,000-18,000/employee/year, (3) SaaS licensing to fleet operators at ₹1,499/vehicle/month for AI optimization, (4) Commission on intercity bookings at 12%. Target: ₹8Cr revenue Year 1, ₹35Cr Year 2, ₹85Cr Year 3 with EBITDA positivity by Month 20."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "ZipDial",
@@ -4846,8 +5321,23 @@
         ],
         "monetization": "SaaS platform fee: ₹4,500/month per brand for campaign management. Usage charges: ₹0.40 per successful voice engagement, ₹0.15 per smart missed-call conversion. Enterprise analytics: ₹12 lakh/year for predictive rural demand forecasting. Target: ₹18 crore ARR by Year 3, 65% gross margin, profitability by Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Spoonjoy",
@@ -4968,9 +5458,23 @@
         ],
         "monetization": "SaaS subscription: ₹25,000/month per kitchen for AI platform. Revenue share: 3% of gross kitchen revenue. Procurement margin: 5-8% on aggregated ingredient buying. Target: ₹18 Cr ARR by Year 3 with 50 kitchens, 40% EBITDA margin, and franchise expansion to 200 kitchens by Year 5."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "added_at": "2026-06-27",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Crejo.Fun",
@@ -5091,8 +5595,23 @@
         ],
         "monetization": "B2B SaaS: ₹400/student/month to schools with 70% gross margin. B2C Premium: ₹1,999/month for AI tutor + monthly maker-space access. Enterprise: ₹5-8 lakh/year for school district licensing. Target: ₹45 crore ARR by Year 3 with 25% net margin, profitability by Month 22."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Zipgo",
@@ -5208,8 +5727,23 @@
         ],
         "monetization": "Enterprise SaaS: ₹150-250/employee/month platform fee. Fleet operator commission: 8-12% on trip value. Premium features: ₹5,000/month for real-time tracking, women's safety SOS, carbon dashboards. Target: ₹50Cr ARR by Year 3 with 35% EBITDA margin at 500+ enterprise clients and 15,000+ daily trips."
       },
-      "profile_tier": "gold",
-      "added_at": "2026-06-27"
+      "profile_tier": "silver",
+      "added_at": "2026-06-27",
+      "research_score": 90,
+      "research_missing": [
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Udayy",
@@ -5306,12 +5840,23 @@
         ],
         "monetization": "Subscription-based model, with educational institutions paying a monthly fee to access Udayy 2.0's comprehensive learning solution."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Doodhwala",
@@ -5437,9 +5982,22 @@
         ],
         "monetization": "SaaS platform fee: ₹999/vehicle/month for predictive diagnostics. Service commission: 10-15% on maintenance. Corporate shuttle programs: ₹2-5L/month. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Autowale",
@@ -5550,11 +6108,22 @@
         ],
         "monetization": "Subscription-based service for frequent users: ₹999/month for unlimited bookings and tracking. Commission-based revenue model for auto-rickshaw operators: ₹50/ride. Target: ₹10Cr ARR by Year 3 with 70% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 90,
       "research_missing": [
-        "insights"
-      ]
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "SuperLearn",
@@ -5673,12 +6242,23 @@
         ],
         "monetization": "EduConnect will generate revenue through a combination of commission-based tutoring fees and subscription-based access to premium learning resources. The platform will also offer a premium subscription service for students who require additional support and guidance."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 95,
       "research_missing": [
-        "lessons"
+        "lessons",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:lessons,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Mobile Premier League",
@@ -5786,11 +6366,22 @@
         ],
         "monetization": "Subscription-based model, with users paying a monthly fee for access to premium features and personalized recommendations."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
-      ]
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Eatlo",
@@ -5891,12 +6482,23 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "UrbanClap/Urban Company",
@@ -6000,11 +6602,22 @@
         ],
         "monetization": "SmartHome will generate revenue through a subscription-based model, where customers pay a monthly fee for access to the platform's services. The platform will also earn a commission on each service booked through the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
-      ]
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Quikr Assured",
@@ -6113,11 +6726,22 @@
         ],
         "monetization": "Subscription-based model: ₹999/month for unlimited property valuations. Service commission: 10-15% on maintenance. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 90,
       "research_missing": [
-        "insights"
-      ]
+        "insights",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Tolexo",
@@ -6225,8 +6849,21 @@
         ],
         "monetization": "Tolexo 2.0 generates revenue through a combination of commission-based sales and subscription fees. The platform charges a commission on sales made through the platform, and also offers a subscription-based service for suppliers and buyers. The revenue model is designed to be scalable and profitable, with a focus on providing a high-quality user experience."
       },
-      "profile_tier": "gold",
-      "research_score": 100
+      "profile_tier": "silver",
+      "research_score": 100,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "BYJU'S",
@@ -6369,13 +7006,22 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "research_missing": [
-        "timeline"
+        "sources_with_url",
+        "source_integrity"
       ],
       "added_at": "2026-07-12",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Paytm",
@@ -6522,10 +7168,23 @@
         "monetization": "Paytm 2.0 will generate revenue through a combination of transaction fees, interest on loans, and insurance premiums. The platform will also offer a range of financial services, including savings accounts, credit cards, and investment products."
       },
       "sources": [],
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
       "updated_at": "2026-07-12",
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Swiggy",
@@ -6674,11 +7333,11 @@
         "monetization": "Subscription-based services: ₹999/month for frequent customers. Corporate partnerships: ₹2-5L/month. AI-driven demand prediction: 10-15% service commission on maintenance."
       },
       "sources": [],
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
       "updated_at": "2026-07-12",
       "added_at": "2026-07-12",
-      "research_mode": "gold",
+      "research_mode": "unverified",
       "target_company": "Swiggy",
       "instruction": "Apply RESEARCH_SYSTEM_RULES at maximum depth for ONLY 'Swiggy'. short_summary MUST start with 'Swiggy'. Match structure/depth of gold_standard_example but NEVER copy another company's story. System rejects thin output and wrong-identity dossiers.",
       "gold_standard_example": {
@@ -6865,7 +7524,20 @@
         "insights_min": 6,
         "lessons_min": 4,
         "ai_rebuild_lists_min": 5
-      }
+      },
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Udaan",
@@ -7000,12 +7672,22 @@
         ],
         "monetization": "The platform will generate revenue through a combination of transaction fees, subscription fees, and advertising. The transaction fees will be charged to sellers for each sale made on the platform, while the subscription fees will be charged to buyers for access to premium features. The advertising revenue will come from displaying targeted ads to buyers and sellers on the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
       "research_missing": [
-        "timeline"
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Snapdeal",
@@ -7147,12 +7829,22 @@
         "market_potential": 4
       },
       "market_today": "The Indian e-commerce market is dominated by Amazon and Flipkart, with Snapdeal struggling to regain its lost market share. However, the company has managed to survive by pivoting to a value-first e-commerce model, focusing on Tier 2/3 customers. This shift has allowed Snapdeal to become profitable, albeit on a small scale.",
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "added_at": "2026-07-12",
       "research_missing": [
-        "timeline"
-      ]
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Pharmeasy",
@@ -7262,9 +7954,22 @@
         ],
         "monetization": "Subscription fee: ₹999/month for unlimited doorstep delivery of medicines and health products. Service commission: 10-15% on sales. Health and wellness services: ₹500-1000/month per user."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "ShareChat",
@@ -7367,12 +8072,23 @@
         ],
         "monetization": "SaaS platform fee: ₹999/vehicle/month for predictive diagnostics. Service commission: 10-15% on maintenance. Corporate shuttle programs: ₹2-5L/month. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Cars24",
@@ -7479,12 +8195,23 @@
         ],
         "monetization": "Subscription fees: ₹999/month for premium services. Commission on vehicle sales: 5-10%. Financing options: ₹500-2000/month for 12-24 months."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Unacademy",
@@ -7516,10 +8243,6 @@
         {
           "date": "2025",
           "event": "Shut subsidiaries, mass layoffs"
-        },
-        {
-          "date": "2020",
-          "event": "Founded by Rohan Bhargava and Amit Gupta"
         },
         {
           "date": "2021",
@@ -7627,12 +8350,22 @@
         ],
         "monetization": "EduMap will generate revenue through subscription fees, advertising, and partnerships with top Indian universities and institutions."
       },
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "added_at": "2026-07-12",
       "research_missing": [
-        "timeline"
-      ]
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Ola Electric",
@@ -7742,10 +8475,22 @@
         "market_potential": 4
       },
       "market_today": "The Indian EV market is still growing, with a CAGR of 30% YoY. However, Ola Electric's market share has declined significantly due to service issues and regulatory problems. The company is pivoting to B2B energy solutions, which may help it regain market share.",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
       "added_at": "2026-07-12",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Zetwerk",
@@ -7860,12 +8605,22 @@
         ],
         "monetization": "SaaS platform fee: ₹999/vehicle/month for predictive diagnostics. Service commission: 10-15% on maintenance. Corporate shuttle programs: ₹2-5L/month. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "research_missing": [
-        "timeline"
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Curefit",
@@ -7972,12 +8727,23 @@
         ],
         "monetization": "FitGenie will generate revenue through a subscription-based model, with users able to choose from a range of plans that include access to personalized workout plans, nutrition advice, and social features. The platform will also offer in-app purchases for additional features and services, such as personalized coaching and nutrition planning."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Good Glamm Group",
@@ -8084,12 +8850,23 @@
         ],
         "monetization": "BeautyHub generates revenue through a subscription-based model, where customers pay a monthly fee for access to personalized beauty and personal care recommendations. The platform also earns a commission on sales generated through the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "OfBusiness",
@@ -8191,12 +8968,23 @@
         ],
         "monetization": "Subscription fees from businesses, interest on loans, and fees from e-commerce platforms and marketplaces."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Urban Company",
@@ -8323,9 +9111,22 @@
         ],
         "monetization": "Subscription-based service for regular customers, with a revenue model of ₹999/month for unlimited services and ₹499/month for 10 services."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Dhani",
@@ -8429,12 +9230,23 @@
         ],
         "monetization": "FinFit will generate revenue through interest income on loans disbursed, as well as through service fees charged to consumers for the use of the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Licious",
@@ -8542,9 +9354,22 @@
         ],
         "monetization": "Subscription-based model: ₹999/month for unlimited meat delivery, ₹499/month for 10 meat products. Commission-based model: 10-15% on sales of meat products. Advertising revenue: ₹500,000/month from sponsored content and product placements."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Spinny",
@@ -8657,9 +9482,22 @@
         ],
         "monetization": "Spinny 2.0 will generate revenue through a combination of commission-based sales, financing fees, and subscription-based services. The company aims to achieve ₹1,000Cr in ARR by Year 3, with a gross margin of 30% and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Innovaccer",
@@ -8760,12 +9598,23 @@
         ],
         "monetization": "Subscription-based model with a tiered pricing structure, offering different levels of access to AI-powered patient engagement and data analytics capabilities. Revenue streams include subscription fees, data analytics services, and AI-powered patient engagement services."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Groww",
@@ -8869,12 +9718,23 @@
         "market_potential": 5
       },
       "market_today": "The Indian fintech market is highly competitive, with multiple players vying for market share. Groww's struggles highlight the challenges of scaling a zero-commission business model while navigating regulatory pressures. The company's focus on MF distribution and premium features may help it stay afloat, but it will need to innovate and adapt to remain competitive.",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "MPL",
@@ -9005,10 +9865,12 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 95,
       "research_missing": [
-        "lessons"
+        "lessons",
+        "sources_with_url",
+        "source_integrity"
       ],
       "market_today": "The Indian gaming market is highly competitive, with several players vying for market share. The regulatory environment has become increasingly challenging, with the 2025 Online Gaming Act banning paid real-money contests. MPL has pivoted to free-to-play and international markets, but faces significant challenges in terms of high CAC and regulatory compliance.",
       "opportunity_score": {
@@ -9017,7 +9879,7 @@
         "market_potential": 5
       },
       "added_at": "2026-07-12",
-      "research_mode": "gold",
+      "research_mode": "unverified",
       "target_company": "MPL",
       "instruction": "Apply RESEARCH_SYSTEM_RULES at maximum depth for ONLY 'MPL'. short_summary MUST start with 'MPL'. Match structure/depth of gold_standard_example but NEVER copy another company's story. System rejects thin output and wrong-identity dossiers.",
       "gold_standard_example": {
@@ -9252,7 +10114,16 @@
         "insights_min": 6,
         "lessons_min": 4,
         "ai_rebuild_lists_min": 5
-      }
+      },
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:lessons,sources_with_url,source_integrity"
     },
     {
       "startup_name": "NoBroker",
@@ -9362,9 +10233,22 @@
         ],
         "monetization": "Subscription fees: ₹999/month for premium features, ₹4,999/month for exclusive listings, and ₹9,999/month for AI-powered property recommendations."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "PhysicsWallah",
@@ -9466,12 +10350,23 @@
         ],
         "monetization": "Subscription-based model with tiered pricing for individuals and institutions. Revenue streams include subscription fees, advertising, and affiliate marketing."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Mensa Brands",
@@ -9589,9 +10484,22 @@
         ],
         "monetization": "The platform would generate revenue through a subscription-based model, with brands paying a fee to be part of the platform. The platform would also generate revenue through a commission-based model, with brands paying a commission on sales generated through the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Vedantu",
@@ -9692,12 +10600,23 @@
         ],
         "monetization": "Subscription-based model, with tiered pricing for different types of courses and features. Revenue streams include course sales, subscription fees, and advertising."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Purplle",
@@ -9803,12 +10722,23 @@
         ],
         "monetization": "Subscription service: ₹999/month for regular shipments of beauty products. Commission on sales: 10-15% on beauty products. Advertising revenue: ₹500,000/month from sponsored content and product placements."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Pepperfry",
@@ -9921,9 +10851,22 @@
         ],
         "monetization": "FurniMap will generate revenue through a subscription-based model, where customers pay a monthly fee to access premium features and product recommendations. The platform will also earn a commission on sales made through the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Slice",
@@ -10031,9 +10974,22 @@
         "market_potential": 4
       },
       "market_today": "The Indian BNPL market is highly competitive, with multiple players vying for market share. The RBI's crackdown on non-bank PPIs has led to a shift towards regulated entities. Slice's pivot to full-stack banking is a strategic move to survive in this landscape.",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Pocket FM",
@@ -10151,11 +11107,12 @@
         "monetization": "Subscription-based model with tiered pricing and personalized recommendations. Revenue will be generated through a combination of subscription fees and advertising revenue."
       },
       "profile_tier": "gold",
-      "research_score": 88,
-      "research_missing": [
-        "timeline"
-      ],
-      "added_at": "2026-07-12"
+      "research_score": 100,
+      "research_missing": [],
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "LEAD School",
@@ -10270,9 +11227,22 @@
         ],
         "monetization": "Subscription-based model, with schools paying ₹5,000 per student per year for access to the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Droom",
@@ -10382,12 +11352,23 @@
         ],
         "monetization": "Subscription fees: ₹999/month for basic services, ₹2,499/month for premium services. Commission on vehicle sales: 5-10%. Additional revenue streams from vehicle inspection and certification services."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Nestaway",
@@ -10480,12 +11461,23 @@
         ],
         "monetization": "Subscription-based model: ₹999/month for property management and maintenance services. Service commission: 10-15% on maintenance. Revenue streams: ₹1.5 crore/month from property management and maintenance services, ₹1 crore/month from service commission."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Craftsvilla",
@@ -10591,12 +11583,23 @@
         ],
         "monetization": "Commission-based sales: 10-15% on sales revenue. Subscription-based model: ₹999/month for artisans to list their products on the platform."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Portea Medical",
@@ -10706,12 +11709,22 @@
         ],
         "monetization": "Subscription-based model, with patients paying a monthly fee for access to a network of caregivers and medical professionals. Revenue streams include subscription fees, service commissions, and equipment sales."
       },
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "research_missing": [
-        "timeline"
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Furlenco",
@@ -10811,12 +11824,23 @@
         ],
         "monetization": "Subscription fee: ₹999/month for unlimited furniture rentals. Service commission: 10-15% on maintenance. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Chingari",
@@ -10957,9 +11981,22 @@
         "market_potential": 5
       },
       "market_today": "The Indian e-commerce market continues to grow, with a focus on social commerce and influencer marketing. However, the intense competition from established players like Flipkart and Amazon remains a challenge for new entrants.",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "YourStory",
@@ -11066,12 +12103,23 @@
         ],
         "monetization": "StorySphere generates revenue through a subscription-based model, offering users access to exclusive content and personalized recommendations. The platform also generates revenue through partnerships with established media outlets and advertising."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "BharatPe",
@@ -11210,9 +12258,22 @@
         ],
         "monetization": "BharatPe 2.0 will generate revenue through a range of financial services, including lending, POS terminals, and banking. The platform will also offer a range of value-added services, including insurance and investment products."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Grofers",
@@ -11346,10 +12407,10 @@
         ],
         "monetization": "Subscription fees, commission on sales, and advertising revenue."
       },
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "added_at": "2026-07-12",
-      "research_mode": "gold",
+      "research_mode": "unverified",
       "target_company": "Grofers",
       "instruction": "Apply RESEARCH_SYSTEM_RULES at maximum depth for ONLY 'Grofers'. short_summary MUST start with 'Grofers'. Match structure/depth of gold_standard_example but NEVER copy another company's story. System rejects thin output and wrong-identity dossiers.",
       "gold_standard_example": {
@@ -11519,8 +12580,18 @@
         "ai_rebuild_lists_min": 5
       },
       "research_missing": [
-        "timeline"
-      ]
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Housing.com",
@@ -11667,12 +12738,22 @@
         ],
         "monetization": "Subscription-based model: ₹999/user/month for premium features and services. Commission-based model: 2-5% on property transactions."
       },
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "added_at": "2026-07-12",
       "research_missing": [
-        "timeline"
-      ]
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Meru Cabs",
@@ -11820,9 +12901,22 @@
       },
       "sources": [],
       "updated_at": "2026-07-12",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Yepme",
@@ -11963,9 +13057,22 @@
         ],
         "monetization": "FashionHub will generate revenue through a combination of commission-based sales, subscription fees, and advertising. The platform will charge a commission of 10-15% on sales, and offer a subscription-based service to loyal customers for ₹999/month. The platform will also display targeted advertisements to generate additional revenue."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Roposo",
@@ -12070,12 +13177,23 @@
         ],
         "monetization": "Roposo 2.0 will generate revenue through a combination of advertising, sponsored content, and data analytics. The platform will offer targeted advertising to brands, and will also provide data analytics services to help brands understand their target audience."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Jugnoo",
@@ -12216,10 +13334,23 @@
         "market_potential": 4
       },
       "market_today": "The Indian food delivery market is highly competitive, with players like Swiggy, Zomato, and Foodpanda vying for market share. The market is expected to continue growing, driven by increasing demand for online food ordering and delivery.",
-      "profile_tier": "gold",
-      "research_score": 100,
+      "profile_tier": "silver",
+      "research_score": 88,
       "added_at": "2026-07-12",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_missing": [
+        "cause_of_death",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     },
     {
       "startup_name": "HealthKart",
@@ -12330,12 +13461,23 @@
         ],
         "monetization": "Subscription-based model for gyms and fitness centers, with a revenue share of 10-15% on sales."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 90,
       "research_missing": [
-        "insights"
+        "insights",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:insights,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Housejoy",
@@ -12443,12 +13585,22 @@
         ],
         "monetization": "HomeGenie generates revenue through a subscription-based model, where home services providers pay a monthly fee to access the platform's AI-powered demand prediction and resource allocation tools. The platform also generates revenue through a commission-based model, where it takes a percentage of the revenue generated by home services providers."
       },
-      "profile_tier": "gold",
-      "research_score": 88,
+      "profile_tier": "silver",
+      "research_score": 100,
       "research_missing": [
-        "timeline"
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Sarvam AI",
@@ -12571,7 +13723,11 @@
       "profile_tier": "gold",
       "research_score": 100,
       "updated_at": "2026-07-12",
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [],
+      "research_gate_reasons": [],
+      "research_status": "gold_pass",
+      "research_mode": "verified"
     },
     {
       "startup_name": "Zomato",
@@ -12679,14 +13835,24 @@
         "monetization": "SaaS platform fee: ₹999/vehicle/month for predictive diagnostics. Service commission: 10-15% on maintenance. Corporate shuttle programs: ₹2-5L/month. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
       "sources": [],
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "cause_of_death"
+        "cause_of_death",
+        "sources_with_url",
+        "source_integrity"
       ],
       "updated_at": "2026-07-12",
       "added_at": "2026-07-12",
-      "research_rejected": true
+      "research_rejected": true,
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Zepto",
@@ -12797,7 +13963,23 @@
         "rebuild_difficulty": 3,
         "scalability": 3,
         "market_potential": 4
-      }
+      },
+      "research_score": 88,
+      "research_missing": [
+        "cause_of_death",
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "profile_tier": "silver",
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Meesho",
@@ -12906,12 +14088,23 @@
         ],
         "monetization": "SaaS platform fee: ₹999/vehicle/month for predictive diagnostics. Service commission: 10-15% on maintenance. Corporate shuttle programs: ₹2-5L/month. Target: ₹74Cr ARR by Year 3 with 72% gross margin and profitability by Month 18."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "timeline"
+        "timeline",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:timeline,sources_with_url,source_integrity"
     },
     {
       "startup_name": "Rapido",
@@ -13057,9 +14250,22 @@
         "market_potential": 4
       },
       "market_today": "The Indian ride-hailing market is highly competitive, with Ola and Uber dominating the space. However, there is still room for innovation and disruption, particularly in the bike-taxi segment. Companies like Rapido have shown that with the right strategy and execution, it is possible to carve out a niche in this market.",
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 100,
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_missing": [
+        "sources_with_url",
+        "source_integrity"
+      ],
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:sources_with_url,source_integrity"
     },
     {
       "startup_name": "Oyo Rooms",
@@ -13199,12 +14405,23 @@
         ],
         "monetization": "OYO OS 2.0 will generate revenue through a subscription-based model, with hotels paying a monthly fee for access to the platform's features and services. Additionally, the platform will offer targeted advertising and sponsored content to hotels and guests."
       },
-      "profile_tier": "gold",
+      "profile_tier": "silver",
       "research_score": 88,
       "research_missing": [
-        "cause_of_death"
+        "cause_of_death",
+        "sources_with_url",
+        "source_integrity"
       ],
-      "added_at": "2026-07-12"
+      "added_at": "2026-07-12",
+      "research_gate_reasons": [
+        "need ≥1 source with http(s) URL",
+        "source: no_http_sources",
+        "hard blocker: sources_with_url",
+        "hard blocker: source_integrity"
+      ],
+      "research_status": "blocked",
+      "research_rejected": true,
+      "research_blocked_reason": "source_integrity:no_http_sources; gate:cause_of_death,sources_with_url,source_integrity"
     }
   ]
 }

@@ -237,12 +237,10 @@ def _apply_funding_and_sources(
 
 
 def _stamp_tier(entry: dict[str, Any], gate: GateResult) -> dict[str, Any]:
-    if gate.accepted and gate.score >= 85:
-        entry["profile_tier"] = "gold"
-    else:
-        entry["profile_tier"] = gate.tier
-    entry["research_score"] = gate.score
-    entry["research_missing"] = gate.missing
+    """Stamp using shared restamp logic so labels never lie about gold."""
+    from .restamp import restamp_entry
+
+    restamp_entry(entry)
     return entry
 
 

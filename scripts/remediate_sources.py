@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 from pipeline.audit_research import audit_startups  # noqa: E402
 from pipeline.config import nvidia_api_key  # noqa: E402
 from pipeline.merge import load_graveyard, save_graveyard, sort_startups  # noqa: E402
+from pipeline.restamp import restamp_all  # noqa: E402
 from pipeline.source_fetch import redirect_mismatch, resolve_url  # noqa: E402
 from pipeline.source_integrity import (  # noqa: E402
     brand_tokens_from_name,
@@ -65,7 +66,10 @@ def main() -> int:
         s["sources"] = kept
         stripped_counts[name] = {"before": before_n, "after": len(kept)}
 
-    # Re-audit after strip
+    # Always re-stamp tiers so JSON never claims gold when gate fails
+    stamp_stats = restamp_all(startups)
+
+    # Re-audit after strip + restamp
     mid = audit_startups(startups)
     need_enrich = [s for s in startups if not next(r for r in mid["all"] if r["startup_name"] == s["startup_name"])["pass"]]
 
@@ -109,6 +113,8 @@ def main() -> int:
             except Exception as exc:
                 print(f"  ERROR {exc}")
 
+    # Final restamp after any enrich
+    stamp_stats = restamp_all(startups)
     data["startups"] = sort_startups(startups)
     save_graveyard(data)
 
@@ -124,6 +130,7 @@ def main() -> int:
     summary = {
         "stripped": stripped_counts,
         "enriched_ok": enriched_ok,
+        "stamp_stats": stamp_stats,
         "before_pass": before["gold_pass"],
         "after_pass": after["gold_pass"],
         "after_fail": after["failing_count"],
@@ -136,7 +143,8 @@ def main() -> int:
 
     print(
         f"remediate: gold {before['gold_pass']}->{after['gold_pass']} "
-        f"blocked={after['blocked_count']} enriched={len(enriched_ok)}"
+        f"blocked={after['blocked_count']} enriched={len(enriched_ok)} "
+        f"demoted_labels={stamp_stats.get('demoted_from_gold_label')}"
     )
     return 0
 
