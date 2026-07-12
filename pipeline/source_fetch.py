@@ -4,7 +4,7 @@ from __future__ import annotations
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
-from .http_security import is_public_http_url
+from .http_security import is_public_http_url, resolve_and_validate_host
 
 _MAX_RESOLVE_READ = 64_000  # only need redirects/status, not full body
 
@@ -12,7 +12,8 @@ _MAX_RESOLVE_READ = 64_000  # only need redirects/status, not full body
 def resolve_url(url: str, timeout: float = 6.0) -> dict:
     """Follow redirects; return final URL, status, and path slug.
 
-    Rejects non-public schemes/hosts before connect (SSRF guard).
+    Rejects non-public schemes/hosts before connect (SSRF guard), including
+    alternate IP encodings and DNS that resolves to private ranges.
     Injectable for tests via patching this function.
     """
     if not is_public_http_url(url):
@@ -24,11 +25,35 @@ def resolve_url(url: str, timeout: float = 6.0) -> dict:
             "path": "",
             "error": "disallowed_url",
         }
+    host = (urlparse(url).hostname or "").strip().lower()
+    try:
+        resolve_and_validate_host(host)
+    except ValueError:
+        return {
+            "ok": False,
+            "input_url": url,
+            "final_url": url,
+            "status": None,
+            "path": "",
+            "error": "disallowed_url",
+        }
     try:
         req = Request(url, method="GET", headers={"User-Agent": "Mozilla/5.0 BSR-SourceCheck/1.0"})
-        with urlopen(req, timeout=timeout) as resp:  # noqa: S310 — guarded by is_public_http_url
+        with urlopen(req, timeout=timeout) as resp:  # noqa: S310 — guarded above
             final = resp.geturl()
             if not is_public_http_url(final):
+                return {
+                    "ok": False,
+                    "input_url": url,
+                    "final_url": final,
+                    "status": None,
+                    "path": "",
+                    "error": "redirect_to_disallowed_url",
+                }
+            final_host = (urlparse(final).hostname or "").strip().lower()
+            try:
+                resolve_and_validate_host(final_host)
+            except ValueError:
                 return {
                     "ok": False,
                     "input_url": url,

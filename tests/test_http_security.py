@@ -33,6 +33,24 @@ class TestHttpSecurity(unittest.TestCase):
         self.assertFalse(is_public_http_url(""))
         self.assertFalse(is_public_http_url(None))  # type: ignore[arg-type]
 
+    def test_blocks_alternate_loopback_encodings(self):
+        """SSRF bypass forms that map to 127.0.0.1 / private ranges."""
+        from pipeline.http_security import parse_ip_literal
+
+        # Decimal 127.0.0.1
+        self.assertEqual(str(parse_ip_literal("2130706433")), "127.0.0.1")
+        self.assertFalse(is_public_http_url("http://2130706433/"))
+        # Hex 127.0.0.1
+        self.assertEqual(str(parse_ip_literal("0x7f000001")), "127.0.0.1")
+        self.assertFalse(is_public_http_url("http://0x7f000001/"))
+        # Short form
+        self.assertFalse(is_public_http_url("http://127.1/"))
+        self.assertFalse(is_public_http_url("http://127.0.1/"))
+        # IPv6 loopback
+        self.assertFalse(is_public_http_url("http://[::1]/"))
+        # Cloud metadata
+        self.assertFalse(is_public_http_url("http://169.254.169.254/"))
+
     def test_validate_feed_allowlist(self):
         url = validate_feed_url("https://inc42.com/feed/", {"inc42.com", "yourstory.com"})
         self.assertEqual(url, "https://inc42.com/feed/")
@@ -60,10 +78,20 @@ class TestHttpSecurity(unittest.TestCase):
             "file:///etc/passwd",
             "http://169.254.169.254/latest/meta-data/",
             "javascript:alert(1)",
+            # Alternate encodings that previously reached urlopen (Connection refused)
+            "http://2130706433/",
+            "http://0x7f000001/",
+            "http://127.1/",
         ):
             result = resolve_url(bad, timeout=0.1)
             self.assertFalse(result["ok"], msg=bad)
-            self.assertEqual(result.get("error"), "disallowed_url")
+            self.assertEqual(
+                result.get("error"),
+                "disallowed_url",
+                msg=f"{bad} → {result}",
+            )
+            # Must not look like a connect error (SSRF was blocked pre-connect)
+            self.assertNotIn("Connection", str(result.get("error") or ""))
 
     def test_scrape_module_uses_http_security(self):
         """Structural: scrape wires feed validation + body clamp."""

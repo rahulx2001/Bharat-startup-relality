@@ -39,8 +39,41 @@ function testClampScore() {
   assert.strictEqual(api.clampScore(null, 5), 0);
 }
 
+function testOpportunityScoreXssPoison() {
+  // Real attack payload from skeptic: poison opportunity_score fields
+  const poison = {
+    rebuild_difficulty: '<img src=x onerror=alert(1)>',
+    scalability: '"><script>alert(1)</script>',
+    market_potential: "3 onload=alert(1)",
+  };
+  const safe = api.sanitizeOppScore(poison);
+  assert.strictEqual(safe.rebuild_difficulty, 0);
+  assert.strictEqual(safe.scalability, 0);
+  assert.strictEqual(safe.market_potential, 0);
+
+  const html = api.opportunityScoreHtml(poison, {
+    difficulty: "Moderate",
+    scale: "Moderate",
+    market: "Medium",
+  });
+  assert.ok(!html.includes("<img"), "must not contain raw img tag from poison");
+  assert.ok(!html.includes("<script"), "must not contain raw script from poison");
+  assert.ok(!html.includes("onerror="), "must not contain onerror handler");
+  assert.ok(!html.includes("onload="), "must not contain onload handler");
+  // Numeric values only after sanitize
+  assert.ok(html.includes(">0/5"), "clamped zero scores rendered");
+  // Legitimate scores still work
+  const good = api.opportunityScoreHtml(
+    { rebuild_difficulty: 4, scalability: 5, market_potential: 3 },
+    { difficulty: "Hard", scale: "Very High", market: "Medium" }
+  );
+  assert.ok(good.includes(">4/5"));
+  assert.ok(good.includes("Hard"));
+}
+
 testEscapeHtml();
 testSafeHttpUrl();
 testStatusClassToken();
 testClampScore();
+testOpportunityScoreXssPoison();
 console.log("OK tests/test_security_js.js");

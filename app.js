@@ -325,26 +325,41 @@ const openModal = (s) => {
   // Value Proposition
   el('modalValueProp').textContent = s.value_proposition || s.short_summary || `${s.startup_name} was a startup in the ${s.category || 'Tech'} space that aimed to solve problems in their industry.`;
 
-  // Opportunity Score
-  const oppScore = s.opportunity_score || (isGoldProfile(s) ? null : generateOpportunityScore(s));
-  if (!oppScore) {
+  // Opportunity Score — clamp + escape via BSRSecurity (never raw catalog fields in HTML)
+  const oppScoreRaw = s.opportunity_score || (isGoldProfile(s) ? null : generateOpportunityScore(s));
+  if (!oppScoreRaw) {
     el('modalOpportunity').innerHTML = '<p class="thin-note">Profile enrichment in progress.</p>';
+  } else if (globalThis.BSRSecurity && BSRSecurity.opportunityScoreHtml) {
+    const safe = BSRSecurity.sanitizeOppScore(oppScoreRaw);
+    el('modalOpportunity').innerHTML = BSRSecurity.opportunityScoreHtml(safe, {
+      difficulty: getDifficultyLabel(safe.rebuild_difficulty),
+      scale: getScaleLabel(safe.scalability),
+      market: getMarketLabel(safe.market_potential),
+    });
   } else {
-  el('modalOpportunity').innerHTML = `
+    // Fallback if security.js missing: numeric clamp only, no raw strings
+    const clamp = (v) => {
+      const n = Number(v);
+      return Number.isFinite(n) ? Math.max(0, Math.min(5, Math.floor(n))) : 0;
+    };
+    const rd = clamp(oppScoreRaw.rebuild_difficulty);
+    const sc = clamp(oppScoreRaw.scalability);
+    const mp = clamp(oppScoreRaw.market_potential);
+    el('modalOpportunity').innerHTML = `
     <div class="opportunity-card">
       <div class="opp-label">🔧 Rebuild Difficulty</div>
-      <div class="opp-bar">${generateBar(oppScore.rebuild_difficulty, 5)}</div>
-      <div class="opp-value">${oppScore.rebuild_difficulty}/5 (${getDifficultyLabel(oppScore.rebuild_difficulty)})</div>
+      <div class="opp-bar">${generateBar(rd, 5)}</div>
+      <div class="opp-value">${escapeHtml(String(rd))}/5 (${escapeHtml(getDifficultyLabel(rd))})</div>
     </div>
     <div class="opportunity-card">
       <div class="opp-label">📈 Scalability Potential</div>
-      <div class="opp-bar">${generateBar(oppScore.scalability, 5, 'green')}</div>
-      <div class="opp-value">${oppScore.scalability}/5 (${getScaleLabel(oppScore.scalability)})</div>
+      <div class="opp-bar">${generateBar(sc, 5, 'green')}</div>
+      <div class="opp-value">${escapeHtml(String(sc))}/5 (${escapeHtml(getScaleLabel(sc))})</div>
     </div>
     <div class="opportunity-card">
       <div class="opp-label">🎯 Market Potential Today</div>
-      <div class="opp-bar">${generateBar(oppScore.market_potential, 5, 'orange')}</div>
-      <div class="opp-value">${getMarketLabel(oppScore.market_potential)}</div>
+      <div class="opp-bar">${generateBar(mp, 5, 'orange')}</div>
+      <div class="opp-value">${escapeHtml(getMarketLabel(mp))}</div>
     </div>
   `;
   }

@@ -32,8 +32,22 @@ class TestFrontendSecurityContracts(unittest.TestCase):
             "safeHttpUrl",
             "noopener noreferrer",
             "getStatusClass",
+            # Opportunity score must go through sanitize / opportunityScoreHtml
+            "sanitizeOppScore",
+            "opportunityScoreHtml",
         ):
             self.assertIn(needle, app, msg=f"missing {needle}")
+
+    def test_opportunity_score_not_raw_in_innerhtml(self):
+        """oppScore.* must never appear unescaped inside modalOpportunity template."""
+        app = (ROOT / "app.js").read_text(encoding="utf-8")
+        # Old vulnerable pattern: ${oppScore.rebuild_difficulty} raw in template
+        self.assertNotRegex(
+            app,
+            r"\$\{oppScore\.(rebuild_difficulty|scalability|market_potential)\}",
+            msg="raw oppScore field in template",
+        )
+        self.assertIn("BSRSecurity.opportunityScoreHtml", app)
 
     def test_no_raw_catalog_in_innerhtml_templates(self):
         """innerHTML template literals must not interpolate catalog fields raw."""
