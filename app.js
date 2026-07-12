@@ -1292,6 +1292,12 @@ const openComparePanel = () => {
   let html = '<table class="compare-table"><thead><tr><th>Field</th>';
   rows.forEach((s) => { html += `<th>${escapeHtml(s.startup_name)}</th>`; });
   html += '</tr></thead><tbody>';
+  // Action row: open full profile from compare
+  html += '<tr class="compare-actions-row"><th>Full story</th>';
+  rows.forEach((s, idx) => {
+    html += `<td><button type="button" class="filter-btn compare-open-profile" data-compare-open="${idx}">🔍 Read full profile</button></td>`;
+  });
+  html += '</tr>';
   fields.forEach(([label, fn]) => {
     html += `<tr><th>${escapeHtml(label)}</th>`;
     rows.forEach((s) => { html += `<td>${escapeHtml(fn(s))}</td>`; });
@@ -1299,6 +1305,19 @@ const openComparePanel = () => {
   });
   html += '</tbody></table>';
   body.innerHTML = html;
+
+  body.querySelectorAll('.compare-open-profile').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const idx = Number(btn.getAttribute('data-compare-open'));
+      const startup = rows[idx];
+      if (!startup) return;
+      closeComparePanel();
+      openModal(startup);
+    });
+  });
+
   panel.hidden = false;
   panel.removeAttribute('hidden');
   panel.classList.add('show');
