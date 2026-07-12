@@ -1,6 +1,4 @@
 {
-  "version": 2,
-  "name": "startup-graveyard-ui",
   "headers": [
     {
       "source": "/(.*)",
@@ -22,9 +20,5 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
     }
-  ],
-  "routes": [
-    { "src": "/data/(.*)", "dest": "/data/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
