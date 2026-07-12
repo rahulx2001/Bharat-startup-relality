@@ -44,6 +44,26 @@
   color: #ffb3d1;
 }
 
+/* Peak valuation / funding tags — high contrast on dark cards */
+[data-theme="dark"] .tag.funding {
+  background: #1b4d2e;
+  color: #b6ffc9;
+  border-color: #5cb87a;
+}
+
+/* Watchlist star — readable on dark UI */
+[data-theme="dark"] .watch-btn {
+  background: #2a2a2a;
+  color: #ffd54a;
+  border-color: #888;
+}
+
+[data-theme="dark"] .watch-btn.active {
+  background: #ffe566;
+  color: #101010;
+  border-color: #c9a000;
+}
+
 [data-theme="dark"] .stat {
   background: #252525;
 }
@@ -363,6 +383,7 @@ body {
 .watch-btn {
   border: 2px solid var(--border);
   background: var(--card);
+  color: #101010;
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -373,6 +394,7 @@ body {
 
 .watch-btn.active {
   background: #fff3a0;
+  color: #101010;
 }
 
 .watch-btn.modal-watch {
@@ -780,7 +802,12 @@ kbd {
 
 .tag.alt { background: #d1f4ff; }
 .tag.warn { background: #ffd3e5; }
-.tag.funding { background: #c8ffc8; }
+.tag.funding {
+  background: #c8ffc8;
+  color: #0a2a0a; /* always dark ink on mint — readable in light + dark before overrides */
+  border-color: #2a7a40;
+  font-weight: 800;
+}
 
 .card p {
   font-size: 14px;
