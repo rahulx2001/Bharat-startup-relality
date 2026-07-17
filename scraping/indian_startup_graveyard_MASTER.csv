@@ -1,0 +1,96 @@
+year,funding,source,startup_name,failure_reason
+2023,$5.8B,Inc42,BYJU'S (crisis),"Massive layoffs, valuation crash"
+2020,$3.4B,Economic Times,Oyo Rooms (crisis),"Massive layoffs, valuation crash"
+2024,$1.9B,Entrackr,Udaan,"Massive losses, down rounds, layoffs, pivot struggles"
+2017,$1.65B,Economic Times,Snapdeal (partial),"Lost to Flipkart/Amazon, massive layoffs"
+2026,$1.3B,Inc42,Zepto,"Cash burn concerns, competition from Blinkit/Instamart"
+2025,$1.2B,Inc42,Pharmeasy,"IPO shelved, valuation crashed from $5.6B to $700M, layoffs"
+2026,$1.1B,Inc42,Meesho (Mass Layoffs),"Large-scale layoffs, profitability pressure"
+2024,$915M,TechCrunch,ShareChat (layoffs),Major layoffs
+2025,$900M,YourStory,Cars24,"International exit, heavy layoffs, valuation drop"
+2022,$860M,Entrackr,Unacademy (layoffs),Multiple rounds of layoffs
+2024,$800M,LiveMint,Ola Electric (Crisis),"Service issues, regulatory problems, stock crash post-IPO"
+2024,$650M,Inc42,BharatPe (Founder Exit),"Founder ousted for fraud, governance crisis, lawsuits"
+2022,$650M,Entrackr,Curefit (layoffs),"Layoffs, restructuring"
+2021,$600M,News Reports,Grofers (pivoted),"Rebranded to Blinkit, sold to Zomato"
+2025,$560M,Entrackr,Zetwerk (Layoffs),"Layoffs, margin pressures"
+2023,$500M,Inc42,Mobile Premier League,Layoffs
+2023,$500M,Inc42,Dhani,"Major layoffs, pivot"
+2024,$500M,Entrackr,Good Glamm Group (Crisis),"Heavy debt, founder exit, brand shutdowns, layoffs"
+2025,$500M,Entrackr,OfBusiness,"Layoffs, growth slowdown"
+2026,$500M,Inc42,Urban Company,"IPO struggles, partner unrest, layoffs"
+2024,$490M,Inc42,Licious (Layoffs),"Multiple layoff rounds, profitability struggles"
+2025,$475M,Inc42,Spinny,"Layoffs, market slowdown, profitability pressure"
+2024,$450M,Inc42,Dunzo,"Cash crunch, failed Reliance acquisition talks, massive layoffs"
+2025,$450M,Inc42,MPL (Mobile Premier League),"GST issues, layoffs, regulatory challenges"
+2024,$425M,YourStory,Innovaccer (Layoffs),"Major layoffs, market challenges"
+2022,$420M,Inc42,UrbanClap/Urban Company (layoffs),Layoffs
+2026,$400M,Entrackr,Groww,"Regulatory pressures, growth challenges"
+2026,$361M,Entrackr,NoBroker,"Layoffs, market slowdown, profitability issues"
+2026,$330M,Entrackr,Rapido,"Regulatory issues, profitability struggles"
+2016,$300M,Economic Times,AskMe,"Funding dried up, investor disputes"
+2022,$300M,News Reports,WhiteHat Jr (Crisis),"Byju's acquisition led to layoffs, brand struggling"
+2024,$300M,Entrackr,Mensa Brands (Crisis),"Brand shutdowns, layoffs, failed acquisitions"
+2024,$300M,Forbes,Zilingo,"Accounting fraud, CEO fired, company liquidated"
+2025,$300M,Inc42,PhysicsWallah (Alakh Pandey Crisis),"Centers shutting down, layoffs, profitability issues"
+2022,$291M,News Reports,Vedantu (Layoffs),Major layoffs
+2021,$261M,News Reports,Hike Messenger,Couldn't compete with WhatsApp
+2019,$260M,Inc42,ShopClues (decline),Sold at massive loss to Qoo10
+2025,$250M,Inc42,Purplle,"Layoffs, profitability pressure, competition from Nykaa"
+2022,$235M,Entrackr,Pepperfry (layoffs),Layoffs
+2018,$220M,News Reports,Jabong,Brand discontinued after Flipkart acquisition of Myntra
+2023,$220M,Inc42,Slice,"RBI restrictions, layoffs"
+2024,$200M,Inc42,BluSmart,"Financial irregularities, founder fraud allegations, operations suspended"
+2025,$200M,Inc42,Pocket FM,"Layoffs, unit economics challenges"
+2017,$200M,News Reports,Taxiforsure,"Acquired by Ola, brand discontinued"
+2020,$200M,News Reports,Uber Eats India,"Sold to Zomato, exited India food delivery market"
+2024,$160M,Inc42,LEAD School,"Mass layoffs, business model struggles, funding winter"
+2019,$125M,News Reports,Droom (IPO Failed),"IPO shelved multiple times, heavy losses"
+2016,$120M,News Reports,Housing.com (original),"Founder fired, merged with PropTiger"
+2020,$100M,News Reports,Foodpanda India,"Ola sold Foodpanda, couldn't compete with Swiggy/Zomato"
+2020,$100M,News Reports,Meru Cabs,"Massive decline, sold assets"
+2023,$90M,Inc42,Nestaway (decline),"Major layoffs, scaling down"
+2023,$77M,Inc42,Trell,"Layoffs, restructuring"
+2023,$62M,Inc42,GoMechanic,"Fraud allegations, crisis"
+2016,$60M,Economic Times,Commonfloor,Merged with Quikr
+2019,$54M,News Reports,Craftsvilla,Major decline
+2016,$51M,Economic Times,PepperTap,"Unit economics failed, shut operations"
+2020,$50M,Inc42,Portea Medical,"Massive layoffs, scaled down"
+2024,$50M,Inc42,Koo,Shut down
+2018,$50M,News Reports,Yepme,"Failed to compete, shifted to B2B model"
+2023,$40M,Entrackr,Furlenco (layoffs),Layoffs
+2020,$40M,News Reports,Roposo,Sold to Glance
+2016,$35M,Economic Times,Yebhi,"Market competition, funding issues"
+2017,$34M,News Reports,Stayzilla,"Shut down amid legal troubles, founder arrested"
+2023,$30M,News Reports,Chingari,Decline
+2023,$30M,News Reports,FrontRow,Celebrity learning platform shut down
+2019,$30M,News Reports,Staples India,Shut Indian operations after years of losses
+2016,$27M,Economic Times,TinyOwl,"Merged with Runnr, then failed"
+2017,$25M,Inc42,HealthKart (B2C),Pivoted to B2B (MuscleBlaze)
+2018,$24M,News Reports,Housejoy,Major pivot/decline
+2016,$20M,Economic Times,Flipkart Ping,Flipkart's social chat feature discontinued
+2023,$20M,News Reports,Lido Learning,Shut operations amid EdTech crash
+2024,$20M,Inc42,Mojocare,"Shut down operations, failed to raise follow-on funding"
+2017,$17M,News Reports,Jugnoo,Failed to sustain
+2017,$15M,Inc42,Lybrate,Significant decline
+2016,$10M,Economic Times,Grabhouse,Merged with Quikr
+2015,$10M,Economic Times,LocalBanya,Couldn't sustain operations
+2023,$8M,Inc42,YourStory (layoffs),Layoffs
+2017,$7M,News Reports,Runnr,Merged into Zomato
+2021,$6M,Inc42,Ridlr,Ola sold/shut it
+2016,$5M,Economic Times,Fashionara,Failed to compete
+2016,$5M,Economic Times,Dazo,Bangalore operations shut
+2016,$5M,Economic Times,JustRide,Lost to Ola/Uber
+2016,$5M,Economic Times,Frankly.me,Celebrity video Q&A platform failed to monetize
+2016,$4.5M,Inc42,ZipDial,Twitter shut it down
+2022,$3M,News Reports,Crejo.Fun,Shut down
+2017,$3M,Inc42,Zipgo,Shut operations
+2016,$3M,Economic Times,Spoonjoy,"Food tech startup couldn't scale, shut operations"
+2022,$2.5M,News Reports,Udayy,Shut down
+2016,$2.2M,Economic Times,Doodhwala,Operational challenges
+2022,$2M,News Reports,SuperLearn,Shut down
+2016,$2M,Economic Times,Autowale,Auto-rickshaw booking app shut due to unit economics
+2015,$400K,News Reports,Eatlo,Competition from Swiggy/Zomato
+2018,-,Inc42,Quikr Assured,Service discontinued
+2017,-,Inc42,Tolexo,IndiaMART shut it down
+2022,-,Inc42,Zomato Instant,10-min delivery discontinued

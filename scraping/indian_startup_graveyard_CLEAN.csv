@@ -1,0 +1,96 @@
+year,funding,source,startup_name,failure_reason
+2023,$5.8B,curated,BYJU'S (crisis),"Massive layoffs, valuation crash"
+2020,$3.4B,curated,Oyo Rooms (crisis),"Massive layoffs, valuation crash"
+2024,$1.9B,curated,Udaan,"Massive losses, down rounds, layoffs, pivot struggles"
+2017,$1.6B,curated,Snapdeal (partial),"Lost to Flipkart/Amazon, massive layoffs"
+2026,$1.3B,curated,Zepto,"Cash burn concerns, competition from Blinkit/Instamart"
+2025,$1.2B,curated,Pharmeasy,"IPO shelved, valuation crashed from $5.6B to $700M, layoffs"
+2026,$1.1B,curated,Meesho,"Large-scale layoffs, profitability pressure"
+2024,$1.1B,curated,ShareChat,"500+ layoffs, shut down fantasy gaming, valuation crash"
+2025,$900M,curated,Cars24,"International exit, heavy layoffs, valuation drop"
+2025,$880M,curated,Unacademy,"Continuous layoffs, shut down group companies, pivot struggles"
+2024,$800M,curated,Ola Electric,"Service issues, regulatory problems, stock crash post-IPO"
+2024,$650M,curated,BharatPe,"Founder ousted for fraud, governance crisis, lawsuits"
+2022,$650M,curated,Curefit (layoffs),"Layoffs, restructuring"
+2021,$600M,curated,Grofers (pivoted),"Rebranded to Blinkit, sold to Zomato"
+2025,$560M,curated,Zetwerk,"Layoffs, margin pressures"
+2023,$500M,curated,Mobile Premier League,Layoffs
+2023,$500M,curated,Dhani,"Major layoffs, pivot"
+2024,$500M,curated,Good Glamm Group,"Heavy debt, founder exit, brand shutdowns, layoffs"
+2025,$500M,curated,OfBusiness,"Layoffs, growth slowdown"
+2026,$500M,curated,Urban Company,"IPO struggles, partner unrest, layoffs"
+2024,$490M,curated,Licious,"Multiple layoff rounds, profitability struggles"
+2025,$475M,curated,Spinny,"Layoffs, market slowdown, profitability pressure"
+2025,$450M,curated,MPL,"GST issues, layoffs, regulatory challenges"
+2024,$450M,curated,Dunzo,"Cash crunch, failed Reliance acquisition talks, massive layoffs"
+2024,$425M,curated,Innovaccer,"Major layoffs, market challenges"
+2022,$420M,curated,UrbanClap/Urban Company (layoffs),Layoffs
+2026,$400M,curated,Groww,"Regulatory pressures, growth challenges"
+2026,$361M,curated,NoBroker,"Layoffs, market slowdown, profitability issues"
+2026,$330M,curated,Rapido,"Regulatory issues, profitability struggles"
+2025,$300M,curated,PhysicsWallah,"Centers shutting down, layoffs, profitability issues"
+2024,$300M,curated,Mensa Brands,"Brand shutdowns, layoffs, failed acquisitions"
+2016,$300M,curated,AskMe,"Funding dried up, investor disputes"
+2022,$300M,curated,Zilingo,"Shut down, fraud allegations"
+2022,$300M,curated,WhiteHat Jr (Crisis),"Byju's acquisition led to layoffs, brand struggling"
+2022,$291M,curated,Vedantu,Major layoffs
+2021,$261M,curated,Hike Messenger,Couldn't compete with WhatsApp
+2019,$260M,curated,ShopClues (decline),Sold at massive loss to Qoo10
+2025,$250M,curated,Purplle,"Layoffs, profitability pressure, competition from Nykaa"
+2022,$235M,curated,Pepperfry,Layoffs
+2018,$220M,curated,Jabong,Brand discontinued after Flipkart acquisition of Myntra
+2023,$220M,curated,Slice,"RBI restrictions, layoffs"
+2024,$200M,curated,BluSmart,Operational issues and mismanagement
+2025,$200M,curated,Pocket FM,"Layoffs, unit economics challenges"
+2020,$200M,curated,Uber Eats India,"Sold to Zomato, exited India food delivery market"
+2017,$200M,curated,Taxiforsure,"Acquired by Ola, brand discontinued"
+2024,$160M,curated,LEAD School,"Mass layoffs, business model struggles, funding winter"
+2019,$125M,curated,Droom (IPO Failed),"IPO shelved multiple times, heavy losses"
+2016,$120M,curated,Housing.com (original),"Founder fired, merged with PropTiger"
+2020,$100M,curated,Foodpanda India,"Ola sold Foodpanda, couldn't compete with Swiggy/Zomato"
+2020,$100M,curated,Meru Cabs,"Massive decline, sold assets"
+2023,$90M,curated,Nestaway (decline),"Major layoffs, scaling down"
+2023,$77M,curated,Trell,"Layoffs, restructuring"
+2023,$62M,curated,GoMechanic,"Fraud allegations, crisis"
+2016,$60M,curated,Commonfloor,Merged with Quikr
+2019,$54M,curated,Craftsvilla,Major decline
+2016,$51M,curated,PepperTap,"Unit economics failed, shut operations"
+2018,$50M,curated,Yepme,"Failed to compete, shifted to B2B model"
+2020,$50M,curated,Portea Medical,"Massive layoffs, scaled down"
+2024,$50M,curated,Koo,Shut down
+2020,$40M,curated,Roposo,Sold to Glance
+2023,$40M,curated,Furlenco (layoffs),Layoffs
+2016,$35M,curated,Yebhi,"Market competition, funding issues"
+2017,$34M,curated,Stayzilla,"Shut down amid legal troubles, founder arrested"
+2023,$30M,curated,Chingari,Decline
+2019,$30M,curated,Staples India,Shut Indian operations after years of losses
+2023,$30M,curated,FrontRow,Celebrity learning platform shut down
+2016,$27M,curated,TinyOwl,"Merged with Runnr, then failed"
+2017,$25M,curated,HealthKart (B2C),Pivoted to B2B (MuscleBlaze)
+2018,$24M,curated,Housejoy,Major pivot/decline
+2024,$20M,curated,Mojocare,"Shut down operations, failed to raise follow-on funding"
+2016,$20M,curated,Flipkart Ping,Flipkart's social chat feature discontinued
+2023,$20M,curated,Lido Learning,Shut operations amid EdTech crash
+2017,$17M,curated,Jugnoo,Failed to sustain
+2017,$15M,curated,Lybrate,Significant decline
+2016,$10M,curated,Grabhouse,Merged with Quikr
+2015,$10M,curated,LocalBanya,Couldn't sustain operations
+2023,$8M,curated,YourStory,Layoffs
+2017,$7M,curated,Runnr,Merged into Zomato
+2021,$6M,curated,Ridlr,Ola sold/shut it
+2016,$5M,curated,Fashionara,Failed to compete
+2016,$5M,curated,Dazo,Food delivery startup shut down amid intense competition
+2016,$5M,curated,JustRide,Lost to Ola/Uber
+2016,$5M,curated,Frankly.me,Celebrity video Q&A platform failed to monetize
+2016,$4M,curated,ZipDial,Twitter shut it down
+2022,$3M,curated,Crejo.Fun,Shut down
+2017,$3M,curated,Zipgo,Shut operations
+2016,$3M,curated,Spoonjoy,"Food tech startup couldn't scale, shut operations"
+2022,$2M,curated,Udayy,Shut down
+2016,$2M,curated,Doodhwala,Operational challenges
+2022,$2M,curated,SuperLearn,Shut down
+2016,$2M,curated,Autowale,Auto-rickshaw booking app shut due to unit economics
+2015,$400K,curated,Eatlo,Competition from Swiggy/Zomato
+2018,-,curated,Quikr Assured,Service discontinued
+2017,-,curated,Tolexo,IndiaMART shut it down
+2022,-,curated,Zomato Instant,10-min delivery discontinued

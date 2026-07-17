@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharat Startup Reality — Indian Startup Graveyard</title>
+  <meta name="description"
+    content="The unfiltered database of Indian startup failures, struggles, pivots and comebacks. Deep profiles, timelines, cause-of-death analysis and AI rebuild ideas." />
+  <meta property="og:title" content="Bharat Startup Reality — Indian Startup Graveyard" />
+  <meta property="og:description"
+    content="Learn from ₹50,000+ Cr in Indian startup failures. Shut downs, layoffs, pivots — with BluSmart-level depth." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://startup-graveyard-ui.vercel.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#101010" />
+  <meta name="msapplication-TileColor" content="#101010" />
+  <link rel="icon" href="favicon.svg?v=4" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png?v=4" type="image/png" sizes="32x32" />
+  <link rel="icon" href="favicon-16.png?v=4" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4" sizes="180x180" />
+  <link rel="manifest" href="site.webmanifest?v=4" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container" id="bubblesContainer"></div>
+
+  <div class="page">
+    <header class="hero">
+      <div class="header-top">
+        <div class="badge">🇮🇳 BHARAT STARTUP REALITY</div>
+        <div class="header-links">
+          <a href="https://rahulkumarsingh-portfolio.vercel.app/" target="_blank" class="header-link">👤 About
+            Creator</a>
+          <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+          </button>
+        </div>
+      </div>
+      <h1>Bharat Startup Reality</h1>
+      <p class="subtitle" id="heroSubtitle">The unfiltered truth about Indian startups — failures, struggles, pivots &amp; comebacks.</p>
+      <p class="data-freshness" id="dataFreshness"></p>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="stat-failed">0</div>
+          <div class="stat-label">💀 Shut Down</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-struggling">0</div>
+          <div class="stat-label">⚠️ Struggling</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-pivoted">0</div>
+          <div class="stat-label">🔄 Pivoted/Exited</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-burned">$0</div>
+          <div class="stat-label">🔥 Total Funding at Risk</div>
+        </div>
+      </div>
+      <details class="methodology-strip" id="methodologyStrip">
+        <summary>What you’ll find here · how to use this catalog</summary>
+        <div class="methodology-body">
+          <p><strong>Bharat Startup Reality</strong> is a public map of Indian startups that shut down, struggled,
+            pivoted, or fought back. Each profile is built for founders, operators, and students who want the
+            <em>story</em> — not marketing decks.</p>
+          <p>Open any card for: pitch &amp; failure narrative, timeline, key people &amp; investors, funding and
+            peak valuation, lessons, market context, and practical rebuild ideas. Filter by status or category,
+            search founders/investors, save a personal watchlist, and compare companies side by side.</p>
+          <p id="qualitySummaryLine" class="quality-summary-line"></p>
+        </div>
+      </details>
+    </header>
+
+    <section class="controls">
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search startups, founders, investors, categories…" />
+      </div>
+      <div class="status-filters" id="statusFilters"></div>
+      <div class="toolbar">
+        <div class="toolbar-group">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="All">All categories</option>
+          </select>
+        </div>
+        <div class="toolbar-group">
+          <label for="qualityFilter">Profile depth</label>
+          <select id="qualityFilter">
+            <option value="all">All profiles</option>
+            <option value="gold">Most complete</option>
+            <option value="silver">Standard depth</option>
+            <option value="has_sources">With linked sources</option>
+          </select>
+        </div>
+        <div class="toolbar-group">
+          <label for="sortBy">Sort by</label>
+          <select id="sortBy">
+            <option value="default">Default order</option>
+            <option value="quality">Profile completeness</option>
+            <option value="recent">Recently updated</option>
+            <option value="funding">Funding (high → low)</option>
+            <option value="year_died">Year died (recent first)</option>
+            <option value="name">Name (A → Z)</option>
+          </select>
+        </div>
+        <button class="filter-btn" id="recentOnlyBtn" type="button">🆕 Recently updated</button>
+        <button class="filter-btn" id="watchlistOnlyBtn" type="button">★ Watchlist</button>
+      </div>
+      <div class="hint"><strong>Click any card</strong> for the full story — timeline, lessons, people &amp; rebuild ideas.
+        ★ watchlist · Compare · <kbd>/</kbd> search · <kbd>Esc</kbd> close.</div>
+    </section>
+
+    <div id="compareBar" class="compare-bar" hidden></div>
+    <div id="loadError" class="load-error" hidden role="alert"></div>
+    <section class="grid" id="cardsGrid"></section>
+
+    <nav class="pagination" id="pagination" aria-label="Startup pages">
+      <div class="pagination-info" id="paginationInfo">Showing 1–12 of 94</div>
+      <div class="pagination-controls" id="paginationControls"></div>
+    </nav>
+  </div>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-header">
+        <h2 id="modalTitle">Startup</h2>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+
+      <div class="section integrity-section" id="modalIntegrity" hidden></div>
+
+      <!-- At-a-glance key facts (extra catalog fields) -->
+      <div class="section key-facts-section" id="keyFactsSection">
+        <h3>📋 AT A GLANCE</h3>
+        <p class="key-facts-tip" id="modalReaderTip"></p>
+        <div class="key-facts-grid" id="modalKeyFacts"></div>
+      </div>
+
+      <!-- Value Proposition -->
+      <div class="section value-prop-section">
+        <h3>🎯 THE PITCH (What They Promised)</h3>
+        <p id="modalValueProp"></p>
+      </div>
+
+      <!-- Opportunity Score -->
+      <div class="section opportunity-section">
+        <h3>📊 OPPORTUNITY SCORE</h3>
+        <div class="opportunity-grid" id="modalOpportunity"></div>
+      </div>
+
+      <!-- Cause of Death / Struggle Reason -->
+      <div class="section death-section">
+        <h3>⚰️ CAUSE OF DEATH</h3>
+        <p id="modalCauseOfDeath"></p>
+        <div class="timeline" id="modalTimeline"></div>
+      </div>
+
+      <!-- The Loot - Lessons -->
+      <div class="section loot-section">
+        <h3>📈 THE DIVIDENDS (Key Learnings)</h3>
+        <ul id="modalLessons" class="loot-list"></ul>
+      </div>
+
+      <!-- Key People & Investors -->
+      <div class="section">
+        <h3>👥 KEY PEOPLE & INVESTORS</h3>
+        <div class="people" id="modalPeople"></div>
+      </div>
+
+      <!-- Market Today -->
+      <div class="section market-section">
+        <h3>📈 MARKET TODAY</h3>
+        <p id="modalMarketToday"></p>
+      </div>
+
+      <!-- AI Rebuild Idea -->
+      <div class="section rebuild-section">
+        <h3>🔄 THE NEW BUSINESS IDEA</h3>
+        <div class="rebuild-card">
+          <h4 id="modalRebuildName" class="rebuild-name"></h4>
+          <p id="modalRebuildDesc"></p>
+          <div class="tech-stack" id="modalTechStack"></div>
+        </div>
+      </div>
+
+      <!-- What Makes This Innovative -->
+      <div class="section innovative-section">
+        <h3>💡 WHAT MAKES THIS INNOVATIVE</h3>
+        <ul id="modalInnovative" class="innovative-list"></ul>
+      </div>
+
+      <!-- Execution Plan -->
+      <div class="section execution-section">
+        <h3>🗺️ THE ROADMAP (Launch Playbook)</h3>
+        <ol id="modalExecutionPlan" class="execution-list"></ol>
+      </div>
+
+      <!-- Monetization Strategy -->
+      <div class="section monetization-section">
+        <h3>💰 MONETIZATION STRATEGY</h3>
+        <p id="modalMonetization"></p>
+      </div>
+
+      <!-- Sources -->
+      <div class="section sources-section" id="sourcesSection" style="display:none;">
+        <h3>📰 SOURCES &amp; REFERENCES</h3>
+        <ul id="modalSources" class="sources-list"></ul>
+      </div>
+
+      <div class="note">* Analysis based on public reports, news sources, and AI-powered market research. For
+        educational purposes only.</div>
+    </div>
+  </div>
+
+  <!-- Feature Request / Feedback Floating Button -->
+  <button class="fab-button feedback-fab" id="feedbackFab" title="Suggest a feature or add a startup">
+    <span class="fab-icon">💡</span>
+    <span class="fab-text">Suggest</span>
+  </button>
+
+  <!-- Feature Request Modal -->
+  <div class="modal" id="feedbackModal" aria-hidden="true">
+    <div class="modal-backdrop" id="feedbackBackdrop"></div>
+    <div class="modal-content feedback-modal-content">
+      <button class="modal-close" id="feedbackClose">×</button>
+      <div class="modal-header">
+        <h2>💡 Feature Request / Add a Startup</h2>
+      </div>
+      <form class="feedback-form" id="feedbackForm">
+        <div class="form-group">
+          <label for="feedbackType">What would you like to do?</label>
+          <select id="feedbackType" required>
+            <option value="">Select an option...</option>
+            <option value="add_startup">Add a missing startup</option>
+            <option value="fix_data">Fix incorrect data</option>
+            <option value="feature">Suggest a feature</option>
+            <option value="other">Other feedback</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="feedbackDetails">Details</label>
+          <textarea id="feedbackDetails" rows="4" placeholder="Tell us more..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="feedbackEmail">Email (optional)</label>
+          <input type="email" id="feedbackEmail" placeholder="your@email.com" />
+        </div>
+        <button type="submit" class="submit-btn">🚀 Submit Feedback</button>
+      </form>
+      <p class="feedback-note">Your feedback helps make this resource better for everyone!</p>
+    </div>
+  </div>
+
+  <!-- Portfolio Credit Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Built with 🔥 by <a href="https://rahulkumarsingh-portfolio.vercel.app/" target="_blank" rel="noopener">Rahul
+          Kumar Singh</a></p>
+      <p class="footer-tagline">Learning from failures, building for success.</p>
+    </div>
+  </footer>
+
+
+  <div class="modal" id="comparePanel" aria-hidden="true">
+    <div class="modal-backdrop" id="compareBackdrop"></div>
+    <div class="modal-content compare-modal-content">
+      <button class="modal-close" id="compareClose" type="button" aria-label="Close compare">×</button>
+      <div class="modal-header"><h2>Compare startups</h2></div>
+      <div id="compareBody"></div>
+    </div>
+  </div>
+
+  <script src="security.js"></script>
+  <script src="quality.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

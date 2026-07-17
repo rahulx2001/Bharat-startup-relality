@@ -1,0 +1,19 @@
+.vercel
+.env
+.env.*
+!.env.example
+.venv
+__pycache__/
+*.pyc
+*.pyo
+pipeline/cache/
+.DS_Store
+._*
+# Local scratch / remediation artifacts (never commit)
+fix_identity_result.json
+*.pem
+*.key
+id_rsa
+id_ed25519
+.secrets
+credentials.json

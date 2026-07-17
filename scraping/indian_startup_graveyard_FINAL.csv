@@ -1,0 +1,96 @@
+year,funding_usd,source,startup_name,failure_reason
+2023,5800000000.0,curated,BYJU'S (crisis),"Massive layoffs, valuation crash"
+2020,3400000000.0,curated,Oyo Rooms (crisis),"Massive layoffs, valuation crash"
+2024,1850000000.0,curated,Udaan,"Massive losses, down rounds, layoffs, pivot struggles"
+2017,1650000000.0,curated,Snapdeal (partial),"Lost to Flipkart/Amazon, massive layoffs"
+2026,1300000000.0,curated,Zepto,"Cash burn concerns, competition from Blinkit/Instamart"
+2025,1200000000.0,curated,Pharmeasy,"IPO shelved, valuation crashed from $5.6B to $700M, layoffs"
+2026,1100000000.0,curated,Meesho,"Large-scale layoffs, profitability pressure"
+2024,1100000000.0,curated,ShareChat,"500+ layoffs, shut down fantasy gaming, valuation crash"
+2025,900000000.0,curated,Cars24,"International exit, heavy layoffs, valuation drop"
+2025,880000000.0,curated,Unacademy,"Continuous layoffs, shut down group companies, pivot struggles"
+2024,800000000.0,curated,Ola Electric,"Service issues, regulatory problems, stock crash post-IPO"
+2024,650000000.0,curated,BharatPe,"Founder ousted for fraud, governance crisis, lawsuits"
+2022,650000000.0,curated,Curefit (layoffs),"Layoffs, restructuring"
+2021,600000000.0,curated,Grofers (pivoted),"Rebranded to Blinkit, sold to Zomato"
+2025,560000000.0,curated,Zetwerk,"Layoffs, margin pressures"
+2023,500000000.0,curated,Mobile Premier League,Layoffs
+2023,500000000.0,curated,Dhani,"Major layoffs, pivot"
+2024,500000000.0,curated,Good Glamm Group,"Heavy debt, founder exit, brand shutdowns, layoffs"
+2025,500000000.0,curated,OfBusiness,"Layoffs, growth slowdown"
+2026,500000000.0,curated,Urban Company,"IPO struggles, partner unrest, layoffs"
+2024,490000000.0,curated,Licious,"Multiple layoff rounds, profitability struggles"
+2025,475000000.0,curated,Spinny,"Layoffs, market slowdown, profitability pressure"
+2025,450000000.0,curated,MPL,"GST issues, layoffs, regulatory challenges"
+2024,450000000.0,curated,Dunzo,"Cash crunch, failed Reliance acquisition talks, massive layoffs"
+2024,425000000.0,curated,Innovaccer,"Major layoffs, market challenges"
+2022,420000000.0,curated,UrbanClap/Urban Company (layoffs),Layoffs
+2026,400000000.0,curated,Groww,"Regulatory pressures, growth challenges"
+2026,361000000.0,curated,NoBroker,"Layoffs, market slowdown, profitability issues"
+2026,330000000.0,curated,Rapido,"Regulatory issues, profitability struggles"
+2025,300000000.0,curated,PhysicsWallah,"Centers shutting down, layoffs, profitability issues"
+2024,300000000.0,curated,Mensa Brands,"Brand shutdowns, layoffs, failed acquisitions"
+2016,300000000.0,curated,AskMe,"Funding dried up, investor disputes"
+2022,300000000.0,curated,Zilingo,"Shut down, fraud allegations"
+2022,300000000.0,curated,WhiteHat Jr (Crisis),"Byju's acquisition led to layoffs, brand struggling"
+2022,291000000.0,curated,Vedantu,Major layoffs
+2021,261000000.0,curated,Hike Messenger,Couldn't compete with WhatsApp
+2019,260000000.0,curated,ShopClues (decline),Sold at massive loss to Qoo10
+2025,250000000.0,curated,Purplle,"Layoffs, profitability pressure, competition from Nykaa"
+2022,235000000.0,curated,Pepperfry,Layoffs
+2018,220000000.0,curated,Jabong,Brand discontinued after Flipkart acquisition of Myntra
+2023,220000000.0,curated,Slice,"RBI restrictions, layoffs"
+2024,200000000.0,curated,BluSmart,Operational issues and mismanagement
+2025,200000000.0,curated,Pocket FM,"Layoffs, unit economics challenges"
+2020,200000000.0,curated,Uber Eats India,"Sold to Zomato, exited India food delivery market"
+2017,200000000.0,curated,Taxiforsure,"Acquired by Ola, brand discontinued"
+2024,160000000.0,curated,LEAD School,"Mass layoffs, business model struggles, funding winter"
+2019,125000000.0,curated,Droom (IPO Failed),"IPO shelved multiple times, heavy losses"
+2016,120000000.0,curated,Housing.com (original),"Founder fired, merged with PropTiger"
+2020,100000000.0,curated,Foodpanda India,"Ola sold Foodpanda, couldn't compete with Swiggy/Zomato"
+2020,100000000.0,curated,Meru Cabs,"Massive decline, sold assets"
+2023,90000000.0,curated,Nestaway (decline),"Major layoffs, scaling down"
+2023,77000000.0,curated,Trell,"Layoffs, restructuring"
+2023,62000000.0,curated,GoMechanic,"Fraud allegations, crisis"
+2016,60000000.0,curated,Commonfloor,Merged with Quikr
+2019,54000000.0,curated,Craftsvilla,Major decline
+2016,51000000.0,curated,PepperTap,"Unit economics failed, shut operations"
+2018,50000000.0,curated,Yepme,"Failed to compete, shifted to B2B model"
+2020,50000000.0,curated,Portea Medical,"Massive layoffs, scaled down"
+2024,50000000.0,curated,Koo,Shut down
+2020,40000000.0,curated,Roposo,Sold to Glance
+2023,40000000.0,curated,Furlenco (layoffs),Layoffs
+2016,35000000.0,curated,Yebhi,"Market competition, funding issues"
+2017,34000000.0,curated,Stayzilla,"Shut down amid legal troubles, founder arrested"
+2023,30000000.0,curated,Chingari,Decline
+2019,30000000.0,curated,Staples India,Shut Indian operations after years of losses
+2023,30000000.0,curated,FrontRow,Celebrity learning platform shut down
+2016,27000000.0,curated,TinyOwl,"Merged with Runnr, then failed"
+2017,25000000.0,curated,HealthKart (B2C),Pivoted to B2B (MuscleBlaze)
+2018,24000000.0,curated,Housejoy,Major pivot/decline
+2024,20000000.0,curated,Mojocare,"Shut down operations, failed to raise follow-on funding"
+2016,20000000.0,curated,Flipkart Ping,Flipkart's social chat feature discontinued
+2023,20000000.0,curated,Lido Learning,Shut operations amid EdTech crash
+2017,17000000.0,curated,Jugnoo,Failed to sustain
+2017,15000000.0,curated,Lybrate,Significant decline
+2016,10000000.0,curated,Grabhouse,Merged with Quikr
+2015,10000000.0,curated,LocalBanya,Couldn't sustain operations
+2023,8000000.0,curated,YourStory,Layoffs
+2017,7000000.0,curated,Runnr,Merged into Zomato
+2021,6000000.0,curated,Ridlr,Ola sold/shut it
+2016,5000000.0,curated,Fashionara,Failed to compete
+2016,5000000.0,curated,Dazo,Food delivery startup shut down amid intense competition
+2016,5000000.0,curated,JustRide,Lost to Ola/Uber
+2016,5000000.0,curated,Frankly.me,Celebrity video Q&A platform failed to monetize
+2016,4500000.0,curated,ZipDial,Twitter shut it down
+2022,3000000.0,curated,Crejo.Fun,Shut down
+2017,3000000.0,curated,Zipgo,Shut operations
+2016,3000000.0,curated,Spoonjoy,"Food tech startup couldn't scale, shut operations"
+2022,2500000.0,curated,Udayy,Shut down
+2016,2200000.0,curated,Doodhwala,Operational challenges
+2022,2000000.0,curated,SuperLearn,Shut down
+2016,2000000.0,curated,Autowale,Auto-rickshaw booking app shut due to unit economics
+2015,400000.0,curated,Eatlo,Competition from Swiggy/Zomato
+2018,,curated,Quikr Assured,Service discontinued
+2017,,curated,Tolexo,IndiaMART shut it down
+2022,,curated,Zomato Instant,10-min delivery discontinued

@@ -1,0 +1,68 @@
+startup_name,year_of_failure,funding_raised,category,failure_reason,data_source,title,source
+Snapdeal (partial),2017,$1.65B,E-Commerce,"Lost to Flipkart/Amazon, massive layoffs",curated,"Snapdeal (partial) - Lost to Flipkart/Amazon, massive layoffs",Known Failures Database
+AskMe,2016,$300M,E-Commerce,"Funding dried up, investor disputes",curated,"AskMe - Funding dried up, investor disputes",Known Failures Database
+PepperTap,2016,$51M,E-Commerce/Grocery,"Unit economics failed, shut operations",curated,"PepperTap - Unit economics failed, shut operations",Known Failures Database
+LocalBanya,2015,$10M,E-Commerce/Grocery,Couldn't sustain operations,curated,LocalBanya - Couldn't sustain operations,Known Failures Database
+Yebhi,2016,$35M,E-Commerce,"Market competition, funding issues",curated,"Yebhi - Market competition, funding issues",Known Failures Database
+Fashionara,2016,$5M,E-Commerce/Fashion,Failed to compete,curated,Fashionara - Failed to compete,Known Failures Database
+Doodhwala,2019,$2.2M,E-Commerce/Dairy,Operational challenges,curated,Doodhwala - Operational challenges,Known Failures Database
+ShopClues (decline),2019,$260M,E-Commerce,Sold at massive loss to Qoo10,curated,ShopClues (decline) - Sold at massive loss to Qoo10,Known Failures Database
+Quikr Assured,2018,-,E-Commerce,Service discontinued,curated,Quikr Assured - Service discontinued,Known Failures Database
+Tolexo,2017,-,B2B E-Commerce,IndiaMART shut it down,curated,Tolexo - IndiaMART shut it down,Known Failures Database
+TinyOwl,2016,$27M,Food Delivery,"Merged with Runnr, then failed",curated,"TinyOwl - Merged with Runnr, then failed",Known Failures Database
+Dazo,2016,$5M,Food Delivery,Bangalore operations shut,curated,Dazo - Bangalore operations shut,Known Failures Database
+Spoonjoy,2015,$1M,Food Delivery,Couldn't scale,curated,Spoonjoy - Couldn't scale,Known Failures Database
+Eatlo,2015,$400K,Food Delivery,Competition from Swiggy/Zomato,curated,Eatlo - Competition from Swiggy/Zomato,Known Failures Database
+Zomato Instant,2022,-,Food Delivery,10-min delivery discontinued,curated,Zomato Instant - 10-min delivery discontinued,Known Failures Database
+Grofers (pivoted),2021,$600M,Grocery Delivery,"Rebranded to Blinkit, sold to Zomato",curated,"Grofers (pivoted) - Rebranded to Blinkit, sold to Zomato",Known Failures Database
+Runnr,2017,$7M,Food Delivery,Merged into Zomato,curated,Runnr - Merged into Zomato,Known Failures Database
+JustRide,2016,$5M,Ride-hailing,Lost to Ola/Uber,curated,JustRide - Lost to Ola/Uber,Known Failures Database
+Meru Cabs,2020,$100M,Ride-hailing,"Massive decline, sold assets",curated,"Meru Cabs - Massive decline, sold assets",Known Failures Database
+Jugnoo,2020,$17M,Auto-rickshaw,Failed to sustain,curated,Jugnoo - Failed to sustain,Known Failures Database
+Zipgo,2017,$3M,Bus shuttle,Shut operations,curated,Zipgo - Shut operations,Known Failures Database
+Ridlr,2021,$6M,Public transport,Ola sold/shut it,curated,Ridlr - Ola sold/shut it,Known Failures Database
+BluSmart,2024,$200M,EV Mobility,Operational issues and mismanagement,curated,BluSmart - Operational issues and mismanagement,Known Failures Database
+Stayzilla,2017,$34M,Travel/Stays,"Shut down, legal troubles",curated,"Stayzilla - Shut down, legal troubles",Known Failures Database
+Housejoy,2018,$24M,Home Services,Major pivot/decline,curated,Housejoy - Major pivot/decline,Known Failures Database
+ZipDial,2016,$4.5M,Mobile Marketing,Twitter shut it down,curated,ZipDial - Twitter shut it down,Known Failures Database
+Hike Messenger,2021,$261M,Messaging/Fintech,Couldn't compete with WhatsApp,curated,Hike Messenger - Couldn't compete with WhatsApp,Known Failures Database
+Dhani,2023,$500M,Fintech,"Major layoffs, pivot",curated,"Dhani - Major layoffs, pivot",Known Failures Database
+Portea Medical,2020,$50M,Healthcare,"Massive layoffs, scaled down",curated,"Portea Medical - Massive layoffs, scaled down",Known Failures Database
+HealthKart (B2C),2017,$25M,Healthcare,Pivoted to B2B (MuscleBlaze),curated,HealthKart (B2C) - Pivoted to B2B (MuscleBlaze),Known Failures Database
+Lybrate,2020,$15M,Healthcare,Significant decline,curated,Lybrate - Significant decline,Known Failures Database
+Housing.com (original),2016,$120M,Real Estate,"Founder fired, merged with PropTiger",curated,"Housing.com (original) - Founder fired, merged with PropTiger",Known Failures Database
+Commonfloor,2016,$60M,Real Estate,Merged with Quikr,curated,Commonfloor - Merged with Quikr,Known Failures Database
+Grabhouse,2016,$10M,Real Estate,Merged with Quikr,curated,Grabhouse - Merged with Quikr,Known Failures Database
+Nestaway (decline),2023,$90M,Rental Housing,"Major layoffs, scaling down",curated,"Nestaway (decline) - Major layoffs, scaling down",Known Failures Database
+Oyo Rooms (crisis),2020,$3.4B,Hospitality,"Massive layoffs, valuation crash",curated,"Oyo Rooms (crisis) - Massive layoffs, valuation crash",Known Failures Database
+BYJU'S (crisis),2023,$5.8B,Edtech,"Massive layoffs, valuation crash",curated,"BYJU'S (crisis) - Massive layoffs, valuation crash",Known Failures Database
+Unacademy (layoffs),2022,$860M,Edtech,Multiple rounds of layoffs,curated,Unacademy (layoffs) - Multiple rounds of layoffs,Known Failures Database
+Vedantu,2022,$291M,Edtech,Major layoffs,curated,Vedantu - Major layoffs,Known Failures Database
+Lido Learning,2022,$10M,Edtech,Shut down,curated,Lido Learning - Shut down,Known Failures Database
+SuperLearn,2022,$2M,Edtech,Shut down,curated,SuperLearn - Shut down,Known Failures Database
+Udayy,2022,$2.5M,Edtech,Shut down,curated,Udayy - Shut down,Known Failures Database
+Crejo.Fun,2022,$3M,Edtech,Shut down,curated,Crejo.Fun - Shut down,Known Failures Database
+Frontrow,2022,$14M,Edtech/Creator,Shut down,curated,Frontrow - Shut down,Known Failures Database
+Roposo,2020,$40M,Social,Sold to Glance,curated,Roposo - Sold to Glance,Known Failures Database
+ShareChat (layoffs),2023,$915M,Social,Major layoffs,curated,ShareChat (layoffs) - Major layoffs,Known Failures Database
+Moj (owned by ShareChat),2023,-,Short Video,Layoffs with parent,curated,Moj (owned by ShareChat) - Layoffs with parent,Known Failures Database
+Chingari,2023,$30M,Short Video,Decline,curated,Chingari - Decline,Known Failures Database
+Koo,2024,$50M,Social/Microblogging,Shut down,curated,Koo - Shut down,Known Failures Database
+Craftsvilla,2019,$54M,Ethnic E-Commerce,Major decline,curated,Craftsvilla - Major decline,Known Failures Database
+YourStory (layoffs),2023,$8M,Media,Layoffs,curated,YourStory (layoffs) - Layoffs,Known Failures Database
+Dunzo,2023,$400M,Quick Commerce,"Major crisis, layoffs",curated,"Dunzo - Major crisis, layoffs",Known Failures Database
+Meesho (layoffs),2022,$1.1B,Social Commerce,"Layoffs, restructuring",curated,"Meesho (layoffs) - Layoffs, restructuring",Known Failures Database
+MPL,2023,$500M,Gaming,Major layoffs,curated,MPL - Major layoffs,Known Failures Database
+Curefit (layoffs),2022,$650M,Fitness,"Layoffs, restructuring",curated,"Curefit (layoffs) - Layoffs, restructuring",Known Failures Database
+UrbanClap/Urban Company (layoffs),2022,$420M,Home Services,Layoffs,curated,UrbanClap/Urban Company (layoffs) - Layoffs,Known Failures Database
+PharmEasy (crisis),2023,$1B,Pharma/E-Commerce,"Major layoffs, valuation crash",curated,"PharmEasy (crisis) - Major layoffs, valuation crash",Known Failures Database
+Innovaccer (layoffs),2023,$225M,Healthcare Tech,Layoffs,curated,Innovaccer (layoffs) - Layoffs,Known Failures Database
+Zetwerk (layoffs),2023,$500M,B2B Manufacturing,Layoffs,curated,Zetwerk (layoffs) - Layoffs,Known Failures Database
+GoMechanic,2023,$62M,Auto Services,"Fraud allegations, crisis",curated,"GoMechanic - Fraud allegations, crisis",Known Failures Database
+BharatPe,2022,$640M,Fintech,"Founder controversy, layoffs",curated,"BharatPe - Founder controversy, layoffs",Known Failures Database
+Zilingo,2022,$300M,Fashion B2B,"Shut down, fraud allegations",curated,"Zilingo - Shut down, fraud allegations",Known Failures Database
+Pepperfry (layoffs),2023,$235M,Furniture,Layoffs,curated,Pepperfry (layoffs) - Layoffs,Known Failures Database
+Furlenco (layoffs),2023,$40M,Furniture Rental,Layoffs,curated,Furlenco (layoffs) - Layoffs,Known Failures Database
+Trell,2023,$77M,Social Commerce,"Layoffs, restructuring",curated,"Trell - Layoffs, restructuring",Known Failures Database
+Mobile Premier League,2023,$500M,Gaming,Layoffs,curated,Mobile Premier League - Layoffs,Known Failures Database
+Slice,2023,$220M,Fintech,"RBI restrictions, layoffs",curated,"Slice - RBI restrictions, layoffs",Known Failures Database

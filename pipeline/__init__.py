@@ -1,0 +1,1 @@
+"""Startup graveyard automation pipeline."""
